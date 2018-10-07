@@ -7,22 +7,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour 
 {
 	protected Rigidbody playerRb;
-
-    protected bool disableInput;
-    InputDevice inputDevice;
-
+	[SerializeField] protected Camera cam;
 	[SerializeField] protected float moveSpeed;
+	[SerializeField] protected float jumpPower;
     [SerializeField] protected float rotateSpeed;
+	protected bool inverted = false;
+	protected bool canJump = true;
 
 	void Start ()
 	{
 		playerRb = GetComponent<Rigidbody>();
-        inputDevice = InputManager.ActiveDevice;
 	}
 	
 	void FixedUpdate()
 	{
 		Move();
+		Rotate();
+		Jump();
 	}
 
 	void Move()
@@ -37,5 +38,38 @@ public class PlayerMovement : MonoBehaviour
 
 		playerRb.velocity = _velocity;
 	}
+
+	void Rotate()
+	{
+		float _yRot= Input.GetAxis("Mouse X");
+		Vector3 _playerRotation = new Vector3(0f, _yRot, 0f) * rotateSpeed;
+		Vector3 _rotation = _playerRotation;
+
+		playerRb.MoveRotation(playerRb.rotation * Quaternion.Euler(_rotation));
+
+		float _xRot = Input.GetAxis("Mouse Y");
+		Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * rotateSpeed;
+
+		if(inverted == false)
+			_cameraRotation = _cameraRotation * -1;
+
+		if(cam != null)
+			cam.transform.Rotate(_cameraRotation);
+	}
+
+	void Jump()
+	{
+		if (Input.GetButton("Jump") && canJump == true)
+        {
+            playerRb.AddForce(0, jumpPower, 0);
+            canJump = false;
+        }	
+	}
+
+	void OnCollisionEnter(Collision collider)
+    {
+        if (collider.gameObject.tag == "Platform")
+            canJump = true;
+    }
 
 }
