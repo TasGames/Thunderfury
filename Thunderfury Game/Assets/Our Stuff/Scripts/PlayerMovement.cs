@@ -22,16 +22,13 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-		UpdateInputDevice(inputDevice);
+		Move();
 	}
 
-	void UpdateInputDevice(InputDevice inputDevice_)
-    {
-		if (disableInput)
-        	return;
-
-		float _xMove = inputDevice_.LeftStickX;
-		float _zMove = inputDevice_.LeftStickY;
+	void Move()
+	{
+		float _xMove = Input.GetAxis("Horizontal");
+		float _zMove = Input.GetAxis("Vertical");
 
 		Vector3 _moveHor = transform.right * _xMove;
 		Vector3 _moveVer = transform.forward * _zMove;
@@ -39,6 +36,6 @@ public class PlayerMovement : MonoBehaviour
 		Vector3 _velocity = (_moveHor + _moveVer).normalized * moveSpeed;
 
 		playerRb.velocity = _velocity;
-
 	}
+
 }
