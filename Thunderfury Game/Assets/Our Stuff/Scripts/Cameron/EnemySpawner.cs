@@ -4,13 +4,30 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    [SerializeField] GameObject enemy;
+    [SerializeField] float spawnTime = 3.0f;
+    [SerializeField] Transform[] spawnPoints;
+    static int enemies;
+
+    // Use this for initialization
+    void Start () {
+        enemies = 0;
+        InvokeRepeating("Spawn", spawnTime, spawnTime);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        if(enemies >= 20)
+        {
+            CancelInvoke("Spawn");
+        }
+        else
+        {
+            int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+
+            Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            enemies++;
+        }
 	}
 }
