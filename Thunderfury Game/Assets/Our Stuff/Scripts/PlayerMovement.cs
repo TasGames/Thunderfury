@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void OnCollisionEnter(Collision collider)
     {
-        if (collider.gameObject.tag == "Platform")
+        if (collider.gameObject.tag == "Ground")
             canJump = true;
     }
 
