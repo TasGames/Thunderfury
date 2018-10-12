@@ -11,7 +11,7 @@ public class BaseGun : MonoBehaviour
 
 	[Space] [Header("Gun Stats")]
 	[SerializeField] protected float fireRate;
-	[SerializeField] protected float range;
+	[SerializeField] [Range(0, 100)] protected float range;
 	[SerializeField] protected float recoil;
 	[SerializeField] protected float impact;
 	[SerializeField] protected int magSize;
