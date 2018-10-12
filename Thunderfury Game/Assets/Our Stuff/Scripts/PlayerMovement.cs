@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] protected float rotateSpeed;
 	protected bool inverted = false;
 	protected bool canJump = true;
+	protected bool usingController = false;
 
 	void Start ()
 	{
@@ -20,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
 	}
 	
 	void FixedUpdate()
+	{
+		if (usingController == false)
+			KeyboardMouse();
+	}
+
+	void KeyboardMouse()
 	{
 		Move();
 		Rotate();

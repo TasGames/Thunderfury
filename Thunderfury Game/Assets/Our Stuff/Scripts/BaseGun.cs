@@ -28,8 +28,14 @@ public class BaseGun : MonoBehaviour
 		
 	}
 	
-	void Update () 
+	void FixedUpdate () 
 	{
-		
+		if(projectileType == true)
+			ProjectileType();
+	}
+
+	void ProjectileType()
+	{
+
 	}
 }
