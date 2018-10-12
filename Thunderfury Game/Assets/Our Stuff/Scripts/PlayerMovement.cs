@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 	protected bool canJump = true;
 	protected bool usingController = false;
 
-	void Start ()
+	void Start()
 	{
 		playerRb = GetComponent<Rigidbody>();
 	}

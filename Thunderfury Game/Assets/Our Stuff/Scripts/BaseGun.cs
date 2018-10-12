@@ -23,12 +23,12 @@ public class BaseGun : MonoBehaviour
 	[SerializeField] protected float damage;
 
 
-	void Start () 
+	void Start() 
 	{
 		
 	}
 	
-	void FixedUpdate () 
+	void FixedUpdate() 
 	{
 		if(projectileType == true)
 			ProjectileType();
