@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Target : MonoBehaviour 
 {
-	void Start ()
-	 {
-		
+	[SerializeField] protected float health;
+	[SerializeField] protected GameObject brokenVersion;
+
+	public void TakeDamage(float amount)
+	{
+		health -= amount;
+
+		if (health <= 0)
+			Destroy();
 	}
-	
-	void Update ()
-	 {
-		
+
+	void Destroy()
+	{
+		if (brokenVersion != null)
+			Instantiate(brokenVersion, transform.position, transform.rotation);
+			
+		Destroy(gameObject);
 	}
 }

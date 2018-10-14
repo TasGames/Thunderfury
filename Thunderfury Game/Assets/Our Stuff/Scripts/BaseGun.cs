@@ -10,6 +10,8 @@ public class BaseGun : MonoBehaviour
 		rayType, projectileType
 	}
 
+	protected float nextToFire = 0;
+
 	[Title("Gun Type")]
 	[SerializeField] [EnumToggleButtons] protected typeEnum selectGunType;
 	[SerializeField] protected bool isAutomatic;
@@ -26,7 +28,7 @@ public class BaseGun : MonoBehaviour
 	[SerializeField] [ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 180)] protected float spread;
 	[SerializeField] [ShowIf("selectGunType", typeEnum.rayType)] protected GameObject hitEffect;
 
-	[Title("Bullet Stats")]
+	[Title("Ammo Stats")]
 	[SerializeField] protected float damage;
 	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected GameObject projectile;
 	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected float projectileSpeed;
@@ -40,12 +42,29 @@ public class BaseGun : MonoBehaviour
 	
 	void FixedUpdate() 
 	{
-		if (Input.GetButtonDown("Fire1"))
-			Shoot();
+		if (isAutomatic == false)
+		{
+			if (Input.GetButtonDown("Fire1") && Time.time >= nextToFire)
+			{
+				nextToFire = Time.time + 1 /fireRate;
+				Shoot();
+			}
+		}
+		else if (isAutomatic == true)
+		{
+			if (Input.GetButton("Fire1") && Time.time >= nextToFire)
+			{
+				nextToFire = Time.time + 1 /fireRate;
+				Shoot();
+			}
+		}
 	}
 
 	void Shoot()
 	{
+		if (muzzleFlash != null)
+			muzzleFlash.Play();
+
 		if (selectGunType == typeEnum.projectileType)
 			ProjectileType();
 		else if (selectGunType == typeEnum.rayType)
@@ -63,6 +82,19 @@ public class BaseGun : MonoBehaviour
 		if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
 		{
 			Debug.Log(hit.transform.name);
+
+			Target target = hit.transform.GetComponent<Target>();
+			if (target != null)
+				target.TakeDamage(damage);
+
+			if (hit.rigidbody != null)
+				hit.rigidbody.AddForce(hit.normal * impact * -1);
+
+			if (hitEffect != null)
+			{
+				GameObject hitGO = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+				Destroy(hitGO, 2);
+			}
 		}
 	}
 }
