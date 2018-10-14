@@ -24,21 +24,16 @@ public class BaseGun : MonoBehaviour
 	[SerializeField] protected float impact;
 	[SerializeField] protected int magSize;
 	[SerializeField] protected int maxAmmo;
-	[SerializeField] protected float range;
+	[SerializeField] [ShowIf("selectGunType", typeEnum.rayType)] protected float range;
 	[SerializeField] [ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 180)] protected float spread;
 	[SerializeField] [ShowIf("selectGunType", typeEnum.rayType)] protected GameObject hitEffect;
 
 	[Title("Ammo Stats")]
 	[SerializeField] protected float damage;
-	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected GameObject projectile;
-	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected float projectileSpeed;
+	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected GameObject projectilePrefab;
+	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected float projectileForce;
 	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected float projectileTimer;
 	[SerializeField] [ShowIf("selectGunType", typeEnum.projectileType)] protected bool isExplosive;
-	
-	void Start() 
-	{
-		
-	}
 	
 	void FixedUpdate() 
 	{
@@ -73,7 +68,9 @@ public class BaseGun : MonoBehaviour
 
 	void ProjectileType()
 	{
-
+		GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+		Rigidbody projRB = projectile.GetComponent<Rigidbody>();
+		projRB.AddForce(transform.forward * projectileForce, ForceMode.VelocityChange);
 	}
 
 	void RayType()
