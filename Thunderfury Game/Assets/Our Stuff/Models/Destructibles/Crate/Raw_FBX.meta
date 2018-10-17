@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Thunderfury Game/Assets/Our Stuff/Models/Destructibles/Crate/Raw_FBX.meta
 guid: b774fa1107bc62940bd29518719ab8ba
+=======
+guid: b15e98bd2815e98488ad255eebd23449
+>>>>>>> CamBranch1:Thunderfury Game/Assets/Our Stuff/Scripts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
