@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 23342070680371658}
   - component: {fileID: 95339503966784516}
   - component: {fileID: 54951165675389280}
-  - component: {fileID: 114824290068871712}
   - component: {fileID: 136114049487972888}
+  - component: {fileID: 114866659653538650}
   m_Layer: 0
   m_Name: Tube_healthy_prefab
   m_TagString: Untagged
@@ -120,7 +120,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114824290068871712
+--- !u!114 &114866659653538650
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,10 +128,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1212255186587654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f8afc38a06c1dc4daaf6f2b852470cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ad2e1c61d0de53409f60fb48974c5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyedversion: {fileID: 1052506343529332, guid: a95574bebc558b142ad7caaeb1c0ddb7,
+  health: 50
+  brokenVersion: {fileID: 1052506343529332, guid: a95574bebc558b142ad7caaeb1c0ddb7,
     type: 2}
 --- !u!136 &136114049487972888
 CapsuleCollider:
