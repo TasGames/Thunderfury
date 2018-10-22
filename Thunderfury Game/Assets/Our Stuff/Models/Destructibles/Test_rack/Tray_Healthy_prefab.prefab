@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 23351312821988096}
   - component: {fileID: 95076415922675662}
   - component: {fileID: 65712187689248128}
-  - component: {fileID: 114682166204879732}
   - component: {fileID: 54763257825624504}
+  - component: {fileID: 114894516692406708}
   m_Layer: 0
   m_Name: Tray_Healthy_prefab
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114682166204879732
+--- !u!114 &114894516692406708
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +140,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1421297132733310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f8afc38a06c1dc4daaf6f2b852470cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ad2e1c61d0de53409f60fb48974c5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyedversion: {fileID: 1802188905626072, guid: e7506cd835a958a4e9ff8a443acedd58,
+  health: 50
+  brokenVersion: {fileID: 1802188905626072, guid: e7506cd835a958a4e9ff8a443acedd58,
     type: 2}
