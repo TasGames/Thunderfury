@@ -6,7 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Projectile", menuName = "Projectile")]
 public class Projectile : ScriptableObject
 {
-	public bool isExplosive;
+	[Title("Projectile Stats")]
 	public float projectileTimer;
 	public float damage;
+	[Title("Explosion Stats")]
+	public bool isExplosive;
+	[ShowIf("isExplosive", true)] public float explosionForce;
+	[ShowIf("isExplosive", true)] public GameObject explosionEffect;
 }
