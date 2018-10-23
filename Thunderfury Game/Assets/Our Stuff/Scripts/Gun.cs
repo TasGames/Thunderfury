@@ -28,13 +28,14 @@ public class Gun : ScriptableObject
 	public float impact;
 	public int magSize;
 	public int maxAmmo;
+	public float reloadTime;
 	[ShowIf("selectGunType", typeEnum.rayType)] public float range;
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 180)] public float spread;
 	[ShowIf("selectGunType", typeEnum.rayType)] public GameObject hitEffect;
 	
 	[Title("Ammo Stats")]
-	public float damage;
-	[ShowIf("selectGunType", typeEnum.projectileType)] public GameObject projectilePrefab;
+	[ShowIf("selectGunType", typeEnum.rayType)] public float damage;
+	[Title("Ammo Stats")] [ShowIf("selectGunType", typeEnum.projectileType)] public GameObject projectilePrefab;
 	[ShowIf("selectGunType", typeEnum.projectileType)] public float projectileForce;
 
 }

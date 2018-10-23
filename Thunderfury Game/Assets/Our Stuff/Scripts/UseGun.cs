@@ -7,9 +7,32 @@ public class UseGun : MonoBehaviour
 	[SerializeField] protected Gun gun;
 
 	protected float nextToFire = 0;
+	protected int ammoPool;
+	protected int currentMag;
+	protected bool isReloading = false;
+
+	void Start()
+	{
+		ammoPool = gun.maxAmmo - gun.magSize;
+		currentMag = gun.magSize;
+	}
+
+	void OnEnable()
+	{
+		isReloading = false;
+	}
 
 	void FixedUpdate() 
 	{
+		if (isReloading)
+			return;
+
+		if (currentMag <= 0)
+		{
+			StartCoroutine(Reload());
+			return;
+		}
+
 		if (gun.isAutomatic == false)
 		{
 			if (Input.GetButtonDown("Fire1") && Time.time >= nextToFire)
@@ -36,6 +59,33 @@ public class UseGun : MonoBehaviour
 			ProjectileType();
 		else if (gun.selectGunType == typeEnum.rayType)
 			RayType();
+
+		currentMag--;
+	}
+
+	IEnumerator Reload()
+	{
+		isReloading = true;
+		Debug.Log("Reloading");
+
+		yield return new WaitForSeconds(gun.reloadTime);
+
+		if (ammoPool >= gun.magSize)
+		{
+			ammoPool = ammoPool - gun.magSize;
+			currentMag = gun.magSize;
+		}
+		else
+		{
+			currentMag = ammoPool;
+			ammoPool = 0;
+		}
+
+		isReloading = false;
+		
+		Debug.Log("Reloaded");
+		Debug.Log(ammoPool);
+		Debug.Log(currentMag);
 	}
 
 	void ProjectileType()

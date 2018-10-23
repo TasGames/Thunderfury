@@ -22,7 +22,8 @@ MonoBehaviour:
   recoil: 0
   impact: 0
   magSize: 0
-  maxAmmo: 0
+  maxAmmo: 2
+  reloadTime: 5
   range: 0
   spread: 0
   hitEffect: {fileID: 0}
