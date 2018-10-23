@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	void Start()
 	{
 		playerRb = GetComponent<Rigidbody>();
+		Cursor.visible = false;
 	}
 	
 	void FixedUpdate()
