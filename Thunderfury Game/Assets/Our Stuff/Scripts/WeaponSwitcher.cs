@@ -11,7 +11,7 @@ public class WeaponSwitcher : MonoBehaviour
 		SelectWeapon();
 	}
 	
-	void FixedUpdate() 
+	void Update() 
 	{
 		ChangeWeapon();
 	}
