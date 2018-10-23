@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aee746b4dce0824cb522358a45f75fb, type: 3}
   m_Name: Grenade
   m_EditorClassIdentifier: 
-  projectileTimer: 0
-  damage: 0
+  projectileTimer: 2
+  damage: 50
   isExplosive: 1
-  explosionForce: 0
+  explosionForce: 1000
+  blastRadius: 5
   explosionEffect: {fileID: 0}
