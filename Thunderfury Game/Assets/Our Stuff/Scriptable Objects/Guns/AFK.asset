@@ -20,10 +20,10 @@ MonoBehaviour:
   fireSound: {fileID: 0}
   fireRate: 3
   recoil: 0
-  impact: 10
-  magSize: 0
-  maxAmmo: 10
+  magSize: 10
+  maxAmmo: 100
   reloadTime: 3
+  impact: 10
   range: 10
   spread: 0
   hitEffect: {fileID: 0}

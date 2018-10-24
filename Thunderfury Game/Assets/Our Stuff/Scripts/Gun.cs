@@ -25,10 +25,10 @@ public class Gun : ScriptableObject
 	public AudioClip fireSound;
 	public float fireRate;
 	public float recoil;
-	public float impact;
 	public int magSize;
 	public int maxAmmo;
 	public float reloadTime;
+	[ShowIf("selectGunType", typeEnum.rayType)] public float impact;
 	[ShowIf("selectGunType", typeEnum.rayType)] public float range;
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 180)] public float spread;
 	[ShowIf("selectGunType", typeEnum.rayType)] public GameObject hitEffect;

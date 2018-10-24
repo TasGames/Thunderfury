@@ -7,9 +7,9 @@ public class UseGun : MonoBehaviour
 	[SerializeField] protected Gun gun;
 
 	protected float nextToFire = 0;
-	protected int ammoPool;
-	protected int currentMag;
 	protected bool isReloading = false;
+	public int ammoPool;
+	public int currentMag;
 
 	void Start()
 	{
