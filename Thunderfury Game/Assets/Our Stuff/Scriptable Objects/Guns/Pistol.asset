@@ -20,13 +20,13 @@ MonoBehaviour:
   fireSound: {fileID: 0}
   fireRate: 2
   recoil: 5
-  impact: 100
   magSize: 5
   maxAmmo: 20
   reloadTime: 3
+  impact: 100
   range: 20
   spread: 0
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   damage: 10
   projectilePrefab: {fileID: 0}
   projectileForce: 0
