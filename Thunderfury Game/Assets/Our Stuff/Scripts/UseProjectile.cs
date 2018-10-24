@@ -32,7 +32,10 @@ public class UseProjectile : MonoBehaviour
 	void Explode()
 	{
 		if (projectile.explosionEffect != null)
-			Instantiate(projectile.explosionEffect, transform.position, transform.rotation);
+		{
+			GameObject explosion = Instantiate(projectile.explosionEffect, transform.position, transform.rotation);
+			Destroy(explosion, 2);
+		}
 
 		Collider[] collidersToDamage = Physics.OverlapSphere(transform.position, projectile.blastRadius);
 		foreach (Collider nearbyObject in collidersToDamage)

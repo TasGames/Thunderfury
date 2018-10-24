@@ -16,4 +16,5 @@ MonoBehaviour:
   isExplosive: 1
   explosionForce: 1000
   blastRadius: 5
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
+    type: 2}

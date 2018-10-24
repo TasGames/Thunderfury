@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  brokenVersion: {fileID: 1383761846828692, guid: abe7a905c64f5ef458be77e2f176443d,
+    type: 2}
