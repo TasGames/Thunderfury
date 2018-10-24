@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23492496791927812}
   - component: {fileID: 135808283973452380}
   - component: {fileID: 54917480130019180}
+  - component: {fileID: 114956308982730958}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471341759067424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.21, y: -1.016, z: 0.763}
+  m_LocalPosition: {x: -10.108103, y: -1.246, z: 0.30754963}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +100,19 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &114956308982730958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471341759067424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2fb470e23f9a54ebf28c10852a6260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 11400000, guid: c654ef65ce20e0b4eb97adaec12705d9, type: 2}
 --- !u!135 &135808283973452380
 SphereCollider:
   m_ObjectHideFlags: 1

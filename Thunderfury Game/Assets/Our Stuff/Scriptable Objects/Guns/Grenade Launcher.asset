@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c817cf59ecaf6e14a8899c55df1c596f, type: 3}
+  m_Name: Grenade Launcher
+  m_EditorClassIdentifier: 
+  name: Grenade Launcher
+  description: Fires explosive projectiles.
+  selectGunType: 1
+  isAutomatic: 0
+  cam: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  fireSound: {fileID: 0}
+  fireRate: 1
+  recoil: 0
+  magSize: 2
+  maxAmmo: 6
+  reloadTime: 5
+  impact: 0
+  range: 0
+  spread: 0
+  hitEffect: {fileID: 0}
+  damage: 0
+  projectilePrefab: {fileID: 1471341759067424, guid: f9d6ea5378c999c4ead01a473ff5e57b,
+    type: 2}
+  projectileForce: 10
