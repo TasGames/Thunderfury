@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
  {
 	[SerializeField] protected Text tAmmo;
-
+	public UseGun gunAmmo;
 	void Update() 
 	{
-		//tAmmo.text = UseGun.currentMag + " / " + UseGun.ammoPool;
+		tAmmo.text = gunAmmo.currentMag + " / " + gunAmmo.ammoPool;
 	}
 }

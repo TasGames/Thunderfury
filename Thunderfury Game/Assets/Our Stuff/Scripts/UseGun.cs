@@ -8,8 +8,8 @@ public class UseGun : MonoBehaviour
 
 	protected float nextToFire = 0;
 	protected bool isReloading = false;
-	public int ammoPool;
-	public int currentMag;
+	[HideInInspector] public int ammoPool;
+	[HideInInspector] public int currentMag;
 
 	void Start()
 	{
@@ -84,8 +84,6 @@ public class UseGun : MonoBehaviour
 		isReloading = false;
 		
 		Debug.Log("Reloaded");
-		Debug.Log(ammoPool);
-		Debug.Log(currentMag);
 	}
 
 	void ProjectileType()
