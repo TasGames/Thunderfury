@@ -26,7 +26,7 @@ MonoBehaviour:
   impact: 10
   range: 10
   spread: 0
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   damage: 3
   projectilePrefab: {fileID: 0}
   projectileForce: 0
