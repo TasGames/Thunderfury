@@ -14,7 +14,10 @@ public class HUD : MonoBehaviour
 	{
 		tAmmo.text = gunAmmo.currentMag + " / " + gunAmmo.ammoPool;
 
-		healthBar.fillAmount = PlayerHealth.pHealth / PlayerHealth.maxHealth;
-		healthBar.fillAmount = PlayerHealth.pShield / PlayerHealth.maxShield;
+		if (healthBar != null)
+			healthBar.fillAmount = PlayerHealth.pHealth / PlayerHealth.maxHealth;
+
+		if (shieldBar != null)
+			healthBar.fillAmount = PlayerHealth.pShield / PlayerHealth.maxShield;
 	}
 }
