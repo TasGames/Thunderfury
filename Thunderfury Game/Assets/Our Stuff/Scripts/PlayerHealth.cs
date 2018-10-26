@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour 
 {
-	[Range(0, 500)] public static float maxHealth;
-	[Range(0, 500)] public static float maxShield;
-	[HideInInspector] public static float pHealth;
-	[HideInInspector] public static float pShield;
+	[Range(0, 500)] public float maxHealth;
+	[Range(0, 500)] public float maxShield;
+	[HideInInspector] public float pHealth;
+	[HideInInspector] public float pShield;
 
 	[SerializeField] protected float regenWait;
 	protected float countdown;

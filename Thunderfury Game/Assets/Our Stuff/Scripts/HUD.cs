@@ -4,20 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
- {
+{
+	[SerializeField] protected PlayerHealth playerHealth;
 	[SerializeField] protected UseGun gunAmmo;
 	[SerializeField] protected Text tAmmo;
 	[SerializeField] protected Image healthBar;
 	[SerializeField] protected Image shieldBar;
+	[SerializeField] protected Image reloadingImage;
+
+
 
 	void Update() 
 	{
-		tAmmo.text = gunAmmo.currentMag + " / " + gunAmmo.ammoPool;
+		if (gunAmmo != null || tAmmo != null)
+			tAmmo.text = gunAmmo.currentMag + " / " + gunAmmo.ammoPool;
 
 		if (healthBar != null)
-			healthBar.fillAmount = PlayerHealth.pHealth / PlayerHealth.maxHealth;
+			healthBar.fillAmount = playerHealth.pHealth / playerHealth.maxHealth;
 
 		if (shieldBar != null)
-			healthBar.fillAmount = PlayerHealth.pShield / PlayerHealth.maxShield;
+			shieldBar.fillAmount = playerHealth.pShield / playerHealth.maxShield;
+
+		if (reloadingImage != null)
+		{
+			if (gunAmmo.isReloading == true)
+				reloadingImage.gameObject.SetActive(true);
+			else
+				reloadingImage.gameObject.SetActive(false);
+		}
 	}
 }

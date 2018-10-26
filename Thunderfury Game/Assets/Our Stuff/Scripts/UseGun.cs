@@ -7,7 +7,7 @@ public class UseGun : MonoBehaviour
 	[SerializeField] protected Gun gun;
 
 	protected float nextToFire = 0;
-	protected bool isReloading = false;
+	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
 
