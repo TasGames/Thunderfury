@@ -11,6 +11,7 @@ public class Projectile : ScriptableObject
 	public float damage;
 	[Title("Explosion Stats")]
 	public bool isExplosive;
+	[ShowIf("isExplosive", true)] public bool explodeOnImpact;
 	[ShowIf("isExplosive", true)] public float explosionForce;
 	[ShowIf("isExplosive", true)] public float blastRadius;
 	[ShowIf("isExplosive", true)] public GameObject explosionEffect;

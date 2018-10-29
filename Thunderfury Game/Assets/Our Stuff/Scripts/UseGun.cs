@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UseGun : MonoBehaviour
- {
+{
 	[SerializeField] protected Gun gun;
-
+	protected Camera cam;
 	protected float nextToFire = 0;
+	protected float finalDamage;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
@@ -15,6 +16,9 @@ public class UseGun : MonoBehaviour
 	{
 		ammoPool = gun.maxAmmo - gun.magSize;
 		currentMag = gun.magSize;
+
+		if (cam == null)
+			cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 	}
 
 	void OnEnable()
@@ -29,7 +33,7 @@ public class UseGun : MonoBehaviour
 
 		if (currentMag <= 0)
 		{
-			StartCoroutine(Reload());
+			StartCoroutine(ReloadRoutine());
 			return;
 		}
 
@@ -63,7 +67,7 @@ public class UseGun : MonoBehaviour
 		currentMag--;
 	}
 
-	IEnumerator Reload()
+	IEnumerator ReloadRoutine()
 	{
 		isReloading = true;
 		Debug.Log("Reloading");
@@ -90,26 +94,41 @@ public class UseGun : MonoBehaviour
 	{
 		GameObject projectile = Instantiate(gun.projectilePrefab, transform.position, transform.rotation);
 		Rigidbody projRB = projectile.GetComponent<Rigidbody>();
-		projRB.AddForce(transform.forward * gun.projectileForce, ForceMode.VelocityChange);
+
+		if (projRB.useGravity == true)
+			projRB.AddForce(transform.forward * gun.projectileForce, ForceMode.VelocityChange);
+		else
+			projRB.velocity = transform.forward * gun.projectileForce;
 	}
 
 	void RayType()
 	{
-		RaycastHit hit;
-		if (Physics.Raycast(gun.cam.transform.position, gun.cam.transform.forward, out hit, gun.range))
+		for (int i = 0; i < gun.numRays; i++)
 		{
-			Target target = hit.transform.GetComponent<Target>();
-			if (target != null)
-				target.TakeDamage(gun.damage);
+			RaycastHit hit;
+			Ray shootRay = new Ray(cam.transform.position, cam.transform.forward + cam.transform.up * Random.Range(-gun.spread, gun.spread) + cam.transform.right * Random.Range(-gun.spread, gun.spread));
 
-			if (hit.rigidbody != null)
-				hit.rigidbody.AddForce(hit.normal * gun.impact * -1);
-
-			if (gun.hitEffect != null)
+			if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
 			{
-				GameObject hitGO = Instantiate(gun.hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
-				Destroy(hitGO, 2);
+				Target target = hit.transform.GetComponent<Target>();
+
+				finalDamage = gun.damage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
+
+				if (target != null)
+					target.TakeDamage(finalDamage);
+
+				if (hit.rigidbody != null)
+					hit.rigidbody.AddForce(hit.normal * gun.impact * -1);
+
+				if (gun.hitEffect != null)
+				{
+					GameObject hitGO = Instantiate(gun.hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+					Destroy(hitGO, 2);
+				}
+
+				Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
+				Debug.Log(finalDamage);
 			}
 		}
 	}
- }
+}

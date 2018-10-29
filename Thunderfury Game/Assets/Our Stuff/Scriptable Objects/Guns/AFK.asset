@@ -15,9 +15,11 @@ MonoBehaviour:
   description: Low Damage but high rate of fire.
   selectGunType: 0
   isAutomatic: 1
+  isContinuous: 0
   cam: {fileID: 0}
   muzzleFlash: {fileID: 0}
   fireSound: {fileID: 0}
+  animator: {fileID: 0}
   fireRate: 3
   recoil: 0
   magSize: 10
@@ -25,8 +27,10 @@ MonoBehaviour:
   reloadTime: 3
   impact: 10
   range: 10
+  numRays: 1
   spread: 0
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   damage: 3
+  damageRange: 0
   projectilePrefab: {fileID: 0}
   projectileForce: 0

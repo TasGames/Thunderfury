@@ -15,18 +15,21 @@ MonoBehaviour:
   description: A weak weapon but we all have to start somewhere.
   selectGunType: 0
   isAutomatic: 0
-  cam: {fileID: 0}
+  isContinuous: 0
   muzzleFlash: {fileID: 0}
   fireSound: {fileID: 0}
-  fireRate: 2
+  animator: {fileID: 0}
+  fireRate: 4
   recoil: 5
   magSize: 5
   maxAmmo: 20
   reloadTime: 3
   impact: 100
   range: 20
-  spread: 0
+  numRays: 1
+  spread: 0.05
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   damage: 10
+  damageRange: 2
   projectilePrefab: {fileID: 0}
   projectileForce: 0
