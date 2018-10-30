@@ -37,23 +37,33 @@ public class UseGun : MonoBehaviour
 			return;
 		}
 
-		if (gun.isAutomatic == false)
+		if (Time.time >= nextToFire)
 		{
-			if (Input.GetButtonDown("Fire1") && Time.time >= nextToFire)
+			if (gun.animator != null)
+				gun.animator.SetBool("isFiring", false);
+
+			if (gun.isAutomatic == false)
 			{
-				nextToFire = Time.time + 1 /gun.fireRate;
-				Shoot();
+				if (Input.GetButtonDown("Fire1"))
+				{
+					nextToFire = Time.time + 1 /gun.fireRate;
+					Shoot();
+				}
 			}
-		}
-		else if (gun.isAutomatic == true)
-		{
-			if (Input.GetButton("Fire1") && Time.time >= nextToFire)
+			else if (gun.isAutomatic == true)
 			{
-				nextToFire = Time.time + 1 /gun.fireRate;
-				Shoot();
+				if (gun.animator != null)
+					gun.animator.SetBool("isFiring", false);
+
+				if (Input.GetButton("Fire1"))
+				{
+					nextToFire = Time.time + 1 /gun.fireRate;
+					Shoot();
+				}
 			}
 		}
 	}
+
 	void Shoot()
 	{
 		if (gun.muzzleFlash != null)
@@ -64,6 +74,11 @@ public class UseGun : MonoBehaviour
 		else if (gun.selectGunType == typeEnum.rayType)
 			RayType();
 
+		if (gun.animator != null)
+			gun.animator.SetBool("isFiring", true);
+
+		cam.transform.Rotate(new Vector3(-gun.recoil, 0, 0));
+
 		currentMag--;
 	}
 
@@ -72,7 +87,12 @@ public class UseGun : MonoBehaviour
 		isReloading = true;
 		Debug.Log("Reloading");
 
+		gun.animator.SetBool("isFiring", false);
+		gun.animator.SetBool("isReloading", true);
+
 		yield return new WaitForSeconds(gun.reloadTime);
+
+		gun.animator.SetBool("isReloading", false);
 
 		if (ammoPool >= gun.magSize)
 		{
