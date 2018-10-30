@@ -19,11 +19,11 @@ MonoBehaviour:
   muzzleFlash: {fileID: 0}
   fireSound: {fileID: 0}
   animator: {fileID: 0}
-  fireRate: 4
+  fireRate: 1
   recoil: 5
   magSize: 5
   maxAmmo: 20
-  reloadTime: 3
+  reloadTime: 5
   impact: 100
   range: 20
   numRays: 1

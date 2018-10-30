@@ -37,7 +37,30 @@ public class UseGun : MonoBehaviour
 			return;
 		}
 
-		if (gun.isAutomatic == false)
+		if (Time.time >= nextToFire)
+		{
+			if (gun.isAutomatic == false)
+			{
+				if (Input.GetButtonDown("Fire1"))
+				{
+					nextToFire = Time.time + 1 /gun.fireRate;
+					Shoot();
+				}
+			}
+			else if (gun.isAutomatic == true)
+			{
+				if (Input.GetButton("Fire1"))
+				{
+					nextToFire = Time.time + 1 /gun.fireRate;
+					Shoot();
+				}
+			}
+		}
+
+		if (gun.animator != null)
+			gun.animator.SetBool("isFiring", false);
+
+		/*if (gun.isAutomatic == false)
 		{
 			if (Input.GetButtonDown("Fire1") && Time.time >= nextToFire)
 			{
@@ -52,7 +75,7 @@ public class UseGun : MonoBehaviour
 				nextToFire = Time.time + 1 /gun.fireRate;
 				Shoot();
 			}
-		}
+		}*/
 	}
 	void Shoot()
 	{
@@ -63,6 +86,9 @@ public class UseGun : MonoBehaviour
 			ProjectileType();
 		else if (gun.selectGunType == typeEnum.rayType)
 			RayType();
+
+		if (gun.animator != null)
+			gun.animator.SetBool("isFiring", true);
 
 		currentMag--;
 	}
