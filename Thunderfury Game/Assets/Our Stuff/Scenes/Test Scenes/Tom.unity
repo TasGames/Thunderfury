@@ -429,10 +429,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
-  maxShield: 100
+  maxShield: 200
   pHealth: 0
   pShield: 0
-  regenWait: 0
+  regenWait: 5
 --- !u!4 &385502689
 Transform:
   m_ObjectHideFlags: 0

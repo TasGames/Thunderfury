@@ -8,36 +8,54 @@ public class PlayerHealth : MonoBehaviour
 	[Range(0, 500)] public float maxShield;
 	[HideInInspector] public float pHealth;
 	[HideInInspector] public float pShield;
-
 	[SerializeField] protected float regenWait;
-	protected float countdown;
-	protected bool shieldFull = true;
 	protected bool takenDamage = false;
 	
 	void Start()
 	{
 		pHealth = maxHealth;
 		pShield = maxShield;
-		countdown = regenWait;
 	}
 	
 	void Update()
 	{
-		if (takenDamage == true)
+		// Just used for testing
+		if (Input.GetKeyDown("l"))
 		{
-			countdown = regenWait;
-			takenDamage = false;
+			PlayerTakeDamage(50);
 		}
 
-		countdown -= Time.deltaTime;
-		if (countdown <= 0 && shieldFull == false)
+		if (pShield < maxShield && takenDamage == false)
 		{
-			
-		}	
+			StartCoroutine(RegenShieldRoutine());
+		}
 	}
 
-	void RegenShield()
+	public void PlayerTakeDamage(float amount)
 	{
+		pShield -= amount;
 
+		if (pShield < 0)
+		{
+			pHealth += pShield;
+			pShield = 0;
+		}
+
+			takenDamage = true;
+			StartCoroutine(DamageWaitRoutine());	
+	}
+
+	IEnumerator RegenShieldRoutine()
+	{
+		pShield += 1;
+
+		yield return new WaitForSeconds(0.2f);
+	}
+
+	IEnumerator DamageWaitRoutine()
+	{
+		yield return new WaitForSeconds(regenWait);
+
+		takenDamage = false;
 	}
 }
