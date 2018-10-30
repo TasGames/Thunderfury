@@ -63,7 +63,7 @@ public class UseGun : MonoBehaviour
 			}
 		}
 	}
-	
+
 	void Shoot()
 	{
 		if (gun.muzzleFlash != null)
@@ -76,6 +76,8 @@ public class UseGun : MonoBehaviour
 
 		if (gun.animator != null)
 			gun.animator.SetBool("isFiring", true);
+
+		cam.transform.Rotate(new Vector3(-gun.recoil, 0, 0));
 
 		currentMag--;
 	}
