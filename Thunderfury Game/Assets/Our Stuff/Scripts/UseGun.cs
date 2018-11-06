@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class UseGun : MonoBehaviour
 {
-	[SerializeField] protected Gun gun;
+	public Gun gun;
 	protected Camera cam;
 	protected float nextToFire = 0;
 	protected float finalDamage;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
+	[HideInInspector] public int ammoStorageP;
+	[HideInInspector] public int ammoStorageR;
+	[HideInInspector] public int ammoStorageS;
+	[HideInInspector] public int ammoStorageE;
 
 	void Start()
 	{
@@ -24,6 +28,18 @@ public class UseGun : MonoBehaviour
 	void OnEnable()
 	{
 		isReloading = false;
+
+		if (gun.takesAmmoType == ammoTypeEnum.pistol)
+			ammoPool += ammoStorageP;
+		else if (gun.takesAmmoType == ammoTypeEnum.rifle)
+			ammoPool += ammoStorageR;
+		else if (gun.takesAmmoType == ammoTypeEnum.shotgun)
+			ammoPool += ammoStorageS;
+		else if (gun.takesAmmoType == ammoTypeEnum.explosive)
+			ammoPool += ammoStorageE;
+
+		if (ammoPool > gun.maxAmmo)
+			ammoPool = gun.maxAmmo;
 	}
 
 	void FixedUpdate() 
