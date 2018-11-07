@@ -19,6 +19,12 @@ public class Pickup : MonoBehaviour
 	[SerializeField] [ShowIf("givesAmmo", true)] [EnumToggleButtons] protected ammoTypeEnum selectAmmoType;
 	[SerializeField] [ShowIf("givesAmmo", true)] protected int ammoGain;
 
+	public static int ammoStorageP;
+	public static int ammoStorageR;
+	public static int ammoStorageS;
+	public static int ammoStorageE;
+
+
 	protected PlayerHealth playerHealth;
 
 	void Start()
@@ -27,7 +33,7 @@ public class Pickup : MonoBehaviour
 			playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
 	}
 
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider collision)
 	{
 		if (givesHealth == true)
 		{
@@ -50,30 +56,31 @@ public class Pickup : MonoBehaviour
 					if (useGun.ammoPool > useGun.gun.maxAmmo)
 						useGun.ammoPool = useGun.gun.maxAmmo;
 						
+					Destroy(gameObject);
 				}
 				else
 				{
-					if (useGun.gun.takesAmmoType == ammoTypeEnum.pistol)
+					if (selectAmmoType == ammoTypeEnum.pistol)
 					{
-						useGun.ammoStorageP += ammoGain;
+						ammoStorageP += ammoGain;
 					}
-					else if (useGun.gun.takesAmmoType == ammoTypeEnum.rifle)
+					else if (selectAmmoType == ammoTypeEnum.rifle)
 					{
-						useGun.ammoStorageR += ammoGain;
+						ammoStorageR += ammoGain;
 					}
-					else if (useGun.gun.takesAmmoType == ammoTypeEnum.shotgun)
+					else if (selectAmmoType == ammoTypeEnum.shotgun)
 					{
-						useGun.ammoStorageS += ammoGain;						
+						ammoStorageS += ammoGain;
 					}
-					else if (useGun.gun.takesAmmoType == ammoTypeEnum.explosive)
+					else if (selectAmmoType == ammoTypeEnum.explosive)
 					{
-						useGun.ammoStorageE += ammoGain;						
+						ammoStorageE += ammoGain;
 					}
+
+					Destroy(gameObject);
 				}
 			}
 		}
-
-		Destroy(gameObject);
 	}
 
 }

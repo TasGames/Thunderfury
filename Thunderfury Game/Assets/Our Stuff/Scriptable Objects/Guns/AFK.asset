@@ -22,7 +22,7 @@ MonoBehaviour:
   fireRate: 3
   recoil: 100
   magSize: 10
-  maxAmmo: 100
+  maxAmmo: 90
   reloadTime: 3
   impact: 10
   range: 10

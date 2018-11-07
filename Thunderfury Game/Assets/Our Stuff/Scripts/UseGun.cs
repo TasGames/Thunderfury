@@ -11,10 +11,6 @@ public class UseGun : MonoBehaviour
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
-	[HideInInspector] public int ammoStorageP;
-	[HideInInspector] public int ammoStorageR;
-	[HideInInspector] public int ammoStorageS;
-	[HideInInspector] public int ammoStorageE;
 
 	void Start()
 	{
@@ -30,13 +26,25 @@ public class UseGun : MonoBehaviour
 		isReloading = false;
 
 		if (gun.takesAmmoType == ammoTypeEnum.pistol)
-			ammoPool += ammoStorageP;
+		{
+			ammoPool += Pickup.ammoStorageP;
+			Pickup.ammoStorageP = 0;
+		}
 		else if (gun.takesAmmoType == ammoTypeEnum.rifle)
-			ammoPool += ammoStorageR;
+		{
+			ammoPool += Pickup.ammoStorageR;
+			Pickup.ammoStorageR = 0;
+		}
 		else if (gun.takesAmmoType == ammoTypeEnum.shotgun)
-			ammoPool += ammoStorageS;
+		{
+			ammoPool += Pickup.ammoStorageS;
+			Pickup.ammoStorageS = 0;
+		}
 		else if (gun.takesAmmoType == ammoTypeEnum.explosive)
-			ammoPool += ammoStorageE;
+		{
+			ammoPool += Pickup.ammoStorageE;
+			Pickup.ammoStorageE = 0;
+		}
 
 		if (ammoPool > gun.maxAmmo)
 			ammoPool = gun.maxAmmo;
@@ -103,12 +111,16 @@ public class UseGun : MonoBehaviour
 		isReloading = true;
 		Debug.Log("Reloading");
 
-		gun.animator.SetBool("isFiring", false);
-		gun.animator.SetBool("isReloading", true);
+		if (gun.animator != null)
+		{
+			gun.animator.SetBool("isFiring", false);
+			gun.animator.SetBool("isReloading", true);
+		}
 
 		yield return new WaitForSeconds(gun.reloadTime);
 
-		gun.animator.SetBool("isReloading", false);
+		if (gun.animator != null)
+			gun.animator.SetBool("isReloading", false);
 
 		if (ammoPool >= gun.magSize)
 		{
