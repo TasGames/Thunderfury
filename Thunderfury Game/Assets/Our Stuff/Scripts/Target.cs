@@ -13,12 +13,17 @@ public class Target : MonoBehaviour
 		public float weight;
 	}
 
+	[Title("Target Stats")]
 	[SerializeField] protected float health;
 	[SerializeField] protected GameObject brokenVersion;
-	
+
+	[Title("Score")]
+	[SerializeField] protected int scoreValue;
+
 	[Title("Drops")]
-	[SerializeField] [Range(0, 100)] protected float dropPercentage;
-	[SerializeField] protected Drops[] dropList;
+	[SerializeField] protected bool dropsPickup;
+	[SerializeField] [ShowIf("dropsPickup", true)] [Range(0, 100)] protected float dropPercentage;
+	[SerializeField] [ShowIf("dropsPickup", true)] protected Drops[] dropList;
 
 	protected float totalWeight;
 
@@ -48,7 +53,11 @@ public class Target : MonoBehaviour
 			Instantiate(brokenVersion, transform.position, transform.rotation);
 			
 		Destroy(gameObject);
-		SpawnDrop();
+
+		HUD.totalScore += scoreValue;
+
+		if (dropsPickup == true)
+			SpawnDrop();
 	}
 
 	void SpawnDrop()
