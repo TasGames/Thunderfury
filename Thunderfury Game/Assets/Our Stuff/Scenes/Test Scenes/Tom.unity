@@ -753,7 +753,7 @@ MonoBehaviour:
   playerHealth: {fileID: 385502687}
   gunAmmo: {fileID: 1223959944}
   tAmmo: {fileID: 567814149}
-  tScore: {fileID: 0}
+  tScore: {fileID: 1187040114}
   healthBar: {fileID: 998908506}
   shieldBar: {fileID: 871838388}
   reloadingImage: {fileID: 1438190157}
@@ -945,7 +945,7 @@ MonoBehaviour:
   playerHealth: {fileID: 385502687}
   gunAmmo: {fileID: 55818734}
   tAmmo: {fileID: 802719734}
-  tScore: {fileID: 0}
+  tScore: {fileID: 1187040114}
   healthBar: {fileID: 998908506}
   shieldBar: {fileID: 871838388}
   reloadingImage: {fileID: 1438190157}
@@ -2159,7 +2159,7 @@ MonoBehaviour:
   playerHealth: {fileID: 385502687}
   gunAmmo: {fileID: 1160336629}
   tAmmo: {fileID: 1497773061}
-  tScore: {fileID: 0}
+  tScore: {fileID: 1187040114}
   healthBar: {fileID: 998908506}
   shieldBar: {fileID: 871838388}
   reloadingImage: {fileID: 1438190157}
