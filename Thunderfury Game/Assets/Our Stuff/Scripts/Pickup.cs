@@ -40,7 +40,10 @@ public class Pickup : MonoBehaviour
 			playerHealth.pHealth += healthGain;
 
 			if (playerHealth.pHealth > playerHealth.maxHealth)
+			{
 				playerHealth.pHealth = playerHealth.maxHealth;
+				Destroy(gameObject);
+			}
 		}
 
 		if (givesAmmo == true)
