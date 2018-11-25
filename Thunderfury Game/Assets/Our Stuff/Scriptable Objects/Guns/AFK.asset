@@ -22,13 +22,14 @@ MonoBehaviour:
   fireRate: 3
   recoil: 100
   magSize: 10
-  maxAmmo: 100
+  maxAmmo: 90
   reloadTime: 3
   impact: 10
   range: 10
   numRays: 1
   spread: 0
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
+  takesAmmoType: 1
   damage: 3
   damageRange: 0
   projectilePrefab: {fileID: 0}

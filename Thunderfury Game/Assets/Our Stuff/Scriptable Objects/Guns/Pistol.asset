@@ -29,6 +29,7 @@ MonoBehaviour:
   numRays: 1
   spread: 0.05
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
+  takesAmmoType: 0
   damage: 10
   damageRange: 2
   projectilePrefab: {fileID: 0}
