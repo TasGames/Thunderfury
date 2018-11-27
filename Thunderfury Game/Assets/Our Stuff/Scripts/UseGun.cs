@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UseGun : MonoBehaviour
 {
-	[SerializeField] protected Gun gun;
+	public Gun gun;
 	protected Camera cam;
 	protected float nextToFire = 0;
 	protected float finalDamage;
@@ -24,6 +24,30 @@ public class UseGun : MonoBehaviour
 	void OnEnable()
 	{
 		isReloading = false;
+
+		if (gun.takesAmmoType == ammoTypeEnum.pistol)
+		{
+			ammoPool += Pickup.ammoStorageP;
+			Pickup.ammoStorageP = 0;
+		}
+		else if (gun.takesAmmoType == ammoTypeEnum.rifle)
+		{
+			ammoPool += Pickup.ammoStorageR;
+			Pickup.ammoStorageR = 0;
+		}
+		else if (gun.takesAmmoType == ammoTypeEnum.shotgun)
+		{
+			ammoPool += Pickup.ammoStorageS;
+			Pickup.ammoStorageS = 0;
+		}
+		else if (gun.takesAmmoType == ammoTypeEnum.explosive)
+		{
+			ammoPool += Pickup.ammoStorageE;
+			Pickup.ammoStorageE = 0;
+		}
+
+		if (ammoPool > gun.maxAmmo)
+			ammoPool = gun.maxAmmo;
 	}
 
 	void FixedUpdate() 
@@ -87,12 +111,16 @@ public class UseGun : MonoBehaviour
 		isReloading = true;
 		Debug.Log("Reloading");
 
-		gun.animator.SetBool("isFiring", false);
-		gun.animator.SetBool("isReloading", true);
+		if (gun.animator != null)
+		{
+			gun.animator.SetBool("isFiring", false);
+			gun.animator.SetBool("isReloading", true);
+		}
 
 		yield return new WaitForSeconds(gun.reloadTime);
 
-		gun.animator.SetBool("isReloading", false);
+		if (gun.animator != null)
+			gun.animator.SetBool("isReloading", false);
 
 		if (ammoPool >= gun.magSize)
 		{
