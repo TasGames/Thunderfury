@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] GameObject enemy;
     [SerializeField] int maxEnemies = 20;
     [SerializeField] int enemyCount;
-    [SerializeField] float spawnTime = 1;
+    [SerializeField] float spawnTime = 0.75f;
     [SerializeField] Transform[] spawnPoints;
     static int enemies;
 
@@ -60,13 +60,14 @@ public class EnemySpawner : MonoBehaviour {
         posToSpawn.y = spawnPoints[spawnPointIndex].position.y;
 
         // Check it with a Physics.OverlapSphere
-        Collider[] hitColliders = Physics.OverlapSphere(posToSpawn, 0.75f);
+        Collider[] hitColliders = Physics.OverlapSphere(posToSpawn, 0.1f);
 
         // If it returns any colliders (hitColliders.Length > 0)
         if (hitColliders.Length > 0)
         {
             // Then you cannot spawn here
             // So generate a new position (i.e. next loop)
+            Debug.Log("Failed to spawn: Collision");
             return;
         }
         else
