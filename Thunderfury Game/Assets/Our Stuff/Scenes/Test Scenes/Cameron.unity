@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 5527556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.99, y: 0, z: 20.27}
+  m_LocalPosition: {x: 19.99, y: 0.5, z: 20.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -170,7 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1502909250455442, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
   maxEnemies: 20
-  spawnTime: 1000
+  enemyCount: 0
+  spawnTime: 1
   spawnPoints:
   - {fileID: 1928594048}
   - {fileID: 5527557}
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: 6a1b979e35dd3ff4caf78850ac9fb1bc, type: 2}
+  isReloading: 0
   ammoPool: 0
   currentMag: 0
 --- !u!23 &480012593
@@ -511,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: f5f4eb68458067d47816550221d731a8, type: 2}
+  isReloading: 0
   ammoPool: 0
   currentMag: 0
 --- !u!23 &918011902
@@ -662,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: fbd8e6973e9a43d499ff8d4cb5f2f821, type: 2}
+  isReloading: 0
   ammoPool: 0
   currentMag: 0
 --- !u!1 &1227793353
@@ -686,7 +690,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1227793353}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.99, y: 0, z: -19.94}
+  m_LocalPosition: {x: -19.99, y: 0.5, z: -19.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1804,7 +1808,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1928594047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.41, y: 0, z: -20.31}
+  m_LocalPosition: {x: 21.41, y: 0.5, z: -20.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
