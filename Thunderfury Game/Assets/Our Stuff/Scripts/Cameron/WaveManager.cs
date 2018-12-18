@@ -14,20 +14,22 @@ public class WaveManager : MonoBehaviour {
     [System.Serializable]
     public class Wave
     {
-        public string name;
-        public Transform enemy;
-        public int enemyCount;
-        public float spawnRate;
+        public string name; //Name of the wave 
+        public Transform enemy; //Enemy to spawn
+        public int enemyCount;  //Amount of enemies to spawn
+        public float spawnRate; //Rate to spawn enemies
     }
 
     public Wave[] waves;
 
     private int nextWave = 0;
 
-    public float timeBetweenWaves = 5.0f;
-    public float waveCountdown;
+    [SerializeField] Transform[] spawnPoints;
 
-    private float checkCountdown = 1.0f;
+    public float timeBetweenWaves = 5.0f;   //Time to wait before spawning next wave
+    private float waveCountdown;
+
+    private float checkCountdown = 1.0f;    //Check if enemies alive every 1 second
 
     public SpawnState state = SpawnState.Counting;
 
@@ -35,25 +37,30 @@ public class WaveManager : MonoBehaviour {
     {
         waveCountdown = timeBetweenWaves;
 
+        if (spawnPoints.Length == 0)
+        {
+            Debug.LogError("No Spawn Points");
+        }
+
     }
 
     void Update()
     {
-        if (state == SpawnState.Waiting)
+        if (state == SpawnState.Waiting)    //If game state is waiting to spawn
         {
-            if (!EnemyIsAlive())
+            if (!EnemyIsAlive())    //If all enemies are dead
             {
-                WaveCompleted();
+                WaveCompleted();    //Wave is complete
             }
             else
             {
-                return;
+                return;             //Else keep checking
             }
         }
 
         if (waveCountdown <= 0)
         {
-            if (state != SpawnState.Spawning)
+            if (state != SpawnState.Spawning)   //If game is not spawning
             {
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
@@ -105,6 +112,7 @@ public class WaveManager : MonoBehaviour {
         {
             SpawnEnemy(_wave.enemy);
             yield return new WaitForSeconds(1.0f / _wave.spawnRate);
+            
         }
 
         state = SpawnState.Waiting;
@@ -114,7 +122,9 @@ public class WaveManager : MonoBehaviour {
 
     void SpawnEnemy(Transform _enemy)
     {
-        Instantiate(_enemy, transform.position, transform.rotation);
         Debug.Log("Spawning Enemy: " + _enemy.name);
+
+        Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Instantiate(_enemy, _sp.position, _sp.rotation);
     }
 }
