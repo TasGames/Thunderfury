@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour 
 {
-	[SerializeField] protected Gun gun;
-
+	[SerializeField] protected GameObject shopMenu;
+	protected bool shopOpen = false;
 
 	void Start() 
 	{
@@ -16,6 +16,25 @@ public class Shop : MonoBehaviour
 	
 	void Update()
 	{
-		
+		if (Input.GetKeyDown("i"))
+		{
+			OpenShop();
+		}
+	}
+
+	public void OpenShop()
+	{
+		if (shopOpen == false)
+		{
+			shopMenu.SetActive(true);
+			Time.timeScale = 0.0f;
+			shopOpen = true;
+		}
+		else
+		{
+			shopMenu.SetActive(false);
+			Time.timeScale = 1.0f;
+			shopOpen = false;
+		}
 	}
 }
