@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour {
     // Use this for initialization
     void Start () {
         enemyCount = 0;
-        //InvokeRepeating("Spawn", spawnTime, spawnTime);
         StartCoroutine(SpawnWave());
 	}
 
@@ -32,17 +31,6 @@ public class EnemySpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //       if(enemies >= maxEnemies)
-        //       {
-        //           CancelInvoke("Spawn");
-        //       }
-        //       else
-        //       {
-        //           int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-
-        //           Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        //           enemies++;
-        //       }
 	}
 
     void pickSpawnLocation ()

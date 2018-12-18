@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 54063488677642400}
   m_Layer: 0
   m_Name: Test Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,6 +140,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   brokenVersion: {fileID: 0}
+  scoreValue: 0
+  dropsPickup: 0
+  dropPercentage: 0
+  dropList: []
 --- !u!195 &195986567391769722
 NavMeshAgent:
   m_ObjectHideFlags: 1
