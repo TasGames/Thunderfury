@@ -29,6 +29,11 @@ public class PlayerHealth : MonoBehaviour
 		{
 			StartCoroutine(RegenShieldRoutine());
 		}
+
+		if (Input.GetKeyDown("o"))
+		{
+			HUD.totalScore += 1000000;
+		}
 	}
 
 	public void PlayerTakeDamage(float amount)
