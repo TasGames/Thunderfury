@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
@@ -21,11 +20,6 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator SpawnWave ()
     {
         yield return new WaitForSeconds(spawnTime);
-        //for (int i = 0; i < enemyCount; i++)
-        //{
-        //    Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        //    enemyCount++;
-        //}
 
         // Within a while loop
         while (enemyCount < maxEnemies)
@@ -60,7 +54,8 @@ public class EnemySpawner : MonoBehaviour {
         posToSpawn.y = spawnPoints[spawnPointIndex].position.y;
 
         // Check it with a Physics.OverlapSphere
-        Collider[] hitColliders = Physics.OverlapSphere(posToSpawn, 0.1f);
+        //Collider[] hitColliders = Physics.OverlapSphere(posToSpawn, 0.2f);
+        Collider[] hitColliders = Physics.OverlapBox(posToSpawn, spawnPoints[spawnPointIndex].transform.localScale /2, Quaternion.identity);
 
         // If it returns any colliders (hitColliders.Length > 0)
         if (hitColliders.Length > 0)
@@ -76,7 +71,7 @@ public class EnemySpawner : MonoBehaviour {
             enemyCount++;
             return;
         }
-
-        // Spawn Lemming success, return
+        // Spawn enemy success, return
     }
+
 }
