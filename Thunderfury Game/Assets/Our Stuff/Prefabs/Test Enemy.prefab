@@ -146,6 +146,8 @@ MonoBehaviour:
   dropList:
   - pickup: {fileID: 1122297406186736, guid: 300516f0d85761344bba325cdef8a095, type: 2}
     weight: 1
+  - pickup: {fileID: 0}
+    weight: 0
 --- !u!195 &195986567391769722
 NavMeshAgent:
   m_ObjectHideFlags: 1
