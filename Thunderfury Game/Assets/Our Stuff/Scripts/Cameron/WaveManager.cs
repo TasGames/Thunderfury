@@ -24,6 +24,8 @@ public class WaveManager : MonoBehaviour {
 
     public Wave[] waves;
 
+    EnemySpawner eSpawner;
+
     private int nextWave = 0;
 
     public float timeBetweenWaves = 5.0f;   //Time to wait before spawning next wave
@@ -37,6 +39,7 @@ public class WaveManager : MonoBehaviour {
     {
         waveCountdown = timeBetweenWaves;
 
+        eSpawner = GetComponent<EnemySpawner>();
     }
 
     void Update()
@@ -106,7 +109,7 @@ public class WaveManager : MonoBehaviour {
         for(int i = 0; i < _wave.enemyCount; i++)
         {
             //SpawnEnemy(_wave.enemy);
-            
+            eSpawner.PickSpawnLocation();
             yield return new WaitForSeconds(1.0f / _wave.spawnRate);
             
         }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    //[SerializeField] GameObject enemy;
-    [SerializeField] int maxEnemies = 20;
+    [SerializeField] Transform enemy;   //Enemy Object
+    public int enemyCount;  //Amount of enemies to spawn
     [SerializeField] float spawnTime = 0.75f;
     [SerializeField] Transform[] spawnPoints;
 
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    public void pickSpawnLocation ()
+    public void PickSpawnLocation ()
     {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
