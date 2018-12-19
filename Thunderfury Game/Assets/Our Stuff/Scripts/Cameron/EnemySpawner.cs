@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	}
 
-    void pickSpawnLocation ()
+    public void pickSpawnLocation ()
     {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
