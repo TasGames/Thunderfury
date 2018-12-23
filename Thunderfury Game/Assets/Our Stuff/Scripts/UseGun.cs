@@ -8,6 +8,7 @@ public class UseGun : MonoBehaviour
 	protected Camera cam;
 	protected float nextToFire = 0;
 	protected float finalDamage;
+	protected ParticleSystem muzzleFlash;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
@@ -19,6 +20,9 @@ public class UseGun : MonoBehaviour
 
 		if (cam == null)
 			cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+		if (muzzleFlash == null)
+			muzzleFlash = gameObject.GetComponentInChildren<ParticleSystem>();
 	}
 
 	void OnEnable()
@@ -90,8 +94,8 @@ public class UseGun : MonoBehaviour
 
 	void Shoot()
 	{
-		if (gun.muzzleFlash != null)
-			gun.muzzleFlash.Play();
+		if (muzzleFlash != null)
+			muzzleFlash.Play();
 
 		if (gun.selectGunType == typeEnum.projectileType)
 			ProjectileType();
