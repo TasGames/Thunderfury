@@ -11,6 +11,7 @@ public class GunDisplay : MonoBehaviour
 
 	[Title("Gun Details")]
 	[SerializeField] protected Text gunName;
+	[SerializeField] protected Image gunIcon;
 	[SerializeField] protected Text gunDescription;
 	[SerializeField] protected Text gunDamage;
 	[SerializeField] protected Text gunImpact;
@@ -21,6 +22,7 @@ public class GunDisplay : MonoBehaviour
 	void Start() 
 	{
 		gunName.text = gun.name;
+		gunIcon.sprite = gun.icon;
 		gunDescription.text = gun.description;
 		gunDamage.text = "Damage: " + gun.damage;
 		gunImpact.text = "Impact: " + gun.impact;

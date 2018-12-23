@@ -171,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &45963749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -948,12 +948,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114461037445461506, guid: 57d0f9a27e5e39e489e3b205448238da,
-        type: 2}
-      propertyPath: gun
-      value: 
-      objectReference: {fileID: 11400000, guid: fbd8e6973e9a43d499ff8d4cb5f2f821,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d0f9a27e5e39e489e3b205448238da, type: 2}
   m_IsPrefabAsset: 0

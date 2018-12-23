@@ -13,6 +13,7 @@ public class Gun : ScriptableObject
 {
 	[Title("About Gun")]
 	public new string name;
+	public Sprite icon;
 	public string description;
 		
 	[Title("Gun Type")]
@@ -21,7 +22,6 @@ public class Gun : ScriptableObject
 	[ShowIf("selectGunType", typeEnum.rayType)] public bool isContinuous;
 
 	[Title("Gun Stats")]
-	//public ParticleSystem muzzleFlash;
 	public AudioClip fireSound;
 	public Animator animator;
 	public float fireRate;
