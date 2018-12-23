@@ -9,6 +9,7 @@ public class UseGun : MonoBehaviour
 	protected float nextToFire = 0;
 	protected float finalDamage;
 	protected ParticleSystem muzzleFlash;
+	[SerializeField] protected Animator animator;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
@@ -67,8 +68,8 @@ public class UseGun : MonoBehaviour
 
 		if (Time.time >= nextToFire)
 		{
-			if (gun.animator != null)
-				gun.animator.SetBool("isFiring", false);
+			if (animator != null)
+				animator.SetBool("isFiring", false);
 
 			if (gun.isAutomatic == false)
 			{
@@ -80,8 +81,8 @@ public class UseGun : MonoBehaviour
 			}
 			else if (gun.isAutomatic == true)
 			{
-				if (gun.animator != null)
-					gun.animator.SetBool("isFiring", false);
+				if (animator != null)
+					animator.SetBool("isFiring", false);
 
 				if (Input.GetButton("Fire1"))
 				{
@@ -102,8 +103,8 @@ public class UseGun : MonoBehaviour
 		else if (gun.selectGunType == typeEnum.rayType)
 			RayType();
 
-		if (gun.animator != null)
-			gun.animator.SetBool("isFiring", true);
+		if (animator != null)
+			animator.SetBool("isFiring", true);
 
 		cam.transform.Rotate(new Vector3(-gun.recoil, 0, 0));
 
@@ -115,16 +116,16 @@ public class UseGun : MonoBehaviour
 		isReloading = true;
 		Debug.Log("Reloading");
 
-		if (gun.animator != null)
+		if (animator != null)
 		{
-			gun.animator.SetBool("isFiring", false);
-			gun.animator.SetBool("isReloading", true);
+			animator.SetBool("isFiring", false);
+			animator.SetBool("isReloading", true);
 		}
 
 		yield return new WaitForSeconds(gun.reloadTime);
 
-		if (gun.animator != null)
-			gun.animator.SetBool("isReloading", false);
+		if (animator != null)
+			animator.SetBool("isReloading", false);
 
 		if (ammoPool >= gun.magSize)
 		{

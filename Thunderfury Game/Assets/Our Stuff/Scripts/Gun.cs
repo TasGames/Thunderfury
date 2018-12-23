@@ -23,7 +23,6 @@ public class Gun : ScriptableObject
 
 	[Title("Gun Stats")]
 	public AudioClip fireSound;
-	public Animator animator;
 	public float fireRate;
 	public float recoil;
 	public int magSize;
