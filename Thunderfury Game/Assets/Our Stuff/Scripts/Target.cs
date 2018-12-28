@@ -30,8 +30,11 @@ public class Target : MonoBehaviour
 	void OnValidate()
 	{
 		totalWeight = 0f;
-    	foreach(var Drops in dropList)
-        	totalWeight += Drops.weight;
+		if (dropList != null)
+		{
+    		foreach(var Drops in dropList)
+        		totalWeight += Drops.weight;
+		}
 	}
 
 	void Awake()
