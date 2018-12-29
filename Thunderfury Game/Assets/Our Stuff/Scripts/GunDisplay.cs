@@ -42,7 +42,9 @@ public class GunDisplay : MonoBehaviour
 	
 	public void Buy()
 	{
-		GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, parentPrefab.transform.rotation, parentPrefab.transform);
+		Quaternion rot = parentPrefab.transform.rotation;
+
+		GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
 		gun.SetActive(false);
 	}
 }

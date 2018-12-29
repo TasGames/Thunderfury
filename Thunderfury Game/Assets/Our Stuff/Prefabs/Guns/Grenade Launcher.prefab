@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4461443657389884
 Transform:
   m_ObjectHideFlags: 1
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662571414635970}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.197, y: -0.046, z: 0.344}
+  m_LocalPosition: {x: 0.087, y: -0.057, z: 0.233}
   m_LocalScale: {x: 0.05, y: 0.025, z: 0.125}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: 6a1b979e35dd3ff4caf78850ac9fb1bc, type: 2}
+  animator: {fileID: 0}
   isReloading: 0
   ammoPool: 0
   currentMag: 0

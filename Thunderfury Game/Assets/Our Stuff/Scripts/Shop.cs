@@ -41,9 +41,4 @@ public class Shop : MonoBehaviour
 		}
 	}
 
-	/*public void Buy()
-	{
-		GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, parentPrefab.transform.rotation, parentPrefab.transform);
-		gun.SetActive(false);
-	}*/
 }

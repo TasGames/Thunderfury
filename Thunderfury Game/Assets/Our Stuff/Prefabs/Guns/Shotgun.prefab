@@ -35,9 +35,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243505612799898}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.197, y: -0.046000004, z: 0.344}
-  m_LocalScale: {x: 0.050000027, y: 0.025000013, z: 0.125}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.087, y: -0.057, z: 0.233}
+  m_LocalScale: {x: 0.05, y: 0.025, z: 0.125}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: f49b69603c82dcf409f75990c5a8c723, type: 2}
+  animator: {fileID: 0}
   isReloading: 0
   ammoPool: 0
   currentMag: 0
