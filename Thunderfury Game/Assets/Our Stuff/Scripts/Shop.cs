@@ -7,11 +7,8 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour 
 {
 	[SerializeField] protected GameObject shopMenu;
-	[SerializeField] protected GameObject gunPrefab;
-	[SerializeField] protected GameObject gunAmmoPrefab;
-	[SerializeField] protected GameObject parentPrefab;
+	public GameObject parentPrefab;
 	protected bool shopOpen = false;
-	protected bool ownsIt = false;
 
 	void Start() 
 	{
@@ -44,9 +41,9 @@ public class Shop : MonoBehaviour
 		}
 	}
 
-	public void Buy()
+	/*public void Buy()
 	{
 		GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, parentPrefab.transform.rotation, parentPrefab.transform);
 		gun.SetActive(false);
-	}
+	}*/
 }

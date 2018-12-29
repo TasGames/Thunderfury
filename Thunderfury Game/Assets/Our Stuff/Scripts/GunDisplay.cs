@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class GunDisplay : MonoBehaviour 
 {
 	[Title("Gun")]
-	[SerializeField] protected Gun gun;
+	[SerializeField] protected GameObject gunPrefab;
+	protected GameObject parentPrefab;
+	protected Gun gun;
 
 	[Title("Gun Details")]
 	[SerializeField] protected Text gunName;
@@ -21,6 +23,12 @@ public class GunDisplay : MonoBehaviour
 
 	void Start() 
 	{
+		Shop shop = transform.root.GetComponent<Shop>();
+		parentPrefab = shop.parentPrefab;
+
+		UseGun useGun = gunPrefab.GetComponent<UseGun>();
+		gun = useGun.gun;
+
 		gunName.text = gun.name;
 		gunIcon.sprite = gun.icon;
 		gunDescription.text = gun.description;
@@ -32,8 +40,9 @@ public class GunDisplay : MonoBehaviour
 
 	}
 	
-	void Update() 
+	public void Buy()
 	{
-		
+		GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, parentPrefab.transform.rotation, parentPrefab.transform);
+		gun.SetActive(false);
 	}
 }
