@@ -33,6 +33,7 @@ public class Gun : ScriptableObject
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(1, 50)] public int numRays;
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 1)] public float spread;
 	[ShowIf("selectGunType", typeEnum.rayType)] public GameObject hitEffect;
+	[ShowIf("selectGunType", typeEnum.rayType)] public GameObject bulletMark;
 	
 	[Title("Ammo Stats")]
 	[EnumToggleButtons] public ammoTypeEnum takesAmmoType;

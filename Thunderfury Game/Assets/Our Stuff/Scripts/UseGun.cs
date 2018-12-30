@@ -179,6 +179,12 @@ public class UseGun : MonoBehaviour
 					Destroy(hitGO, 2);
 				}
 
+				if (gun.bulletMark != null)
+				{
+					GameObject bulGO = Instantiate(gun.bulletMark, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+					Destroy(bulGO, 5);
+				}
+
 				Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
 				Debug.Log(finalDamage);
 			}
