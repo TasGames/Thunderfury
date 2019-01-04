@@ -176,15 +176,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 401707171}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bbf7f2a8e41f234ab2ef1c3db16b770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1502909250455442, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
-  maxEnemies: 20
-  enemyCount: 0
-  spawnTime: 0.5
   spawnPoints:
   - {fileID: 1928594048}
   - {fileID: 5527557}
@@ -218,21 +215,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: Wave 1
-    enemy: {fileID: 4283674068278910, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
     enemyCount: 5
     spawnRate: 1
   - name: Wave 2
-    enemy: {fileID: 4283674068278910, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
     enemyCount: 10
     spawnRate: 1.5
   - name: Wave 3
-    enemy: {fileID: 4283674068278910, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
     enemyCount: 30
     spawnRate: 2
-  spawnPoints:
-  - {fileID: 1928594048}
-  - {fileID: 5527557}
-  - {fileID: 1227793354}
   timeBetweenWaves: 5
   state: 2
 --- !u!1 &480012590

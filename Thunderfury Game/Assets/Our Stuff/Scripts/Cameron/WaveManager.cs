@@ -16,7 +16,7 @@ public class WaveManager : MonoBehaviour {
     {
         public string name; //Name of the wave 
 
-        public Transform enemy; //Enemy to spawn
+        //public Transform enemy; //Enemy to spawn
         public int enemyCount;  //Amount of enemies to spawn
 
         public float spawnRate; //Rate to spawn enemies

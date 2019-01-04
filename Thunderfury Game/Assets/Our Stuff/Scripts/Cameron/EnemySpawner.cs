@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    [SerializeField] Transform enemy;   //Enemy Object
-    public int enemyCount;  //Amount of enemies to spawn
-    [SerializeField] float spawnTime = 0.75f;
-    [SerializeField] Transform[] spawnPoints;
+    public GameObject enemy;   //Enemy Object
+    public Transform[] spawnPoints;
 
     // Use this for initialization
     void Start () {
