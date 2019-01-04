@@ -3,37 +3,19 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    [SerializeField] GameObject enemy;
-    [SerializeField] int maxEnemies = 20;
-    [SerializeField] int enemyCount;
-    [SerializeField] float spawnTime = 0.75f;
-    [SerializeField] Transform[] spawnPoints;
-    static int enemies;
+    public GameObject enemy;   //Enemy Object
+    public Transform[] spawnPoints;
 
     // Use this for initialization
     void Start () {
-        enemyCount = 0;
-        StartCoroutine(SpawnWave());
-	}
 
-    IEnumerator SpawnWave ()
-    {
-        yield return new WaitForSeconds(spawnTime);
-
-        // Within a while loop
-        while (enemyCount < maxEnemies)
+        if (spawnPoints.Length == 0)
         {
-            pickSpawnLocation();
-            yield return new WaitForSeconds(spawnTime);
+            Debug.LogError("No Spawn Points");
         }
     }
 
-	// Update is called once per frame
-	void Update () {
-
-	}
-
-    void pickSpawnLocation ()
+    public void PickSpawnLocation ()
     {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
@@ -56,7 +38,6 @@ public class EnemySpawner : MonoBehaviour {
         else
         {
             Instantiate(enemy, posToSpawn, spawnPoints[spawnPointIndex].rotation);
-            enemyCount++;
             return;
         }
         // Spawn enemy success, return

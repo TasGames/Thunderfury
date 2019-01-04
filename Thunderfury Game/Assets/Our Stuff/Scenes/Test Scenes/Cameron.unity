@@ -176,15 +176,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 401707171}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bbf7f2a8e41f234ab2ef1c3db16b770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1502909250455442, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
-  maxEnemies: 20
-  enemyCount: 0
-  spawnTime: 0.5
+  enemy: {fileID: 1247069249957654, guid: 2fda2a8c3dfc9b84a930c564298c127b, type: 2}
   spawnPoints:
   - {fileID: 1928594048}
   - {fileID: 5527557}
@@ -218,22 +215,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: Wave 1
-    enemy: {fileID: 4283674068278910, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
     enemyCount: 5
     spawnRate: 1
   - name: Wave 2
-    enemy: {fileID: 4283674068278910, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
     enemyCount: 10
     spawnRate: 1.5
   - name: Wave 3
-    enemy: {fileID: 4283674068278910, guid: c2d6cc48d2219d64da50a01c88ba4203, type: 2}
     enemyCount: 30
     spawnRate: 2
-  spawnPoints:
-  - {fileID: 1928594048}
-  - {fileID: 5527557}
-  - {fileID: 1227793354}
-  timeBetweenWaves: 5
+  timeBetweenWaves: 4
   state: 2
 --- !u!1 &480012590
 GameObject:
@@ -687,7 +677,7 @@ Transform:
   m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1176501560 stripped
 GameObject:
@@ -834,7 +824,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4879212867573900, guid: ca4f4f65891f75f40a4c62ffda3e46ef, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca4f4f65891f75f40a4c62ffda3e46ef, type: 2}
@@ -851,7 +841,7 @@ GameObject:
   - component: {fileID: 1368034522}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1757,7 +1747,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 4, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900509551
 GameObject:

@@ -15,16 +15,18 @@ public class WaveManager : MonoBehaviour {
     public class Wave
     {
         public string name; //Name of the wave 
-        public Transform enemy; //Enemy to spawn
+
+        //public Transform enemy; //Enemy to spawn
         public int enemyCount;  //Amount of enemies to spawn
+
         public float spawnRate; //Rate to spawn enemies
     }
 
     public Wave[] waves;
 
-    private int nextWave = 0;
+    EnemySpawner eSpawner;
 
-    [SerializeField] Transform[] spawnPoints;
+    private int nextWave = 0;
 
     public float timeBetweenWaves = 5.0f;   //Time to wait before spawning next wave
     private float waveCountdown;
@@ -37,11 +39,7 @@ public class WaveManager : MonoBehaviour {
     {
         waveCountdown = timeBetweenWaves;
 
-        if (spawnPoints.Length == 0)
-        {
-            Debug.LogError("No Spawn Points");
-        }
-
+        eSpawner = GetComponent<EnemySpawner>();
     }
 
     void Update()
@@ -110,7 +108,8 @@ public class WaveManager : MonoBehaviour {
 
         for(int i = 0; i < _wave.enemyCount; i++)
         {
-            SpawnEnemy(_wave.enemy);
+            //SpawnEnemy(_wave.enemy);
+            eSpawner.PickSpawnLocation();
             yield return new WaitForSeconds(1.0f / _wave.spawnRate);
             
         }
@@ -120,11 +119,4 @@ public class WaveManager : MonoBehaviour {
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
-    {
-        Debug.Log("Spawning Enemy: " + _enemy.name);
-
-        Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
-    }
 }
