@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   name: Shotgun
-  description: 
+  description: Something about a shotgun.
+  Icon: {fileID: 0}
   selectGunType: 0
   isAutomatic: 0
   isContinuous: 0
