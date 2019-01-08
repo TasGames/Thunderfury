@@ -1,20 +1,17 @@
 fileFormatVersion: 2
-guid: cd05a9d9a5a674d4b83106de7c68d36f
+guid: ef03ca6fd34c3094c8bc631889a4f1f8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube19
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 3c9bbf6a37d698740afab2129117fd19, type: 3}
+    100000: polySurface94
+    100002: //RootNode
+    400000: polySurface94
+    400002: //RootNode
+    2100000: 07 - Default
+    2300000: polySurface94
+    3300000: polySurface94
+    4300000: polySurface94
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

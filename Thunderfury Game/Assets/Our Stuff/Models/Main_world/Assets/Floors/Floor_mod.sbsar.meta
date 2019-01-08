@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: 3c9bbf6a37d698740afab2129117fd19
+guid: 75706097bf2eb3e45a06b03942707d2c
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: groups_new_wall/groups_new_wall
-    400000: groups_new_wall/groups_new_wall/Transform
-    2100000: mat.groups_new_wall
-    2300000: groups_new_wall/groups_new_wall/MeshRenderer
-    2800000: groups_new_wall_baseColor
-    2800002: groups_new_wall_normal
-    2800004: groups_new_wall_metallic
-    2800006: groups_new_wall_height
-    3300000: groups_new_wall/groups_new_wall/MeshFilter
+    100000: Floor_mod/Floor_mod
+    400000: Floor_mod/Floor_mod/Transform
+    2100000: mat.Floor_mod
+    2300000: Floor_mod/Floor_mod/MeshRenderer
+    2800000: Floor_mod_baseColor
+    2800002: Floor_mod_normal
+    2800004: Floor_mod_metallic
+    2800006: Floor_mod_height
+    3300000: Floor_mod/Floor_mod/MeshFilter
     11400000: sbsar
     11400002: graph0
-    13500000: groups_new_wall/groups_new_wall/SphereCollider
-    100100000: groups_new_wall
+    13500000: Floor_mod/Floor_mod/SphereCollider
+    100100000: Floor_mod
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -22,13 +22,12 @@ ScriptedImporter:
   script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
   version: 13
   mGraphInstanceData:
-  - graphLabel: groups_new_wall
-    prototypeName: groups_new_wall
+  - graphLabel: Floor_mod
+    prototypeName: Floor_mod
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://groups_new_wall\" label=\"\" >\n  <presetinput
-      identifier=\"x_amount\" uid=\"2178355266\" type=\"4\" value=\"4\" />\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://Floor_mod\" label=\"\" >\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height
     texturePackingList:
@@ -43,23 +42,23 @@ ScriptedImporter:
     - outputName: height
       alphaSource: height
     textureParameters:
-    - textureName: groups_new_wall_roughness
+    - textureName: Floor_mod_roughness
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: groups_new_wall_baseColor
+    - textureName: Floor_mod_baseColor
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: groups_new_wall_normal
+    - textureName: Floor_mod_normal
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: groups_new_wall_metallic
+    - textureName: Floor_mod_metallic
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: groups_new_wall_height
+    - textureName: Floor_mod_height
       wrapMode: 0
       filterMode: 1
       aniso: 1
@@ -83,9 +82,5 @@ ScriptedImporter:
       textureHeight: 0
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {fileID: 2100000, guid: 3c9bbf6a37d698740afab2129117fd19, type: 3}
-    generatedTextures:
-    - {fileID: 2800000, guid: 3c9bbf6a37d698740afab2129117fd19, type: 3}
-    - {fileID: 2800002, guid: 3c9bbf6a37d698740afab2129117fd19, type: 3}
-    - {fileID: 2800004, guid: 3c9bbf6a37d698740afab2129117fd19, type: 3}
-    - {fileID: 2800006, guid: 3c9bbf6a37d698740afab2129117fd19, type: 3}
+    material: {instanceID: 0}
+    generatedTextures: []
