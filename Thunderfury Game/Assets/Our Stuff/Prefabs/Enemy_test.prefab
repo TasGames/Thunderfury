@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   brokenVersion: {fileID: 0}
-  scoreValue: 0
+  scoreValue: 100
   dropsPickup: 1
   dropPercentage: 100
   dropList:
