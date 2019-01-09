@@ -2,22 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour 
+public class Pausing : MonoBehaviour 
 {
-	public static bool isPaused;
 	[SerializeField] protected GameObject pauseMenu;
+
+	void Update()
+	{
+		if (Input.GetKeyDown("p"))
+			pauseIt();
+	}
 
 	void pauseIt()
     {
-        if (isPaused == true)
+        if (Menu.isPaused == false)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+            Cursor.visible = true;
+            Menu.isPaused = true;
         }
-        else
+        else if (Menu.isPaused == true)
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
+            Cursor.visible = false;
+            Menu.isPaused = false;
         }
     }
 }
