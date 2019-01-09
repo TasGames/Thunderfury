@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class Menu : MonoBehaviour {
+public class Menu : MonoBehaviour 
+{
+	public void Play()
+	{
+		SceneManager.LoadScene("Tom");
+	}
 
-	// Use this for initialization
-	void Start () {
-		
+	public void ReturnToMenu()
+	{
+		SceneManager.LoadScene("Main Menu");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void Quit()
+	{
+		Application.Quit();
 	}
+
 }
