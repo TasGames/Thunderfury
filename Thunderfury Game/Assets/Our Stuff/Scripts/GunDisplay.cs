@@ -20,6 +20,7 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected Text gunFireRate;
 	[SerializeField] protected Text gunRecoil;
 	[SerializeField] protected Text gunAmmo;
+	[SerializeField] protected Text gunCost;
 
 	void Start() 
 	{
@@ -37,6 +38,7 @@ public class GunDisplay : MonoBehaviour
 		gunFireRate.text = "Fire Rate: " + gun.fireRate;
 		gunRecoil.text = "Recoil: " + gun.recoil;
 		gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
+		gunCost.text = "" + gun.cost;
 
 	}
 	
@@ -48,8 +50,10 @@ public class GunDisplay : MonoBehaviour
 		{
 			Quaternion rot = parentPrefab.transform.rotation;
 
-			GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
-			gun.SetActive(false);
+			GameObject gunObject = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
+			gunObject.SetActive(false);
+
+			HUD.totalScore -= gun.cost;
 		}
 	}
 }

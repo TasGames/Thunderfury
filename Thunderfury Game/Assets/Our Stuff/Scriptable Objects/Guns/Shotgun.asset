@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   name: Shotgun
+  icon: {fileID: 0}
   description: Something about a shotgun.
-  Icon: {fileID: 0}
+  cost: 5000
   selectGunType: 0
   isAutomatic: 0
   isContinuous: 0
-  muzzleFlash: {fileID: 0}
   fireSound: {fileID: 0}
-  animator: {fileID: 0}
   fireRate: 5
   recoil: 0
   magSize: 4
@@ -30,6 +29,7 @@ MonoBehaviour:
   numRays: 30
   spread: 0.3
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
+  bulletMark: {fileID: 0}
   takesAmmoType: 2
   damage: 10
   damageRange: 5
