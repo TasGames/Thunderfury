@@ -1165,6 +1165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
+  player: {fileID: 0}
+  damageToDeal: 50
+  damageWait: 1
 --- !u!114 &114678800925062174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1183,7 +1186,7 @@ MonoBehaviour:
   dropPercentage: 100
   dropList:
   - pickup: {fileID: 1122297406186736, guid: 300516f0d85761344bba325cdef8a095, type: 2}
-    weight: 1
+    weight: 0.2
 --- !u!137 &137096710117660406
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1264,7 +1267,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

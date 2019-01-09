@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23685278298365406}
   - component: {fileID: 136291274479589070}
   - component: {fileID: 114183844926596512}
+  - component: {fileID: 208671920083809014}
   m_Layer: 0
   m_Name: Grenade Pickup
   m_TagString: Untagged
@@ -114,3 +115,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208671920083809014
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422375421506994}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1, y: 1.5, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0
