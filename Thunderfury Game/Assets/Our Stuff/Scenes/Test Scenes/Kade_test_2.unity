@@ -674,7 +674,6 @@ GameObject:
   - component: {fileID: 97897318}
   - component: {fileID: 97897317}
   - component: {fileID: 97897321}
-  - component: {fileID: 97897322}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -775,24 +774,6 @@ MonoBehaviour:
   gunPrefab: {fileID: 1699710384750632, guid: 97b7ebbcd47883546a443048dcdc9081, type: 2}
   gunAmmoPrefab: {fileID: 0}
   parentPrefab: {fileID: 175677746}
---- !u!114 &97897322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 97897316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5304fcabc29c04fa4532fbb9a448ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 385502687}
-  gunAmmo: {fileID: 1985877249}
-  tAmmo: {fileID: 572893405}
-  tScore: {fileID: 1187040114}
-  healthBar: {fileID: 998908506}
-  shieldBar: {fileID: 871838388}
-  reloadingImage: {fileID: 1438190157}
 --- !u!4 &103340547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4583577930458342, guid: ae4809566819fce45b1a8a1a7d3c7328,
@@ -7553,7 +7534,7 @@ GameObject:
   - component: {fileID: 385502687}
   - component: {fileID: 385502686}
   - component: {fileID: 385502688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -7569,7 +7550,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.75
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -7614,7 +7595,7 @@ Transform:
   m_Children:
   - {fileID: 1676262688}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &385502690
 Rigidbody:
@@ -12497,6 +12478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1032682491}
+  - component: {fileID: 1032682492}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -12527,6 +12509,24 @@ RectTransform:
   m_AnchoredPosition: {x: 594.39844, y: 370}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1032682492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1032682490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5304fcabc29c04fa4532fbb9a448ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 385502687}
+  gunAmmo: {fileID: 1985877249}
+  tAmmo: {fileID: 572893405}
+  tScore: {fileID: 1187040114}
+  healthBar: {fileID: 998908506}
+  shieldBar: {fileID: 871838388}
+  reloadingImage: {fileID: 1438190157}
 --- !u!4 &1038582752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6e62fd31b6d2670458d0b0b36cab0d63,
@@ -12887,7 +12887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cd05a9d9a5a674d4b83106de7c68d36f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cd05a9d9a5a674d4b83106de7c68d36f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -19114,7 +19114,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1307256083 stripped
 Transform:
@@ -20862,7 +20862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4844578130165926, guid: 6cde864f7bf8a294a963f6468552333b, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1570739981357580, guid: 6cde864f7bf8a294a963f6468552333b, type: 2}
       propertyPath: m_Name
@@ -21116,7 +21116,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4844578130165926, guid: 6cde864f7bf8a294a963f6468552333b, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1570739981357580, guid: 6cde864f7bf8a294a963f6468552333b, type: 2}
       propertyPath: m_Name
@@ -24046,7 +24046,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1939528838
 Prefab:

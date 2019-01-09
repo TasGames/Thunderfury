@@ -17,7 +17,8 @@ public class MoveTo : MonoBehaviour
     protected bool dealtDamage = false;
 
     float distance = 2.0f;
-
+    RaycastHit hit;
+    LayerMask layerMask = 1 << 9;
 
     void Start()
     {
@@ -40,15 +41,16 @@ public class MoveTo : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distance, Color.red);
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), distance))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distance, layerMask))
             {
                 if (dealtDamage == false)
                 {
                     dealtDamage = true;
                     player.PlayerTakeDamage(damageToDeal);
-                    Debug.Log("Dealt Damage to player");
-                    Debug.Log(player.pShield);
-                    Debug.Log(player.pHealth);
+                    DealtDamageRoutine();
+                    //Debug.Log("Dealt Damage to player");
+                    //Debug.Log(player.pShield);
+                    //Debug.Log(player.pHealth);
                 }
             }
         }
