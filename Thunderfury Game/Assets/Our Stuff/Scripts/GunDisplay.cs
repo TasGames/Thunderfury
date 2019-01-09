@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class GunDisplay : MonoBehaviour 
 {
 	[Title("Gun")]
-	[SerializeField] protected Gun gun;
+	[SerializeField] protected GameObject gunPrefab;
+	protected GameObject parentPrefab;
+	protected Gun gun;
 
 	[Title("Gun Details")]
 	[SerializeField] protected Text gunName;
@@ -18,9 +20,16 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected Text gunFireRate;
 	[SerializeField] protected Text gunRecoil;
 	[SerializeField] protected Text gunAmmo;
+	[SerializeField] protected Text gunCost;
 
 	void Start() 
 	{
+		Shop shop = transform.root.GetComponent<Shop>();
+		parentPrefab = shop.parentPrefab;
+
+		UseGun useGun = gunPrefab.GetComponent<UseGun>();
+		gun = useGun.gun;
+
 		gunName.text = gun.name;
 		gunIcon.sprite = gun.icon;
 		gunDescription.text = gun.description;
@@ -29,11 +38,22 @@ public class GunDisplay : MonoBehaviour
 		gunFireRate.text = "Fire Rate: " + gun.fireRate;
 		gunRecoil.text = "Recoil: " + gun.recoil;
 		gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
+		gunCost.text = "" + gun.cost;
 
 	}
 	
-	void Update() 
+	public void Buy()
 	{
-		
+		int costCompare = HUD.totalScore;
+
+		if (costCompare >= gun.cost)
+		{
+			Quaternion rot = parentPrefab.transform.rotation;
+
+			GameObject gunObject = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
+			gunObject.SetActive(false);
+
+			HUD.totalScore -= gun.cost;
+		}
 	}
 }

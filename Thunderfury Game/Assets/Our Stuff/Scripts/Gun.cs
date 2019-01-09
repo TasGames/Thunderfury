@@ -15,6 +15,7 @@ public class Gun : ScriptableObject
 	public new string name;
 	public Sprite icon;
 	public string description;
+	public int cost;
 		
 	[Title("Gun Type")]
 	[EnumToggleButtons] public typeEnum selectGunType;
@@ -33,6 +34,7 @@ public class Gun : ScriptableObject
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(1, 50)] public int numRays;
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 1)] public float spread;
 	[ShowIf("selectGunType", typeEnum.rayType)] public GameObject hitEffect;
+	[ShowIf("selectGunType", typeEnum.rayType)] public GameObject bulletMark;
 	
 	[Title("Ammo Stats")]
 	[EnumToggleButtons] public ammoTypeEnum takesAmmoType;
@@ -40,5 +42,10 @@ public class Gun : ScriptableObject
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 20)] public float damageRange;
 	[ShowIf("selectGunType", typeEnum.projectileType)] public GameObject projectilePrefab;
 	[ShowIf("selectGunType", typeEnum.projectileType)] public float projectileForce;
+
+	void Start()
+	{
+		
+	}
 
 }
