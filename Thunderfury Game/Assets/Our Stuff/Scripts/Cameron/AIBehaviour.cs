@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MoveTo : MonoBehaviour
+public class AIBehaviour : MonoBehaviour
 {
 
     public Transform goal;
@@ -17,8 +17,9 @@ public class MoveTo : MonoBehaviour
     protected bool dealtDamage = false;
 
     float distance = 2.0f;
-    RaycastHit hit;
     LayerMask layerMask = 1 << 9;
+
+    bool animOver = false;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class MoveTo : MonoBehaviour
 
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
+        player = GetComponent<PlayerHealth>();
     }
 
     void Update()
@@ -36,48 +38,43 @@ public class MoveTo : MonoBehaviour
             agent.destination = goal.position;
         }
 
-
         if(Vector3.Distance(transform.position, goal.position) < distance)
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distance, Color.red);
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distance, layerMask))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), distance, layerMask))
             {
                 if (dealtDamage == false)
                 {
-                    dealtDamage = true;
-                    player.PlayerTakeDamage(damageToDeal);
-                    DealtDamageRoutine();
-                    //Debug.Log("Dealt Damage to player");
-                    //Debug.Log(player.pShield);
-                    //Debug.Log(player.pHealth);
+                    anim.SetTrigger("Attack");
+                    agent.isStopped = true;
+                }
+
+                if (animOver == true)
+                {
+                    DoIDealDamage();
+                    animOver = false;
                 }
             }
         }
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        anim.SetTrigger("Attack");
-        agent.isStopped = true;
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (dealtDamage == false)
-        {
-            dealtDamage = true;
-            player.PlayerTakeDamage(damageToDeal);
-            Debug.Log("Dealt Damage to player");
-            Debug.Log(player.pShield);
-            Debug.Log(player.pHealth);
-        }
+        //if (dealtDamage == false)
+        //{
+        //    dealtDamage = true;
+        //    player.PlayerTakeDamage(damageToDeal);
+        //    Debug.Log("Dealt Damage to player");
+        //    Debug.Log(player.pShield);
+        //    Debug.Log(player.pHealth);
+        //}
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        anim.SetTrigger("Run");
+        //anim.SetTrigger("Run");
         agent.isStopped = false;
     }
 
@@ -86,6 +83,27 @@ public class MoveTo : MonoBehaviour
         yield return new WaitForSeconds(damageWait);
 
         dealtDamage = false;
+    }
+
+    public void DoIDealDamage()
+    {
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), distance, layerMask))
+        {
+            if (dealtDamage == false)
+            {
+                dealtDamage = true;
+                player.PlayerTakeDamage(damageToDeal);
+                DealtDamageRoutine();
+                Debug.Log("Dealt Damage");
+            }
+        }
+    }
+
+    public bool AnimationOver(bool result)
+    {
+        animOver = result;
+
+        return animOver;
     }
 }
 
