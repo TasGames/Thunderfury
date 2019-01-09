@@ -167,12 +167,6 @@ public class UseGun : MonoBehaviour
 
 				finalDamage = gun.damage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
 
-				if (target != null)
-					target.TakeDamage(finalDamage);
-
-				if (hit.rigidbody != null)
-					hit.rigidbody.AddForce(hit.normal * gun.impact * -1);
-
 				if (gun.hitEffect != null)
 				{
 					GameObject hitGO = Instantiate(gun.hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -181,9 +175,15 @@ public class UseGun : MonoBehaviour
 
 				if (gun.bulletMark != null)
 				{
-					GameObject bulGO = Instantiate(gun.bulletMark, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+					GameObject bulGO = Instantiate(gun.bulletMark, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), hit.transform);
 					Destroy(bulGO, 5);
 				}
+
+				if (target != null)
+					target.TakeDamage(finalDamage);
+
+				if (hit.rigidbody != null)
+					hit.rigidbody.AddForce(hit.normal * gun.impact * -1);
 
 				Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
 				Debug.Log(finalDamage);

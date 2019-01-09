@@ -15,6 +15,7 @@ public class Gun : ScriptableObject
 	public new string name;
 	public Sprite icon;
 	public string description;
+	public int cost;
 		
 	[Title("Gun Type")]
 	[EnumToggleButtons] public typeEnum selectGunType;

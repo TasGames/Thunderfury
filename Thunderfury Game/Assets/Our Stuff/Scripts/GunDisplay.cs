@@ -42,9 +42,14 @@ public class GunDisplay : MonoBehaviour
 	
 	public void Buy()
 	{
-		Quaternion rot = parentPrefab.transform.rotation;
+		int costCompare = HUD.totalScore;
 
-		GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
-		gun.SetActive(false);
+		if (costCompare >= gun.cost)
+		{
+			Quaternion rot = parentPrefab.transform.rotation;
+
+			GameObject gun = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
+			gun.SetActive(false);
+		}
 	}
 }
