@@ -19,7 +19,7 @@ public class AIBehaviour : MonoBehaviour
     float distance = 2.0f;
     LayerMask layerMask = 1 << 9;
 
-    bool animOver = false;
+    public bool animOver;
 
     void Start()
     {
@@ -27,7 +27,9 @@ public class AIBehaviour : MonoBehaviour
 
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
-        player = GetComponent<PlayerHealth>();
+        //player = GetComponent<PlayerHealth>();
+
+        //animOver = false;
     }
 
     void Update()
@@ -50,33 +52,26 @@ public class AIBehaviour : MonoBehaviour
                     agent.isStopped = true;
                 }
 
-                if (animOver == true)
+                if (animOver)
                 {
+                    Debug.Log("hello");
                     DoIDealDamage();
-                    animOver = false;
+                    AnimationOver(false);
+                    agent.isStopped = false;
                 }
             }
         }
-
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //if (dealtDamage == false)
-        //{
-        //    dealtDamage = true;
-        //    player.PlayerTakeDamage(damageToDeal);
-        //    Debug.Log("Dealt Damage to player");
-        //    Debug.Log(player.pShield);
-        //    Debug.Log(player.pHealth);
-        //}
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    agent.isStopped = true;
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        //anim.SetTrigger("Run");
-        agent.isStopped = false;
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    agent.isStopped = false;
+    //}
 
     IEnumerator DealtDamageRoutine()
     {
@@ -87,22 +82,19 @@ public class AIBehaviour : MonoBehaviour
 
     public void DoIDealDamage()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), distance, layerMask))
+        if (dealtDamage == false)
         {
-            if (dealtDamage == false)
-            {
-                dealtDamage = true;
-                player.PlayerTakeDamage(damageToDeal);
-                DealtDamageRoutine();
-                Debug.Log("Dealt Damage");
-            }
+            dealtDamage = true;
+            player.PlayerTakeDamage(damageToDeal);
+            DealtDamageRoutine();
+            Debug.Log("Dealt Damage");
         }
     }
 
     public bool AnimationOver(bool result)
     {
         animOver = result;
-
+        Debug.Log(animOver);
         return animOver;
     }
 }
