@@ -1,35 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class EnemyBehaviour : MonoBehaviour {
+public class EnemyBehaviour : MonoBehaviour
+{
 
-    [SerializeField] Transform goal;
+    Transform goal;
 
+    [ShowInInspector, ReadOnly]
     UnityEngine.AI.NavMeshAgent agent;  //NavMeshAgent component attached to the enemy
-    public PlayerHealth player;     //To call function inside the PlayerHealth script
+    [ShowInInspector, ReadOnly]
     Animator anim;  //Animator component attached to the enemy
+
+    PlayerHealth player;     //To call function inside the PlayerHealth script
 
     LayerMask layMask = 1 << 9; //Enemy will only detect objects on 9th layer (Player)
 
     [SerializeField] float damageToDeal;    //Amount to damage player by
     [SerializeField] float attackRate;
     float nextAttack;                       //Time to wait before able to damage again
-    [SerializeField] bool damageIsDealt;    //Does the enemy deal damage
     [SerializeField] float attackDistance;  //Range for the raycast
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
 
-        damageIsDealt = false;
+        goal = GameObject.FindGameObjectWithTag("Player").transform;       //Finds player and sets as the enemy's goal
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
-    void Update () {
-        goal = GameObject.FindGameObjectWithTag("Player").transform;       //Finds player and sets as the enemy's goal
+    void Update ()
+    {
         if (goal != null)
         {
             agent.destination = goal.position;
@@ -39,13 +45,26 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
             {
+                nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
 
-
-                nextAttack = Time.time + attackRate;
+                anim.SetTrigger("Attack");  //Play attack animation
+                agent.isStopped = true; //Stop movement
             }
         }
+    }
 
+    public void DealDamage()
+    {
+        //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask))
+        //{
+        if(player != null)
+        {
+            player.PlayerTakeDamage(damageToDeal);
+            Debug.Log("Dealt Damage");
+            agent.isStopped = false;
+        }  
+        //}
     }
 }

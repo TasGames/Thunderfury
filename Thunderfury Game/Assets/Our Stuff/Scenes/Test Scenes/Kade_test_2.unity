@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.465
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3095672, g: 0.34578836, b: 0.40277603, a: 0.465}
+  m_IndirectSpecularColor: {r: 0.3095676, g: 0.3457891, b: 0.40277666, a: 0.465}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -771,6 +771,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopMenu: {fileID: 45963748}
+  gunPrefab: {fileID: 0}
+  gunAmmoPrefab: {fileID: 0}
   parentPrefab: {fileID: 175677746}
 --- !u!4 &103340547 stripped
 Transform:
@@ -955,7 +957,7 @@ GameObject:
   - component: {fileID: 147310533}
   - component: {fileID: 147310535}
   - component: {fileID: 147310534}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MuzzleFlash01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5974,7 +5976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175677747}
   - component: {fileID: 175677748}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12023,6 +12025,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.52172
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 284c767d94e343d469f01ad8dae37142, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 284c767d94e343d469f01ad8dae37142, type: 3}
   m_IsPrefabAsset: 0
@@ -13404,6 +13410,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1662571414635970, guid: 91f6331b3ab831643b77e854d9318904, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f6331b3ab831643b77e854d9318904, type: 2}
   m_IsPrefabAsset: 0
@@ -14037,7 +14047,7 @@ GameObject:
   - component: {fileID: 1260313367}
   - component: {fileID: 1260313369}
   - component: {fileID: 1260313368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FlashHeadon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21808,7 +21818,7 @@ GameObject:
   - component: {fileID: 1676262688}
   - component: {fileID: 1676262690}
   - component: {fileID: 1676262689}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

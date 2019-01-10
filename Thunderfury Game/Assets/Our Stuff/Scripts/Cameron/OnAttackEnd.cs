@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnAttackEnd : StateMachineBehaviour {
 
-    public AIBehaviour enemy;
+    public EnemyBehaviour enemy;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -20,7 +20,7 @@ public class OnAttackEnd : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Animation Ended");
-        enemy.GetComponent<AIBehaviour>().AnimationOver();
+        enemy.GetComponent<EnemyBehaviour>().DealDamage();
         //enemy.DoIDealDamage();
 	}
 
