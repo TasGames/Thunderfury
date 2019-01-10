@@ -20,7 +20,7 @@ public class OnAttackEnd : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Animation Ended");
-        enemy.GetComponent<AIBehaviour>().AnimationOver(true);
+        enemy.GetComponent<AIBehaviour>().AnimationOver();
         //enemy.DoIDealDamage();
 	}
 

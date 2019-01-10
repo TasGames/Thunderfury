@@ -2,24 +2,24 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 public class AIBehaviour : MonoBehaviour
 {
 
     public Transform goal;
 
+    [ShowInInspector, ReadOnly]
     UnityEngine.AI.NavMeshAgent agent;
     public PlayerHealth player;
     Animator anim;
 
     public float damageToDeal;
     [SerializeField] protected float damageWait;
-    protected bool dealtDamage = false;
+    protected bool dealtDamage;
 
     float distance = 2.0f;
     LayerMask layerMask = 1 << 9;
-
-    public bool animOver;
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class AIBehaviour : MonoBehaviour
 
         //player = GetComponent<PlayerHealth>();
 
-        //animOver = false;
+        dealtDamage = false;
     }
 
     void Update()
@@ -52,13 +52,13 @@ public class AIBehaviour : MonoBehaviour
                     agent.isStopped = true;
                 }
 
-                if (animOver)
-                {
-                    Debug.Log("hello");
-                    DoIDealDamage();
-                    AnimationOver(false);
-                    agent.isStopped = false;
-                }
+                //if (animOver)
+                //{
+                //    Debug.Log("hello");
+                //    DoIDealDamage();
+                //    AnimationOver(false);
+                    
+                //}
             }
         }
     }
@@ -91,11 +91,13 @@ public class AIBehaviour : MonoBehaviour
         }
     }
 
-    public bool AnimationOver(bool result)
+    public void AnimationOver()
     {
-        animOver = result;
-        Debug.Log(animOver);
-        return animOver;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), distance, layerMask))
+        {
+            Debug.Log(dealtDamage);
+            DoIDealDamage();
+        }
     }
 }
 

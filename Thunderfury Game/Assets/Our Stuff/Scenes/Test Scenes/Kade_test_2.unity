@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.465
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3095676, g: 0.3457891, b: 0.40277666, a: 0.465}
+  m_IndirectSpecularColor: {r: 0.3095672, g: 0.34578836, b: 0.40277603, a: 0.465}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -771,8 +771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopMenu: {fileID: 45963748}
-  gunPrefab: {fileID: 1699710384750632, guid: 97b7ebbcd47883546a443048dcdc9081, type: 2}
-  gunAmmoPrefab: {fileID: 0}
   parentPrefab: {fileID: 175677746}
 --- !u!4 &103340547 stripped
 Transform:
@@ -13400,7 +13398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4461443657389884, guid: 91f6331b3ab831643b77e854d9318904, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1662571414635970, guid: 91f6331b3ab831643b77e854d9318904, type: 2}
       propertyPath: m_IsActive
