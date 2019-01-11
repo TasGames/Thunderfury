@@ -65,8 +65,12 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 player.PlayerTakeDamage(damageToDeal);
                 Debug.Log("Dealt Damage");
-                agent.isStopped = false;
             }
         }
+    }
+
+    public void BeginMovement()
+    {
+        agent.isStopped = false;
     }
 }
