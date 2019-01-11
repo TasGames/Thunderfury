@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
 
 	void Update() 
 	{
-		if (gunAmmo != null || tAmmo != null)
+		if (gunAmmo != null && tAmmo != null)
 			tAmmo.text = gunAmmo.currentMag + " / " + gunAmmo.ammoPool;
 
 		if (tScore != null)
@@ -31,7 +31,7 @@ public class HUD : MonoBehaviour
 
 		if (reloadingImage != null)
 		{
-			if (gunAmmo.isReloading == true)
+			if (gunAmmo && gunAmmo.isReloading == true)
 				reloadingImage.gameObject.SetActive(true);
 			else
 				reloadingImage.gameObject.SetActive(false);
