@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour
+{
 
     public GameObject enemy;   //Enemy Object
     public Transform[] spawnPoints;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         if (spawnPoints.Length == 0)
         {
@@ -15,7 +17,7 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    public void PickSpawnLocation ()
+    public void PickSpawnLocation()
     {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
@@ -25,7 +27,7 @@ public class EnemySpawner : MonoBehaviour {
 
         // Check it with a Physics.OverlapSphere
         //Collider[] hitColliders = Physics.OverlapSphere(posToSpawn, 0.2f);
-        Collider[] hitColliders = Physics.OverlapBox(posToSpawn, spawnPoints[spawnPointIndex].transform.localScale /2, Quaternion.identity);
+        Collider[] hitColliders = Physics.OverlapBox(posToSpawn, spawnPoints[spawnPointIndex].transform.localScale / 2, Quaternion.identity);
 
         // If it returns any colliders (hitColliders.Length > 0)
         if (hitColliders.Length > 0)
@@ -37,7 +39,13 @@ public class EnemySpawner : MonoBehaviour {
         }
         else
         {
-            Instantiate(enemy, posToSpawn, spawnPoints[spawnPointIndex].rotation);
+            GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
+            if (enemy != null)
+            {
+                enemy.transform.position = posToSpawn;
+                enemy.transform.rotation = spawnPoints[spawnPointIndex].rotation;
+                enemy.SetActive(true);
+            }
             return;
         }
         // Spawn enemy success, return
