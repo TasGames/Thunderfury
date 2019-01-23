@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Ground
   - SpawnPoint
-  - Enemy
+  - Enemy1
   layers:
   - Default
   - TransparentFX
@@ -18,7 +18,7 @@ TagManager:
   - 
   - PostProcessing
   - Player
-  - Enemy
+  - Enemy1
   - 
   - 
   - 
