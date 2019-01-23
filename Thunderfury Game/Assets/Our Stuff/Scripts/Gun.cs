@@ -43,9 +43,5 @@ public class Gun : ScriptableObject
 	[ShowIf("selectGunType", typeEnum.projectileType)] public GameObject projectilePrefab;
 	[ShowIf("selectGunType", typeEnum.projectileType)] public float projectileForce;
 
-	void Start()
-	{
-		
-	}
-
+	[HideInInspector] public bool hasGun = false;
 }

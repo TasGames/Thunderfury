@@ -46,7 +46,7 @@ public class GunDisplay : MonoBehaviour
 	{
 		int costCompare = HUD.totalScore;
 
-		if (costCompare >= gun.cost)
+		if (costCompare >= gun.cost && gun.hasGun == false)
 		{
 			Quaternion rot = parentPrefab.transform.rotation;
 
@@ -54,6 +54,7 @@ public class GunDisplay : MonoBehaviour
 			gunObject.SetActive(false);
 
 			HUD.totalScore -= gun.cost;
+			gun.hasGun = true;
 		}
 	}
 }
