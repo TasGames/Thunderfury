@@ -21,6 +21,8 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected Text gunRecoil;
 	[SerializeField] protected Text gunAmmo;
 	[SerializeField] protected Text gunCost;
+	[SerializeField] protected GameObject buyButton;
+	[SerializeField] protected GameObject upgradeButton;
 
 	void Start() 
 	{
@@ -46,7 +48,7 @@ public class GunDisplay : MonoBehaviour
 	{
 		int costCompare = HUD.totalScore;
 
-		if (costCompare >= gun.cost && gun.hasGun == false)
+		if (costCompare >= gun.cost)
 		{
 			Quaternion rot = parentPrefab.transform.rotation;
 
@@ -54,7 +56,15 @@ public class GunDisplay : MonoBehaviour
 			gunObject.SetActive(false);
 
 			HUD.totalScore -= gun.cost;
-			gun.hasGun = true;
+			
+			buyButton.SetActive(false);
+			upgradeButton.SetActive(true);
+			
 		}
+	}
+
+	public void Upgrade()
+	{
+
 	}
 }
