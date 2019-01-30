@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: baa3491fa8da62847bcec33f5001d6a1
+guid: 3d8ce2acabdccd147a2624c28092a00f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert2
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wall_corner_in
+    4300000: Main_Basic_corner_in
   externalObjects: {}
   materials:
     importMaterials: 1

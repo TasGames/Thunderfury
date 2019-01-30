@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4836483518813234}
   - component: {fileID: 33702732488122476}
   - component: {fileID: 23234772629148738}
-  - component: {fileID: 64121523795417182}
+  - component: {fileID: 64312901033235368}
   m_Layer: 0
   m_Name: Wall_corner_out
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1921431934923096}
   m_LocalRotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: 9.494107e-16}
-  m_LocalPosition: {x: -15.181202, y: 21.38329, z: -29.600498}
+  m_LocalPosition: {x: 5.2637644, y: 2.805623, z: -18.665184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,8 +83,8 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1921431934923096}
-  m_Mesh: {fileID: 4300000, guid: 07278bb7c665d804ab428a9ae048e627, type: 3}
---- !u!64 &64121523795417182
+  m_Mesh: {fileID: 4300000, guid: 53f7886bda0567944bb55fb956341422, type: 3}
+--- !u!64 &64312901033235368
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,4 +97,4 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 07278bb7c665d804ab428a9ae048e627, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 53f7886bda0567944bb55fb956341422, type: 3}

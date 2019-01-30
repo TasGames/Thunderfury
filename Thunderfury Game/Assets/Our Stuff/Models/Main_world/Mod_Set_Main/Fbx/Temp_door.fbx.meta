@@ -1,14 +1,21 @@
 fileFormatVersion: 2
-guid: baa3491fa8da62847bcec33f5001d6a1
+guid: ef158df7ab1c46f42a86f9c81c646eab
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Wall_corner_in
+    100000: Door_L
+    100002: Door_R
+    100004: //RootNode
+    400000: Door_L
+    400002: Door_R
+    400004: //RootNode
+    2100000: lambert1
+    2300000: Door_L
+    2300002: Door_R
+    3300000: Door_L
+    3300002: Door_R
+    4300000: Door_L
+    4300002: Door_R
   externalObjects: {}
   materials:
     importMaterials: 1

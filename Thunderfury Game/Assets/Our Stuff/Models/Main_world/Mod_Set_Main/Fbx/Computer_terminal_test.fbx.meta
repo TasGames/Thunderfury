@@ -1,14 +1,21 @@
 fileFormatVersion: 2
-guid: baa3491fa8da62847bcec33f5001d6a1
+guid: 79e09cae12857134cb2cdd6c54d38fd3
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Terminal
+    100004: Terminal_cover
     400000: //RootNode
-    2100000: lambert2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Wall_corner_in
+    400002: Terminal
+    400004: Terminal_cover
+    2100000: lambert1
+    2300000: Terminal
+    2300002: Terminal_cover
+    3300000: Terminal
+    3300002: Terminal_cover
+    4300000: Terminal_cover
+    4300002: Terminal
   externalObjects: {}
   materials:
     importMaterials: 1

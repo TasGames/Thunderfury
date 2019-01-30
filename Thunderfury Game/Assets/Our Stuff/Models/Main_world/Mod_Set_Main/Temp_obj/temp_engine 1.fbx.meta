@@ -1,14 +1,68 @@
 fileFormatVersion: 2
-guid: 07278bb7c665d804ab428a9ae048e627
+guid: 6b4347006df2be848bc8fd8d81a20d87
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Wall_corner_out
+    100000: pCube100
+    100002: pCube101
+    100004: pCube99
+    100006: pPlane47
+    100008: pPlane48
+    100010: pPlane49
+    100012: pPlane50
+    100014: pPlane51
+    100016: pPlane52
+    100018: pPlane53
+    100020: pPlane54
+    100022: pPlane55
+    100024: pPlane56
+    100026: pPlane57
+    100028: //RootNode
+    100030: transform272
+    100032: transform273
+    100034: transform274
+    100036: transform275
+    100038: transform276
+    100040: transform277
+    100042: transform278
+    100044: transform279
+    100046: transform280
+    100048: transform281
+    100050: transform282
+    100052: transform283
+    100054: transform284
+    400000: pCube100
+    400002: pCube101
+    400004: pCube99
+    400006: pPlane47
+    400008: pPlane48
+    400010: pPlane49
+    400012: pPlane50
+    400014: pPlane51
+    400016: pPlane52
+    400018: pPlane53
+    400020: pPlane54
+    400022: pPlane55
+    400024: pPlane56
+    400026: pPlane57
+    400028: //RootNode
+    400030: transform272
+    400032: transform273
+    400034: transform274
+    400036: transform275
+    400038: transform276
+    400040: transform277
+    400042: transform278
+    400044: transform279
+    400046: transform280
+    400048: transform281
+    400050: transform282
+    400052: transform283
+    400054: transform284
+    2100000: lambert1
+    2300000: pCube101
+    3300000: pCube101
+    4300000: pCube101
   externalObjects: {}
   materials:
     importMaterials: 1
