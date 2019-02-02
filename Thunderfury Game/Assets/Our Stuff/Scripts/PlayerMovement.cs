@@ -1,12 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using InControl;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour 
 {
 	protected Rigidbody playerRb;
+
+	[Title("Camera")]
+	[SerializeField] protected Camera cam;
+
+	[Title("Movement")]
+    [SerializeField] protected float ForwardSpeed;
+    [SerializeField] protected float BackwardSpeed;  
+    [SerializeField] protected float StrafeSpeed;   
+    [SerializeField] protected float RunMultiplier;
+    [SerializeField] protected float JumpForce;
+	[SerializeField] protected KeyCode RunKey;
+	public float CurrentTargetSpeed = 8f;
+
+	void Start()
+	{
+		playerRb = GetComponent<Rigidbody>();
+		Cursor.visible = false;
+	}
+	
+	void FixedUpdate()
+	{
+
+	}
+
+    void UpdateDesiredTargetSpeed(Vector2 input)
+    {
+        if (input == Vector2.zero)
+			return;
+		if (input.x > 0 || input.x < 0)
+			CurrentTargetSpeed = StrafeSpeed;
+		if (input.y < 0)
+			CurrentTargetSpeed = BackwardSpeed;
+		if (input.y > 0)
+			CurrentTargetSpeed = ForwardSpeed;
+	}
+
+	void Movement()
+	{
+		Vector2 input = GetInput();
+
+    	if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon))
+        {
+        // always move along the camera forward as it is the direction that it being aimed at
+            Vector3 desiredMove = cam.transform.forward*input.y + cam.transform.right*input.x;
+
+            desiredMove.x = desiredMove.x * CurrentTargetSpeed;
+            desiredMove.z = desiredMove.z * CurrentTargetSpeed;
+            desiredMove.y = desiredMove.y * CurrentTargetSpeed;
+            if (playerRb.velocity.sqrMagnitude < (CurrentTargetSpeed * CurrentTargetSpeed))
+            {
+                playerRb.AddForce(desiredMove, ForceMode.Impulse);
+            }
+        }
+	}
+
+	/*protected Rigidbody playerRb;
 	[SerializeField] protected Camera cam;
 	[SerializeField] protected float moveSpeed;
 	[SerializeField] protected float jumpPower;
@@ -78,6 +135,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.gameObject.tag == "Ground")
             canJump = true;
-    }
+    }*/
 
 }
