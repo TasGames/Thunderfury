@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof (Rigidbody))]
@@ -32,20 +33,18 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 	[Serializable] public class AdvancedSettings
 	{
 		public float groundCheckDistance = 0.01f;
-		public float stickToGroundHelperDistance = 0.5f;
-		public float slowDownRate = 20f; 
+		public float stickToGroundHelperDistance = 0.5f; 
 		public bool airControl;
-		[Tooltip("set it to 0.1 or more if you get stuck in wall")]
 		public float shellOffset;
 	}
 
 	[Serializable] public class MouseLook
 	{
-		public float xSensitivity = 2f;
-		public float ySensitivity = 2f;
+		[Range(0, 10)] public float xSensitivity = 2f;
+		[Range(0, 10)] public float ySensitivity = 2f;
 		public bool clampVerticalRotation = true;
-		public float minimumX = -90F;
-		public float maximumX = 90F;
+		[Range(-120, 0)] public float minimumX = -90F;
+		[Range(0, 120)] public float maximumX = 90F;
 		public bool smooth;
 		public float smoothTime = 5f;
 		public bool lockCursor = true;
@@ -147,7 +146,6 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
 	protected Rigidbody playerRb;
 	protected CapsuleCollider capsuleCol;
-	protected float yRotation;
 	protected Vector3 groundContactNormal;
 	protected bool hasJumped;
 	protected bool previouslyGrounded;
