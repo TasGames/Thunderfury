@@ -3,18 +3,22 @@
 public class DrawBox : MonoBehaviour
 {
 
-    public GameObject player;
-    EnemySpawner spawning;
+    protected GameObject player;
+
+    protected EnemySpawner spawning;
+
     void Start()
     {
-        spawning = GetComponent<EnemySpawner>();
+        if (spawning == null)
+            spawning = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemySpawner>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= 10 && this.gameObject.tag == "InactiveSpawn")
+        if (Vector3.Distance(player.transform.position, transform.position) <= 30 && this.gameObject.tag == "InactiveSpawn")
         {
             if (!spawning.activeSpawns.Contains(this.gameObject))
             {
@@ -23,7 +27,7 @@ public class DrawBox : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) > 10 && this.gameObject.tag == "ActiveSpawn") ;
+        if (Vector3.Distance(player.transform.position, transform.position) > 30 && this.gameObject.tag == "ActiveSpawn")
         {
             if (spawning.activeSpawns.Contains(this.gameObject))
             {

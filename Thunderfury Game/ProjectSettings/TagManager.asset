@@ -9,6 +9,7 @@ TagManager:
   - Enemy1
   - ActiveSpawn
   - InactiveSpawn
+  - EnemyManager
   layers:
   - Default
   - TransparentFX
