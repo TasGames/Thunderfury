@@ -7,6 +7,10 @@ public class DrawBox : MonoBehaviour
 
     protected EnemySpawner spawning;
 
+    [SerializeField] int minDistance;
+    [SerializeField] int maxDistance;
+    private float distanceToPlayer;
+
     void Start()
     {
         if (spawning == null)
@@ -18,21 +22,29 @@ public class DrawBox : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= 30 && this.gameObject.tag == "InactiveSpawn")
+        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position); //Check distance between spawn point and player
+
+        if (this.gameObject.tag == "InactiveSpawn") //If not active, check if within range to become active again
         {
-            if (!spawning.activeSpawns.Contains(this.gameObject))
+            if (distanceToPlayer <= maxDistance || distanceToPlayer >= minDistance)
             {
-                this.gameObject.tag = "ActiveSpawn";
-                spawning.activeSpawns.Add(this.gameObject);
+                if (!spawning.activeSpawns.Contains(this.gameObject))   //If this spawn is not in the active spawn point list
+                {
+                    this.gameObject.tag = "ActiveSpawn";
+                    spawning.activeSpawns.Add(this.gameObject); //Add to active spawn point list
+                }
             }
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) > 30 && this.gameObject.tag == "ActiveSpawn")
+        if (this.gameObject.tag == "ActiveSpawn")   //If active, check if outside active range
         {
-            if (spawning.activeSpawns.Contains(this.gameObject))
+            if (distanceToPlayer < minDistance || distanceToPlayer > maxDistance)
             {
-                this.gameObject.tag = "InactiveSpawn";
-                spawning.activeSpawns.Remove(this.gameObject);
+                if (spawning.activeSpawns.Contains(this.gameObject))    //If this spawn is in the active spawn point list
+                {
+                    this.gameObject.tag = "InactiveSpawn";
+                    spawning.activeSpawns.Remove(this.gameObject);  //Remove from active spawn point list
+                }
             }
         }
     }
@@ -41,14 +53,14 @@ public class DrawBox : MonoBehaviour
     {
         if (this.gameObject.tag == "ActiveSpawn")
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = Color.green; //Spawn point green when active
 
             //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
             Gizmos.DrawWireCube(transform.position, transform.localScale);
         }
         else if (this.gameObject.tag == "InactiveSpawn")
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.red;   //Spawn point red when inactive
 
             //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
             Gizmos.DrawWireCube(transform.position, transform.localScale);
