@@ -3207,6 +3207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1247069249957654, guid: 2fda2a8c3dfc9b84a930c564298c127b, type: 2}
   activeSpawns: []
+  activeEnemies: []
 --- !u!4 &401707173
 Transform:
   m_ObjectHideFlags: 0
