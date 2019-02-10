@@ -3465,8 +3465,6 @@ MonoBehaviour:
     ForwardSpeed: 8
     BackwardSpeed: 4
     StrafeSpeed: 4
-    RunMultiplier: 2
-    RunKey: 304
     JumpForce: 30
     SlopeCurveModifier:
       serializedVersion: 2
@@ -3503,18 +3501,17 @@ MonoBehaviour:
       m_RotationOrder: 4
     CurrentTargetSpeed: 8
   mouseLook:
-    XSensitivity: 2
-    YSensitivity: 2
+    xSensitivity: 2
+    ySensitivity: 2
     clampVerticalRotation: 1
-    MinimumX: -90
-    MaximumX: 90
+    minimumX: -90
+    maximumX: 90
     smooth: 0
     smoothTime: 5
     lockCursor: 1
   advancedSettings:
     groundCheckDistance: 0.01
     stickToGroundHelperDistance: 0.5
-    slowDownRate: 20
     airControl: 0
     shellOffset: 0
 --- !u!1001 &385607856

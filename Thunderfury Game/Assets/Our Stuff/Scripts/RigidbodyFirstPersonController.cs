@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof (Rigidbody))]
@@ -9,11 +10,9 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 {
 	[Serializable] public class MovementSettings
 	{
-		public float ForwardSpeed = 8.0f;   // Speed when walking forward
-		public float BackwardSpeed = 4.0f;  // Speed when walking backwards
-		public float StrafeSpeed = 4.0f;    // Speed when walking sideways
-		public float RunMultiplier = 2.0f;   // Speed when sprinting
-		public KeyCode RunKey = KeyCode.LeftShift;
+		public float ForwardSpeed = 8.0f;
+		public float BackwardSpeed = 4.0f;
+		public float StrafeSpeed = 4.0f;
 		public float JumpForce = 30f;
 		public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
 		[HideInInspector] public float CurrentTargetSpeed = 8f;
@@ -33,47 +32,130 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
 	[Serializable] public class AdvancedSettings
 	{
-		public float groundCheckDistance = 0.01f; // distance for checking if the controller is grounded ( 0.01f seems to work best for this )
-		public float stickToGroundHelperDistance = 0.5f; // stops the character
-		public float slowDownRate = 20f; // rate at which the controller comes to a stop when there is no input
-		public bool airControl; // can the user control the direction that is being moved in the air
-		[Tooltip("set it to 0.1 or more if you get stuck in wall")]
-		public float shellOffset; //reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)
+		public float groundCheckDistance = 0.01f;
+		public float stickToGroundHelperDistance = 0.5f; 
+		public bool airControl;
+		public float shellOffset;
+	}
+
+	[Serializable] public class MouseLook
+	{
+		[Range(0, 10)] public float xSensitivity = 2f;
+		[Range(0, 10)] public float ySensitivity = 2f;
+		public bool clampVerticalRotation = true;
+		[Range(-120, 0)] public float minimumX = -90F;
+		[Range(0, 120)] public float maximumX = 90F;
+		public bool smooth;
+		public float smoothTime = 5f;
+		public bool lockCursor = true;
+
+		protected Quaternion characterTargetRot;
+		protected Quaternion cameraTargetRot;
+		protected bool isCursorLocked = true;
+
+		public void Init(Transform character, Transform camera)
+		{
+			characterTargetRot = character.localRotation;
+			cameraTargetRot = camera.localRotation;
+		}
+
+		public void LookRotation(Transform character, Transform camera)
+		{
+			float yRot = Input.GetAxis("Mouse X") * xSensitivity;
+			float xRot = Input.GetAxis("Mouse Y") * ySensitivity;
+
+			characterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
+			cameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
+
+			if(clampVerticalRotation == true)
+				cameraTargetRot = ClampRotationAroundXAxis (cameraTargetRot);
+
+			if(smooth == true)
+			{
+				character.localRotation = Quaternion.Slerp (character.localRotation, characterTargetRot,
+					smoothTime * Time.deltaTime);
+				camera.localRotation = Quaternion.Slerp (camera.localRotation, cameraTargetRot,
+					smoothTime * Time.deltaTime);
+			}
+			else
+			{
+				character.localRotation = characterTargetRot;
+				camera.localRotation = cameraTargetRot;
+			}
+
+			UpdateCursorLock();
+		}
+
+		public void SetCursorLock(bool value)
+		{
+			lockCursor = value;
+			
+			if(lockCursor == false)
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+		}
+
+		public void UpdateCursorLock()
+		{
+			if (lockCursor == true)
+				InternalLockUpdate();
+		}
+
+		void InternalLockUpdate()
+		{
+			if(Input.GetKeyUp(KeyCode.Escape))
+				isCursorLocked = false;
+			else if(Input.GetMouseButtonUp(0))
+				isCursorLocked = true;
+
+			if (isCursorLocked == true)
+			{
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = false;
+			}
+			else if (isCursorLocked == false)
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+		}
+
+		Quaternion ClampRotationAroundXAxis(Quaternion q)
+		{
+			q.x /= q.w;
+			q.y /= q.w;
+			q.z /= q.w;
+			q.w = 1.0f;
+
+			float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.x);
+
+			angleX = Mathf.Clamp (angleX, minimumX, maximumX);
+
+			q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleX);
+
+			return q;
+		}
 	}
 
 	[SerializeField] protected Camera cam;
-	public MovementSettings movementSettings = new MovementSettings();
-	public MouseLook mouseLook = new MouseLook();
-	public AdvancedSettings advancedSettings = new AdvancedSettings();
+	[SerializeField] protected MovementSettings movementSettings = new MovementSettings();
+	[SerializeField] protected MouseLook mouseLook = new MouseLook();
+	[SerializeField] protected AdvancedSettings advancedSettings = new AdvancedSettings();
 
-	protected Rigidbody m_RigidBody;
-	protected CapsuleCollider m_Capsule;
-	protected float m_YRotation;
-	protected Vector3 m_GroundContactNormal;
-	protected bool m_Jump;
-	protected bool m_PreviouslyGrounded;
-	protected bool m_Jumping; 
-	protected bool m_IsGrounded;
-
-	public Vector3 Velocity
-	{
-		get { return m_RigidBody.velocity; }
-	}
-
-	public bool Grounded
-	{
-		get { return m_IsGrounded; }
-	}
-
-	public bool Jumping
-	{
-		get { return m_Jumping; }
-	}
+	protected Rigidbody playerRb;
+	protected CapsuleCollider capsuleCol;
+	protected Vector3 groundContactNormal;
+	protected bool hasJumped;
+	protected bool previouslyGrounded;
+	protected bool isJumping; 
+	protected bool isGrounded;
 
 	void Start()
 	{
-		m_RigidBody = GetComponent<Rigidbody>();
-		m_Capsule = GetComponent<CapsuleCollider>();
+		playerRb = GetComponent<Rigidbody>();
+		capsuleCol = GetComponent<CapsuleCollider>();
 		mouseLook.Init (transform, cam.transform);
 	}
 
@@ -81,8 +163,8 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 	{
 		RotateView();
 
-		if (Input.GetButtonDown("Jump") && m_Jump == false)
-			m_Jump = true;
+		if (Input.GetButtonDown("Jump") && hasJumped == false)
+			hasJumped = true;
 	}
 
 	void FixedUpdate()
@@ -90,49 +172,48 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 		GroundCheck();
 		Vector2 input = GetInput();
 
-		if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
+		if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || isGrounded))
 		{
-			// always move along the camera forward as it is the direction that it being aimed at
 			Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
-			desiredMove = Vector3.ProjectOnPlane(desiredMove, m_GroundContactNormal).normalized;
+			desiredMove = Vector3.ProjectOnPlane(desiredMove, groundContactNormal).normalized;
 
 			desiredMove.x = desiredMove.x * movementSettings.CurrentTargetSpeed;
 			desiredMove.z = desiredMove.z * movementSettings.CurrentTargetSpeed;
 			desiredMove.y = desiredMove.y * movementSettings.CurrentTargetSpeed;
 
-			if (m_RigidBody.velocity.sqrMagnitude < (movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed))
-				m_RigidBody.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
+			if (playerRb.velocity.sqrMagnitude < (movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed))
+				playerRb.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
 		}
 
-		if (m_IsGrounded == true)
+		if (isGrounded == true)
 		{
-			m_RigidBody.drag = 5f;
+			playerRb.drag = 5f;
 
-			if (m_Jump == true)
+			if (hasJumped == true)
 			{
-				m_RigidBody.drag = 0f;
-				m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
-				m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
-				m_Jumping = true;
+				playerRb.drag = 0f;
+				playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
+				playerRb.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
+				isJumping = true;
 			}
 
-			if (m_Jumping == false && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
-				m_RigidBody.Sleep();
+			if (isJumping == false && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && playerRb.velocity.magnitude < 1f)
+				playerRb.Sleep();
 		}
 		else
 		{
-			m_RigidBody.drag = 0f;
+			playerRb.drag = 0f;
 
-			if (m_PreviouslyGrounded == true && m_Jumping == false)
+			if (previouslyGrounded == true && isJumping == false)
 				StickToGroundHelper();
 		}
 
-		m_Jump = false;
+		hasJumped = false;
 	}
 
 	float SlopeMultiplier()
 	{
-		float angle = Vector3.Angle(m_GroundContactNormal, Vector3.up);
+		float angle = Vector3.Angle(groundContactNormal, Vector3.up);
 
 		return movementSettings.SlopeCurveModifier.Evaluate(angle);
 	}
@@ -140,10 +221,10 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 	void StickToGroundHelper()
 	{
 		RaycastHit hitInfo;
-		if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((m_Capsule.height/2f) - m_Capsule.radius) + advancedSettings.stickToGroundHelperDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+		if (Physics.SphereCast(transform.position, capsuleCol.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((capsuleCol.height/2f) - capsuleCol.radius) + advancedSettings.stickToGroundHelperDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 		{
 			if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f)
-				m_RigidBody.velocity = Vector3.ProjectOnPlane(m_RigidBody.velocity, hitInfo.normal);
+				playerRb.velocity = Vector3.ProjectOnPlane(playerRb.velocity, hitInfo.normal);
 		}
 	}
 
@@ -162,41 +243,37 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
 	void RotateView()
 	{
-		//avoids the mouse looking if the game is effectively paused
 		if (Mathf.Abs(Time.timeScale) < float.Epsilon)
 			return;
 
-		// get the rotation before it's changed
 		float oldYRotation = transform.eulerAngles.y;
 
 		mouseLook.LookRotation (transform, cam.transform);
 
-		if (m_IsGrounded == true || advancedSettings.airControl)
+		if (isGrounded == true || advancedSettings.airControl)
 		{
-			// Rotate the rigidbody velocity to match the new direction that the character is looking
 			Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRotation, Vector3.up);
-			m_RigidBody.velocity = velRotation*m_RigidBody.velocity;
+			playerRb.velocity = velRotation*playerRb.velocity;
 		}
 	}
 
-	// sphere cast down just beyond the bottom of the capsule to see if the capsule is colliding round the bottom
 	void GroundCheck()
 	{
-		m_PreviouslyGrounded = m_IsGrounded;
+		previouslyGrounded = isGrounded;
 		RaycastHit hitInfo;
 
-		if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((m_Capsule.height/2f) - m_Capsule.radius) + advancedSettings.groundCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+		if (Physics.SphereCast(transform.position, capsuleCol.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((capsuleCol.height/2f) - capsuleCol.radius) + advancedSettings.groundCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 		{
-			m_IsGrounded = true;
-			m_GroundContactNormal = hitInfo.normal;
+			isGrounded = true;
+			groundContactNormal = hitInfo.normal;
 		}
 		else
 		{
-			m_IsGrounded = false;
-			m_GroundContactNormal = Vector3.up;
+			isGrounded = false;
+			groundContactNormal = Vector3.up;
 		}
 
-		if (m_PreviouslyGrounded == false && m_IsGrounded && m_Jumping)
-			m_Jumping = false;
+		if (previouslyGrounded == false && isGrounded && isJumping)
+			isJumping = false;
 	}
 }
