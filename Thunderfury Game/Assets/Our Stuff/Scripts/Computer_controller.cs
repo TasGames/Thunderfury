@@ -12,19 +12,22 @@ protected bool opened;
 		anim = GetComponent<Animator>();
 	}
 	
-	void OnTriggerStay(Collider coll)
+	void OnTriggerStay(Collider collider)
 	{
-		if(Input.GetKeyDown(KeyCode.E) && opened == false)
+		if (collider.gameObject.tag == "Player")
 		{
-            opened = true;
-			anim.SetBool("Open", true);
-			anim.SetBool("Close", false);
-		}
-		else if(Input.GetKeyDown(KeyCode.E) && opened == true)
-		{
-			opened = false;
-			anim.SetBool("Close", true);
-			anim.SetBool("Open", false);
+			if(Input.GetKeyDown(KeyCode.E) && opened == false)
+			{
+				opened = true;
+				anim.SetBool("Open", true);
+				anim.SetBool("Close", false);
+			}
+			else if(Input.GetKeyDown(KeyCode.E) && opened == true)
+			{
+				opened = false;
+				anim.SetBool("Close", true);
+				anim.SetBool("Open", false);
+			}
 		}
 	}
 }
