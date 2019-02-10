@@ -27,9 +27,9 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://Engine_room_wall\" label=\"\" >\n  <presetinput
-      identifier=\"Roughness_patches_level\" uid=\"1370154023\" type=\"0\" value=\"0.763\"
+      identifier=\"Roughness_patches_level\" uid=\"1370154023\" type=\"0\" value=\"0.812\"
       />\n  <presetinput identifier=\"Roughness_level\" uid=\"1370153599\" type=\"0\"
-      value=\"0.317\" />\n  <presetinput identifier=\"Base_colour\" uid=\"1370153677\"
+      value=\"0.097\" />\n  <presetinput identifier=\"Base_colour\" uid=\"1370153677\"
       type=\"3\" value=\"0.372864,0.413005,0.462264,1\" />\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic
@@ -73,8 +73,8 @@ ScriptedImporter:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 0
-      textureHeight: 0
+      textureWidth: 32
+      textureHeight: 32
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: bc6066dff728c6548aca8a793ec05640, type: 3}
