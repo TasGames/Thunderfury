@@ -10,9 +10,10 @@ public class Shop : MonoBehaviour
 	public GameObject parentPrefab;
 	protected bool shopOpen = false;
 
+
 	void Start() 
 	{
-
+		
 	}
 	
 	void Update()
