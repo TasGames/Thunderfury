@@ -1182,7 +1182,7 @@ MonoBehaviour:
   brokenVersion: {fileID: 0}
   scoreValue: 100
   dropsPickup: 1
-  dropPercentage: 100
+  dropPercentage: 16.8
   dropList:
   - pickup: {fileID: 1122297406186736, guid: 300516f0d85761344bba325cdef8a095, type: 2}
     weight: 0.2
