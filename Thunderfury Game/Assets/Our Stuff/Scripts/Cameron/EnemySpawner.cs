@@ -6,7 +6,6 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public GameObject enemy;   //Enemy Object
-    //public Transform[] spawnPoints;
 
     //[HideInInspector]
     public List<GameObject> activeSpawns = new List<GameObject>();
@@ -25,8 +24,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void PickSpawnLocation()
     {
-        if (activeSpawns.Count < 0)
-        {
+        //if (activeSpawns.Count < 0)
+        //{
             int spawnPointIndex = Random.Range(0, activeSpawns.Count);
 
             // Generate a random position
@@ -53,12 +52,14 @@ public class EnemySpawner : MonoBehaviour
                 {
                     enemy.transform.position = posToSpawn;
                     enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    activeEnemies.Add(enemy);
                     enemy.SetActive(true);
                 }
+                Debug.Log("Spawn Complete");
                 return;
             }
             // Spawn enemy success, return
-        }
+        //}
     }
 
 }

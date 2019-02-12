@@ -24,7 +24,7 @@ public class WaveManager : MonoBehaviour {
 
     public Wave[] waves;
 
-    EnemySpawner eSpawner;
+    protected EnemySpawner eSpawner;
 
     private int nextWave = 0;
 
@@ -106,12 +106,12 @@ public class WaveManager : MonoBehaviour {
         Debug.Log("Spawning wave: " + _wave.name);
         state = SpawnState.Spawning;
 
-        for(int i = 0; i < _wave.enemyCount; i++)
+        //for(int i = 0; i < _wave.enemyCount; i++)
+        while(eSpawner.activeEnemies.Count < _wave.enemyCount)
         {
             //SpawnEnemy(_wave.enemy);
             eSpawner.PickSpawnLocation();
             yield return new WaitForSeconds(1.0f / _wave.spawnRate);
-            
         }
 
         state = SpawnState.Waiting;

@@ -23,8 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float attackDistance = 2;  //Range for the raycast
 
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -32,11 +32,11 @@ public class EnemyBehaviour : MonoBehaviour
         goal = GameObject.FindGameObjectWithTag("Player").transform;       //Finds player and sets as the enemy's goal
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
 
-        agent.Warp(transform.position);
+
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (goal != null)
         {
@@ -50,7 +50,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
             {
                 nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
-
+                Debug.Log("Raycast Hit");
                 anim.SetTrigger("Attack");              //Play attack animation
                 agent.isStopped = true;                 //Stop movement
             }
