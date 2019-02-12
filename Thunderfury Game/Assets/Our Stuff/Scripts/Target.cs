@@ -64,7 +64,6 @@ public class Target : MonoBehaviour
             Destroy(gameObject);
         }
 
-
         HUD.totalScore += scoreValue;
 
         if (dropsPickup == true)

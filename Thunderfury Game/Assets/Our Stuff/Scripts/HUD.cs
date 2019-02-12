@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
 	[SerializeField] protected PlayerHealth playerHealth;
 	[SerializeField] protected UseGun gunAmmo;
 	[SerializeField] protected Text tAmmo;
-	[SerializeField] protected Text tScore;
+	[SerializeField] protected TextMeshProUGUI tScore;
 	[SerializeField] protected Image healthBar;
 	[SerializeField] protected Image shieldBar;
 	[SerializeField] protected Image reloadingImage;
