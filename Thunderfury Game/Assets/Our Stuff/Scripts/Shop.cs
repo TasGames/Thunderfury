@@ -10,10 +10,14 @@ public class Shop : MonoBehaviour
 	public GameObject parentPrefab;
 	protected bool shopOpen = false;
 
+	[SerializeField] protected GameObject shopIcon;
+	[SerializeField] protected GameObject upgradeIcon;
+	[SerializeField] protected GameObject exitIcon;
+	protected GameObject currentIcon;
 
 	void Start() 
 	{
-		
+		currentIcon = shopIcon;
 	}
 	
 	void Update()
@@ -39,6 +43,36 @@ public class Shop : MonoBehaviour
 			Time.timeScale = 1.0f;
 			Cursor.visible = false;
 			shopOpen = false;
+		}
+	}
+
+	public void DisplayShop()
+	{
+		if (currentIcon != shopIcon)
+		{
+			currentIcon.SetActive(false);
+			shopIcon.SetActive(true);
+			currentIcon = shopIcon;
+		}
+	}
+
+	public void DisplayUpgrade()
+	{
+		if (currentIcon != upgradeIcon)
+		{
+			currentIcon.SetActive(false);
+			upgradeIcon.SetActive(true);
+			upgradeIcon = shopIcon;
+		}
+	}
+
+	public void DisplayExit()
+	{
+		if (currentIcon != exitIcon)
+		{
+			currentIcon.SetActive(false);
+			exitIcon.SetActive(true);
+			currentIcon = exitIcon;
 		}
 	}
 
