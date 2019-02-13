@@ -13,6 +13,11 @@ public class Shop : MonoBehaviour
 	[SerializeField] protected GameObject shopIcon;
 	[SerializeField] protected GameObject upgradeIcon;
 	[SerializeField] protected GameObject exitIcon;
+
+	[SerializeField] protected GameObject upgradeMenu;
+	[SerializeField] protected GameObject subShopMenu;
+	[SerializeField] protected GameObject baseShop;
+
 	protected GameObject currentIcon;
 
 	void Start() 
@@ -74,6 +79,38 @@ public class Shop : MonoBehaviour
 			exitIcon.SetActive(true);
 			currentIcon = exitIcon;
 		}
+	}
+
+	public void OpenUpgrade()
+	{
+		baseShop.SetActive(false);
+		upgradeMenu.SetActive(true);
+	}
+
+	public void CloseUpgrade()
+	{
+		upgradeMenu.SetActive(false);
+		baseShop.SetActive(true);
+	}
+
+	public void OpenSubShop()
+	{
+		baseShop.SetActive(false);
+		subShopMenu.SetActive(true);
+	}
+
+	public void CloseSubShop()
+	{
+		subShopMenu.SetActive(false);
+		baseShop.SetActive(true);
+	}
+
+	public void CloseShop()
+	{
+		shopMenu.SetActive(false);
+		Time.timeScale = 1.0f;
+		Cursor.visible = false;
+		shopOpen = false;
 	}
 
 }
