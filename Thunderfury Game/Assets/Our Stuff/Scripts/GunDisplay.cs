@@ -72,9 +72,4 @@ public class GunDisplay : MonoBehaviour
 			
 		}
 	}
-
-	public void Upgrade()
-	{
-
-	}
 }
