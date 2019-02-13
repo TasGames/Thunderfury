@@ -72,4 +72,9 @@ public class GunDisplay : MonoBehaviour
 			
 		}
 	}
+
+	public void SetGunPrefab(GameObject go)
+	{
+		gunPrefab = go;
+	}
 }

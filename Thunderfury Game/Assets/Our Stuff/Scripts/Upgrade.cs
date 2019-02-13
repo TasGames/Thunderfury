@@ -18,6 +18,8 @@ public class Upgrade : MonoBehaviour
 	protected GameObject rifle;
 	protected GameObject grenadeLauncher;
 	protected GameObject something;
+	
+	[SerializeField] protected GunDisplay gunDisplay;
 
 	void OnEnable()
 	{
@@ -65,6 +67,9 @@ public class Upgrade : MonoBehaviour
 
 	public void PistolButton()
 	{
-		
+		if (pistol != null)
+		{
+			gunDisplay.SetGunPrefab(pistol);
+		}
 	}
 }

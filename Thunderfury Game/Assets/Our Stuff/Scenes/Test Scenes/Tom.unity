@@ -7435,6 +7435,7 @@ MonoBehaviour:
   currentCredits: {fileID: 1427925323}
   requiredCredits: {fileID: 604293967}
   weaponParent: {fileID: 175677746}
+  gunDisplay: {fileID: 312552018}
 --- !u!1 &1070998070
 GameObject:
   m_ObjectHideFlags: 0
@@ -8371,7 +8372,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1229080449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1068374906}
+        m_MethodName: PistolButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1229080449
