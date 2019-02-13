@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using EZCameraShake;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
@@ -36,6 +37,8 @@ public class UseProjectile : MonoBehaviour
 			GameObject explosion = Instantiate(projectile.explosionEffect, transform.position, transform.rotation);
 			Destroy(explosion, 2);
 		}
+
+		CameraShaker.Instance.ShakeOnce(projectile.magnitude, projectile.roughness, projectile.fadeIn, projectile.fadeOut);
 
 		Collider[] collidersToDamage = Physics.OverlapSphere(transform.position, projectile.blastRadius);
 		foreach (Collider nearbyObject in collidersToDamage)

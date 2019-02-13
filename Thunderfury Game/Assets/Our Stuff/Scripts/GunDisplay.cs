@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GunDisplay : MonoBehaviour 
 {
@@ -12,17 +13,17 @@ public class GunDisplay : MonoBehaviour
 	protected Gun gun;
 
 	[Title("Gun Details")]
-	[SerializeField] protected Text gunName;
+	[SerializeField] protected TextMeshProUGUI gunName;
 	[SerializeField] protected Image gunIcon;
-	[SerializeField] protected Text gunDescription;
-	[SerializeField] protected Text gunDamage;
-	[SerializeField] protected Text gunImpact;
-	[SerializeField] protected Text gunFireRate;
-	[SerializeField] protected Text gunRecoil;
-	[SerializeField] protected Text gunAmmo;
-	[SerializeField] protected Text gunCost;
+	[SerializeField] protected TextMeshProUGUI gunDescription;
+	[SerializeField] protected TextMeshProUGUI gunDamage;
+	[SerializeField] protected TextMeshProUGUI gunImpact;
+	[SerializeField] protected TextMeshProUGUI gunFireRate;
+	[SerializeField] protected TextMeshProUGUI gunRecoil;
+	[SerializeField] protected TextMeshProUGUI gunAmmo;
+	[SerializeField] protected TextMeshProUGUI gunCost;
 	[SerializeField] protected GameObject buyButton;
-	[SerializeField] protected GameObject upgradeButton;
+	[SerializeField] protected GameObject purchasedButton;
 
 	void Start() 
 	{
@@ -32,15 +33,24 @@ public class GunDisplay : MonoBehaviour
 		UseGun useGun = gunPrefab.GetComponent<UseGun>();
 		gun = useGun.gun;
 
-		gunName.text = gun.name;
-		gunIcon.sprite = gun.icon;
-		gunDescription.text = gun.description;
-		gunDamage.text = "Damage: " + gun.damage;
-		gunImpact.text = "Impact: " + gun.impact;
-		gunFireRate.text = "Fire Rate: " + gun.fireRate;
-		gunRecoil.text = "Recoil: " + gun.recoil;
-		gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
-		gunCost.text = "" + gun.cost;
+		if (gunName != null)
+			gunName.text = gun.name;
+		if (gunIcon != null)
+			gunIcon.sprite = gun.icon;
+		if (gunDescription != null)
+			gunDescription.text = gun.description;
+		if (gunDamage != null)
+			gunDamage.text = "Damage: " + gun.damage;
+		if (gunImpact != null)
+			gunImpact.text = "Impact: " + gun.impact;
+		if (gunFireRate != null)
+			gunFireRate.text = "Fire Rate: " + gun.fireRate;
+		if (gunRecoil != null)
+			gunRecoil.text = "Recoil: " + gun.recoil;
+		if (gunAmmo != null)
+			gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
+		if (gunCost != null)
+			gunCost.text = "$" + gun.cost;
 
 	}
 	
@@ -58,13 +68,13 @@ public class GunDisplay : MonoBehaviour
 			HUD.totalScore -= gun.cost;
 			
 			buyButton.SetActive(false);
-			upgradeButton.SetActive(true);
+			purchasedButton.SetActive(true);
 			
 		}
 	}
 
-	public void Upgrade()
+	public void SetGunPrefab(GameObject go)
 	{
-
+		gunPrefab = go;
 	}
 }
