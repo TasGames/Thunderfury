@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour {
+public class WaveManager : MonoBehaviour
+{
 
-    public enum SpawnState {
+    public enum SpawnState
+    {
         Spawning,
         Waiting,
         Counting
@@ -14,17 +16,20 @@ public class WaveManager : MonoBehaviour {
     [System.Serializable]
     public class Wave
     {
-        public string name; //Name of the wave 
+        public string name;            //Name of the wave 
 
-        //public Transform enemy; //Enemy to spawn
-        public int enemyCount;  //Amount of enemies to spawn
+        public int WaveEnemyCount;     //Amount of enemies for the entire wave
+        public int activeAtOnce;       //Amount of enemies that can be in the level at one time
 
-        public float spawnRate; //Rate to spawn enemies
+        public float spawnRate;        //Rate to spawn enemies
     }
+
+    [HideInInspector]
+    public int enemiesRemaining;
 
     public Wave[] waves;
 
-    EnemySpawner eSpawner;
+    protected EnemySpawner eSpawner;
 
     private int nextWave = 0;
 
@@ -46,13 +51,19 @@ public class WaveManager : MonoBehaviour {
     {
         if (state == SpawnState.Waiting)    //If game state is waiting to spawn
         {
-            if (!EnemyIsAlive())    //If all enemies are dead
+            if (eSpawner.activeEnemies.Count == 0)
             {
-                WaveCompleted();    //Wave is complete
+                Debug.Log("Enemies Remaining: " + enemiesRemaining);
+                StartCoroutine(SpawnWave(waves[nextWave]));
+            }
+
+            if (!EnemyIsAlive())            //If all enemies are dead
+            {
+                WaveCompleted();            //Wave is complete
             }
             else
             {
-                return;             //Else keep checking
+                return;                     //Else keep checking
             }
         }
 
@@ -60,6 +71,7 @@ public class WaveManager : MonoBehaviour {
         {
             if (state != SpawnState.Spawning)   //If game is not spawning
             {
+                state = SpawnState.Spawning;
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
@@ -76,7 +88,7 @@ public class WaveManager : MonoBehaviour {
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
 
-        if(nextWave + 1 > waves.Length - 1)
+        if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
             Debug.Log("All waves completed. Looping.");
@@ -87,7 +99,7 @@ public class WaveManager : MonoBehaviour {
         }
     }
 
-    bool EnemyIsAlive()
+    bool EnemyIsAlive()     //Check if any enemies are alive
     {
         checkCountdown -= Time.deltaTime;
         if (checkCountdown <= 0.0f)
@@ -95,23 +107,38 @@ public class WaveManager : MonoBehaviour {
             checkCountdown = 1.0f;
             if (GameObject.FindGameObjectWithTag("Enemy1") == null)
             {
-                return false;
+                if (enemiesRemaining == 0)
+                {
+                    return false;
+                }
             }
+
         }
         return true;
     }
 
-    IEnumerator SpawnWave(Wave _wave)
+    IEnumerator SpawnWave(Wave _wave)   //Spawn next wave
     {
-        Debug.Log("Spawning wave: " + _wave.name);
-        state = SpawnState.Spawning;
+        if (state == SpawnState.Spawning)
+            enemiesRemaining = _wave.WaveEnemyCount;
 
-        for(int i = 0; i < _wave.enemyCount; i++)
+        Debug.Log("Spawning wave: " + _wave.name);
+
+
+        //for(int i = 0; i < _wave.enemyCount; i++)
+        while (eSpawner.activeEnemies.Count < _wave.activeAtOnce)
         {
-            //SpawnEnemy(_wave.enemy);
-            eSpawner.PickSpawnLocation();
-            yield return new WaitForSeconds(1.0f / _wave.spawnRate);
-            
+            if (eSpawner.activeEnemies.Count == enemiesRemaining)
+            {
+                yield break;
+            }
+            else
+            {
+                //SpawnEnemy(_wave.enemy);
+                eSpawner.PickSpawnLocation();
+
+                yield return new WaitForSeconds(1.0f / _wave.spawnRate);
+            }
         }
 
         state = SpawnState.Waiting;

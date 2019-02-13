@@ -27,6 +27,9 @@ public class Target : MonoBehaviour
 
     protected float totalWeight;
 
+    WaveManager waveManager;
+    EnemySpawner enemySpawner;
+
     void OnValidate()
     {
         totalWeight = 0f;
@@ -57,6 +60,12 @@ public class Target : MonoBehaviour
 
         if (gameObject.tag == "Enemy1")
         {
+            waveManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<WaveManager>();
+            waveManager.enemiesRemaining = waveManager.enemiesRemaining - 1;    //Reduce # of remaining enemies in the wave
+
+            enemySpawner = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemySpawner>();
+            enemySpawner.activeEnemies.Remove(this.gameObject);                 //Remove dead enemy from list
+
             gameObject.SetActive(false);
         }
         else
