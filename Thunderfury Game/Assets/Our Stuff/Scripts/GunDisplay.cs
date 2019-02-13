@@ -33,15 +33,24 @@ public class GunDisplay : MonoBehaviour
 		UseGun useGun = gunPrefab.GetComponent<UseGun>();
 		gun = useGun.gun;
 
-		gunName.text = gun.name;
-		gunIcon.sprite = gun.icon;
-		gunDescription.text = gun.description;
-		gunDamage.text = "Damage: " + gun.damage;
-		gunImpact.text = "Impact: " + gun.impact;
-		gunFireRate.text = "Fire Rate: " + gun.fireRate;
-		gunRecoil.text = "Recoil: " + gun.recoil;
-		gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
-		gunCost.text = "$" + gun.cost;
+		if (gunName != null)
+			gunName.text = gun.name;
+		if (gunIcon != null)
+			gunIcon.sprite = gun.icon;
+		if (gunDescription != null)
+			gunDescription.text = gun.description;
+		if (gunDamage != null)
+			gunDamage.text = "Damage: " + gun.damage;
+		if (gunImpact != null)
+			gunImpact.text = "Impact: " + gun.impact;
+		if (gunFireRate != null)
+			gunFireRate.text = "Fire Rate: " + gun.fireRate;
+		if (gunRecoil != null)
+			gunRecoil.text = "Recoil: " + gun.recoil;
+		if (gunAmmo != null)
+			gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
+		if (gunCost != null)
+			gunCost.text = "$" + gun.cost;
 
 	}
 	
