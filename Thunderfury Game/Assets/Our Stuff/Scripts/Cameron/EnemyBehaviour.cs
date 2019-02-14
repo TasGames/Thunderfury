@@ -29,8 +29,8 @@ public class EnemyBehaviour : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
 
-        goal = GameObject.FindGameObjectWithTag("Player").transform;       //Finds player and sets as the enemy's goal
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        goal = GameObject.Find("Player").transform;       //Finds player and sets as the enemy's goal
+        player = GameObject.Find("Player").GetComponent<PlayerHealth>();
 
 
     }
