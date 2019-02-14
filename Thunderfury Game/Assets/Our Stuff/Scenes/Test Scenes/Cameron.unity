@@ -17169,18 +17169,18 @@ MonoBehaviour:
   waveCounter: 1
   waves:
   - name: Wave 1
-    WaveEnemyCount: 1
-    activeAtOnce: 10
-    spawnRate: 1.5
+    WaveEnemyCount: 40
+    activeAtOnce: 8
+    spawnRate: 1.25
   - name: Wave 2
     WaveEnemyCount: 60
-    activeAtOnce: 15
-    spawnRate: 1.5
+    activeAtOnce: 12
+    spawnRate: 1.25
   - name: Wave 3
-    WaveEnemyCount: 100
-    activeAtOnce: 20
-    spawnRate: 1.5
-  timeBetweenWaves: 2
+    WaveEnemyCount: 80
+    activeAtOnce: 16
+    spawnRate: 1.25
+  timeBetweenWaves: 3
   state: 2
 --- !u!1001 &404189702
 Prefab:
@@ -78025,7 +78025,7 @@ MonoBehaviour:
   itemsToPool:
   - objectToPool: {fileID: 1247069249957654, guid: 2fda2a8c3dfc9b84a930c564298c127b,
       type: 2}
-    amountToPool: 30
+    amountToPool: 20
     shouldExpand: 1
 --- !u!4 &1832799876
 Transform:

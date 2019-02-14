@@ -21,7 +21,7 @@ MonoBehaviour:
   fireSound: {fileID: 0}
   fireRate: 5
   recoil: 5
-  magSize: 6
+  magSize: 10
   maxAmmo: 20
   reloadTime: 2
   impact: 100
@@ -32,6 +32,6 @@ MonoBehaviour:
   bulletMark: {fileID: 0}
   takesAmmoType: 0
   damage: 10
-  damageRange: 2
+  damageRange: 3
   projectilePrefab: {fileID: 0}
   projectileForce: 0

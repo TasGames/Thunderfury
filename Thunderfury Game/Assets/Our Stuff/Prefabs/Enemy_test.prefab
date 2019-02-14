@@ -1185,7 +1185,9 @@ MonoBehaviour:
   dropPercentage: 16.8
   dropList:
   - pickup: {fileID: 1122297406186736, guid: 300516f0d85761344bba325cdef8a095, type: 2}
-    weight: 0.2
+    weight: 0.7
+  - pickup: {fileID: 1422375421506994, guid: 5057b0ae207cea04f9a9da94aa5cdda5, type: 2}
+    weight: 0.3
 --- !u!137 &137096710117660406
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
