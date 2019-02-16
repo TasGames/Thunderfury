@@ -50,7 +50,17 @@ public class EnemyBehaviour : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
             {
                 nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
-                anim.SetTrigger("Attack");              //Play attack animation
+
+                int randNum = Random.Range(0, 2);
+                switch (randNum)
+                {
+                    case 0:
+                        anim.SetTrigger("Attack");
+                        break;
+                    case 1:
+                        anim.SetTrigger("Attack2");
+                        break;
+                }
                 agent.isStopped = true;                 //Stop movement
             }
         }

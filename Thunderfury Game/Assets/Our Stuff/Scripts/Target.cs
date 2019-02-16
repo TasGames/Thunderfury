@@ -30,6 +30,8 @@ public class Target : MonoBehaviour
     WaveManager waveManager;
     EnemySpawner enemySpawner;
 
+    Animator enemyAnim;
+
     void OnValidate()
     {
         totalWeight = 0f;
@@ -48,6 +50,14 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        if (this.gameObject.tag == "Enemy1")
+        {
+            if (enemyAnim == null)
+            {
+                enemyAnim = GetComponent<Animator>();
+            }
+            enemyAnim.SetTrigger("Hit");
+        }
 
         if (health <= 0)
             Destroy();
