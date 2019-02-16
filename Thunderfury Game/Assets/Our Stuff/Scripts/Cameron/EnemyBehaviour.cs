@@ -61,7 +61,7 @@ public class EnemyBehaviour : MonoBehaviour
                         anim.SetTrigger("Attack2");
                         break;
                 }
-                agent.isStopped = true;                 //Stop movement
+                StopMovement();                //Stop movement
             }
         }
     }
@@ -82,5 +82,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (agent.isStopped)
             agent.isStopped = false;
+    }
+
+    public void StopMovement() //Triggered in ZombieAttack animation timeline
+    {
+        if (!agent.isStopped)
+            agent.isStopped = true;
     }
 }
