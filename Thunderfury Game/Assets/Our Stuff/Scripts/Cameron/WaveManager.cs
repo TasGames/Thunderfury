@@ -26,6 +26,8 @@ public class WaveManager : MonoBehaviour
 
     [HideInInspector]
     public int enemiesRemaining;
+    [HideInInspector]
+    public int waveCounter = 1;
 
     public Wave[] waves;
 
@@ -87,6 +89,7 @@ public class WaveManager : MonoBehaviour
 
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
+        waveCounter++;
 
         if (nextWave + 1 > waves.Length - 1)
         {
@@ -130,6 +133,9 @@ public class WaveManager : MonoBehaviour
         {
             if (eSpawner.activeEnemies.Count == enemiesRemaining)
             {
+                if (state != SpawnState.Waiting)
+                    state = SpawnState.Waiting;
+                    
                 yield break;
             }
             else
