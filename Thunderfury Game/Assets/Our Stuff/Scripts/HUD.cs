@@ -13,6 +13,9 @@ public class HUD : MonoBehaviour
 	[SerializeField] protected Image healthBar;
 	[SerializeField] protected Image shieldBar;
 	[SerializeField] protected Image reloadingImage;
+	[SerializeField] protected Image sadHeart;
+	[SerializeField] protected Image happyHeart;
+	protected bool isSad = false;
 
 	public static int totalScore = 0;
 
@@ -36,6 +39,22 @@ public class HUD : MonoBehaviour
 				reloadingImage.gameObject.SetActive(true);
 			else
 				reloadingImage.gameObject.SetActive(false);
+		}
+
+		if (sadHeart != null)
+		{
+			if (playerHealth.pHealth < 150 && isSad == false)
+			{
+				sadHeart.gameObject.SetActive(true);
+				happyHeart.gameObject.SetActive(false);
+				isSad = true;
+			}
+			else if (playerHealth.pHealth >= 150 && isSad == true)
+			{
+				sadHeart.gameObject.SetActive(false);
+				happyHeart.gameObject.SetActive(true);
+				isSad = false;
+			}
 		}
 	}
 }
