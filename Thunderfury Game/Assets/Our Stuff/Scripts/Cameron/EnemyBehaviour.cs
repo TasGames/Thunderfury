@@ -66,7 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void DealDamage()
+    public void DealDamage()    //Triggered in ZombieAttack animation timeline
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask))
         {
@@ -78,8 +78,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void BeginMovement()
+    public void BeginMovement() //Triggered in ZombieAttack animation timeline
     {
-        agent.isStopped = false;
+        if (agent.isStopped)
+            agent.isStopped = false;
     }
 }
