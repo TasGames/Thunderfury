@@ -61142,6 +61142,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 54051972371414024, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e, type: 2}
   m_IsPrefabAsset: 0
@@ -78025,6 +78030,10 @@ MonoBehaviour:
   pooledObjects: []
   itemsToPool:
   - objectToPool: {fileID: 1688263224673312, guid: 06e7455ad9480f24a8c03c3e90e75bc2,
+      type: 2}
+    amountToPool: 20
+    shouldExpand: 1
+  - objectToPool: {fileID: 1131939207076656, guid: 1325e590cd226d84196d0a9460220345,
       type: 2}
     amountToPool: 20
     shouldExpand: 1

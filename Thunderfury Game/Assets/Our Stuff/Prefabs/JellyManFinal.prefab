@@ -415,7 +415,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688263224673312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.908222, y: -5.599, z: -81.47723}
+  m_LocalPosition: {x: -2.3032978, y: -1.709837, z: -79.5966}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4802154973667322}
@@ -817,15 +817,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  brokenVersion: {fileID: 0}
+  brokenVersion: {fileID: 1131939207076656, guid: 1325e590cd226d84196d0a9460220345,
+    type: 2}
   scoreValue: 100
   dropsPickup: 1
-  dropPercentage: 16.8
+  dropPercentage: 20
   dropList:
   - pickup: {fileID: 1122297406186736, guid: 300516f0d85761344bba325cdef8a095, type: 2}
     weight: 0.7
   - pickup: {fileID: 1422375421506994, guid: 5057b0ae207cea04f9a9da94aa5cdda5, type: 2}
     weight: 0.3
+  originalHealth: 20
 --- !u!137 &137216370550967188
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -841,7 +843,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f394a86d879c95947a19c262dcec405c, type: 3}
+  - {fileID: 2100000, guid: f63c653cc7a5e1f4db51e785b970ea3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -909,7 +911,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100002, guid: f394a86d879c95947a19c262dcec405c, type: 3}
+  - {fileID: 2100000, guid: e5778796f75019646a2e419f44147659, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
