@@ -17,6 +17,7 @@ public class Shop : MonoBehaviour
 	[SerializeField] protected GameObject upgradeMenu;
 	[SerializeField] protected GameObject subShopMenu;
 	[SerializeField] protected GameObject baseShop;
+	[SerializeField] protected GameObject hud;
 
 	protected GameObject currentIcon;
 
@@ -38,6 +39,7 @@ public class Shop : MonoBehaviour
 		if (shopOpen == false)
 		{
 			shopMenu.SetActive(true);
+			hud.SetActive(false);
 			Time.timeScale = 0.0f;
 			Cursor.visible = true;
 			shopOpen = true;
@@ -45,6 +47,7 @@ public class Shop : MonoBehaviour
 		else
 		{
 			shopMenu.SetActive(false);
+			hud.SetActive(true);
 			Time.timeScale = 1.0f;
 			Cursor.visible = false;
 			shopOpen = false;
@@ -108,6 +111,7 @@ public class Shop : MonoBehaviour
 	public void CloseShop()
 	{
 		shopMenu.SetActive(false);
+		hud.SetActive(true);
 		Time.timeScale = 1.0f;
 		Cursor.visible = false;
 		shopOpen = false;
