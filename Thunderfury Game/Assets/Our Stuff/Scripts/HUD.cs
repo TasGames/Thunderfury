@@ -8,8 +8,10 @@ public class HUD : MonoBehaviour
 {
 	[SerializeField] protected PlayerHealth playerHealth;
 	[SerializeField] protected UseGun gunAmmo;
+	[SerializeField] protected WaveManager wave;
 	[SerializeField] protected Text tAmmo;
 	[SerializeField] protected TextMeshProUGUI tScore;
+	[SerializeField] protected TextMeshProUGUI waveCount;
 	[SerializeField] protected Image healthBar;
 	[SerializeField] protected Image shieldBar;
 	[SerializeField] protected Image reloadingImage;
@@ -25,7 +27,7 @@ public class HUD : MonoBehaviour
 			tAmmo.text = gunAmmo.currentMag + " / " + gunAmmo.ammoPool;
 
 		if (tScore != null)
-			tScore.text = "Score: " + totalScore;
+			tScore.text = "$" + totalScore;
 
 		if (healthBar != null)
 			healthBar.fillAmount = playerHealth.pHealth / playerHealth.maxHealth;
@@ -55,6 +57,11 @@ public class HUD : MonoBehaviour
 				happyHeart.gameObject.SetActive(true);
 				isSad = false;
 			}
+		}
+
+		if (waveCount != null)
+		{
+			waveCount.text = "" + wave.waveCounter;
 		}
 	}
 }
