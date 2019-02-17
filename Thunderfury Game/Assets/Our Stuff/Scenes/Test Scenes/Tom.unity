@@ -14272,6 +14272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPrefab: {fileID: 0}
+  shotgun: {fileID: 0}
   gunName: {fileID: 255740758}
   gunIcon: {fileID: 0}
   gunDescription: {fileID: 0}
@@ -18848,7 +18849,7 @@ MonoBehaviour:
     maximumX: 90
     smooth: 0
     smoothTime: 5
-    lockCursor: 1
+    lockCursor: 0
   advancedSettings:
     groundCheckDistance: 0.01
     stickToGroundHelperDistance: 0.5
@@ -37466,7 +37467,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 816923337}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1068374906}
+        m_MethodName: ShotgunButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &816923337
@@ -41043,7 +41055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &904739572
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47327,7 +47339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1068374903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47490,6 +47502,12 @@ MonoBehaviour:
   currentCredits: {fileID: 1427925323}
   requiredCredits: {fileID: 604293967}
   weaponParent: {fileID: 175677746}
+  pistol: {fileID: 1982368279138996, guid: 54573967b4989cc45a7cae08211769f5, type: 2}
+  shotgun: {fileID: 1243505612799898, guid: 7151e628573d36b479166daf2fa7de09, type: 2}
+  rifle: {fileID: 1699710384750632, guid: 97b7ebbcd47883546a443048dcdc9081, type: 2}
+  grenadeLauncher: {fileID: 1662571414635970, guid: 91f6331b3ab831643b77e854d9318904,
+    type: 2}
+  something: {fileID: 0}
   gunDisplay: {fileID: 312552018}
   pistolButton: {fileID: 1229080446}
   shotgunButton: {fileID: 816923334}
@@ -53605,7 +53623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1229080447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61025,7 +61043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1405405654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61083,7 +61101,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1405405656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1068374906}
+        m_MethodName: GrenadeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1405405656
@@ -63861,6 +63890,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1243505612799898, guid: 7151e628573d36b479166daf2fa7de09,
         type: 2}
+    - target: {fileID: 114448031278536276, guid: 57d0f9a27e5e39e489e3b205448238da,
+        type: 2}
+      propertyPath: shotgun
+      value: 
+      objectReference: {fileID: 816923334}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d0f9a27e5e39e489e3b205448238da, type: 2}
   m_IsPrefabAsset: 0
@@ -63955,7 +63989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1443771965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -87818,7 +87852,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2006322702}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1068374906}
+        m_MethodName: RifleButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2006322702
@@ -88631,11 +88676,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -88778,7 +88823,7 @@ MonoBehaviour:
   gunAmmo: {fileID: 0}
   wave: {fileID: 0}
   tAmmo: {fileID: 0}
-  tScore: {fileID: 0}
+  tScore: {fileID: 1850157589}
   waveCount: {fileID: 0}
   healthBar: {fileID: 764474255}
   shieldBar: {fileID: 503520396}

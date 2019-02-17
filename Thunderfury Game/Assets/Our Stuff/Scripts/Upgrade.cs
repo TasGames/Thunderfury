@@ -13,11 +13,11 @@ public class Upgrade : MonoBehaviour
 	protected int possibleCredits;
 
 	[SerializeField] protected GameObject weaponParent;
-	protected GameObject pistol;
-	protected GameObject shotgun;
-	protected GameObject rifle;
-	protected GameObject grenadeLauncher;
-	protected GameObject something;
+	[SerializeField] protected GameObject pistol;
+	[SerializeField] protected GameObject shotgun;
+	[SerializeField] protected GameObject rifle;
+	[SerializeField] protected GameObject grenadeLauncher;
+	[SerializeField] protected GameObject something;
 	
 	[SerializeField] protected GunDisplay gunDisplay;
 
@@ -30,50 +30,30 @@ public class Upgrade : MonoBehaviour
 
 	void OnEnable()
 	{
-		if (pistol == null)
-		{
-			if (weaponParent.transform.Find("Pistol").gameObject)
-			{
-				pistol = weaponParent.transform.Find("Pistol").gameObject;
-				pistolButton.SetActive(true);
-			}
-		}
+		/*pistol = GameObject.Find("Pistol");
 
-		if (shotgun == null)
-		{
-			if (weaponParent.transform.Find("Shotgun").gameObject)
-			{
-				shotgun = weaponParent.transform.Find("Shotgun").gameObject;
-				shotgunButton.SetActive(true);
-			}
-		}
+		if (pistol != null)
+			pistolButton.SetActive(true);
 
-		if (rifle == null)
-		{
-			if (weaponParent.transform.Find("Rifle").gameObject)
-			{
-				rifle = weaponParent.transform.Find("Rifle").gameObject;
-				rifleButton.SetActive(true);
-			}
-		}
+		shotgun = GameObject.Find("Shotgun");
+		
+		if (shotgun != null)
+			shotgunButton.SetActive(true);
 
-		if (grenadeLauncher == null)
-		{
-			if (weaponParent.transform.Find("Grenade Launcher").gameObject)
-			{
-				grenadeLauncher = weaponParent.transform.Find("Grenade Launcher").gameObject;
-				grenadeButton.SetActive(true);
-			}
-		}
-			
-		if (something == null)
-		{
-			if (weaponParent.transform.Find("something").gameObject)
-			{
-				something = weaponParent.transform.Find("something").gameObject;
-				somethingButton.SetActive(true);	
-			}
-		}								
+		rifle = GameObject.Find("Rifle");
+		
+		if (rifle != null)
+			rifleButton.SetActive(true);
+
+		grenadeLauncher = GameObject.Find("Grenade Launcher");
+
+		if (grenadeLauncher != null)
+			grenadeButton.SetActive(true);
+
+		something = GameObject.Find("something");
+
+		if (something != null)
+			somethingButton.SetActive(true);*/									
 	}
 	
 	void Update() 
@@ -96,6 +76,43 @@ public class Upgrade : MonoBehaviour
 		if (pistol != null)
 		{
 			gunDisplay.SetGunPrefab(pistol);
+			gunDisplay.Display();
+		}
+	}
+
+	public void ShotgunButton()
+	{
+		if (shotgun != null)
+		{
+			gunDisplay.SetGunPrefab(shotgun);
+			gunDisplay.Display();
+		}
+	}
+
+	public void RifleButton()
+	{
+		if (rifle != null)
+		{
+			gunDisplay.SetGunPrefab(rifle);
+			gunDisplay.Display();
+		}
+	}
+
+	public void GrenadeButton()
+	{
+		if (grenadeButton != null)
+		{
+			gunDisplay.SetGunPrefab(grenadeButton);
+			gunDisplay.Display();
+		}
+	}
+
+	public void SomethingButton()
+	{
+		if (something != null)
+		{
+			gunDisplay.SetGunPrefab(something);
+			gunDisplay.Display();
 		}
 	}
 }
