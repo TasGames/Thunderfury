@@ -39,7 +39,9 @@ ScriptedImporter:
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://Commercial_wall_texture\" label=\"\" >\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://Commercial_wall_texture\" label=\"\" >\n  <presetinput
+      identifier=\"Grime_level\" uid=\"2107209051\" type=\"0\" value=\"0.459\" />\n
+      </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height
     texturePackingList:
@@ -227,4 +229,8 @@ ScriptedImporter:
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100004, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
-    generatedTextures: []
+    generatedTextures:
+    - {fileID: 2800016, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
+    - {fileID: 2800018, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
+    - {fileID: 2800020, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
+    - {fileID: 2800022, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
