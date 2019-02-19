@@ -71,20 +71,20 @@ public class Target : MonoBehaviour
     {
         if (brokenVersion != null)
         {
-            if (brokenVersion.name == "Enemy1Ragdoll")   //If BrokenVersion is enemy ragdoll, spawn with ObjectPooler
-            {
-                GameObject enemyRagdoll = ObjectPooler.SharedInstance.GetPooledObject("Enemy1Ragdoll");
-                if (enemyRagdoll != null)
-                {
-                    enemyRagdoll.transform.position = this.gameObject.transform.position;
-                    enemyRagdoll.transform.rotation = this.gameObject.transform.rotation;
-                    enemyRagdoll.SetActive(true);
-                }
-            }
-            else
-            {
+            // if (brokenVersion.name == "Enemy1Ragdoll")   //If BrokenVersion is enemy ragdoll, spawn with ObjectPooler
+            // {
+            //     GameObject enemyRagdoll = ObjectPooler.SharedInstance.GetPooledObject("Enemy1Ragdoll");
+            //     if (enemyRagdoll != null)
+            //     {
+            //         enemyRagdoll.transform.position = this.gameObject.transform.position;
+            //         enemyRagdoll.transform.rotation = this.gameObject.transform.rotation;
+            //         enemyRagdoll.SetActive(true);
+            //     }
+            // }
+            // else
+            // {
                 Instantiate(brokenVersion, transform.position, transform.rotation);
-            }
+            // }
         }
 
 
