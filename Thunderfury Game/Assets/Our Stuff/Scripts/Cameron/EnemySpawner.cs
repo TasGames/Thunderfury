@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemy;   //Enemy Object
 
+    Target enemyHealth; //To reset enemy health on spawn
+
     //[HideInInspector]
     public List<GameObject> activeSpawns = new List<GameObject>();
 
@@ -50,6 +52,9 @@ public class EnemySpawner : MonoBehaviour
                 GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
                 if (enemy != null)
                 {
+                    enemyHealth = enemy.GetComponent<Target>();
+                    enemyHealth.health = enemyHealth.originalHealth;
+                    
                     enemy.transform.position = posToSpawn;
                     enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
                     activeEnemies.Add(enemy);

@@ -50,13 +50,23 @@ public class EnemyBehaviour : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
             {
                 nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
-                anim.SetTrigger("Attack");              //Play attack animation
-                agent.isStopped = true;                 //Stop movement
+
+                int randNum = Random.Range(0, 2);
+                switch (randNum)
+                {
+                    case 0:
+                        anim.SetTrigger("Attack");
+                        break;
+                    case 1:
+                        anim.SetTrigger("Attack2");
+                        break;
+                }
+                StopMovement();                //Stop movement
             }
         }
     }
 
-    public void DealDamage()
+    public void DealDamage()    //Triggered in ZombieAttack animation timeline
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask))
         {
@@ -68,8 +78,15 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void BeginMovement()
+    public void BeginMovement() //Triggered in ZombieAttack animation timeline
     {
-        agent.isStopped = false;
+        if (agent.isStopped)
+            agent.isStopped = false;
+    }
+
+    public void StopMovement() //Triggered in ZombieAttack animation timeline
+    {
+        if (!agent.isStopped)
+            agent.isStopped = true;
     }
 }

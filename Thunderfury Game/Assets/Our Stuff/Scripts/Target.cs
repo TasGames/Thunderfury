@@ -14,7 +14,7 @@ public class Target : MonoBehaviour
     }
 
     [Title("Target Stats")]
-    [SerializeField] protected float health;
+    [SerializeField] public float health;
     [SerializeField] protected GameObject brokenVersion;
 
     [Title("Score")]
@@ -26,9 +26,13 @@ public class Target : MonoBehaviour
     [SerializeField] [ShowIf("dropsPickup", true)] protected Drops[] dropList;
 
     protected float totalWeight;
+    [HideInInspector]
+    public float originalHealth;
 
     WaveManager waveManager;
     EnemySpawner enemySpawner;
+
+    Animator enemyAnim;
 
     void OnValidate()
     {
@@ -38,6 +42,8 @@ public class Target : MonoBehaviour
             foreach (var Drops in dropList)
                 totalWeight += Drops.weight;
         }
+
+        originalHealth = health;    //To reset health in EnemySpawner.cs
     }
 
     void Awake()
@@ -48,6 +54,14 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        if (this.gameObject.tag == "Enemy1")    //If enemy is taking damage
+        {
+            if (enemyAnim == null)
+            {
+                enemyAnim = GetComponent<Animator>();
+            }
+            enemyAnim.SetTrigger("Hit");    //Trigger HitByPlayer animation
+        }
 
         if (health <= 0)
             Destroy();
@@ -56,7 +70,23 @@ public class Target : MonoBehaviour
     void Destroy()
     {
         if (brokenVersion != null)
-            Instantiate(brokenVersion, transform.position, transform.rotation);
+        {
+            // if (brokenVersion.name == "Enemy1Ragdoll")   //If BrokenVersion is enemy ragdoll, spawn with ObjectPooler
+            // {
+            //     GameObject enemyRagdoll = ObjectPooler.SharedInstance.GetPooledObject("Enemy1Ragdoll");
+            //     if (enemyRagdoll != null)
+            //     {
+            //         enemyRagdoll.transform.position = this.gameObject.transform.position;
+            //         enemyRagdoll.transform.rotation = this.gameObject.transform.rotation;
+            //         enemyRagdoll.SetActive(true);
+            //     }
+            // }
+            // else
+            // {
+                Instantiate(brokenVersion, transform.position, transform.rotation);
+            // }
+        }
+
 
         if (gameObject.tag == "Enemy1")
         {
