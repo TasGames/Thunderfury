@@ -21,8 +21,13 @@ GameObject:
   - component: {fileID: 4836483518813234}
   - component: {fileID: 33702732488122476}
   - component: {fileID: 23234772629148738}
+<<<<<<< HEAD
   - component: {fileID: 65163096754262174}
   - component: {fileID: 65914925457634164}
+=======
+  - component: {fileID: 65096990146951560}
+  - component: {fileID: 65187448113318574}
+>>>>>>> KJBranch14
   m_Layer: 0
   m_Name: Wall_corner_out
   m_TagString: Untagged
@@ -36,8 +41,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1921431934923096}
+<<<<<<< HEAD
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: -1.158, y: -11.262, z: -70.32}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.842, y: -11.262, z: -94.319}
+>>>>>>> KJBranch14
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +95,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1921431934923096}
   m_Mesh: {fileID: 4300000, guid: 53f7886bda0567944bb55fb956341422, type: 3}
+<<<<<<< HEAD
 --- !u!65 &65163096754262174
+=======
+--- !u!65 &65096990146951560
+>>>>>>> KJBranch14
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,9 +109,15 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
   m_Size: {x: 0.655017, y: 4, z: 4.6000013}
   m_Center: {x: 0.28250006, y: 2, z: -2.2999997}
 --- !u!65 &65914925457634164
+=======
+  m_Size: {x: 0.62799805, y: 4, z: 4.6000004}
+  m_Center: {x: 0.29600224, y: 2, z: -2.299985}
+--- !u!65 &65187448113318574
+>>>>>>> KJBranch14
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,5 +127,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
   m_Size: {x: 4.658561, y: 4, z: 0.6467662}
   m_Center: {x: -1.7192727, y: 2, z: -4.2766175}
+=======
+  m_Size: {x: 3.9653616, y: 4, z: 0.5298879}
+  m_Center: {x: -2.0173182, y: 2, z: -4.335041}
+>>>>>>> KJBranch14
