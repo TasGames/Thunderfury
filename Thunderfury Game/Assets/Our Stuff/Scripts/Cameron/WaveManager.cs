@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class WaveManager : MonoBehaviour
 
     public Wave[] waves;
 
+    public Transform teleportSpot;
+    Transform thePlayer;
     protected EnemySpawner eSpawner;
 
     private int nextWave = 0;
@@ -42,11 +45,19 @@ public class WaveManager : MonoBehaviour
 
     public SpawnState state = SpawnState.Counting;
 
+    public Image fadeImage;
+    public float fadeSpeed;
+    bool fadedOut;
     void Start()
     {
         waveCountdown = timeBetweenWaves;
 
         eSpawner = GetComponent<EnemySpawner>();
+
+        teleportSpot = GameObject.Find("TeleportSpot").transform;
+        thePlayer = GameObject.Find("Player").transform;
+
+        fadedOut = false;
     }
 
     void Update()
@@ -61,7 +72,7 @@ public class WaveManager : MonoBehaviour
 
             if (!EnemyIsAlive())            //If all enemies are dead
             {
-                WaveCompleted();            //Wave is complete
+                ShoppingTime();            //Wave is complete, teleport player to shop
             }
             else
             {
@@ -81,6 +92,18 @@ public class WaveManager : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;
         }
+    }
+
+    void ShoppingTime()
+    {
+        StartCoroutine(ScreenFadeOut());
+
+        //Teleport player to shop location
+        thePlayer.transform.position = teleportSpot.transform.position;
+        thePlayer.transform.rotation = teleportSpot.transform.rotation;
+
+
+        WaveCompleted();    //Trigger WaveCompleted to trigger countdown for next wave
     }
 
     void WaveCompleted()
@@ -135,7 +158,7 @@ public class WaveManager : MonoBehaviour
             {
                 if (state != SpawnState.Waiting)
                     state = SpawnState.Waiting;
-                    
+
                 yield break;
             }
             else
@@ -152,4 +175,30 @@ public class WaveManager : MonoBehaviour
         yield break;
     }
 
+    private YieldInstruction fadeInstruction = new YieldInstruction();
+    IEnumerator ScreenFadeOut()
+    {
+        float elapsedTime = 0.0f;
+        Color c = fadeImage.color;
+        while (elapsedTime < fadeSpeed)
+        {
+            yield return fadeInstruction;
+            elapsedTime += Time.deltaTime;
+            c.a = 1.0f - Mathf.Clamp01(elapsedTime / fadeSpeed);
+            fadeImage.color = c;
+        }
+    }
+
+    IEnumerator ScreenFadeIn()
+    {
+        float elapsedTime = 0.0f;
+        Color c = fadeImage.color;
+        while (elapsedTime < fadeSpeed)
+        {
+            yield return fadeInstruction;
+            elapsedTime += Time.deltaTime;
+            c.a = Mathf.Clamp01(elapsedTime / fadeSpeed);
+            fadeImage.color = c;
+        }
+    }
 }
