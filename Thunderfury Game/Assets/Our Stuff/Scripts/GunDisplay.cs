@@ -9,6 +9,7 @@ public class GunDisplay : MonoBehaviour
 {
 	[Title("Gun")]
 	[SerializeField] protected GameObject gunPrefab;
+	[SerializeField] protected GameObject shotgun;
 	protected GameObject parentPrefab;
 	protected Gun gun;
 
@@ -30,6 +31,37 @@ public class GunDisplay : MonoBehaviour
 		Shop shop = transform.root.GetComponent<Shop>();
 		parentPrefab = shop.parentPrefab;
 
+		Display();
+
+	}
+	
+	public void Buy()
+	{
+		int costCompare = HUD.totalScore;
+
+		if (costCompare >= gun.cost)
+		{
+			Quaternion rot = parentPrefab.transform.rotation;
+
+			GameObject gunObject = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
+			gunObject.SetActive(false);
+
+			HUD.totalScore -= gun.cost;
+			
+			buyButton.SetActive(false);
+			purchasedButton.SetActive(true);
+			shotgun.SetActive(true);
+			
+		}
+	}
+
+	public void SetGunPrefab(GameObject go)
+	{
+		gunPrefab = go;
+	}
+
+	public void Display()
+	{
 		UseGun useGun = gunPrefab.GetComponent<UseGun>();
 		gun = useGun.gun;
 
@@ -51,30 +83,5 @@ public class GunDisplay : MonoBehaviour
 			gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
 		if (gunCost != null)
 			gunCost.text = "$" + gun.cost;
-
-	}
-	
-	public void Buy()
-	{
-		int costCompare = HUD.totalScore;
-
-		if (costCompare >= gun.cost)
-		{
-			Quaternion rot = parentPrefab.transform.rotation;
-
-			GameObject gunObject = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
-			gunObject.SetActive(false);
-
-			HUD.totalScore -= gun.cost;
-			
-			buyButton.SetActive(false);
-			purchasedButton.SetActive(true);
-			
-		}
-	}
-
-	public void SetGunPrefab(GameObject go)
-	{
-		gunPrefab = go;
 	}
 }
