@@ -26,8 +26,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void PickSpawnLocation()
     {
-        //if (activeSpawns.Count < 0)
-        //{
+        if (activeSpawns.Count > 0)
+        {
             int spawnPointIndex = Random.Range(0, activeSpawns.Count);
 
             // Generate a random position
@@ -64,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
                 return;
             }
             // Spawn enemy success, return
-        //}
+        }
     }
 
 }

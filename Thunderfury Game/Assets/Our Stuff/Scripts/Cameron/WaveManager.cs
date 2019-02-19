@@ -10,7 +10,8 @@ public class WaveManager : MonoBehaviour
     {
         Spawning,
         Waiting,
-        Counting
+        Counting,
+        DoNothing
     };
 
 
@@ -43,11 +44,11 @@ public class WaveManager : MonoBehaviour
 
     private float checkCountdown = 1.0f;    //Check if enemies alive every 1 second
 
-    public SpawnState state = SpawnState.Counting;
+    public SpawnState state = SpawnState.DoNothing;
 
     public Image fadeImage;
     public float fadeSpeed;
-    bool fadedOut;
+
     void Start()
     {
         waveCountdown = timeBetweenWaves;
@@ -56,8 +57,6 @@ public class WaveManager : MonoBehaviour
 
         teleportSpot = GameObject.Find("TeleportSpot").transform;
         thePlayer = GameObject.Find("Player").transform;
-
-        fadedOut = false;
     }
 
     void Update()
@@ -88,7 +87,7 @@ public class WaveManager : MonoBehaviour
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
-        else
+        else if (state == SpawnState.Counting)
         {
             waveCountdown -= Time.deltaTime;
         }
@@ -96,13 +95,15 @@ public class WaveManager : MonoBehaviour
 
     void ShoppingTime()
     {
-        StartCoroutine(ScreenFadeOut());
+        state = SpawnState.DoNothing;
+        waveCounter++;
+        StartCoroutine(ScreenFadeOut());    //Teleport screen flash
 
         //Teleport player to shop location
         thePlayer.transform.position = teleportSpot.transform.position;
         thePlayer.transform.rotation = teleportSpot.transform.rotation;
 
-
+        //Once stepped into trigger to start next wave:
         WaveCompleted();    //Trigger WaveCompleted to trigger countdown for next wave
     }
 
@@ -112,7 +113,6 @@ public class WaveManager : MonoBehaviour
 
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
-        waveCounter++;
 
         if (nextWave + 1 > waves.Length - 1)
         {
