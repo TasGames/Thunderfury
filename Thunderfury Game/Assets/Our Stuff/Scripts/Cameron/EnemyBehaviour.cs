@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float attackRate;
     float nextAttack;                       //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast
-
+    bool canCheckForAttack;
 
     // Use this for initialization
     void Start()
@@ -32,7 +32,8 @@ public class EnemyBehaviour : MonoBehaviour
         goal = GameObject.Find("Player").transform;       //Finds player and sets as the enemy's goal
         player = GameObject.Find("Player").GetComponent<PlayerHealth>();
 
-
+        canCheckForAttack = true;
+        StartCoroutine(CheckForAttack());
     }
 
     // Update is called once per frame
@@ -41,28 +42,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (goal != null)
         {
             agent.SetDestination(goal.position);
-        }
-
-        if (Vector3.Distance(transform.position, goal.position) < attackDistance)
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);
-
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
-            {
-                nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
-
-                int randNum = Random.Range(0, 2);
-                switch (randNum)
-                {
-                    case 0:
-                        anim.SetTrigger("Attack");
-                        break;
-                    case 1:
-                        anim.SetTrigger("Attack2");
-                        break;
-                }
-                StopMovement();                //Stop movement
-            }
         }
     }
 
@@ -88,5 +67,40 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (!agent.isStopped)
             agent.isStopped = true;
+    }
+
+    void AttackAnimation()
+    {
+        int randNum = Random.Range(0, 2);
+        switch (randNum)
+        {
+            case 0:
+                anim.SetTrigger("Attack");
+                break;
+            case 1:
+                anim.SetTrigger("Attack2");
+                break;
+        }
+    }
+
+    IEnumerator CheckForAttack()
+    {
+        while (canCheckForAttack)
+        {
+            if (Vector3.Distance(transform.position, goal.position) < attackDistance)
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);
+
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
+                {
+                    nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
+
+                    AttackAnimation();
+                    StopMovement();                //Stop movement
+                }
+            }
+            yield return null;
+        }
+
     }
 }
