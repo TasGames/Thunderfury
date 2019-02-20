@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
 	[HideInInspector] public float pShield;
 	[SerializeField] protected float regenWait;
 	protected bool takenDamage = false;
+
+	[SerializeField] protected GameObject gameOver;
 	
 	void Start()
 	{
@@ -44,6 +46,12 @@ public class PlayerHealth : MonoBehaviour
 		{
 			pHealth += pShield;
 			pShield = 0;
+
+			if (pHealth <= 0)
+			{
+				gameOver.SetActive(true);
+				Time.timeScale = 0f;
+			}
 		}
 
 			takenDamage = true;

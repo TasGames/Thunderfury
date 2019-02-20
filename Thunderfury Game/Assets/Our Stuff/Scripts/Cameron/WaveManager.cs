@@ -93,7 +93,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    void ShoppingTime()
+    public void ShoppingTime()
     {
         state = SpawnState.DoNothing;
         waveCounter++;
