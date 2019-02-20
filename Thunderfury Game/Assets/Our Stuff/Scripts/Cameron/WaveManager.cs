@@ -104,10 +104,10 @@ public class WaveManager : MonoBehaviour
         thePlayer.transform.rotation = teleportSpot.transform.rotation;
 
         //Once stepped into trigger to start next wave:
-        WaveCompleted();    //Trigger WaveCompleted to trigger countdown for next wave
+        //WaveCompleted();    //Trigger WaveCompleted to trigger countdown for next wave
     }
 
-    void WaveCompleted()
+    public void WaveCompleted()
     {
         Debug.Log("Wave Completed");
 

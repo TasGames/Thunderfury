@@ -35,6 +35,7 @@ public class Door_animation_script : MonoBehaviour
 		{
 			anim.SetTrigger("Close");
 			triggerCount = 0;
+			wave.WaveCompleted();
 		}
 
 	}
