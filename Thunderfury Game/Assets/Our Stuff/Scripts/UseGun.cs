@@ -92,7 +92,11 @@ public class UseGun : MonoBehaviour
 				}
 			}
 		}
-	}
+
+        if (Input.GetKeyDown("q"))
+            gun.damage += 20;
+
+    }
 
 	void Shoot()
 	{

@@ -28,7 +28,9 @@ public class Upgrade : MonoBehaviour
 	[SerializeField] protected GameObject grenadeButton;
 	[SerializeField] protected GameObject somethingButton;
 
-	protected int level = 0;
+    [SerializeField] protected TextMeshProUGUI levelText;
+
+    protected int level = 0;
 
 
 	void OnEnable()
@@ -61,7 +63,7 @@ public class Upgrade : MonoBehaviour
 	
 	void Update() 
 	{
-		possibleCredits = HUD.totalScore;
+		possibleCredits = HUD.totalScore - totalCost;
 
 		if (requiredCredits != null)
 		{
@@ -129,11 +131,25 @@ public class Upgrade : MonoBehaviour
 	{
 		level += 1;
 		totalCost += 100;
-	}
+        levelText.text = "" + level;
+        gunDisplay2.is2 = true;
+        gunDisplay2.SetDamage();
+        gunDisplay2.Display();
+    }
 
 	public void Decrease()
 	{
 		level -= 1;
 		totalCost -= 100;
-	}
+        levelText.text = "" + level;
+    }
+
+    public void Confirm()
+    {
+        HUD.totalScore = possibleCredits;
+        totalCost = 0;
+        gunDisplay.is2 = true;
+        gunDisplay.is3 = true;
+        gunDisplay.Display();
+    }
 }

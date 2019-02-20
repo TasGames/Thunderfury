@@ -26,10 +26,16 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected GameObject buyButton;
 	[SerializeField] protected GameObject purchasedButton;
 
+    public bool is2 = false;
+    public bool is3 = false;
+    protected float gunDamage2;
+
 	void Start() 
 	{
 		Shop shop = transform.root.GetComponent<Shop>();
 		parentPrefab = shop.parentPrefab;
+
+        gunDamage2 = 10;
 
 		Display();
 
@@ -71,8 +77,17 @@ public class GunDisplay : MonoBehaviour
 			gunIcon.sprite = gun.icon;
 		if (gunDescription != null)
 			gunDescription.text = gun.description;
-		if (gunDamage != null)
-			gunDamage.text = "Damage: " + gun.damage;
+        if (gunDamage != null)
+        {
+            if (is3 == true)
+                gunDamage2 = 25;
+            if (is2 == true)
+            {
+                gunDamage.text = "Damage: " + gunDamage2;
+            }
+            else
+                gunDamage.text = "Damage: " + gun.damage;
+        }
 		if (gunImpact != null)
 			gunImpact.text = "Impact: " + gun.impact;
 		if (gunFireRate != null)
@@ -84,4 +99,9 @@ public class GunDisplay : MonoBehaviour
 		if (gunCost != null)
 			gunCost.text = "$" + gun.cost;
 	}
+
+    public void SetDamage()
+    {
+        gunDamage2 += 5;
+    }
 }
