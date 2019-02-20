@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 23673627}
   - component: {fileID: 23673626}
   - component: {fileID: 23673625}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -33745,7 +33745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 766384067}
   - component: {fileID: 766384068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37660,6 +37660,10 @@ Prefab:
       propertyPath: pos
       value: 
       objectReference: {fileID: 1077563162}
+    - target: {fileID: 1934149921414380, guid: 8d81295eb5d11274e9e568448ee8eb54, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d81295eb5d11274e9e568448ee8eb54, type: 2}
   m_IsPrefabAsset: 0
@@ -43104,7 +43108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993895528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47742,7 +47746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1077563163}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49472,7 +49476,7 @@ GameObject:
   - component: {fileID: 1129184796}
   - component: {fileID: 1129184795}
   - component: {fileID: 1129184794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -51408,22 +51412,26 @@ MonoBehaviour:
   enemiesRemaining: 0
   waveCounter: 1
   waves:
-  - name: Wave 1
+  - name: Wave 0
     WaveEnemyCount: 1
     activeAtOnce: 1
     spawnRate: 1.25
+  - name: Wave 1
+    WaveEnemyCount: 10
+    activeAtOnce: 1
+    spawnRate: 1.25
   - name: Wave 2
-    WaveEnemyCount: 60
-    activeAtOnce: 12
+    WaveEnemyCount: 30
+    activeAtOnce: 5
     spawnRate: 1.25
   - name: Wave 3
-    WaveEnemyCount: 80
-    activeAtOnce: 16
+    WaveEnemyCount: 50
+    activeAtOnce: 10
     spawnRate: 1.25
   teleportSpot: {fileID: 618918754}
   timeBetweenWaves: 3
   state: 3
-  fadeImage: {fileID: 0}
+  fadeImage: {fileID: 1623068229}
   fadeSpeed: 1.5
 --- !u!114 &1181655653
 MonoBehaviour:
@@ -75745,6 +75753,18 @@ Prefab:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1674492261}
+    - target: {fileID: 1982368279138996, guid: 54573967b4989cc45a7cae08211769f5, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512116751562228, guid: 54573967b4989cc45a7cae08211769f5, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563139612245128, guid: 54573967b4989cc45a7cae08211769f5, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54573967b4989cc45a7cae08211769f5, type: 2}
   m_IsPrefabAsset: 0
