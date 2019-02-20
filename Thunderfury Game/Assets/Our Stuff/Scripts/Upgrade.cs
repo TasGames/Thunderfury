@@ -20,12 +20,15 @@ public class Upgrade : MonoBehaviour
 	[SerializeField] protected GameObject something;
 	
 	[SerializeField] protected GunDisplay gunDisplay;
+	[SerializeField] protected GunDisplay gunDisplay2;
 
 	[SerializeField] protected GameObject pistolButton;
 	[SerializeField] protected GameObject shotgunButton;
 	[SerializeField] protected GameObject rifleButton;
 	[SerializeField] protected GameObject grenadeButton;
 	[SerializeField] protected GameObject somethingButton;
+
+	protected int level = 0;
 
 
 	void OnEnable()
@@ -76,7 +79,9 @@ public class Upgrade : MonoBehaviour
 		if (pistol != null)
 		{
 			gunDisplay.SetGunPrefab(pistol);
+			gunDisplay2.SetGunPrefab(pistol);
 			gunDisplay.Display();
+			gunDisplay2.Display();
 		}
 	}
 
@@ -85,7 +90,9 @@ public class Upgrade : MonoBehaviour
 		if (shotgun != null)
 		{
 			gunDisplay.SetGunPrefab(shotgun);
+			gunDisplay2.SetGunPrefab(shotgun);
 			gunDisplay.Display();
+			gunDisplay2.Display();
 		}
 	}
 
@@ -103,7 +110,9 @@ public class Upgrade : MonoBehaviour
 		if (grenadeButton != null)
 		{
 			gunDisplay.SetGunPrefab(grenadeButton);
+			gunDisplay2.SetGunPrefab(grenadeButton);
 			gunDisplay.Display();
+			gunDisplay2.Display();
 		}
 	}
 
@@ -114,5 +123,17 @@ public class Upgrade : MonoBehaviour
 			gunDisplay.SetGunPrefab(something);
 			gunDisplay.Display();
 		}
+	}
+
+	public void Increase()
+	{
+		level += 1;
+		totalCost += 100;
+	}
+
+	public void Decrease()
+	{
+		level -= 1;
+		totalCost -= 100;
 	}
 }

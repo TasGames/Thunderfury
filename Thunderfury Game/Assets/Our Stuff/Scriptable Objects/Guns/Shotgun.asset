@@ -19,7 +19,7 @@ MonoBehaviour:
   isAutomatic: 0
   isContinuous: 0
   fireSound: {fileID: 0}
-  fireRate: 5
+  fireRate: 4
   recoil: 0
   magSize: 4
   maxAmmo: 16
@@ -31,7 +31,7 @@ MonoBehaviour:
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   bulletMark: {fileID: 0}
   takesAmmoType: 2
-  damage: 10
+  damage: 20
   damageRange: 5
   projectilePrefab: {fileID: 0}
   projectileForce: 0
