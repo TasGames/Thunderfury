@@ -83,7 +83,8 @@ public class Target : MonoBehaviour
             // }
             // else
             // {
-                Instantiate(brokenVersion, transform.position, transform.rotation);
+                GameObject thing = Instantiate(brokenVersion, transform.position, transform.rotation);
+                Destroy(thing, 10);
             // }
         }
 

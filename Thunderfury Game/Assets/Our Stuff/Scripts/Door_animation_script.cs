@@ -31,11 +31,19 @@ public class Door_animation_script : MonoBehaviour
 			anim.SetTrigger("Open");
 			triggerCount = 1;
 		}
-		else if (triggerCount == 1)
+		else if (triggerCount == 2)
 		{
 			anim.SetTrigger("Close");
-			triggerCount = 0;
+			triggerCount = 3;
 			wave.WaveCompleted();
+		}
+		else if (triggerCount == 1)
+		{
+			triggerCount = 2;
+		}
+		else if (triggerCount == 3)
+		{
+			triggerCount = 0;
 		}
 
 	}

@@ -1214,6 +1214,7 @@ GameObject:
   - component: {fileID: 23673627}
   - component: {fileID: 23673626}
   - component: {fileID: 23673625}
+  - component: {fileID: 23673631}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1357,6 +1358,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!136 &23673631
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 23673624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &25149121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4711955606209210, guid: 828336cc05a9ed74b9f09f47eb776538,
@@ -51417,7 +51431,7 @@ MonoBehaviour:
     activeAtOnce: 1
     spawnRate: 1.25
   - name: Wave 1
-    WaveEnemyCount: 10
+    WaveEnemyCount: 1
     activeAtOnce: 1
     spawnRate: 1.25
   - name: Wave 2
