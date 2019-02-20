@@ -7,6 +7,8 @@ public class Computer_controller : MonoBehaviour
 protected Animator anim;
 protected bool opened;
 
+[SerializeField] protected Shop shop;
+
 	void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -21,6 +23,8 @@ protected bool opened;
 				opened = true;
 				anim.SetBool("Open", true);
 				anim.SetBool("Close", false);
+				shop.OpenShop();
+
 			}
 			else if(Input.GetKeyDown(KeyCode.E) && opened == true)
 			{

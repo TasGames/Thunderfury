@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65146486253224642}
   - component: {fileID: 54051972371414024}
   - component: {fileID: 114259608520706758}
+  - component: {fileID: 208263093386699158}
   m_Layer: 0
   m_Name: Crate_Prefab
   m_TagString: Untagged
@@ -37,13 +38,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1923217247449276}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.089664, y: -1.6385474, z: -40.378723}
+  m_LocalRotation: {x: -0, y: 0.32158074, z: -0, w: 0.94688225}
+  m_LocalPosition: {x: -25.914, y: -5.70986, z: -19.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 37.517002, z: 0}
 --- !u!23 &23543233916736298
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -131,3 +132,19 @@ MonoBehaviour:
   dropsPickup: 0
   dropPercentage: 0
   dropList: []
+  originalHealth: 30
+--- !u!208 &208263093386699158
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923217247449276}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.45100003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.42900002, y: 0.42900002, z: 0.45100003}
+  m_TimeToStationary: 0.5

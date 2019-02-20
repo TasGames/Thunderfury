@@ -27,7 +27,7 @@ public class HUD : MonoBehaviour
 			tAmmo.text = gunAmmo.currentMag + " / " + gunAmmo.ammoPool;
 
 		if (tScore != null)
-			tScore.text = "$" + totalScore;
+			tScore.text = "¥" + totalScore;
 
 		if (healthBar != null)
 			healthBar.fillAmount = playerHealth.pHealth / playerHealth.maxHealth;
