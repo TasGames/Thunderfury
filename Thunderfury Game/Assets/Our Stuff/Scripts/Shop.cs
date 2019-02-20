@@ -28,10 +28,10 @@ public class Shop : MonoBehaviour
 	
 	void Update()
 	{
-		if (Input.GetKeyDown("i"))
+		/*if (Input.GetKeyDown("i"))
 		{
 			OpenShop();
-		}
+		}*/
 	}
 
 	public void OpenShop()
