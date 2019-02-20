@@ -10,8 +10,8 @@ public class Menu : MonoBehaviour
 
 	public void Play()
 	{
-		SceneManager.LoadScene("Tom");
-		    Time.timeScale = 1f;
+		SceneManager.LoadScene("Axion");
+		Time.timeScale = 1f;
         isPaused = false;
 	}
 
