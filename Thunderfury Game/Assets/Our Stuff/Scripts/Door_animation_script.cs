@@ -5,50 +5,30 @@ using UnityEngine.Animations;
 
 public class Door_animation_script : MonoBehaviour
  {
-	private Animator anim;
-
-	protected int triggerCount = 0;
-
-	[SerializeField] protected WaveManager wave;
+	protected Animator anim;
+	protected bool isOpen = false;
+	public bool isLocked = false;
 
 	void Start() 
 	{
 		anim = GetComponent<Animator>();
-		
-
-	}
-	
-	// Update is called once per frame
-	void Update()
-	{
-      
 	}
 
 	void OnTriggerEnter(Collider coll)
 	{
-		if (triggerCount == 0)
+		if (isOpen == false && isLocked == false)
 		{
 			anim.SetTrigger("Open");
-			triggerCount = 1;
+			isOpen = true;
 		}
-		else if (triggerCount == 2)
+	}
+	
+	void OnTriggerExit(Collider coll)
+	{
+		if (isOpen == true)
 		{
 			anim.SetTrigger("Close");
-			triggerCount = 3;
-			wave.WaveCompleted();
+			isOpen = false;
 		}
-		else if (triggerCount == 1)
-		{
-			triggerCount = 2;
-		}
-		else if (triggerCount == 3)
-		{
-			triggerCount = 0;
-		}
-
 	}
-	/*void OnTriggerExit(Collider coll)
-	{
-		anim.SetTrigger("Close");
-	}*/
 }
