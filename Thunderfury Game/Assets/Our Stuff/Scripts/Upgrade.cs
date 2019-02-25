@@ -132,8 +132,6 @@ public class Upgrade : MonoBehaviour
 		level += 1;
 		totalCost += 100;
         levelText.text = "" + level;
-        gunDisplay2.is2 = true;
-        gunDisplay2.SetDamage();
         gunDisplay2.Display();
     }
 
@@ -148,8 +146,6 @@ public class Upgrade : MonoBehaviour
     {
         HUD.totalScore = possibleCredits;
         totalCost = 0;
-        gunDisplay.is2 = true;
-        gunDisplay.is3 = true;
         gunDisplay.Display();
     }
 }
