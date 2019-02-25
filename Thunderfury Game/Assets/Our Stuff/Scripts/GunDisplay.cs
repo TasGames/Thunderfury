@@ -9,7 +9,6 @@ public class GunDisplay : MonoBehaviour
 {
 	[Title("Gun")]
 	[SerializeField] protected GameObject gunPrefab;
-	[SerializeField] protected GameObject shotgun;
 	protected GameObject parentPrefab;
 	protected Gun gun;
 
@@ -20,7 +19,9 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI gunDamage;
 	[SerializeField] protected TextMeshProUGUI gunImpact;
 	[SerializeField] protected TextMeshProUGUI gunFireRate;
+	[SerializeField] protected TextMeshProUGUI gunRange;
 	[SerializeField] protected TextMeshProUGUI gunRecoil;
+	[SerializeField] protected TextMeshProUGUI gunReloadTime;
 	[SerializeField] protected TextMeshProUGUI gunAmmo;
 	[SerializeField] protected TextMeshProUGUI gunCost;
 	[SerializeField] protected GameObject buyButton;
@@ -50,7 +51,6 @@ public class GunDisplay : MonoBehaviour
 			
 			buyButton.SetActive(false);
 			purchasedButton.SetActive(true);
-			shotgun.SetActive(true);
 			
 		}
 	}
@@ -77,8 +77,12 @@ public class GunDisplay : MonoBehaviour
 			gunImpact.text = "Impact: " + gun.impact;
 		if (gunFireRate != null)
 			gunFireRate.text = "Fire Rate: " + gun.fireRate;
+		if (gunRange != null)
+			gunRange.text = "Range: " + gun.range;
 		if (gunRecoil != null)
 			gunRecoil.text = "Recoil: " + gun.recoil;
+		if (gunReloadTime != null)
+			gunReloadTime.text = "Reload Time: " + gun.reloadTime;
 		if (gunAmmo != null)
 			gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
 		if (gunCost != null)

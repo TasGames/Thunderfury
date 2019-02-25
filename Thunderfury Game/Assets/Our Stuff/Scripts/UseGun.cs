@@ -18,7 +18,9 @@ public class UseGun : MonoBehaviour
 	protected float prefDamage;
 	protected float prefImpact;
 	protected float prefFireRate;
+	protected float prefRange;
 	protected float prefRecoil;
+	protected float prefReloadTime;
 	protected int prefMag;
 	protected int prefMaxAmmo;
 
@@ -27,7 +29,9 @@ public class UseGun : MonoBehaviour
 		prefDamage = gun.damage;
 		prefImpact = gun.impact;
 		prefFireRate = gun.fireRate;
+		prefRange = gun.range;
 		prefRecoil = gun.recoil;
+		prefReloadTime = gun.reloadTime;
 		prefMag = gun.magSize;
 		prefMaxAmmo = gun.maxAmmo;
 
