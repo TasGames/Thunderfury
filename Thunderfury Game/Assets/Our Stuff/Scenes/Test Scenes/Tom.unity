@@ -12324,11 +12324,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -16152,11 +16152,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -47999,7 +47999,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1062792541}
-  - component: {fileID: 1062792542}
   m_Layer: 5
   m_Name: Current Stats
   m_TagString: Untagged
@@ -48031,30 +48030,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1062792542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062792540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f83373998c6a1543b12a38f6c28d17e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 0}
-  shotgun: {fileID: 0}
-  gunName: {fileID: 255740758}
-  gunIcon: {fileID: 0}
-  gunDescription: {fileID: 0}
-  gunDamage: {fileID: 1520738087}
-  gunImpact: {fileID: 137146444}
-  gunFireRate: {fileID: 393202803}
-  gunRecoil: {fileID: 613296167}
-  gunAmmo: {fileID: 645829776}
-  gunCost: {fileID: 0}
-  buyButton: {fileID: 0}
-  purchasedButton: {fileID: 0}
 --- !u!1001 &1063727089
 Prefab:
   m_ObjectHideFlags: 0
@@ -48587,7 +48562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1068374903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48742,23 +48717,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e17b0169f0749948bc0f3bc37b8512d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCredits: {fileID: 1427925323}
-  requiredCredits: {fileID: 604293967}
   weaponParent: {fileID: 175677746}
+  gunDisplay: {fileID: 0}
+  gunDisplay2: {fileID: 0}
   pistol: {fileID: 1982368279138996, guid: 54573967b4989cc45a7cae08211769f5, type: 2}
   shotgun: {fileID: 1243505612799898, guid: 7151e628573d36b479166daf2fa7de09, type: 2}
   rifle: {fileID: 1699710384750632, guid: 97b7ebbcd47883546a443048dcdc9081, type: 2}
   grenadeLauncher: {fileID: 1662571414635970, guid: 91f6331b3ab831643b77e854d9318904,
     type: 2}
   something: {fileID: 0}
-  gunDisplay: {fileID: 0}
-  gunDisplay2: {fileID: 0}
   pistolButton: {fileID: 1229080446}
   shotgunButton: {fileID: 816923334}
   rifleButton: {fileID: 2006322699}
   grenadeButton: {fileID: 1405405653}
   somethingButton: {fileID: 1573503723}
-  levelText: {fileID: 0}
+  currentCredits: {fileID: 1427925323}
+  requiredCredits: {fileID: 604293967}
 --- !u!4 &1068402907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4158035792203800, guid: 274a8864d9d077d46a63df2fa3182958,
@@ -84271,7 +84245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1862678359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84392,11 +84366,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
