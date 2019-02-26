@@ -17,7 +17,7 @@ public class DisplayLeaderboard : MonoBehaviour
 
 		highscoreManager = GetComponent<Highscores>();
 
-		StartCoroutine(RefreshScoresRoutine());
+		//StartCoroutine(RefreshScoresRoutine());
 	}
 
 	public void OnScoresDownloaded(Highscore[] highscoreList)
