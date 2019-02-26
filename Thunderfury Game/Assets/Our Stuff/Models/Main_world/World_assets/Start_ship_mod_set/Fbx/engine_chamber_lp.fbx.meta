@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: c064fbb9de9ae184d852a256648f73d1
+guid: 82b3cbe7fae47e54c89b83b1c593c8ff
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: lambert2
+    2100002: lambert3
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCylinder120
+    4300000: Engine_chamber
   externalObjects: {}
   materials:
     importMaterials: 1
