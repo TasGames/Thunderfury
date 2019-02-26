@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
 
     public enum SpawnState
     {
+        Beginning,
         Spawning,
         Waiting,
         Counting,
@@ -26,31 +27,45 @@ public class WaveManager : MonoBehaviour
         public float spawnRate;        //Rate to spawn enemies
     }
 
+    //# OF ENEMIES LEFT IN THE WAVE
     [HideInInspector]
     public int enemiesRemaining;
-    [HideInInspector]
-    public int waveCounter = 1;
 
+    // COUNTS CURRENT WAVE
+    [HideInInspector]
+    public int waveCounter = 1; //# IN UI
+    private int nextWave = 0;   //ACTUAL #
+
+    //ARRAY OF WAVES
     public Wave[] waves;
 
+    // TELEPORT PLAYER ON WAVE END
     public Transform teleportSpot;
     Transform thePlayer;
+
+    // TO SPAWN ENEMIES
     protected EnemySpawner eSpawner;
+    public bool canSpawnNextWave = true;
 
-    private int nextWave = 0;
-
-    public float timeBetweenWaves = 5.0f;   //Time to wait before spawning next wave
+    // TIME TO WAIT BEFORE SPAWNING NEXT WAVE
+    public float timeBetweenWaves = 5.0f;
     private float waveCountdown;
 
+    // CHECK EVERY # SECONDS IF ANY ENEMIES ARE ALIVE
     private float checkCountdown = 1.0f;    //Check if enemies alive every 1 second
 
-    public SpawnState state = SpawnState.DoNothing;
+    // DEFAULT WAVE STATE
+    public SpawnState state;
 
+    // TELEPORT SCREEN FLASH
     public Image fadeImage;
     public float fadeSpeed;
 
+
     void Start()
     {
+        state = SpawnState.Beginning;
+
         waveCountdown = timeBetweenWaves;
 
         eSpawner = GetComponent<EnemySpawner>();
@@ -96,15 +111,14 @@ public class WaveManager : MonoBehaviour
     public void ShoppingTime()
     {
         state = SpawnState.DoNothing;
-        waveCounter++;
+        waveCounter++;                      //Increase wave # in UI
         StartCoroutine(ScreenFadeOut());    //Teleport screen flash
 
         //Teleport player to shop location
         thePlayer.transform.position = teleportSpot.transform.position;
         thePlayer.transform.rotation = teleportSpot.transform.rotation;
 
-        //Once stepped into trigger to start next wave:
-        //WaveCompleted();    //Trigger WaveCompleted to trigger countdown for next wave
+        canSpawnNextWave = true;    //Enables wave trigger
     }
 
     public void WaveCompleted()

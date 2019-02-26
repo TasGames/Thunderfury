@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveStarter : MonoBehaviour 
+public class WaveStarter : MonoBehaviour
 {
-	[SerializeField] protected WaveManager wave;
+    [SerializeField] protected WaveManager wave;
 
-	void OnTriggerEnter(Collider coll)
-	{
-		wave.WaveCompleted();
-	}
-	
-	
+    void OnTriggerEnter(Collider coll)
+    {
+        if (wave.canSpawnNextWave)
+            wave.WaveCompleted();
+			wave.canSpawnNextWave = false;
+    }
+
+
 }
