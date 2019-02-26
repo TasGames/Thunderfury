@@ -21544,7 +21544,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 1. Player - 000000
+  m_text: 1.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21612,9 +21612,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 474536374}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -22065,7 +22065,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 8. Player - 000000
+  m_text: 8.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22133,9 +22133,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 480948210}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -22404,7 +22404,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 4. Player - 000000
+  m_text: 4.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22472,9 +22472,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 488077928}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -34941,7 +34941,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 2. Player - 000000
+  m_text: 2.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -35009,9 +35009,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 739582993}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -40421,7 +40421,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 3. Player - 000000
+  m_text: 3.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -40489,9 +40489,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 852667183}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -43280,6 +43280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909698804}
   - component: {fileID: 909698803}
+  - component: {fileID: 909698805}
   m_Layer: 0
   m_Name: Highscores
   m_TagString: Untagged
@@ -43311,6 +43312,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &909698805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909698802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95decfbdd09ef6b4c97063641fb12f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoresText:
+  - {fileID: 474536374}
+  - {fileID: 739582993}
+  - {fileID: 852667183}
+  - {fileID: 488077928}
+  - {fileID: 935392686}
+  - {fileID: 1860710483}
+  - {fileID: 1356809288}
+  - {fileID: 480948210}
+  - {fileID: 2133713215}
+  - {fileID: 804405101}
 --- !u!1001 &910649709
 Prefab:
   m_ObjectHideFlags: 0
@@ -44304,7 +44327,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 5. Player - 000000
+  m_text: 5.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -44372,9 +44395,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 935392686}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -60993,7 +61016,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 7. Player - 000000
+  m_text: 7.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -61061,9 +61084,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1356809288}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -85137,7 +85160,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 6. Player - 000000
+  m_text: 6.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -85205,9 +85228,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1860710483}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -96015,7 +96038,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 9. Player - 000000
+  m_text: 9.   Player - 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -96083,9 +96106,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2133713215}
-    characterCount: 18
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1

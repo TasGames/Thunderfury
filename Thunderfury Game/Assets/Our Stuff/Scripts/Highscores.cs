@@ -9,14 +9,11 @@ public class Highscores : MonoBehaviour
 	const string webURL = "http://dreamlo.com/lb/";
 
 	public Highscore[] highscoresList;
+	protected DisplayLeaderboard leaderboardDisplay;
 
 	void Awake()
 	{
-		AddNewScore("Tom", 50);
-		AddNewScore("Max", 35);
-		AddNewScore("Swag", 60);
-
-		DownloadScores();
+		leaderboardDisplay = GetComponent<DisplayLeaderboard>();
 	}
 
 	public void AddNewScore(string username, int score)
@@ -47,7 +44,10 @@ public class Highscores : MonoBehaviour
 		yield return www;
 
 		if (string.IsNullOrEmpty(www.error))
+		{
 			FormatScores(www.text);
+			leaderboardDisplay.OnScoresDownloaded(highscoresList);
+		}
 		else
 			print("Fail downloading " + www.error);
 	}
