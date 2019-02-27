@@ -1,14 +1,28 @@
 fileFormatVersion: 2
-guid: fb40830d6294cea4296974cc92edd6cd
+guid: b54ed89dc5d57ff468fa9677e3567984
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Terminal_feet
+    100004: Terminal_keyboard
+    100006: Terminal_monitors
+    100008: Terminal_monitors1
+    100010: transform218
+    100012: transform219
+    100014: transform220
     400000: //RootNode
+    400002: Terminal_feet
+    400004: Terminal_keyboard
+    400006: Terminal_monitors
+    400008: Terminal_monitors1
+    400010: transform218
+    400012: transform219
+    400014: transform220
     2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube105
+    2300000: Terminal_monitors1
+    3300000: Terminal_monitors1
+    4300000: Terminal_monitors1
   externalObjects: {}
   materials:
     importMaterials: 1
