@@ -33,7 +33,7 @@ public class WaveManager : MonoBehaviour
 
     // COUNTS CURRENT WAVE
     [HideInInspector]
-    public int waveCounter = 1; //# IN UI
+    public int waveCounter = 0; //# IN UI
     private int nextWave = 0;   //ACTUAL #
 
     //ARRAY OF WAVES
@@ -78,11 +78,15 @@ public class WaveManager : MonoBehaviour
     {
         if (state == SpawnState.Waiting)    //If game state is waiting to spawn
         {
-            if (eSpawner.activeEnemies.Count == 0)
+            if (enemiesRemaining > 0)
             {
-                Debug.Log("Enemies Remaining: " + enemiesRemaining);
-                StartCoroutine(SpawnWave(waves[nextWave]));
+                if (eSpawner.activeEnemies.Count == 0)
+                {
+                    Debug.Log("Enemies Remaining: " + enemiesRemaining);
+                    StartCoroutine(SpawnWave(waves[nextWave]));
+                }
             }
+
 
             if (!EnemyIsAlive())            //If all enemies are dead
             {
@@ -121,21 +125,15 @@ public class WaveManager : MonoBehaviour
         canSpawnNextWave = true;    //Enables wave trigger
     }
 
-    public void WaveCompleted()
+    public void StartWave()
     {
-        Debug.Log("Wave Completed");
-
-        state = SpawnState.Counting;
+        state = SpawnState.Counting;    //Begin countdown till spawning starts
         waveCountdown = timeBetweenWaves;
 
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
             Debug.Log("All waves completed. Looping.");
-        }
-        else
-        {
-            nextWave++;
         }
     }
 

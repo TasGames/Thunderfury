@@ -9,7 +9,7 @@ public class WaveStarter : MonoBehaviour
     void OnTriggerEnter(Collider coll)
     {
         if (wave.canSpawnNextWave)
-            wave.WaveCompleted();
+            wave.StartWave();
 			wave.canSpawnNextWave = false;
     }
 
