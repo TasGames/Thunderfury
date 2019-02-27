@@ -9,7 +9,6 @@ public class GunDisplay : MonoBehaviour
 {
 	[Title("Gun")]
 	[SerializeField] protected GameObject gunPrefab;
-	[SerializeField] protected GameObject shotgun;
 	protected GameObject parentPrefab;
 	protected Gun gun;
 
@@ -20,25 +19,21 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI gunDamage;
 	[SerializeField] protected TextMeshProUGUI gunImpact;
 	[SerializeField] protected TextMeshProUGUI gunFireRate;
+	[SerializeField] protected TextMeshProUGUI gunRange;
 	[SerializeField] protected TextMeshProUGUI gunRecoil;
+	[SerializeField] protected TextMeshProUGUI gunReloadTime;
 	[SerializeField] protected TextMeshProUGUI gunAmmo;
 	[SerializeField] protected TextMeshProUGUI gunCost;
 	[SerializeField] protected GameObject buyButton;
 	[SerializeField] protected GameObject purchasedButton;
 
-    public bool is2 = false;
-    public bool is3 = false;
-    protected float gunDamage2;
 
 	void Start() 
 	{
 		Shop shop = transform.root.GetComponent<Shop>();
 		parentPrefab = shop.parentPrefab;
 
-        gunDamage2 = 10;
-
 		Display();
-
 	}
 	
 	public void Buy()
@@ -56,7 +51,6 @@ public class GunDisplay : MonoBehaviour
 			
 			buyButton.SetActive(false);
 			purchasedButton.SetActive(true);
-			shotgun.SetActive(true);
 			
 		}
 	}
@@ -78,30 +72,21 @@ public class GunDisplay : MonoBehaviour
 		if (gunDescription != null)
 			gunDescription.text = gun.description;
         if (gunDamage != null)
-        {
-            if (is3 == true)
-                gunDamage2 = 25;
-            if (is2 == true)
-            {
-                gunDamage.text = "Damage: " + gunDamage2;
-            }
-            else
-                gunDamage.text = "Damage: " + gun.damage;
-        }
+            gunDamage.text = "Damage: " + gun.damage;
 		if (gunImpact != null)
 			gunImpact.text = "Impact: " + gun.impact;
 		if (gunFireRate != null)
 			gunFireRate.text = "Fire Rate: " + gun.fireRate;
+		if (gunRange != null)
+			gunRange.text = "Range: " + gun.range;
 		if (gunRecoil != null)
 			gunRecoil.text = "Recoil: " + gun.recoil;
+		if (gunReloadTime != null)
+			gunReloadTime.text = "Reload Time: " + gun.reloadTime;
 		if (gunAmmo != null)
 			gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
 		if (gunCost != null)
 			gunCost.text = "$" + gun.cost;
 	}
 
-    public void SetDamage()
-    {
-        gunDamage2 += 5;
-    }
 }

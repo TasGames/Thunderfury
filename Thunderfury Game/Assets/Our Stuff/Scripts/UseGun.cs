@@ -15,8 +15,26 @@ public class UseGun : MonoBehaviour
 	[HideInInspector] public int currentMag;
 	[SerializeField] protected GameObject pos;
 
+	protected float prefDamage;
+	protected float prefImpact;
+	protected float prefFireRate;
+	protected float prefRange;
+	protected float prefRecoil;
+	protected float prefReloadTime;
+	protected int prefMag;
+	protected int prefMaxAmmo;
+
 	void Start()
 	{
+		prefDamage = gun.damage;
+		prefImpact = gun.impact;
+		prefFireRate = gun.fireRate;
+		prefRange = gun.range;
+		prefRecoil = gun.recoil;
+		prefReloadTime = gun.reloadTime;
+		prefMag = gun.magSize;
+		prefMaxAmmo = gun.maxAmmo;
+
 		ammoPool = gun.maxAmmo - gun.magSize;
 		currentMag = gun.magSize;
 
@@ -52,8 +70,8 @@ public class UseGun : MonoBehaviour
 			Pickup.ammoStorageE = 0;
 		}
 
-		if (ammoPool > gun.maxAmmo)
-			ammoPool = gun.maxAmmo;
+		if (ammoPool > prefMaxAmmo)
+			ammoPool = prefMaxAmmo;
 	}
 
 	void FixedUpdate() 
@@ -76,7 +94,7 @@ public class UseGun : MonoBehaviour
 			{
 				if (Input.GetButtonDown("Fire1"))
 				{
-					nextToFire = Time.time + 1 /gun.fireRate;
+					nextToFire = Time.time + 1 / prefFireRate;
 					Shoot();
 				}
 			}
@@ -87,15 +105,11 @@ public class UseGun : MonoBehaviour
 
 				if (Input.GetButton("Fire1"))
 				{
-					nextToFire = Time.time + 1 /gun.fireRate;
+					nextToFire = Time.time + 1 /prefFireRate;
 					Shoot();
 				}
 			}
 		}
-
-        if (Input.GetKeyDown("q"))
-            gun.damage += 20;
-
     }
 
 	void Shoot()
@@ -111,7 +125,7 @@ public class UseGun : MonoBehaviour
 		if (animator != null)
 			animator.SetBool("isFiring", true);
 
-		cam.transform.Rotate(new Vector3(-gun.recoil, 0, 0));
+		cam.transform.Rotate(new Vector3(-prefRecoil, 0, 0));
 
 		currentMag--;
 	}
@@ -132,10 +146,10 @@ public class UseGun : MonoBehaviour
 		if (animator != null)
 			animator.SetBool("isReloading", false);
 
-		if (ammoPool >= gun.magSize)
+		if (ammoPool >= prefMag)
 		{
-			ammoPool = ammoPool - gun.magSize;
-			currentMag = gun.magSize;
+			ammoPool = ammoPool - prefMag;
+			currentMag = prefMag;
 		}
 		else
 		{
@@ -170,7 +184,7 @@ public class UseGun : MonoBehaviour
 			{
 				Target target = hit.transform.GetComponent<Target>();
 
-				finalDamage = gun.damage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
+				finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
 
 				if (gun.hitEffect != null)
 				{
@@ -188,7 +202,7 @@ public class UseGun : MonoBehaviour
 					target.TakeDamage(finalDamage);
 
 				if (hit.rigidbody != null)
-					hit.rigidbody.AddForce(hit.normal * gun.impact * -1);
+					hit.rigidbody.AddForce(hit.normal * prefImpact * -1);
 
 				Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
 				Debug.Log(finalDamage);
