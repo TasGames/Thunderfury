@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
 
 	public void Play()
 	{
+        HUD.totalScore = 0;
 		SceneManager.LoadScene("Axion");
 		Time.timeScale = 1f;
         isPaused = false;

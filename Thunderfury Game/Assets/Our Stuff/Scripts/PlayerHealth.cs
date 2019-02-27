@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
 		if (Input.GetKeyDown("o"))
 		{
-			HUD.totalScore += 10000;
+			HUD.totalScore += 1000;
 		}
 	}
 
