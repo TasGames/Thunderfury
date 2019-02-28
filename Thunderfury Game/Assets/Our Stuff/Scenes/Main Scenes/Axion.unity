@@ -25551,7 +25551,7 @@ RectTransform:
   m_GameObject: {fileID: 547784679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.91389, y: 0.91389, z: 0.91389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459391162}
   - {fileID: 412332348}
@@ -60337,7 +60337,7 @@ RectTransform:
   m_GameObject: {fileID: 1318672545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.91389, y: 0.91389, z: 0.91389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 85631685}
   - {fileID: 231910458}
@@ -75711,7 +75711,7 @@ RectTransform:
   m_GameObject: {fileID: 1623068227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.91389, y: 0.91389, z: 0.91389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1926343420}
   m_RootOrder: 3
@@ -89419,6 +89419,7 @@ MonoBehaviour:
   subShopMenu: {fileID: 231910457}
   baseShop: {fileID: 85631684}
   hud: {fileID: 485623505}
+  rbFPC: {fileID: 23673625}
 --- !u!114 &1926343422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89431,6 +89432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 547784679}
+  rbFPC: {fileID: 23673625}
 --- !u!1001 &1926473805
 Prefab:
   m_ObjectHideFlags: 0

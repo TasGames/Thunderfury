@@ -21,6 +21,8 @@ public class Shop : MonoBehaviour
 
 	protected GameObject currentIcon;
 
+	[SerializeField] protected RigidbodyFirstPersonController rbFPC;
+
 	void Start() 
 	{
 		currentIcon = shopIcon;
@@ -41,7 +43,7 @@ public class Shop : MonoBehaviour
 			shopMenu.SetActive(true);
 			hud.SetActive(false);
 			Time.timeScale = 0.0f;
-			Cursor.visible = true;
+			rbFPC.mouseLook.SetCursorLock(false);
 			shopOpen = true;
 		}
 		else
@@ -49,7 +51,7 @@ public class Shop : MonoBehaviour
 			shopMenu.SetActive(false);
 			hud.SetActive(true);
 			Time.timeScale = 1.0f;
-			Cursor.visible = false;
+			rbFPC.mouseLook.SetCursorLock(true);
 			shopOpen = false;
 		}
 	}

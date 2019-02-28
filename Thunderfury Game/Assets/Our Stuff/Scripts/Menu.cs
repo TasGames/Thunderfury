@@ -8,12 +8,15 @@ public class Menu : MonoBehaviour
 	 public static bool isPaused = false;
     [SerializeField] protected GameObject pauseMenu;
 
+    [SerializeField] protected RigidbodyFirstPersonController rbFPC;
+
 	public void Play()
 	{
         HUD.totalScore = 0;
 		SceneManager.LoadScene("Axion");
 		Time.timeScale = 1f;
         isPaused = false;
+        rbFPC.mouseLook.SetCursorLock(true);
 	}
 
 	public void ReturnToMenu()
@@ -34,14 +37,14 @@ public class Menu : MonoBehaviour
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
-            Cursor.visible = true;
+            rbFPC.mouseLook.SetCursorLock(false);
             isPaused = true;
         }
         else
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-            Cursor.visible = false;
+            rbFPC.mouseLook.SetCursorLock(true);
             isPaused = false;
         }
     }
