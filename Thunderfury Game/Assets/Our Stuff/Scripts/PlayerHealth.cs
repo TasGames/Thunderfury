@@ -12,11 +12,15 @@ public class PlayerHealth : MonoBehaviour
 	protected bool takenDamage = false;
 
 	[SerializeField] protected GameObject gameOver;
+
+	protected RigidbodyFirstPersonController rbFPC;
 	
 	void Start()
 	{
 		pHealth = maxHealth;
 		pShield = maxShield;
+
+		rbFPC = GetComponent<RigidbodyFirstPersonController>();
 	}
 	
 	void Update()
@@ -51,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
 			{
 				gameOver.SetActive(true);
 				Time.timeScale = 0f;
+				rbFPC.mouseLook.SetCursorLock(false);
 			}
 		}
 

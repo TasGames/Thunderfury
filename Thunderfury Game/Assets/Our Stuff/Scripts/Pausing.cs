@@ -6,6 +6,13 @@ public class Pausing : MonoBehaviour
 {
 	[SerializeField] protected GameObject pauseMenu;
 
+    protected RigidbodyFirstPersonController rbFPC;
+
+    void Start()
+    {
+        rbFPC = GetComponent<RigidbodyFirstPersonController>();
+    }
+
 	void Update()
 	{
 		if (Input.GetKeyDown("p"))
@@ -18,14 +25,14 @@ public class Pausing : MonoBehaviour
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
-            Cursor.visible = true;
+            rbFPC.mouseLook.SetCursorLock(false);
             Menu.isPaused = true;
         }
         else if (Menu.isPaused == true)
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-            Cursor.visible = false;
+            rbFPC.mouseLook.SetCursorLock(true);
             Menu.isPaused = false;
         }
     }

@@ -141,7 +141,7 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
 	[SerializeField] protected Camera cam;
 	[SerializeField] protected MovementSettings movementSettings = new MovementSettings();
-	[SerializeField] protected MouseLook mouseLook = new MouseLook();
+	[SerializeField] public MouseLook mouseLook = new MouseLook();
 	[SerializeField] protected AdvancedSettings advancedSettings = new AdvancedSettings();
 
 	protected Rigidbody playerRb;
