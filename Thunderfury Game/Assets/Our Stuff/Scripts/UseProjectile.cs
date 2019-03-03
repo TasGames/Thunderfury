@@ -20,7 +20,7 @@ public class UseProjectile : MonoBehaviour
 		countdown -= Time.deltaTime;
 		if (countdown <= 0)
 		{
-			if (projectile.isExplosive == true && hasExploded == false)
+			if (projectile.isExplosive == true && hasExploded == false && projectile.explodeOnImpact == false)
 			{
 				Explode();
 				hasExploded = true;
@@ -68,6 +68,11 @@ public class UseProjectile : MonoBehaviour
 				target.TakeDamage(projectile.damage);
 				Destroy(gameObject);
 			}
+		}
+		else
+		{
+			if (projectile.explodeOnImpact == true)
+				Explode();
 		}
 	}
 }

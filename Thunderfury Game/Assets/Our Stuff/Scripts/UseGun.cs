@@ -8,6 +8,7 @@ public class UseGun : MonoBehaviour
 	protected Camera cam;
 	protected float nextToFire = 0;
 	protected float finalDamage;
+	protected bool stillFiring = false;
 	protected ParticleSystem muzzleFlash;
 	[SerializeField] protected Animator animator;
 	[HideInInspector] public bool isReloading = false;
@@ -120,7 +121,12 @@ public class UseGun : MonoBehaviour
 		if (gun.selectGunType == typeEnum.projectileType)
 			ProjectileType();
 		else if (gun.selectGunType == typeEnum.rayType)
-			RayType();
+		{
+			if (gun.isContinuous == false)
+				RayType();
+			else
+				StartCoroutine(ContinuousRoutine());
+		}
 
 		if (animator != null)
 			animator.SetBool("isFiring", true);
@@ -160,6 +166,15 @@ public class UseGun : MonoBehaviour
 		isReloading = false;
 		
 		Debug.Log("Reloaded");
+	}
+
+	IEnumerator ContinuousRoutine()
+	{
+		while(stillFiring == true)
+		{
+			RayType();
+			yield return new WaitForSeconds(0.1f);
+		}
 	}
 
 	void ProjectileType()
