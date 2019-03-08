@@ -16,6 +16,7 @@ public class Target : MonoBehaviour
     [Title("Target Stats")]
     [SerializeField] public float health;
     [SerializeField] protected GameObject brokenVersion;
+    [SerializeField] protected GameObject damagePopUp;
 
     [Title("Score")]
     [SerializeField] protected int scoreValue;
@@ -63,6 +64,12 @@ public class Target : MonoBehaviour
             enemyAnim.SetTrigger("Hit");    //Trigger HitByPlayer animation
         }
 
+        if (damagePopUp != null)
+        {
+            GameObject damPop = Instantiate(damagePopUp, transform.position, transform.rotation);
+            Destroy(damPop, 1);
+        }
+
         if (health <= 0)
             Destroy();
     }
@@ -71,21 +78,8 @@ public class Target : MonoBehaviour
     {
         if (brokenVersion != null)
         {
-            // if (brokenVersion.name == "Enemy1Ragdoll")   //If BrokenVersion is enemy ragdoll, spawn with ObjectPooler
-            // {
-            //     GameObject enemyRagdoll = ObjectPooler.SharedInstance.GetPooledObject("Enemy1Ragdoll");
-            //     if (enemyRagdoll != null)
-            //     {
-            //         enemyRagdoll.transform.position = this.gameObject.transform.position;
-            //         enemyRagdoll.transform.rotation = this.gameObject.transform.rotation;
-            //         enemyRagdoll.SetActive(true);
-            //     }
-            // }
-            // else
-            // {
-                GameObject thing = Instantiate(brokenVersion, transform.position, transform.rotation);
-                Destroy(thing, 10);
-            // }
+            GameObject broke = Instantiate(brokenVersion, transform.position, transform.rotation);
+            Destroy(broke, 10);
         }
 
 
