@@ -31828,7 +31828,6 @@ GameObject:
   - component: {fileID: 687609773}
   - component: {fileID: 687609772}
   - component: {fileID: 687609775}
-  - component: {fileID: 687609776}
   m_Layer: 0
   m_Name: Damage Text
   m_TagString: Untagged
@@ -31847,11 +31846,11 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
-  m_FontStyle: 0
+  m_FontSize: 72
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 0}
   m_Color:
@@ -31905,18 +31904,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &687609775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 687609771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2619e00a25b0b42a808e6142608972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &687609776
+--- !u!95 &687609775
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -31925,7 +31913,7 @@ Animator:
   m_GameObject: {fileID: 687609771}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c77c3b72c0528fc4e8be6837864855e9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
