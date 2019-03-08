@@ -44,8 +44,8 @@ public class UseProjectile : MonoBehaviour
 		foreach (Collider nearbyObject in collidersToDamage)
 		{
 			Target target = nearbyObject.GetComponent<Target>();
-			/*if (target != null)
-				target.TakeDamage(projectile.damage);*/
+			if (target != null)
+				target.TakeDamage(projectile.damage);
 		}
 		Collider[] collidersToForce = Physics.OverlapSphere(transform.position, projectile.blastRadius);
 		foreach (Collider nearbyObject in collidersToForce)

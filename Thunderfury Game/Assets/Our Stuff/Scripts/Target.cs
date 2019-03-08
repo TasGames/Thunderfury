@@ -17,6 +17,7 @@ public class Target : MonoBehaviour
     [SerializeField] public float health;
     [SerializeField] protected GameObject brokenVersion;
     [SerializeField] protected GameObject damagePopUp;
+    [SerializeField] protected DamageValues dv;
 
     [Title("Score")]
     [SerializeField] protected int scoreValue;
@@ -66,7 +67,13 @@ public class Target : MonoBehaviour
 
         if (damagePopUp != null)
         {
-            GameObject damPop = Instantiate(damagePopUp, transform.position, transform.rotation);
+            float xOffset = Random.Range(-0.5f, 0.5f);
+            float yOffset = Random.Range(0, 0.5f);
+            Vector3 finalPos = transform.position;
+            finalPos.x += xOffset;
+            finalPos.y += yOffset;
+            dv.damageText.text = amount.ToString();
+            GameObject damPop = Instantiate(damagePopUp, finalPos, transform.rotation);
             Destroy(damPop, 1);
         }
 
@@ -81,7 +88,6 @@ public class Target : MonoBehaviour
             GameObject broke = Instantiate(brokenVersion, transform.position, transform.rotation);
             Destroy(broke, 10);
         }
-
 
         if (gameObject.tag == "Enemy1")
         {
