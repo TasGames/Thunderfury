@@ -14,7 +14,6 @@ public class UseGun : MonoBehaviour
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
-	[SerializeField] protected GameObject pos;
 
 	protected float prefDamage;
 	protected float prefImpact;
@@ -179,13 +178,11 @@ public class UseGun : MonoBehaviour
 
 	void ProjectileType()
 	{
-		GameObject projectile = Instantiate(gun.projectilePrefab, pos.transform.position, pos.transform.rotation);
+		GameObject projectile = Instantiate(gun.projectilePrefab, transform.position, transform.rotation);
 		Rigidbody projRB = projectile.GetComponent<Rigidbody>();
 
-		if (projRB.useGravity == true)
-			projRB.AddForce(-transform.right * gun.projectileForce, ForceMode.VelocityChange);
-		else
-			projRB.velocity = transform.forward * gun.projectileForce;
+		if (projRB != null)
+			projRB.AddForce(transform.forward * gun.projectileForce, ForceMode.VelocityChange);
 	}
 
 	void RayType()
