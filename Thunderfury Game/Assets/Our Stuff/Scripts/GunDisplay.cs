@@ -44,7 +44,8 @@ public class GunDisplay : MonoBehaviour
 		{
 			Quaternion rot = parentPrefab.transform.rotation;
 
-			GameObject gunObject = Instantiate(gunPrefab, gunPrefab.transform.position + parentPrefab.transform.position, rot, parentPrefab.transform);
+			GameObject gunObject = Instantiate(gunPrefab, parentPrefab.transform.position, rot, parentPrefab.transform);
+			gunObject.transform.localPosition = gunPrefab.transform.position;
 			gunObject.SetActive(false);
 
 			HUD.totalScore -= gun.cost;
