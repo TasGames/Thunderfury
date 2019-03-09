@@ -9,7 +9,7 @@ public class UseGun : MonoBehaviour
 	protected float nextToFire = 0;
 	protected float finalDamage;
 	protected bool stillFiring = false;
-	protected ParticleSystem muzzleFlash;
+	[SerializeField] protected ParticleSystem muzzleFlash;
 	[SerializeField] protected Animator animator;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
