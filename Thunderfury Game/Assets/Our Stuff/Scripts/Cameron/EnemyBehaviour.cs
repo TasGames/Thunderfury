@@ -69,6 +69,11 @@ public class EnemyBehaviour : MonoBehaviour
             agent.isStopped = true;
     }
 
+    public void ResetCooldown() //Reset attack cooldown if hit
+    {
+
+    }
+
     void AttackAnimation()
     {
         int randNum = Random.Range(0, 2);
@@ -103,7 +108,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
     }
-    
+
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Player")
