@@ -9,10 +9,5 @@ public class DamageValues : MonoBehaviour
 	{
 		damageText = GetComponent<TextMesh>();
 	}
-
-	public void DamageValue(float damage)
-	{
-		damageText.text = damage.ToString();
-	}
 	
 }

@@ -18,6 +18,7 @@ public class Target : MonoBehaviour
     [SerializeField] protected GameObject brokenVersion;
     [SerializeField] protected GameObject damagePopUp;
     [SerializeField] protected DamageValues dv;
+    [SerializeField] protected GameObject player;
 
     [Title("Score")]
     [SerializeField] protected int scoreValue;
@@ -51,6 +52,7 @@ public class Target : MonoBehaviour
     void Awake()
     {
         OnValidate();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void TakeDamage(float amount)
@@ -68,12 +70,13 @@ public class Target : MonoBehaviour
         if (damagePopUp != null)
         {
             float xOffset = Random.Range(-0.5f, 0.5f);
-            float yOffset = Random.Range(0, 0.5f);
+            float yOffset = Random.Range(0.5f, 1f);
             Vector3 finalPos = transform.position;
             finalPos.x += xOffset;
             finalPos.y += yOffset;
             dv.damageText.text = amount.ToString();
             GameObject damPop = Instantiate(damagePopUp, finalPos, transform.rotation);
+            StartCoroutine(RotateRoutine(damPop));
             Destroy(damPop, 1);
         }
 
@@ -127,5 +130,14 @@ public class Target : MonoBehaviour
         if (randomNum <= dropPercentage)
             Instantiate(dropList[chosenIndex].pickup, transform.position, transform.rotation);
     }
+
+    IEnumerator RotateRoutine(GameObject GO)
+	{
+		while (true)
+		{
+			GO.transform.LookAt(player.transform);
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
 
 }
