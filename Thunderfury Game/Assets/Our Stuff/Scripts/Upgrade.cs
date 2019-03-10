@@ -7,11 +7,6 @@ using TMPro;
 
 public class Upgrade : MonoBehaviour 
 {
-	[Title("Other")]
-	[SerializeField] protected GameObject weaponParent;
-	[SerializeField] protected GunDisplay gunDisplay;
-	[SerializeField] protected GunDisplay gunDisplay2;
-
 	[Title("Gun Prefabs")]
 	[SerializeField] protected GameObject pistol;
 	[SerializeField] protected GameObject shotgun;
@@ -26,12 +21,23 @@ public class Upgrade : MonoBehaviour
 	[SerializeField] protected GameObject grenadeButton;
 	[SerializeField] protected GameObject somethingButton;
 
+	[Title("Current Gun Details")]
+	[SerializeField] protected TextMeshProUGUI gunName;	
+	[SerializeField] protected TextMeshProUGUI gunDamage;
+	[SerializeField] protected TextMeshProUGUI gunImpact;
+	[SerializeField] protected TextMeshProUGUI gunFireRate;
+	[SerializeField] protected TextMeshProUGUI gunRange;
+	[SerializeField] protected TextMeshProUGUI gunRecoil;
+	[SerializeField] protected TextMeshProUGUI gunReloadTime;
+	[SerializeField] protected TextMeshProUGUI gunAmmo;	
+
 	[Title("Credits")]
 	[SerializeField] protected TextMeshProUGUI currentCredits;
 	[SerializeField] protected TextMeshProUGUI requiredCredits;
 	protected int totalCost = 0;
 	protected int possibleCredits;
 
+	protected UseGun useGun;
 
 	void OnEnable()
 	{
@@ -57,8 +63,8 @@ public class Upgrade : MonoBehaviour
 	{
 		if (pistol != null)
 		{
-			gunDisplay.SetGunPrefab(pistol);
-			gunDisplay2.SetGunPrefab(pistol);
+			useGun = pistol.GetComponent<UseGun>();
+			DisplayCurrentStats(useGun);
 		}
 	}
 
@@ -66,8 +72,8 @@ public class Upgrade : MonoBehaviour
 	{
 		if (shotgun != null)
 		{
-			gunDisplay.SetGunPrefab(shotgun);
-			gunDisplay2.SetGunPrefab(shotgun);
+			useGun = shotgun.GetComponent<UseGun>();
+			DisplayCurrentStats(useGun);
 		}
 	}
 
@@ -75,8 +81,8 @@ public class Upgrade : MonoBehaviour
 	{
 		if (rifle != null)
 		{
-			gunDisplay.SetGunPrefab(rifle);
-			gunDisplay.Display();
+			useGun = rifle.GetComponent<UseGun>();
+			DisplayCurrentStats(useGun);
 		}
 	}
 
@@ -84,10 +90,8 @@ public class Upgrade : MonoBehaviour
 	{
 		if (grenadeButton != null)
 		{
-			gunDisplay.SetGunPrefab(grenadeButton);
-			gunDisplay2.SetGunPrefab(grenadeButton);
-			gunDisplay.Display();
-			gunDisplay2.Display();
+			useGun = grenadeLauncher.GetComponent<UseGun>();
+			DisplayCurrentStats(useGun);
 		}
 	}
 
@@ -95,8 +99,8 @@ public class Upgrade : MonoBehaviour
 	{
 		if (something != null)
 		{
-			gunDisplay.SetGunPrefab(something);
-			gunDisplay.Display();
+			useGun = something.GetComponent<UseGun>();
+			DisplayCurrentStats(useGun);
 		}
 	}
 
@@ -104,6 +108,25 @@ public class Upgrade : MonoBehaviour
     {
         HUD.totalScore = possibleCredits;
         totalCost = 0;
-        gunDisplay.Display();
     }
+
+	void DisplayCurrentStats(UseGun UG)
+	{
+		if (gunName != null)
+			gunName.text = UG.gun.name;
+        if (gunDamage != null)
+            gunDamage.text = "Damage: " + UG.prefDamage;
+		if (gunImpact != null)
+			gunImpact.text = "Impact: " + UG.prefImpact;
+		if (gunFireRate != null)
+			gunFireRate.text = "Fire Rate: " + UG.prefFireRate;
+		if (gunRange != null)
+			gunRange.text = "Range: " + UG.prefRange;
+		if (gunRecoil != null)
+			gunRecoil.text = "Recoil: " + UG.prefRecoil;
+		if (gunReloadTime != null)
+			gunReloadTime.text = "Reload Time: " + UG.prefReloadTime;
+		if (gunAmmo != null)
+			gunAmmo.text = "Ammo: " + UG.prefMag + " / " + UG.prefMaxAmmo;
+	}
 }

@@ -26,6 +26,7 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI gunCost;
 	[SerializeField] protected GameObject buyButton;
 	[SerializeField] protected GameObject purchasedButton;
+	[SerializeField] protected GameObject gunButton;
 
 
 	void Start() 
@@ -52,6 +53,7 @@ public class GunDisplay : MonoBehaviour
 			
 			buyButton.SetActive(false);
 			purchasedButton.SetActive(true);
+			gunButton.SetActive(true);
 			
 		}
 	}
