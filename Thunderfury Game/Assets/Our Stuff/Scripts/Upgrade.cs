@@ -29,7 +29,16 @@ public class Upgrade : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI gunRange;
 	[SerializeField] protected TextMeshProUGUI gunRecoil;
 	[SerializeField] protected TextMeshProUGUI gunReloadTime;
-	[SerializeField] protected TextMeshProUGUI gunAmmo;	
+	[SerializeField] protected TextMeshProUGUI gunAmmo;
+
+	[Title("Current Gun Details")]
+	[SerializeField] protected TextMeshProUGUI nGunDamage;
+	[SerializeField] protected TextMeshProUGUI nGunImpact;
+	[SerializeField] protected TextMeshProUGUI nGunFireRate;
+	[SerializeField] protected TextMeshProUGUI nGunRange;
+	[SerializeField] protected TextMeshProUGUI nGunRecoil;
+	[SerializeField] protected TextMeshProUGUI nGunReloadTime;
+	[SerializeField] protected TextMeshProUGUI nGunAmmo;	
 
 	[Title("Credits")]
 	[SerializeField] protected TextMeshProUGUI currentCredits;
@@ -39,9 +48,18 @@ public class Upgrade : MonoBehaviour
 
 	protected UseGun useGun;
 
+	protected float newDamage;
+	protected float newImpact;
+	protected float newFireRate;
+	protected float newRange;
+	protected float newRecoil;
+	protected int newMagSize;
+	protected int newMaxAmmo;
+	protected float newReloadTime;
+
 	void OnEnable()
 	{
-											
+								
 	}
 	
 	void Update() 
@@ -50,13 +68,13 @@ public class Upgrade : MonoBehaviour
 
 		if (requiredCredits != null)
 		{
-			requiredCredits.text = "Required: $" + totalCost;
+			requiredCredits.text = "Required: ¥" + totalCost;
 
 			if (currentCredits != null)
-				currentCredits.text = "Credits: $" + HUD.totalScore + " > $" + possibleCredits;
+				currentCredits.text = "Credits: ¥" + HUD.totalScore + " > ¥" + possibleCredits;
 		}
 		else if (currentCredits != null)
-			currentCredits.text = "Credits: $" + HUD.totalScore;
+			currentCredits.text = "Credits: ¥" + HUD.totalScore;
 	}
 
 	public void PistolButton()
@@ -64,7 +82,8 @@ public class Upgrade : MonoBehaviour
 		if (pistol != null)
 		{
 			useGun = pistol.GetComponent<UseGun>();
-			DisplayCurrentStats(useGun);
+			DisplayCurrentStats();
+			DisplayNewStats();
 		}
 	}
 
@@ -73,7 +92,8 @@ public class Upgrade : MonoBehaviour
 		if (shotgun != null)
 		{
 			useGun = shotgun.GetComponent<UseGun>();
-			DisplayCurrentStats(useGun);
+			DisplayCurrentStats();
+			DisplayNewStats();
 		}
 	}
 
@@ -82,7 +102,8 @@ public class Upgrade : MonoBehaviour
 		if (rifle != null)
 		{
 			useGun = rifle.GetComponent<UseGun>();
-			DisplayCurrentStats(useGun);
+			DisplayCurrentStats();
+			DisplayNewStats();
 		}
 	}
 
@@ -91,7 +112,8 @@ public class Upgrade : MonoBehaviour
 		if (grenadeButton != null)
 		{
 			useGun = grenadeLauncher.GetComponent<UseGun>();
-			DisplayCurrentStats(useGun);
+			DisplayCurrentStats();
+			DisplayNewStats();
 		}
 	}
 
@@ -100,7 +122,8 @@ public class Upgrade : MonoBehaviour
 		if (something != null)
 		{
 			useGun = something.GetComponent<UseGun>();
-			DisplayCurrentStats(useGun);
+			DisplayCurrentStats();
+			DisplayNewStats();
 		}
 	}
 
@@ -110,23 +133,50 @@ public class Upgrade : MonoBehaviour
         totalCost = 0;
     }
 
-	void DisplayCurrentStats(UseGun UG)
+	void DisplayCurrentStats()
 	{
 		if (gunName != null)
-			gunName.text = UG.gun.name;
+			gunName.text = useGun.gun.name;
         if (gunDamage != null)
-            gunDamage.text = "Damage: " + UG.prefDamage;
+            gunDamage.text = "Damage: " + useGun.prefDamage;
 		if (gunImpact != null)
-			gunImpact.text = "Impact: " + UG.prefImpact;
+			gunImpact.text = "Impact: " + useGun.prefImpact;
 		if (gunFireRate != null)
-			gunFireRate.text = "Fire Rate: " + UG.prefFireRate;
+			gunFireRate.text = "Fire Rate: " + useGun.prefFireRate;
 		if (gunRange != null)
-			gunRange.text = "Range: " + UG.prefRange;
+			gunRange.text = "Range: " + useGun.prefRange;
 		if (gunRecoil != null)
-			gunRecoil.text = "Recoil: " + UG.prefRecoil;
+			gunRecoil.text = "Recoil: " + useGun.prefRecoil;
 		if (gunReloadTime != null)
-			gunReloadTime.text = "Reload Time: " + UG.prefReloadTime;
+			gunReloadTime.text = "Reload Time: " + useGun.prefReloadTime;
 		if (gunAmmo != null)
-			gunAmmo.text = "Ammo: " + UG.prefMag + " / " + UG.prefMaxAmmo;
+			gunAmmo.text = "Ammo: " + useGun.prefMag + " / " + useGun.prefMaxAmmo;
+	}
+
+	void DisplayNewStats()
+	{
+		newDamage = useGun.prefDamage;
+		newImpact = useGun.prefImpact;
+		newFireRate = useGun.prefFireRate;
+		newRange = useGun.prefRange;
+		newRecoil = useGun.prefRecoil;
+		newMagSize = useGun.prefMag;
+		newMaxAmmo = useGun.prefMaxAmmo;
+		newReloadTime = useGun.prefReloadTime;	
+		
+        if (nGunDamage != null)
+            nGunDamage.text = "Damage: " + newDamage;
+		if (nGunImpact != null)
+			nGunImpact.text = "Impact: " + newImpact;
+		if (nGunFireRate != null)
+			nGunFireRate.text = "Fire Rate: " + newFireRate;
+		if (nGunRange != null)
+			nGunRange.text = "Range: " + newRange;
+		if (nGunRecoil != null)
+			nGunRecoil.text = "Recoil: " + newRecoil;
+		if (nGunReloadTime != null)
+			nGunReloadTime.text = "Reload Time: " + newReloadTime;
+		if (nGunAmmo != null)
+			nGunAmmo.text = "Ammo: " + newMagSize + " / " + newMaxAmmo;
 	}
 }

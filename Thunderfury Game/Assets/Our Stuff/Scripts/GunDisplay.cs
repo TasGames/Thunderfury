@@ -43,11 +43,16 @@ public class GunDisplay : MonoBehaviour
 
 		if (costCompare >= gun.cost)
 		{
-			Quaternion rot = parentPrefab.transform.rotation;
+			//GameObject gunObject = Instantiate(gunPrefab, parentPrefab.transform.position, rot, parentPrefab.transform);
+			//gunObject.transform.localPosition = gunPrefab.transform.position;
+			//gunObject.SetActive(false);
 
-			GameObject gunObject = Instantiate(gunPrefab, parentPrefab.transform.position, rot, parentPrefab.transform);
-			gunObject.transform.localPosition = gunPrefab.transform.position;
-			gunObject.SetActive(false);
+			Vector3 Pos = gunPrefab.transform.localPosition;
+			Quaternion Rot = gunPrefab.transform.localRotation;
+			gunPrefab.transform.parent = parentPrefab.transform;
+			gunPrefab.transform.localPosition = Pos;
+			gunPrefab.transform.localRotation = Rot;
+			gunPrefab.SetActive(false);
 
 			HUD.totalScore -= gun.cost;
 			
@@ -89,7 +94,6 @@ public class GunDisplay : MonoBehaviour
 		if (gunAmmo != null)
 			gunAmmo.text = "Ammo: " + gun.magSize + " / " + gun.maxAmmo;
 		if (gunCost != null)
-			gunCost.text = "$" + gun.cost;
+			gunCost.text = "¥" + gun.cost;
 	}
-
 }

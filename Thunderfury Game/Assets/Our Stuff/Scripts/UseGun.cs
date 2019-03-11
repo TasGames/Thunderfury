@@ -15,14 +15,14 @@ public class UseGun : MonoBehaviour
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
 
-	public float prefDamage;
-	public float prefImpact;
-	public float prefFireRate;
-	public float prefRange;
-	public float prefRecoil;
-	public float prefReloadTime;
-	public int prefMag;
-	public int prefMaxAmmo;
+	[HideInInspector] public float prefDamage;
+	[HideInInspector] public float prefImpact;
+	[HideInInspector] public float prefFireRate;
+	[HideInInspector] public float prefRange;
+	[HideInInspector] public float prefRecoil;
+	[HideInInspector] public float prefReloadTime;
+	[HideInInspector] public int prefMag;
+	[HideInInspector] public int prefMaxAmmo;
 
 	void Start()
 	{
