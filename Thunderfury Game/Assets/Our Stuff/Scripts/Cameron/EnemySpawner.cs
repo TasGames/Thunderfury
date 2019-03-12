@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public GameObject enemy;   //Enemy Object
+    public GameObject[] enemy;   //Enemy Object
 
     Target enemyHealth; //To reset enemy health on spawn
 

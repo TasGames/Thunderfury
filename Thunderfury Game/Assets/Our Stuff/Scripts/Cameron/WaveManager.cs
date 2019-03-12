@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class WaveManager : MonoBehaviour
 {
@@ -48,9 +49,8 @@ public class WaveManager : MonoBehaviour
     // MODIFIERS
     public WaveModifiers modifier;
 
-    // TELEPORT PLAYER ON WAVE END
-    public Transform teleportSpot;
-    Transform thePlayer;
+
+
 
     // TO SPAWN ENEMIES
     protected EnemySpawner eSpawner;
@@ -67,6 +67,10 @@ public class WaveManager : MonoBehaviour
     // DEFAULT WAVE STATE
     public SpawnState state;
 
+    // TELEPORT PLAYER ON WAVE END
+    [Title("Teleport")]
+    public Transform teleportSpot;
+    Transform thePlayer;
     // TELEPORT SCREEN FLASH
     public Image fadeImage;
     public float fadeSpeed;
@@ -93,12 +97,12 @@ public class WaveManager : MonoBehaviour
                 if (eSpawner.activeEnemies.Count == 0)
                 {
                     Debug.Log("Enemies Remaining: " + enemiesRemaining);
-                    StartCoroutine(SpawnEnemies(wave));
+                    StartCoroutine(SpawnEnemies());
                 }
             }
 
 
-            if (!EnemyIsAlive())            //If all enemies are dead
+            if (!EnemyIsAlive() && enemiesRemaining == 0)            //If all enemies are dead
             {
                 ShoppingTime();            //Wave is complete, teleport player to shop
             }
@@ -112,8 +116,7 @@ public class WaveManager : MonoBehaviour
         {
             if (state != SpawnState.Spawning)   //If game is not spawning
             {
-                state = SpawnState.Spawning;
-                StartCoroutine(SpawnEnemies(wave));
+                StartCoroutine(SpawnEnemies());
             }
         }
         else if (state == SpawnState.Counting)
@@ -147,6 +150,8 @@ public class WaveManager : MonoBehaviour
     {
         state = SpawnState.Counting;    //Begin countdown till spawning starts
         waveCountdown = timeBetweenWaves;
+
+        enemiesRemaining = wave.waveEnemyCount;
     }
 
     bool EnemyIsAlive()     //Check if any enemies are alive
@@ -167,31 +172,26 @@ public class WaveManager : MonoBehaviour
         return true;
     }
 
-    IEnumerator SpawnEnemies(Wave _wave)   //Spawn next wave
+    IEnumerator SpawnEnemies()   //Spawn next wave
     {
-        if (state == SpawnState.Spawning)
-            enemiesRemaining = _wave.waveEnemyCount;
-
         //for(int i = 0; i < _wave.enemyCount; i++)
-        while (eSpawner.activeEnemies.Count < _wave.activeAtOnce)
+        while (eSpawner.activeEnemies.Count < wave.activeAtOnce)
         {
-            if (eSpawner.activeEnemies.Count == enemiesRemaining)
+            if (eSpawner.activeEnemies.Count >= enemiesRemaining)
             {
-                if (state != SpawnState.Waiting)
+                if (state != SpawnState.Waiting && state != SpawnState.ShoppingTime)
                     state = SpawnState.Waiting;
 
                 yield break;
             }
-            else
+            else if (eSpawner.activeEnemies.Count < enemiesRemaining)
             {
-                //SpawnEnemy(_wave.enemy);
+                state = SpawnState.Spawning;
                 eSpawner.PickSpawnLocation();
 
-                yield return new WaitForSeconds(1.0f / _wave.spawnRate);
+                yield return new WaitForSeconds(1.0f / wave.spawnRate);
             }
         }
-
-        state = SpawnState.Waiting;
 
         yield break;
     }

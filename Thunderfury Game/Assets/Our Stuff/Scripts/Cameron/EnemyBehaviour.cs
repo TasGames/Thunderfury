@@ -69,11 +69,6 @@ public class EnemyBehaviour : MonoBehaviour
             agent.isStopped = true;
     }
 
-    public void ResetCooldown() //Reset attack cooldown if hit
-    {
-
-    }
-
     void AttackAnimation()
     {
         int randNum = Random.Range(0, 2);
