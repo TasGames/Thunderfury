@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponSwitcher : MonoBehaviour
  {
 	protected int selectedWeapon = 0;
+	public GameObject currentGun;
 
 	void Start() 
 	{
@@ -22,7 +23,10 @@ public class WeaponSwitcher : MonoBehaviour
 		foreach (Transform weapon in transform)
 		{
 			if (i == selectedWeapon)
+			{
 				weapon.gameObject.SetActive(true);
+				currentGun = weapon.gameObject;
+			}
 			else
 				weapon.gameObject.SetActive(false);
 
