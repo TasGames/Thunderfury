@@ -54,7 +54,7 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (this.gameObject.tag == "Enemy1")    //If enemy is taking damage
+        if (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2")    //If enemy is taking damage
         {
             if (enemyAnim == null)
             {
@@ -89,7 +89,7 @@ public class Target : MonoBehaviour
         }
 
 
-        if (gameObject.tag == "Enemy1")
+        if (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2")
         {
             waveManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<WaveManager>();
             waveManager.enemiesRemaining = waveManager.enemiesRemaining - 1;    //Reduce # of remaining enemies in the wave

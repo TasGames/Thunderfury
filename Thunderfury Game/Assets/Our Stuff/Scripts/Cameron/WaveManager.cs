@@ -160,7 +160,7 @@ public class WaveManager : MonoBehaviour
         if (checkCountdown <= 0.0f)
         {
             checkCountdown = 1.0f;
-            if (GameObject.FindGameObjectWithTag("Enemy1") == null)
+            if (GameObject.FindGameObjectWithTag("Enemy1") == null && GameObject.FindGameObjectWithTag("Enemy2") == null)
             {
                 if (enemiesRemaining == 0)
                 {

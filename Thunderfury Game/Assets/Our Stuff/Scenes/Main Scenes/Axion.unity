@@ -10453,7 +10453,11 @@ MonoBehaviour:
   itemsToPool:
   - objectToPool: {fileID: 1688263224673312, guid: 06e7455ad9480f24a8c03c3e90e75bc2,
       type: 2}
-    amountToPool: 20
+    amountToPool: 15
+    shouldExpand: 1
+  - objectToPool: {fileID: 1688263224673312, guid: 08d547239cd71cb42ae1091e9349df7c,
+      type: 2}
+    amountToPool: 10
     shouldExpand: 1
 --- !u!4 &197032717 stripped
 Transform:
@@ -51510,9 +51514,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbf7f2a8e41f234ab2ef1c3db16b770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 1688263224673312, guid: 06e7455ad9480f24a8c03c3e90e75bc2, type: 2}
-  - {fileID: 1688263224673312, guid: 08d547239cd71cb42ae1091e9349df7c, type: 2}
+  enemyList:
+  - enemy: {fileID: 1688263224673312, guid: 06e7455ad9480f24a8c03c3e90e75bc2, type: 2}
+    spawnWeight: 0.5
+  - enemy: {fileID: 1688263224673312, guid: 08d547239cd71cb42ae1091e9349df7c, type: 2}
+    spawnWeight: 0.5
   activeSpawns:
   - {fileID: 2000787626}
   activeEnemies: []
