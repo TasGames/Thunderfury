@@ -54,7 +54,7 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2")    //If enemy is taking damage
+        if (this.gameObject.tag == "Enemy1" || this.gameObject.tag == "Enemy2")    //If enemy is taking damage
         {
             if (enemyAnim == null)
             {

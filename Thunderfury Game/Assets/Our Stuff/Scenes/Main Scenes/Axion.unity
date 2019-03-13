@@ -51490,8 +51490,8 @@ MonoBehaviour:
   enemiesRemaining: 0
   waveCounter: 1
   wave:
-    waveEnemyCount: 1
-    activeAtOnce: 2
+    waveEnemyCount: 4
+    activeAtOnce: 4
     spawnRate: 1
   modifier:
     enemyNumIncrease: 2
