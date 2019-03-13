@@ -9,10 +9,14 @@ public class UseProjectile : MonoBehaviour
 	[SerializeField] protected Projectile projectile;
 	protected float countdown;
 	protected bool hasExploded = false;
+	protected float timer = 0;
 
 	void Start() 
 	{
 		countdown = projectile.projectileTimer;
+
+		if (projectile.isBlackHole == true)
+			StartCoroutine(PullInRoutine());
 	}
 	
 	void FixedUpdate() 
@@ -56,6 +60,36 @@ public class UseProjectile : MonoBehaviour
 		}
 
 		Destroy(gameObject);
+	}
+
+	IEnumerator PullInRoutine()
+	{
+		Vector3 pos = transform.position;
+
+		while (true)
+		{
+			Collider[] collidersToDamage = Physics.OverlapSphere(pos, projectile.blastRadius);
+			foreach (Collider nearbyObject in collidersToDamage)
+			{
+				Target target = nearbyObject.GetComponent<Target>();
+				if (target != null)
+					target.TakeDamage(projectile.damage);
+			}
+			Collider[] collidersToForce = Physics.OverlapSphere(pos, projectile.blastRadius);
+			foreach (Collider nearbyObject in collidersToForce)
+			{
+				Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+				if (rb != null)
+				{
+					if (rb.useGravity == true)
+						rb.useGravity = false;
+
+					rb.AddExplosionForce(-100, pos, projectile.blastRadius);
+				}
+			}
+
+			yield return new WaitForSeconds(0.2f);
+		}
 	}
 
 	void OnCollisionEnter(Collision collision)

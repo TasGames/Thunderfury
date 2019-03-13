@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1471341759067424}
+  m_RootGameObject: {fileID: 1679737307231984}
   m_IsPrefabAsset: 1
---- !u!1 &1471341759067424
+--- !u!1 &1679737307231984
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4834681900054170}
-  - component: {fileID: 33045559497839674}
-  - component: {fileID: 23492496791927812}
-  - component: {fileID: 135808283973452380}
-  - component: {fileID: 54917480130019180}
-  - component: {fileID: 114956308982730958}
+  - component: {fileID: 4803480214107454}
+  - component: {fileID: 33227377909399750}
+  - component: {fileID: 23339253060325362}
+  - component: {fileID: 135038218847345744}
+  - component: {fileID: 54470212070424602}
+  - component: {fileID: 114436170311795092}
   m_Layer: 0
-  m_Name: Grenade
+  m_Name: Singularity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4834681900054170
+--- !u!4 &4803480214107454
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471341759067424}
+  m_GameObject: {fileID: 1679737307231984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9739907, y: -0.954, z: -1.5250031}
+  m_LocalPosition: {x: -5.96, y: -0.954, z: 1.25}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23492496791927812
+--- !u!23 &23339253060325362
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471341759067424}
+  m_GameObject: {fileID: 1679737307231984}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 70a89e805b40b714d8d29f6a0ac9b672, type: 2}
+  - {fileID: 2100000, guid: d4424d43efa490e45b1b932369797aa0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,19 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33045559497839674
+--- !u!33 &33227377909399750
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471341759067424}
+  m_GameObject: {fileID: 1679737307231984}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54917480130019180
+--- !u!54 &54470212070424602
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471341759067424}
+  m_GameObject: {fileID: 1679737307231984}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -101,24 +101,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &114956308982730958
+--- !u!114 &114436170311795092
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471341759067424}
+  m_GameObject: {fileID: 1679737307231984}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed2fb470e23f9a54ebf28c10852a6260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: c654ef65ce20e0b4eb97adaec12705d9, type: 2}
---- !u!135 &135808283973452380
+  projectile: {fileID: 11400000, guid: 46ac209235979c741a8eeb3f52743d67, type: 2}
+--- !u!135 &135038218847345744
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471341759067424}
+  m_GameObject: {fileID: 1679737307231984}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
