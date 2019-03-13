@@ -11,14 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aee746b4dce0824cb522358a45f75fb, type: 3}
   m_Name: Singularity
   m_EditorClassIdentifier: 
-  projectileTimer: 2
+  projectileTimer: 5
   antiGravity: 0
   damage: 100
   isExplosive: 1
   isBlackHole: 1
   blackHoleTimer: 5
   explodeOnImpact: 0
-  explosionForce: -1000
+  explosionForce: 1000
   blastRadius: 6
   magnitude: 0
   roughness: 0
