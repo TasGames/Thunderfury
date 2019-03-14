@@ -36,7 +36,7 @@ public class WaveManager : MonoBehaviour
     }
 
     // # OF ENEMIES LEFT IN THE WAVE
-    [HideInInspector]
+    //[HideInInspector]
     public int enemiesRemaining;
 
     // COUNTS CURRENT WAVE
@@ -48,9 +48,6 @@ public class WaveManager : MonoBehaviour
 
     // MODIFIERS
     public WaveModifiers modifier;
-
-
-
 
     // TO SPAWN ENEMIES
     protected EnemySpawner eSpawner;
@@ -114,7 +111,7 @@ public class WaveManager : MonoBehaviour
 
         if (waveCountdown <= 0)             //Once countdown till next wave is completed
         {
-            if (state != SpawnState.Spawning)   //If game is not spawning
+            if (state != SpawnState.Spawning || state != SpawnState.ShoppingTime)   //If game is not spawning
             {
                 StartCoroutine(SpawnEnemies());
             }

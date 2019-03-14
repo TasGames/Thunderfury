@@ -803,8 +803,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 20
-  attackRate: 3
+  attackRate: 2
   attackDistance: 2.5
+  beginWalkDelay: 0.5
 --- !u!114 &114683366916072264
 MonoBehaviour:
   m_ObjectHideFlags: 1

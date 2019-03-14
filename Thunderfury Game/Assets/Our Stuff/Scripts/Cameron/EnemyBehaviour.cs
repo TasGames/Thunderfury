@@ -23,6 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float attackDistance = 2;  //Range for the raycast
     bool canCheckForAttack;
 
+    [SerializeField] protected float beginWalkDelay;
+
     // Use this for initialization
     void Start()
     {
@@ -57,8 +59,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void BeginMovement() //Triggered in ZombieAttack animation timeline
+    IEnumerator BeginMovement() //Triggered in ZombieAttack animation timeline
     {
+        yield return new WaitForSeconds(beginWalkDelay);
         if (agent.isStopped)
             agent.isStopped = false;
     }
@@ -96,7 +99,7 @@ public class EnemyBehaviour : MonoBehaviour
                     nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
 
                     AttackAnimation();
-                    StopMovement();                //Stop movement
+                    //StopMovement();                //Stop movement
                 }
             }
             yield return null;
@@ -104,9 +107,25 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.tag == "Player")
-            player.PlayerTakeDamage(damageToDeal);
+        if (other.gameObject.tag == "Player")
+        {
+            StopMovement();
+        }
     }
+
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.tag == "Player")
+    //     {
+    //         StartCoroutine(BeginMovement());
+    //     }
+    // }
+
+    // void OnCollisionEnter(Collision col)
+    // {
+    //     if (col.gameObject.tag == "Player")
+    //         player.PlayerTakeDamage(damageToDeal);
+    // }
 }
