@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class WeaponWheel : MonoBehaviour
  {
@@ -10,7 +12,23 @@ public class WeaponWheel : MonoBehaviour
 	[SerializeField] protected GameObject grenadeLauncher;
 	[SerializeField] protected GameObject railgun;
 	[SerializeField] protected GameObject singularity;
+
+	[SerializeField] protected TextMeshProUGUI[] ammoText;
+	protected UseGun[] uG;
+
 	[HideInInspector] public GameObject currentGun;
+
+	void Start()
+	{
+		uG[0] = rifle.GetComponent<UseGun>();
+		uG[1] = grenadeLauncher.GetComponent<UseGun>();
+		uG[3] = railgun.GetComponent<UseGun>();
+		uG[2] = shotgun.GetComponent<UseGun>();
+		uG[4] = singularity.GetComponent<UseGun>();
+		uG[5] = pistol.GetComponent<UseGun>();
+
+		StartCoroutine(AmmoRoutine());
+	}
 
 	public void ButtonPistol()
 	{
@@ -50,6 +68,19 @@ public class WeaponWheel : MonoBehaviour
 		currentGun.SetActive(false);
 		gun.SetActive(true);
 		currentGun = gun;
+	}
+
+	IEnumerator AmmoRoutine()
+	{
+		while (true)
+		{
+			for (int i = 0; i < ammoText.Length; i++)
+			{
+				if (uG[i] != null)
+					ammoText[i].text = uG[i].currentMag + " / " + uG[i].ammoPool;
+			}
+			yield return new WaitForSeconds(1);
+		}
 	}
 
 }
