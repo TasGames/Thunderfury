@@ -16,10 +16,8 @@ public class WeaponWheel : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI[] ammoText;
 	protected UseGun[] uG;
 	protected int selectedButton = 0;
-	protected Color highlightColour;
-	protected Color standardColour;
-	protected float colourValue;
-	protected float alphaValue;
+	[SerializeField] protected Color highlightColour;
+	[SerializeField] protected Color standardColour;
 
 	[HideInInspector] public GameObject currentGun;
 
@@ -36,8 +34,8 @@ public class WeaponWheel : MonoBehaviour
 		StartCoroutine(AmmoRoutine());*/
 
 
-		highlightColour = new Color32(30, 30, 30, 190);
-		standardColour = new Color32(0, 0, 0, 190);			
+		//highlightColour = new Color32(30, 30, 30, 190);
+		//standardColour = new Color32(0, 0, 0, 190);			
 	}
 	
 	void Update()
@@ -91,6 +89,7 @@ public class WeaponWheel : MonoBehaviour
 		{
 			for (int i = 0; i < ammoText.Length; i++)
 			{
+				uG[i] = pistol.GetComponent<UseGun>();
 				if (uG[i] != null)
 					ammoText[i].text = uG[i].currentMag + " / " + uG[i].ammoPool;
 			}

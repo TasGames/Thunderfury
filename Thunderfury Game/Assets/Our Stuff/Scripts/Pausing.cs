@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Pausing : MonoBehaviour 
 {
 	[SerializeField] protected GameObject pauseMenu;
     [SerializeField] protected GameObject weaponWheel;
+    [SerializeField] protected GameObject panel;
+    [SerializeField] protected Color panelColour;
+    protected Color noAlphaPanel;
+    Image image;
 
     protected RigidbodyFirstPersonController rbFPC;
     protected Animator anim;
@@ -15,6 +21,8 @@ public class Pausing : MonoBehaviour
     {
         rbFPC = GetComponent<RigidbodyFirstPersonController>();
         anim = weaponWheel.GetComponent<Animator>();
+        Image image = panel.GetComponent<Image>();
+        noAlphaPanel = new Color(0, 0, 0, 0);
     }
 
 	void Update()
@@ -51,11 +59,13 @@ public class Pausing : MonoBehaviour
             weaponWheel.SetActive(true);
             anim.SetTrigger("Open");
             isOpen = true;
+            //image.CrossFadeColor(panelColour, 1, true, true);
         }
         else
         {
             anim.SetTrigger("Close");
             isOpen = false;
+            //image.CrossFadeColor(noAlphaPanel, 1, true, true);
             yield return new WaitForSeconds(0.9f);
             weaponWheel.SetActive(false);
         }
