@@ -22,6 +22,7 @@ public class EnemyBehaviour : MonoBehaviour
     float nextAttack;                       //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast
     bool canCheckForAttack;
+    bool isInTrigger;
 
     [SerializeField] protected float beginWalkDelay;
 
@@ -36,6 +37,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         canCheckForAttack = true;
         StartCoroutine(CheckForAttack());
+
+        isInTrigger = false;
     }
 
     // Update is called once per frame
@@ -45,6 +48,12 @@ public class EnemyBehaviour : MonoBehaviour
         {
             agent.SetDestination(goal.position);
         }
+
+        //Check if able to move again based on current animation
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Running") && agent.isStopped == true)
+            BeginMovement();
+
+        Debug.Log(agent.isStopped);
     }
 
     public void DealDamage()    //Triggered in ZombieAttack animation timeline
@@ -59,10 +68,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    IEnumerator BeginMovement() //Triggered in ZombieAttack animation timeline
+    public void BeginMovement() //Triggered in ZombieAttack animation timeline
     {
-        yield return new WaitForSeconds(beginWalkDelay);
-        if (agent.isStopped)
+        if (agent.isStopped && isInTrigger == false)
             agent.isStopped = false;
     }
 
@@ -102,9 +110,9 @@ public class EnemyBehaviour : MonoBehaviour
                     //StopMovement();                //Stop movement
                 }
             }
+
             yield return null;
         }
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,16 +120,14 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             StopMovement();
+            isInTrigger = true;
         }
     }
 
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (other.gameObject.tag == "Player")
-    //     {
-    //         StartCoroutine(BeginMovement());
-    //     }
-    // }
+    private void OnTriggerExit(Collider other)
+    {
+        isInTrigger = false;
+    }
 
     // void OnCollisionEnter(Collision col)
     // {
