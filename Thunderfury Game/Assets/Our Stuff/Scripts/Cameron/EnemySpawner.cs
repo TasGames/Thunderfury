@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
     }
     protected float totalWeight;
 
+    Enemies enemy;
+
     [SerializeField] protected Enemies[] enemyList;   //Enemy Object
 
     Target enemyHealth; //To reset enemy health on spawn
@@ -80,37 +82,26 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (enemyList[chosenIndex].enemy.tag == "Enemy1")   //If randomly selected enemy is Enemy1
                 {
-                    GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
-                    if (enemy != null)
-                    {
-                        enemyHealth = enemy.GetComponent<Target>();
-                        enemyHealth.health = enemyHealth.originalHealth;    //Reset health
-
-                        enemy.transform.position = posToSpawn;
-                        enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
-                        activeEnemies.Add(enemy);
-                        enemy.SetActive(true);
-                    }
-                    Debug.Log("Spawn Complete: variant 1");
-                    return;
+                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
                 }
                 else if (enemyList[chosenIndex].enemy.tag == "Enemy2")  //If randomly selected enemy is Enemy2
                 {
-                    GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy2");
-                    if (enemy != null)
-                    {
-                        enemyHealth = enemy.GetComponent<Target>();
-                        enemyHealth.health = enemyHealth.originalHealth;    //Reset health
-
-                        enemy.transform.position = posToSpawn;
-                        enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
-                        activeEnemies.Add(enemy);
-                        enemy.SetActive(true);
-                    }
-                    Debug.Log("Spawn Complete: variant 2");
-                    return;
+                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy2");
                 }
 
+                
+                if (enemy.enemy != null)
+                {
+                    enemyHealth = enemy.enemy.GetComponent<Target>();
+                    enemyHealth.health = enemyHealth.originalHealth;    //Reset health
+
+                    enemy.enemy.transform.position = posToSpawn;
+                    enemy.enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    activeEnemies.Add(enemy.enemy);
+                    enemy.enemy.SetActive(true);
+                }
+                Debug.Log("Spawn Complete");
+                return;
             }
             // Spawn enemy success, return
         }
