@@ -126,6 +126,7 @@ public class WaveManager : MonoBehaviour
     {
         state = SpawnState.ShoppingTime;
         waveCounter++;                      //Increase wave # in UI
+
         StartCoroutine(ScreenFadeOut());    //Teleport screen flash
 
         //Teleport player to shop location
@@ -196,6 +197,7 @@ public class WaveManager : MonoBehaviour
     private YieldInstruction fadeInstruction = new YieldInstruction();
     IEnumerator ScreenFadeOut()
     {
+        fadeImage.gameObject.SetActive(true); 
         float elapsedTime = 0.0f;
         Color c = fadeImage.color;
         while (elapsedTime < fadeSpeed)
@@ -205,6 +207,7 @@ public class WaveManager : MonoBehaviour
             c.a = 1.0f - Mathf.Clamp01(elapsedTime / fadeSpeed);
             fadeImage.color = c;
         }
+        fadeImage.gameObject.SetActive(false); 
     }
 
     IEnumerator ScreenFadeIn()

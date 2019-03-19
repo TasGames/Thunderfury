@@ -22,7 +22,8 @@ public class DrawBox : MonoBehaviour
 
     void Update()
     {
-        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position); //Check distance between spawn point and player
+        if (this.gameObject.tag == "InactiveSpawn" || this.gameObject.tag == "ActiveSpawn")
+            distanceToPlayer = Vector3.Distance(player.transform.position, transform.position); //Check distance between spawn point and player
 
         if (this.gameObject.tag == "InactiveSpawn") //If not active, check if within range to become active again
         {
@@ -63,6 +64,12 @@ public class DrawBox : MonoBehaviour
             Gizmos.color = Color.red;   //Spawn point red when inactive
 
             //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+            Gizmos.DrawWireCube(transform.position, transform.localScale);
+        }
+        else
+        {
+            Gizmos.color = Color.magenta;
+
             Gizmos.DrawWireCube(transform.position, transform.localScale);
         }
     }

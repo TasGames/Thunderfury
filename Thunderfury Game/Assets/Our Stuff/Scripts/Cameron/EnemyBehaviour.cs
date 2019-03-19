@@ -52,8 +52,6 @@ public class EnemyBehaviour : MonoBehaviour
         //Check if able to move again based on current animation
         if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Running") && agent.isStopped == true)
             BeginMovement();
-
-        Debug.Log(agent.isStopped);
     }
 
     public void DealDamage()    //Triggered in ZombieAttack animation timeline
