@@ -11,18 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817cf59ecaf6e14a8899c55df1c596f, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: 
-  name: Rifle
+  name: Assault Rifle
   icon: {fileID: 21300000, guid: c080e12d534f64fc48bffb53d9f55fba, type: 3}
-  description: Low Damage but high rate of fire.
-  cost: 2000
+  description: Low Damage but high rate of fire
+  cost: 3000
   selectGunType: 0
   isAutomatic: 1
   isContinuous: 0
   fireSound: {fileID: 0}
   fireRate: 3
-  recoil: 0
-  magSize: 10
-  maxAmmo: 90
+  recoil: 5
+  magSize: 16
+  maxAmmo: 160
   reloadTime: 3
   impact: 10
   range: 10

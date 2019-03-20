@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Railgun
   icon: {fileID: 0}
-  description: 
-  cost: 0
+  description: Something about a railgun
+  cost: 10000
   selectGunType: 0
   isAutomatic: 0
   isContinuous: 0
