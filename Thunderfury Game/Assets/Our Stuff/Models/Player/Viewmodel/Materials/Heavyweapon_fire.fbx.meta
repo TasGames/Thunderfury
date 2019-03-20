@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: cdea18fd14f02484db0116bc41973a86
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Chest
+    100004: Head
+    100006: //RootNode
+    100008: Hips
+    100010: IndexFinger1_L
+    100012: IndexFinger1_R
+    100014: IndexFinger2_L
+    100016: IndexFinger2_R
+    100018: IndexFinger3_L
+    100020: IndexFinger3_R
+    100022: Left_ankle
+    100024: Left_arm
+    100026: Left_elbow
+    100028: Left_knee
+    100030: Left_leg
+    100032: Left_shoulder
+    100034: Left_toe
+    100036: Left_wrist
+    100038: LittleFinger1_L
+    100040: LittleFinger1_R
+    100042: LittleFinger2_L
+    100044: LittleFinger2_R
+    100046: LittleFinger3_L
+    100048: LittleFinger3_R
+    100050: MiddleFinger1_L
+    100052: MiddleFinger1_R
+    100054: MiddleFinger2_L
+    100056: MiddleFinger2_R
+    100058: MiddleFinger3_L
+    100060: MiddleFinger3_R
+    100062: mixamo:Deleteme
+    100064: mixamo:Viewmodel
+    100066: Neck
+    100068: Right_ankle
+    100070: Right_arm
+    100072: Right_elbow
+    100074: Right_knee
+    100076: Right_leg
+    100078: Right_shoulder
+    100080: Right_toe
+    100082: Right_wrist
+    100084: RingFinger1_L
+    100086: RingFinger1_R
+    100088: RingFinger2_L
+    100090: RingFinger2_R
+    100092: RingFinger3_L
+    100094: RingFinger3_R
+    100096: Spine
+    100098: Thumb0_L
+    100100: Thumb0_R
+    100102: Thumb1_L
+    100104: Thumb1_R
+    100106: Thumb2_L
+    100108: Thumb2_R
+    400000: Armature
+    400002: Chest
+    400004: Head
+    400006: //RootNode
+    400008: Hips
+    400010: IndexFinger1_L
+    400012: IndexFinger1_R
+    400014: IndexFinger2_L
+    400016: IndexFinger2_R
+    400018: IndexFinger3_L
+    400020: IndexFinger3_R
+    400022: Left_ankle
+    400024: Left_arm
+    400026: Left_elbow
+    400028: Left_knee
+    400030: Left_leg
+    400032: Left_shoulder
+    400034: Left_toe
+    400036: Left_wrist
+    400038: LittleFinger1_L
+    400040: LittleFinger1_R
+    400042: LittleFinger2_L
+    400044: LittleFinger2_R
+    400046: LittleFinger3_L
+    400048: LittleFinger3_R
+    400050: MiddleFinger1_L
+    400052: MiddleFinger1_R
+    400054: MiddleFinger2_L
+    400056: MiddleFinger2_R
+    400058: MiddleFinger3_L
+    400060: MiddleFinger3_R
+    400062: mixamo:Deleteme
+    400064: mixamo:Viewmodel
+    400066: Neck
+    400068: Right_ankle
+    400070: Right_arm
+    400072: Right_elbow
+    400074: Right_knee
+    400076: Right_leg
+    400078: Right_shoulder
+    400080: Right_toe
+    400082: Right_wrist
+    400084: RingFinger1_L
+    400086: RingFinger1_R
+    400088: RingFinger2_L
+    400090: RingFinger2_R
+    400092: RingFinger3_L
+    400094: RingFinger3_R
+    400096: Spine
+    400098: Thumb0_L
+    400100: Thumb0_R
+    400102: Thumb1_L
+    400104: Thumb1_R
+    400106: Thumb2_L
+    400108: Thumb2_R
+    2300000: mixamo:Deleteme
+    2300002: mixamo:Viewmodel
+    3300000: mixamo:Deleteme
+    3300002: mixamo:Viewmodel
+    4300000: mixamo:Deleteme
+    4300002: mixamo:Viewmodel
+    7400000: mixamo.com
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
