@@ -9,29 +9,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c817cf59ecaf6e14a8899c55df1c596f, type: 3}
-  m_Name: Shotgun
+  m_Name: Railgun
   m_EditorClassIdentifier: 
-  name: Shotgun
+  name: Railgun
   icon: {fileID: 0}
-  description: Short range but high damage and spread
-  cost: 6000
+  description: Something about a railgun
+  cost: 10000
   selectGunType: 0
   isAutomatic: 0
   isContinuous: 0
   fireSound: {fileID: 0}
-  fireRate: 4
-  recoil: 8
-  magSize: 4
-  maxAmmo: 16
-  reloadTime: 2
-  impact: 100
-  range: 10
-  numRays: 30
-  spread: 0.3
-  hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
+  fireRate: 0
+  recoil: 0
+  magSize: 0
+  maxAmmo: 0
+  reloadTime: 0
+  impact: 0
+  range: 0
+  numRays: 1
+  spread: 0
+  hitEffect: {fileID: 0}
   bulletMark: {fileID: 0}
-  takesAmmoType: 2
-  damage: 20
-  damageRange: 5
+  takesAmmoType: 0
+  damage: 0
+  damageRange: 0
   projectilePrefab: {fileID: 0}
   projectileForce: 0

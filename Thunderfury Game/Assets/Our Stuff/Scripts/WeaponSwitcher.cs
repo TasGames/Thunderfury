@@ -25,7 +25,7 @@ public class WeaponSwitcher : MonoBehaviour
 			if (i == selectedWeapon)
 			{
 				weapon.gameObject.SetActive(true);
-				currentGun = weapon.gameObject;
+				currentGun = weapon.gameObject.transform.GetChild(0).gameObject;
 			}
 			else
 				weapon.gameObject.SetActive(false);
