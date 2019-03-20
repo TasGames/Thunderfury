@@ -22,6 +22,9 @@ public class EnemyBehaviour : MonoBehaviour
     float nextAttack;                       //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast
     bool canCheckForAttack;
+    bool isInTrigger;
+
+    [SerializeField] protected float beginWalkDelay;
 
     // Use this for initialization
     void Start()
@@ -34,6 +37,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         canCheckForAttack = true;
         StartCoroutine(CheckForAttack());
+
+        isInTrigger = false;
     }
 
     // Update is called once per frame
@@ -43,6 +48,10 @@ public class EnemyBehaviour : MonoBehaviour
         {
             agent.SetDestination(goal.position);
         }
+
+        //Check if able to move again based on current animation
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Running") && agent.isStopped == true)
+            BeginMovement();
     }
 
     public void DealDamage()    //Triggered in ZombieAttack animation timeline
@@ -59,7 +68,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void BeginMovement() //Triggered in ZombieAttack animation timeline
     {
-        if (agent.isStopped)
+        if (agent.isStopped && isInTrigger == false)
             agent.isStopped = false;
     }
 
@@ -96,17 +105,31 @@ public class EnemyBehaviour : MonoBehaviour
                     nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
 
                     AttackAnimation();
-                    StopMovement();                //Stop movement
+                    //StopMovement();                //Stop movement
                 }
             }
+
             yield return null;
         }
+    }
 
-    }
-    
-    void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.tag == "Player")
-            player.PlayerTakeDamage(damageToDeal);
+        if (other.gameObject.tag == "Player")
+        {
+            StopMovement();
+            isInTrigger = true;
+        }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isInTrigger = false;
+    }
+
+    // void OnCollisionEnter(Collision col)
+    // {
+    //     if (col.gameObject.tag == "Player")
+    //         player.PlayerTakeDamage(damageToDeal);
+    // }
 }

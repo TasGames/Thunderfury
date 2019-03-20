@@ -1,11 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
 
-    public GameObject enemy;   //Enemy Object
+    [System.Serializable]
+    protected struct Enemies
+    {
+        public GameObject enemy;
+        public float spawnWeight;
+    }
+    protected float totalWeight;
+
+    Enemies enemy;
+
+    [SerializeField] protected Enemies[] enemyList;   //Enemy Object
 
     Target enemyHealth; //To reset enemy health on spawn
 
@@ -24,10 +35,30 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    void OnValidate()
+    {
+        totalWeight = 0;
+        if (enemyList != null)
+        {
+            foreach (var Enemy in enemyList)
+                totalWeight += Enemy.spawnWeight;
+        }
+    }
+
     public void PickSpawnLocation()
     {
         if (activeSpawns.Count > 0)
         {
+            float pick = Random.value * totalWeight;
+            int chosenIndex = 0;
+            float cumulativeWeight = enemyList[0].spawnWeight;
+
+            while (pick > cumulativeWeight && chosenIndex < enemyList.Length - 1)
+            {
+                chosenIndex++;
+                cumulativeWeight += enemyList[chosenIndex].spawnWeight;
+            }
+
             int spawnPointIndex = Random.Range(0, activeSpawns.Count);
 
             // Generate a random position
@@ -49,16 +80,25 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
-                if (enemy != null)
+                if (enemyList[chosenIndex].enemy.tag == "Enemy1")   //If randomly selected enemy is Enemy1
                 {
-                    enemyHealth = enemy.GetComponent<Target>();
-                    enemyHealth.health = enemyHealth.originalHealth;
-                    
-                    enemy.transform.position = posToSpawn;
-                    enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
-                    activeEnemies.Add(enemy);
-                    enemy.SetActive(true);
+                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
+                }
+                else if (enemyList[chosenIndex].enemy.tag == "Enemy2")  //If randomly selected enemy is Enemy2
+                {
+                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy2");
+                }
+
+                
+                if (enemy.enemy != null)
+                {
+                    enemyHealth = enemy.enemy.GetComponent<Target>();
+                    enemyHealth.health = enemyHealth.originalHealth;    //Reset health
+
+                    enemy.enemy.transform.position = posToSpawn;
+                    enemy.enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    activeEnemies.Add(enemy.enemy);
+                    enemy.enemy.SetActive(true);
                 }
                 Debug.Log("Spawn Complete");
                 return;
