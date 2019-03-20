@@ -21,7 +21,7 @@ public class Pausing : MonoBehaviour
     {
         rbFPC = GetComponent<RigidbodyFirstPersonController>();
         anim = weaponWheel.GetComponent<Animator>();
-        Image image = panel.GetComponent<Image>();
+        image = panel.GetComponent<Image>();
         noAlphaPanel = new Color(0, 0, 0, 0);
     }
 
@@ -59,13 +59,13 @@ public class Pausing : MonoBehaviour
             weaponWheel.SetActive(true);
             anim.SetTrigger("Open");
             isOpen = true;
-            //image.CrossFadeColor(panelColour, 1, true, true);
+            image.CrossFadeColor(panelColour, 1, true, true);
         }
         else
         {
             anim.SetTrigger("Close");
             isOpen = false;
-            //image.CrossFadeColor(noAlphaPanel, 1, true, true);
+            image.CrossFadeColor(noAlphaPanel, 1, true, true);
             yield return new WaitForSeconds(0.9f);
             weaponWheel.SetActive(false);
         }

@@ -8095,12 +8095,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039eae9ec224cef40af676f93b8bde9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pistol: {fileID: 569579999}
-  shotgun: {fileID: 107886055}
-  rifle: {fileID: 205615790}
-  grenadeLauncher: {fileID: 477392436}
-  railgun: {fileID: 1180944854}
-  singularity: {fileID: 235411389}
+  pistol: {fileID: 0}
+  shotgun: {fileID: 0}
+  rifle: {fileID: 0}
+  grenadeLauncher: {fileID: 0}
+  railgun: {fileID: 0}
+  singularity: {fileID: 0}
   pistolAmmo: {fileID: 1690909534}
   rifleAmmo: {fileID: 1393337224}
   grenadeAmmo: {fileID: 2092058893}
@@ -53577,12 +53577,14 @@ MonoBehaviour:
   shotgun: {fileID: 107886055}
   rifle: {fileID: 1699710384750632, guid: 97b7ebbcd47883546a443048dcdc9081, type: 2}
   grenadeLauncher: {fileID: 477392436}
-  something: {fileID: 0}
+  railGun: {fileID: 0}
+  singularity: {fileID: 0}
   pistolButton: {fileID: 1229080446}
   shotgunButton: {fileID: 816923334}
   rifleButton: {fileID: 2006322699}
   grenadeButton: {fileID: 1405405653}
-  somethingButton: {fileID: 1573503723}
+  railButton: {fileID: 0}
+  singularityButton: {fileID: 0}
   gunName: {fileID: 255740758}
   gunDamage: {fileID: 1520738087}
   gunImpact: {fileID: 137146444}
@@ -101182,7 +101184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2051948885
 MonoBehaviour:
   m_ObjectHideFlags: 0
