@@ -48,12 +48,13 @@ public class GunDisplay : MonoBehaviour
 			//gunObject.transform.localPosition = gunPrefab.transform.position;
 			//gunObject.SetActive(false);
 
-			Vector3 Pos = gunPrefab.transform.localPosition;
+			/*Vector3 Pos = gunPrefab.transform.localPosition;
 			Quaternion Rot = gunPrefab.transform.localRotation;
 			gunPrefab.transform.parent = parentPrefab.transform;
 			gunPrefab.transform.localPosition = Pos;
-			gunPrefab.transform.localRotation = Rot;
-			gunPrefab.SetActive(false);
+			gunPrefab.transform.localRotation = Rot;*/
+
+			gunPrefab.SetActive(true);
 
 			HUD.totalScore -= gun.cost;
 			

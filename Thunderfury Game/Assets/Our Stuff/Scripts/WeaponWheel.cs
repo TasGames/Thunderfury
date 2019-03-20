@@ -6,12 +6,12 @@ using TMPro;
 
 public class WeaponWheel : MonoBehaviour
  {
-	[SerializeField] protected GameObject pistol;
-	[SerializeField] protected GameObject shotgun;
-	[SerializeField] protected GameObject rifle;
-	[SerializeField] protected GameObject grenadeLauncher;
-	[SerializeField] protected GameObject railgun;
-	[SerializeField] protected GameObject singularity;
+	[SerializeField] protected UseGun pistol;
+	[SerializeField] protected UseGun shotgun;
+	[SerializeField] protected UseGun rifle;
+	[SerializeField] protected UseGun grenadeLauncher;
+	[SerializeField] protected UseGun railgun;
+	[SerializeField] protected UseGun singularity;
 
 	[SerializeField] protected TextMeshProUGUI pistolAmmo;
 	[SerializeField] protected TextMeshProUGUI rifleAmmo;
@@ -20,7 +20,6 @@ public class WeaponWheel : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI singularityAmmo;
 	[SerializeField] protected TextMeshProUGUI railAmmo;
 	
-	protected UseGun[] uG;
 	protected int selectedButton = 0;
 	[SerializeField] protected Color highlightColour;
 	[SerializeField] protected Color standardColour;
@@ -29,13 +28,6 @@ public class WeaponWheel : MonoBehaviour
 
 	void Start()
 	{
-		uG[0] = rifle.GetComponent<UseGun>();
-		uG[1] = grenadeLauncher.GetComponent<UseGun>();
-		uG[3] = railgun.GetComponent<UseGun>();
-		uG[2] = shotgun.GetComponent<UseGun>();
-		uG[4] = singularity.GetComponent<UseGun>();
-		uG[5] = pistol.GetComponent<UseGun>();
-
 		StartCoroutine(AmmoRoutine());
 
 		//highlightColour = new Color32(30, 30, 30, 190);
@@ -47,8 +39,7 @@ public class WeaponWheel : MonoBehaviour
 		ChangeButton();
 	}
 	
-
-	void SwitchGun(GameObject gun)
+	/*void SwitchGun(GameObject gun)
 	{
 		if (currentGun == null)
 			currentGun = pistol;
@@ -56,18 +47,18 @@ public class WeaponWheel : MonoBehaviour
 		currentGun.SetActive(false);
 		gun.SetActive(true);
 		currentGun = gun;
-	}
+	}*/
 
 	IEnumerator AmmoRoutine()
 	{
 		while (true)
 		{
-			pistolAmmo.text = uG[5].currentMag + " / " + uG[5].ammoPool;
-			shotgunAmmo.text = uG[2].currentMag + " / " + uG[2].ammoPool;
-			grenadeAmmo.text = uG[1].currentMag + " / " + uG[1].ammoPool;
-			singularityAmmo.text = uG[4].currentMag + " / " + uG[4].ammoPool;
-			railAmmo.text = uG[3].currentMag + " / " + uG[3].ammoPool;
-			rifleAmmo.text = uG[0].currentMag + " / " + uG[0].ammoPool;
+			pistolAmmo.text = pistol.currentMag + " / " + pistol.ammoPool;
+			shotgunAmmo.text = shotgun.currentMag + " / " + shotgun.ammoPool;
+			grenadeAmmo.text = grenadeLauncher.currentMag + " / " + grenadeLauncher.ammoPool;
+			singularityAmmo.text = singularity.currentMag + " / " + singularity.ammoPool;
+			railAmmo.text = railgun.currentMag + " / " + railgun.ammoPool;
+			rifleAmmo.text = rifle.currentMag + " / " + rifle.ammoPool;
 
 			yield return new WaitForSeconds(1);
 		}

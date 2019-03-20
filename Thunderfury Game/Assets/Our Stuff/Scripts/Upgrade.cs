@@ -12,14 +12,16 @@ public class Upgrade : MonoBehaviour
 	[SerializeField] protected GameObject shotgun;
 	[SerializeField] protected GameObject rifle;
 	[SerializeField] protected GameObject grenadeLauncher;
-	[SerializeField] protected GameObject something;
+	[SerializeField] protected GameObject railGun;
+	[SerializeField] protected GameObject singularity;
 
 	[Title("Toggle Buttons")]
 	[SerializeField] protected GameObject pistolButton;
 	[SerializeField] protected GameObject shotgunButton;
 	[SerializeField] protected GameObject rifleButton;
 	[SerializeField] protected GameObject grenadeButton;
-	[SerializeField] protected GameObject somethingButton;
+	[SerializeField] protected GameObject railButton;
+	[SerializeField] protected GameObject singularityButton;
 
 	[Title("Current Gun Details")]
 	[SerializeField] protected TextMeshProUGUI gunName;	
@@ -117,11 +119,21 @@ public class Upgrade : MonoBehaviour
 		}
 	}
 
-	public void SomethingButton()
+	public void RailButton()
 	{
-		if (something != null)
+		if (railButton != null)
 		{
-			useGun = something.GetComponent<UseGun>();
+			useGun = railGun.GetComponent<UseGun>();
+			DisplayCurrentStats();
+			DisplayNewStats();
+		}
+	}
+
+	public void SingularityButton()
+	{
+		if (singularityButton != null)
+		{
+			useGun = singularity.GetComponent<UseGun>();
 			DisplayCurrentStats();
 			DisplayNewStats();
 		}
