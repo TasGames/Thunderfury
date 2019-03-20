@@ -13,7 +13,13 @@ public class WeaponWheel : MonoBehaviour
 	[SerializeField] protected GameObject railgun;
 	[SerializeField] protected GameObject singularity;
 
-	[SerializeField] protected TextMeshProUGUI[] ammoText;
+	[SerializeField] protected TextMeshProUGUI pistolAmmo;
+	[SerializeField] protected TextMeshProUGUI rifleAmmo;
+	[SerializeField] protected TextMeshProUGUI grenadeAmmo;
+	[SerializeField] protected TextMeshProUGUI shotgunAmmo;
+	[SerializeField] protected TextMeshProUGUI singularityAmmo;
+	[SerializeField] protected TextMeshProUGUI railAmmo;
+	
 	protected UseGun[] uG;
 	protected int selectedButton = 0;
 	[SerializeField] protected Color highlightColour;
@@ -23,16 +29,14 @@ public class WeaponWheel : MonoBehaviour
 
 	void Start()
 	{
-
-	/*	uG[0] = rifle.GetComponent<UseGun>();
+		uG[0] = rifle.GetComponent<UseGun>();
 		uG[1] = grenadeLauncher.GetComponent<UseGun>();
 		uG[3] = railgun.GetComponent<UseGun>();
 		uG[2] = shotgun.GetComponent<UseGun>();
 		uG[4] = singularity.GetComponent<UseGun>();
 		uG[5] = pistol.GetComponent<UseGun>();
 
-		StartCoroutine(AmmoRoutine());*/
-
+		StartCoroutine(AmmoRoutine());
 
 		//highlightColour = new Color32(30, 30, 30, 190);
 		//standardColour = new Color32(0, 0, 0, 190);			
@@ -42,36 +46,7 @@ public class WeaponWheel : MonoBehaviour
 	{
 		ChangeButton();
 	}
-
-	public void ButtonPistol()
-	{
-		SwitchGun(pistol);
-	}
-
-	public void ButtonShotgun()
-	{
-		SwitchGun(shotgun);
-	}
-
-	public void ButtonRifle()
-	{
-		SwitchGun(rifle);
-	}
-
-	public void ButtonGrenade()
-	{
-		SwitchGun(grenadeLauncher);
-	}
-
-	public void ButtonSingularity()
-	{
-		SwitchGun(singularity);
-	}
-
-	public void ButtonRailgun()
-	{
-		SwitchGun(railgun);
-	}	
+	
 
 	void SwitchGun(GameObject gun)
 	{
@@ -87,12 +62,13 @@ public class WeaponWheel : MonoBehaviour
 	{
 		while (true)
 		{
-			for (int i = 0; i < ammoText.Length; i++)
-			{
-				uG[i] = pistol.GetComponent<UseGun>();
-				if (uG[i] != null)
-					ammoText[i].text = uG[i].currentMag + " / " + uG[i].ammoPool;
-			}
+			pistolAmmo.text = uG[5].currentMag + " / " + uG[5].ammoPool;
+			shotgunAmmo.text = uG[2].currentMag + " / " + uG[2].ammoPool;
+			grenadeAmmo.text = uG[1].currentMag + " / " + uG[1].ammoPool;
+			singularityAmmo.text = uG[4].currentMag + " / " + uG[4].ammoPool;
+			railAmmo.text = uG[3].currentMag + " / " + uG[3].ammoPool;
+			rifleAmmo.text = uG[0].currentMag + " / " + uG[0].ammoPool;
+
 			yield return new WaitForSeconds(1);
 		}
 	}
