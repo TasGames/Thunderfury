@@ -19,10 +19,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] float damageToDeal;    //Amount to damage player by
     [SerializeField] float attackRate;
-    float nextAttack;                       //Time to wait before able to damage again
+    [HideInInspector] public float nextAttack;                       //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast
     bool canCheckForAttack;
     bool isInTrigger;
+    public bool handTrigger;
 
     [SerializeField] protected float beginWalkDelay;
 
@@ -39,6 +40,7 @@ public class EnemyBehaviour : MonoBehaviour
         StartCoroutine(CheckForAttack());
 
         isInTrigger = false;
+        handTrigger = false;
     }
 
     // Update is called once per frame
@@ -56,13 +58,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void DealDamage()    //Triggered in ZombieAttack animation timeline
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask))
+        if (player != null)
         {
-            if (player != null)
-            {
-                player.PlayerTakeDamage(damageToDeal);
-                Debug.Log("Dealt Damage");
-            }
+            player.PlayerTakeDamage(damageToDeal);
+            Debug.Log("Dealt Damage");
+
+            if (handTrigger == true)
+                handTrigger = false;
         }
     }
 
@@ -81,6 +83,7 @@ public class EnemyBehaviour : MonoBehaviour
     void AttackAnimation()
     {
         int randNum = Random.Range(0, 2);
+        handTrigger = true;
         switch (randNum)
         {
             case 0:
@@ -96,9 +99,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         while (canCheckForAttack)
         {
-            if (Vector3.Distance(transform.position, goal.position) < attackDistance)
+            if (Vector3.Distance(transform.position, goal.position) < attackDistance)   //If enemy within a certain distance of player
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);   //Draw debug in editor
 
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
                 {

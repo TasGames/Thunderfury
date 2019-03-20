@@ -16800,7 +16800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &349092384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54854,7 +54854,7 @@ MonoBehaviour:
     activeAtOnce: 4
     spawnRate: 1
   modifier:
-    enemyNumIncrease: 2
+    enemyNumIncrease: 1.5
     activeNumIncrease: 1.5
     maxWaveToIncrease: 5
   canSpawnNextWave: 1
@@ -77304,7 +77304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1623068228
 RectTransform:
   m_ObjectHideFlags: 0
