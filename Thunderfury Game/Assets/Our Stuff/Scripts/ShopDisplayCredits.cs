@@ -11,6 +11,6 @@ public class ShopDisplayCredits : MonoBehaviour
 	
 	void Update() 
 	{
-		currentCredits.text = "Credits: $" + HUD.totalScore;
+		currentCredits.text = "Credits: ¥" + HUD.totalScore;
 	}
 }

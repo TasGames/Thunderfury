@@ -8,9 +8,12 @@ public class Projectile : ScriptableObject
 {
 	[Title("Projectile Stats")]
 	public float projectileTimer;
+	public bool antiGravity;		
 	public float damage;
 	[Title("Explosion Stats")]
 	public bool isExplosive;
+	[ShowIf("isExplosive", true)] public bool isBlackHole;
+	[ShowIf("isBlackHole", true)] public float blackHoleTimer;
 	[ShowIf("isExplosive", true)] public bool explodeOnImpact;
 	[ShowIf("isExplosive", true)] public float explosionForce;
 	[ShowIf("isExplosive", true)] public float blastRadius;

@@ -9,19 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aee746b4dce0824cb522358a45f75fb, type: 3}
-  m_Name: Grenade
+  m_Name: Singularity
   m_EditorClassIdentifier: 
-  projectileTimer: 2
+  projectileTimer: 5
   antiGravity: 0
-  damage: 50
+  damage: 100
   isExplosive: 1
-  isInplosive: 0
+  isBlackHole: 1
+  blackHoleTimer: 5
   explodeOnImpact: 0
   explosionForce: 1000
-  blastRadius: 5
-  magnitude: 4
-  roughness: 4
-  fadeIn: 0.1
-  fadeOut: 1
-  explosionEffect: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
-    type: 2}
+  blastRadius: 6
+  magnitude: 0
+  roughness: 0
+  fadeIn: 0
+  fadeOut: 0
+  explosionEffect: {fileID: 0}

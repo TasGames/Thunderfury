@@ -8,21 +8,21 @@ public class UseGun : MonoBehaviour
 	protected Camera cam;
 	protected float nextToFire = 0;
 	protected float finalDamage;
-	protected ParticleSystem muzzleFlash;
+	protected bool stillFiring = false;
+	[SerializeField] protected ParticleSystem muzzleFlash;
 	[SerializeField] protected Animator animator;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
 	[HideInInspector] public int currentMag;
-	[SerializeField] protected GameObject pos;
 
-	protected float prefDamage;
-	protected float prefImpact;
-	protected float prefFireRate;
-	protected float prefRange;
-	protected float prefRecoil;
-	protected float prefReloadTime;
-	protected int prefMag;
-	protected int prefMaxAmmo;
+	[HideInInspector] public float prefDamage;
+	[HideInInspector] public float prefImpact;
+	[HideInInspector] public float prefFireRate;
+	[HideInInspector] public float prefRange;
+	[HideInInspector] public float prefRecoil;
+	[HideInInspector] public float prefReloadTime;
+	[HideInInspector] public int prefMag;
+	[HideInInspector] public int prefMaxAmmo;
 
 	void Start()
 	{
@@ -120,7 +120,12 @@ public class UseGun : MonoBehaviour
 		if (gun.selectGunType == typeEnum.projectileType)
 			ProjectileType();
 		else if (gun.selectGunType == typeEnum.rayType)
-			RayType();
+		{
+			if (gun.isContinuous == false)
+				RayType();
+			else
+				StartCoroutine(ContinuousRoutine());
+		}
 
 		if (animator != null)
 			animator.SetBool("isFiring", true);
@@ -162,15 +167,22 @@ public class UseGun : MonoBehaviour
 		Debug.Log("Reloaded");
 	}
 
+	IEnumerator ContinuousRoutine()
+	{
+		while(stillFiring == true)
+		{
+			RayType();
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
+
 	void ProjectileType()
 	{
-		GameObject projectile = Instantiate(gun.projectilePrefab, pos.transform.position, pos.transform.rotation);
+		GameObject projectile = Instantiate(gun.projectilePrefab, transform.position, transform.rotation);
 		Rigidbody projRB = projectile.GetComponent<Rigidbody>();
 
-		if (projRB.useGravity == true)
-			projRB.AddForce(-transform.right * gun.projectileForce, ForceMode.VelocityChange);
-		else
-			projRB.velocity = transform.forward * gun.projectileForce;
+		if (projRB != null)
+			projRB.AddForce(transform.forward * gun.projectileForce, ForceMode.VelocityChange);
 	}
 
 	void RayType()

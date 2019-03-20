@@ -819,6 +819,10 @@ MonoBehaviour:
   health: 20
   brokenVersion: {fileID: 1131939207076656, guid: 1325e590cd226d84196d0a9460220345,
     type: 2}
+  damagePopUp: {fileID: 1027148176914028, guid: dccb2ca8ef3a81642b5e56c13c611439,
+    type: 2}
+  dv: {fileID: 114986793464848676, guid: dccb2ca8ef3a81642b5e56c13c611439, type: 2}
+  player: {fileID: 0}
   scoreValue: 1000
   dropsPickup: 1
   dropPercentage: 20

@@ -127,7 +127,11 @@ MonoBehaviour:
   health: 40
   brokenVersion: {fileID: 1087681590771942, guid: 0f366a8ac0cfa394e9db26906d658b10,
     type: 2}
+  damagePopUp: {fileID: 1027148176914028, guid: dccb2ca8ef3a81642b5e56c13c611439,
+    type: 2}
+  dv: {fileID: 114986793464848676, guid: dccb2ca8ef3a81642b5e56c13c611439, type: 2}
   scoreValue: 0
   dropsPickup: 0
   dropPercentage: 0
   dropList: []
+  originalHealth: 40

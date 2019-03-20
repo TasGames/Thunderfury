@@ -16,6 +16,9 @@ public class Target : MonoBehaviour
     [Title("Target Stats")]
     [SerializeField] public float health;
     [SerializeField] protected GameObject brokenVersion;
+    [SerializeField] protected GameObject damagePopUp;
+    [SerializeField] protected DamageValues dv;
+    [SerializeField] protected GameObject player;
 
     [Title("Score")]
     [SerializeField] protected int scoreValue;
@@ -49,6 +52,7 @@ public class Target : MonoBehaviour
     void Awake()
     {
         OnValidate();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void TakeDamage(float amount)
@@ -63,6 +67,19 @@ public class Target : MonoBehaviour
             enemyAnim.SetTrigger("Hit");    //Trigger HitByPlayer animation
         }
 
+        if (damagePopUp != null)
+        {
+            float xOffset = Random.Range(-0.5f, 0.5f);
+            float yOffset = Random.Range(0.5f, 1f);
+            Vector3 finalPos = transform.position;
+            finalPos.x += xOffset;
+            finalPos.y += yOffset;
+            dv.damageText.text = amount.ToString();
+            GameObject damPop = Instantiate(damagePopUp, finalPos, transform.rotation);
+            StartCoroutine(RotateRoutine(damPop));
+            Destroy(damPop, 1);
+        }
+
         if (health <= 0)
             Destroy();
     }
@@ -71,23 +88,9 @@ public class Target : MonoBehaviour
     {
         if (brokenVersion != null)
         {
-            // if (brokenVersion.name == "Enemy1Ragdoll")   //If BrokenVersion is enemy ragdoll, spawn with ObjectPooler
-            // {
-            //     GameObject enemyRagdoll = ObjectPooler.SharedInstance.GetPooledObject("Enemy1Ragdoll");
-            //     if (enemyRagdoll != null)
-            //     {
-            //         enemyRagdoll.transform.position = this.gameObject.transform.position;
-            //         enemyRagdoll.transform.rotation = this.gameObject.transform.rotation;
-            //         enemyRagdoll.SetActive(true);
-            //     }
-            // }
-            // else
-            // {
-                GameObject thing = Instantiate(brokenVersion, transform.position, transform.rotation);
-                Destroy(thing, 10);
-            // }
+            GameObject broke = Instantiate(brokenVersion, transform.position, transform.rotation);
+            Destroy(broke, 10);
         }
-
 
         if (gameObject.tag == "Enemy1")
         {
@@ -127,5 +130,14 @@ public class Target : MonoBehaviour
         if (randomNum <= dropPercentage)
             Instantiate(dropList[chosenIndex].pickup, transform.position, transform.rotation);
     }
+
+    IEnumerator RotateRoutine(GameObject GO)
+	{
+		while (true)
+		{
+			GO.transform.LookAt(player.transform);
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
 
 }
