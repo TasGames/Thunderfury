@@ -92,7 +92,7 @@ public class Target : MonoBehaviour
             Destroy(broke, 10);
         }
 
-        if (gameObject.tag == "Enemy1")
+        if (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2")
         {
             waveManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<WaveManager>();
             waveManager.enemiesRemaining = waveManager.enemiesRemaining - 1;    //Reduce # of remaining enemies in the wave
