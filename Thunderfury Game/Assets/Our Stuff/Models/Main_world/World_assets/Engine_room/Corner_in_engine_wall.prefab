@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4274537929744434}
   - component: {fileID: 33766399527069930}
   - component: {fileID: 23407424066663116}
+  - component: {fileID: 65860241281363154}
   m_Layer: 0
   m_Name: Corner_in_engine_wall
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1079371866745098}
   m_Mesh: {fileID: 4300000, guid: 2da92b00c4b6bb54ba9c29e61cdf44e1, type: 3}
+--- !u!65 &65860241281363154
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079371866745098}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4.0000005, z: 4.0000005}
+  m_Center: {x: 2, y: -1.9999926, z: -1.9999926}
