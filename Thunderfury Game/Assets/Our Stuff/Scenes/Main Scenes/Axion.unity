@@ -52710,7 +52710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0.7
   bobbingSpeed: 0.25
-  bobbingAmount: 0.18
+  bobbingAmount: 0.08
   midpoint: 0.2
 --- !u!4 &1132133100 stripped
 Transform:
