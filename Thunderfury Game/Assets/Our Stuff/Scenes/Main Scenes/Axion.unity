@@ -97180,7 +97180,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4136659648017196, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.117423
+      value: -5.298
       objectReference: {fileID: 0}
     - target: {fileID: 4136659648017196, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -101061,7 +101061,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopMenu: {fileID: 272296905}
-  parentPrefab: {fileID: 766384066}
   shopIcon: {fileID: 2024883052}
   upgradeIcon: {fileID: 1039107556}
   exitIcon: {fileID: 2079606078}

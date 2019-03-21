@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour 
 {
 	[SerializeField] protected GameObject shopMenu;
-	public GameObject parentPrefab;
 	protected bool shopOpen = false;
 
 	[SerializeField] protected GameObject shopIcon;
