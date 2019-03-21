@@ -82,12 +82,12 @@ GameObject:
   - component: {fileID: 65593350520132704}
   - component: {fileID: 114099212133985424}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: HandTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1254293814789766
 GameObject:
   m_ObjectHideFlags: 1
@@ -433,7 +433,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688263224673312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.455478, y: -1.709896, z: -55.38981}
+  m_LocalPosition: {x: -6.4205074, y: -1.7100009, z: -35.6048}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4802154973667322}
@@ -870,9 +870,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 20
-  attackRate: 2
+  attackRate: 1
+  nextAttack: 0
   attackDistance: 2.5
   beginWalkDelay: 0.5
+  handTrigger: {fileID: 1190034849322872}
 --- !u!114 &114683366916072264
 MonoBehaviour:
   m_ObjectHideFlags: 1

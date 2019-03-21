@@ -54939,7 +54939,7 @@ MonoBehaviour:
   enemiesRemaining: 0
   waveCounter: 1
   wave:
-    waveEnemyCount: 1
+    waveEnemyCount: 5
     activeAtOnce: 4
     spawnRate: 1
   modifier:

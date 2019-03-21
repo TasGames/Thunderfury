@@ -23,9 +23,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float attackDistance = 2;  //Range for the raycast
     bool canCheckForAttack;
     bool isInTrigger;
-    public bool handTrigger;
 
     [SerializeField] protected float beginWalkDelay;
+    [SerializeField] GameObject handTrigger;
 
     // Use this for initialization
     void Start()
@@ -40,7 +40,7 @@ public class EnemyBehaviour : MonoBehaviour
         StartCoroutine(CheckForAttack());
 
         isInTrigger = false;
-        handTrigger = false;
+
     }
 
     // Update is called once per frame
@@ -48,12 +48,13 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (goal != null)
         {
-            agent.SetDestination(goal.position);
+            var offset = (transform.position - goal.position).normalized * 1.5f;
+            agent.SetDestination(goal.position + offset);    //Update player's location
         }
 
         //Check if able to move again based on current animation
-        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Running") && agent.isStopped == true)
-            BeginMovement();
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Running"))
+            StartCoroutine(BeginMovement());
     }
 
     public void DealDamage()    //Triggered in ZombieAttack animation timeline
@@ -63,15 +64,17 @@ public class EnemyBehaviour : MonoBehaviour
             player.PlayerTakeDamage(damageToDeal);
             Debug.Log("Dealt Damage");
 
-            if (handTrigger == true)
-                handTrigger = false;
+            DisableHandTrigger();
         }
     }
 
-    public void BeginMovement() //Triggered in ZombieAttack animation timeline
+    IEnumerator BeginMovement() //Triggered in ZombieAttack animation timeline
     {
+        yield return new WaitForSeconds(0.2f);
         if (agent.isStopped && isInTrigger == false)
             agent.isStopped = false;
+
+        yield break;
     }
 
     public void StopMovement() //Triggered in ZombieAttack animation timeline
@@ -83,7 +86,7 @@ public class EnemyBehaviour : MonoBehaviour
     void AttackAnimation()
     {
         int randNum = Random.Range(0, 2);
-        handTrigger = true;
+
         switch (randNum)
         {
             case 0:
@@ -103,16 +106,19 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);   //Draw debug in editor
 
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), attackDistance, layMask) && Time.time > nextAttack)  //If raycast hits player and cooldown is over
+                if (isInTrigger)  //If raycast hits player and cooldown is over
                 {
-                    nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
+                    if (Time.time > nextAttack)
+                    {
+                        nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
 
-                    AttackAnimation();
-                    //StopMovement();                //Stop movement
+                        AttackAnimation();
+                        //StopMovement();                //Stop movement
+                    }
+
                 }
             }
-
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -122,6 +128,13 @@ public class EnemyBehaviour : MonoBehaviour
         {
             StopMovement();
             isInTrigger = true;
+
+            // if (Time.time > nextAttack)
+            // {
+            //     nextAttack = Time.time + attackRate;
+
+            //     AttackAnimation();
+            // }
         }
     }
 
@@ -135,4 +148,16 @@ public class EnemyBehaviour : MonoBehaviour
     //     if (col.gameObject.tag == "Player")
     //         player.PlayerTakeDamage(damageToDeal);
     // }
+
+    public void EnableHandTrigger()
+    {
+        if (!handTrigger.activeSelf)
+            handTrigger.SetActive(true);
+    }
+
+    void DisableHandTrigger()
+    {
+        if (handTrigger.activeSelf)
+            handTrigger.SetActive(false);
+    }
 }
