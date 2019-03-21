@@ -870,10 +870,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 20
-  attackRate: 1
+  attackRate: 2
   nextAttack: 0
   attackDistance: 2.5
-  beginWalkDelay: 0.5
+  beginWalkDelay: 0
   handTrigger: {fileID: 1190034849322872}
 --- !u!114 &114683366916072264
 MonoBehaviour:

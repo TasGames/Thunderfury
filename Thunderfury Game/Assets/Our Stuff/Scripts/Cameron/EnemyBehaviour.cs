@@ -48,13 +48,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (goal != null)
         {
-            var offset = (transform.position - goal.position).normalized * 1.5f;
+            var offset = (transform.position - goal.position).normalized * 1.5f;    // Destination offset so the enemy doesn't try to enter the player's stomach
             agent.SetDestination(goal.position + offset);    //Update player's location
         }
 
         //Check if able to move again based on current animation
         if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Running"))
-            StartCoroutine(BeginMovement());
+        {
+            //StartCoroutine(BeginMovement());
+            StartMovement();
+        }
     }
 
     public void DealDamage()    //Triggered in ZombieAttack animation timeline
@@ -70,21 +73,44 @@ public class EnemyBehaviour : MonoBehaviour
 
     IEnumerator BeginMovement() //Triggered in ZombieAttack animation timeline
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(beginWalkDelay);
         if (agent.isStopped && isInTrigger == false)
-            agent.isStopped = false;
+        {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("PunchAttack") && !anim.GetCurrentAnimatorStateInfo(0).IsTag("DownSwingAttack"))
+            {
+                agent.isStopped = false;
+                Debug.Log("Beginning Movement");
+            }
+        }
 
         yield break;
+    }
+
+    public void StartMovement()
+    {
+        if (agent.isStopped && isInTrigger == false)
+        {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("PunchAttack") && !anim.GetCurrentAnimatorStateInfo(0).IsTag("DownSwingAttack"))
+            {
+                agent.isStopped = false;
+                Debug.Log("Beginning Movement");
+            }
+        }
     }
 
     public void StopMovement() //Triggered in ZombieAttack animation timeline
     {
         if (!agent.isStopped)
+        {
             agent.isStopped = true;
+            Debug.Log("Stopping Movement");
+        }
     }
 
     void AttackAnimation()
     {
+        Debug.Log("Attack Animation");
+
         int randNum = Random.Range(0, 2);
 
         switch (randNum)
@@ -106,9 +132,9 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);   //Draw debug in editor
 
-                if (isInTrigger)  //If raycast hits player and cooldown is over
+                if (isInTrigger)  //If player is in the box trigger
                 {
-                    if (Time.time > nextAttack)
+                    if (Time.time > nextAttack) //If cooldown is over
                     {
                         nextAttack = Time.time + attackRate;    //Set next attack to be after current time + attack rate/cooldown
 
@@ -129,18 +155,15 @@ public class EnemyBehaviour : MonoBehaviour
             StopMovement();
             isInTrigger = true;
 
-            // if (Time.time > nextAttack)
-            // {
-            //     nextAttack = Time.time + attackRate;
-
-            //     AttackAnimation();
-            // }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isInTrigger = false;
+        if (other.gameObject.tag == "Player")
+        {
+            isInTrigger = false;
+        }
     }
 
     // void OnCollisionEnter(Collision col)
