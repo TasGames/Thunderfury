@@ -26,7 +26,7 @@ public class WeaponWheel : MonoBehaviour
 
 	[HideInInspector] public GameObject currentGun;
 
-	void Start()
+	void OnEnable()
 	{
 		StartCoroutine(AmmoRoutine());
 
