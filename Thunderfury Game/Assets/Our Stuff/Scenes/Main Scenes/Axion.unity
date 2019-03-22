@@ -54927,8 +54927,8 @@ MonoBehaviour:
   enemiesRemaining: 0
   waveCounter: 1
   wave:
-    waveEnemyCount: 1
-    activeAtOnce: 4
+    waveEnemyCount: 10
+    activeAtOnce: 10
     spawnRate: 1
   modifier:
     enemyNumIncrease: 1.5
@@ -54952,10 +54952,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - enemy: {fileID: 1688263224673312, guid: 06e7455ad9480f24a8c03c3e90e75bc2, type: 2}
-    spawnWeight: 0.5
-  - enemy: {fileID: 1688263224673312, guid: 08d547239cd71cb42ae1091e9349df7c, type: 2}
-    spawnWeight: 0.5
+  - typeName: Basic
+    typeHealth: 20
+    typeDamage: 50
+    typeSpeed: 4
+    spawnWeight: 0.3
+  - typeName: Speed
+    typeHealth: 10
+    typeDamage: 20
+    typeSpeed: 5
+    spawnWeight: 0.3
+  - typeName: Tank
+    typeHealth: 40
+    typeDamage: 20
+    typeSpeed: 3
+    spawnWeight: 0.3
   activeSpawns:
   - {fileID: 2000787626}
   activeEnemies: []

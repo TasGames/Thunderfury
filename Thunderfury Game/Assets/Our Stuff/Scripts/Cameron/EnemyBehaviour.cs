@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     LayerMask layMask = 1 << 9;             //Enemy will only detect objects on 9th layer (Player)
 
-    [SerializeField] float damageToDeal;    //Amount to damage player by
+    public float damageToDeal;    //Amount to damage player by
     [SerializeField] float attackRate;
     [HideInInspector] public float nextAttack;  //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast
