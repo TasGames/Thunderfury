@@ -53,7 +53,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         //Check if able to move again based on current animation
-        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Running"))
+        if (anim.GetAnimatorTransitionInfo(0).IsName("PunchAttack -> Zombie Running") ||
+            anim.GetAnimatorTransitionInfo(0).IsName("DownSwingAttack -> Zombie Running") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsTag("Running"))
         {
             //StartCoroutine(BeginMovement());
             StartMovement();
@@ -90,11 +92,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (agent.isStopped && isInTrigger == false)
         {
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("PunchAttack") && !anim.GetCurrentAnimatorStateInfo(0).IsTag("DownSwingAttack"))
-            {
-                agent.isStopped = false;
-                Debug.Log("Beginning Movement");
-            }
+            //if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("PunchAttack") && !anim.GetCurrentAnimatorStateInfo(0).IsTag("DownSwingAttack"))
+            //{
+            agent.isStopped = false;
+            Debug.Log("Beginning Movement");
+            //}
         }
     }
 
