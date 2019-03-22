@@ -19,10 +19,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] float damageToDeal;    //Amount to damage player by
     [SerializeField] float attackRate;
-    [HideInInspector] public float nextAttack;                       //Time to wait before able to damage again
+    [HideInInspector] public float nextAttack;  //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast
     bool canCheckForAttack;
-    bool isInTrigger;
+    public bool isInTrigger;
 
     [SerializeField] protected float beginWalkDelay;
     [SerializeField] GameObject handTrigger;
@@ -102,7 +102,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void StopMovement() //Triggered in ZombieAttack animation timeline
     {
-        if (!agent.isStopped)
+        if (!agent.isStopped || isInTrigger)
         {
             agent.isStopped = true;
             Debug.Log("Stopping Movement");
@@ -112,7 +112,7 @@ public class EnemyBehaviour : MonoBehaviour
     void AttackAnimation()
     {
         Debug.Log("Attack Animation");
-
+        StopMovement();
         int randNum = Random.Range(0, 2);
 
         switch (randNum)
@@ -146,11 +146,18 @@ public class EnemyBehaviour : MonoBehaviour
 
                 }
             }
+            if (Vector3.Distance(transform.position, goal.position) > attackDistance)   //Temporary fix for bug where isInTrigger would stay true
+            {
+                if (isInTrigger)
+                {
+                    isInTrigger = false;
+                }
+            }
             yield return new WaitForSeconds(0.1f);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -160,7 +167,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
