@@ -7,30 +7,16 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [System.Serializable]
-    protected struct EnemieTypes
+    protected struct Enemies
     {
-        //public GameObject enemy;
-        public string typeName;
-        public float typeHealth;
-        public float typeDamage;
-        public float typeSpeed;
+        public GameObject enemy;
         public float spawnWeight;
     }
     protected float totalWeight;
 
-    [System.Serializable]
-    protected enum Type
-    {
-        Type1,
-        Type2,
-        Type3
-    }
+    Enemies enemy;
 
-    Type currentType;
-
-    EnemieTypes enemyType;
-
-    [SerializeField] protected EnemieTypes[] enemyList;   //Enemy Object
+    [SerializeField] protected Enemies[] enemyList;   //Enemy Object
 
     Target enemyHealth; //To reset enemy health on spawn
 
@@ -42,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         if (activeSpawns.Count == 0)
         {
             Debug.LogError("No Spawn Points");
@@ -71,7 +58,6 @@ public class EnemySpawner : MonoBehaviour
                 chosenIndex++;
                 cumulativeWeight += enemyList[chosenIndex].spawnWeight;
             }
-            currentType = (Type)chosenIndex;    //Selected enemy type is the randomly chosen index
 
             int spawnPointIndex = Random.Range(0, activeSpawns.Count);
 
@@ -94,39 +80,25 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
-                enemyHealth = enemy.GetComponent<Target>();
-                
-                //Set values based on enemy type
-                switch (currentType)    
+                if (enemyList[chosenIndex].enemy.tag == "Enemy1")   //If randomly selected enemy is Enemy1
                 {
-                    case Type.Type1:
-                        enemyHealth.health = enemyList[0].typeHealth;
-                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[0].typeDamage;
-                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[0].typeSpeed;
-                        break;
-
-                    case Type.Type2:
-                        enemyHealth.health = enemyList[1].typeHealth;
-                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[1].typeDamage;
-                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[1].typeSpeed;
-                        break;
-
-                    case Type.Type3:
-                        enemyHealth.health = enemyList[2].typeHealth;
-                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[2].typeDamage;
-                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[2].typeSpeed;
-                        break;
+                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
+                }
+                else if (enemyList[chosenIndex].enemy.tag == "Enemy2")  //If randomly selected enemy is Enemy2
+                {
+                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy2");
                 }
 
-                if (enemy != null)
+                
+                if (enemy.enemy != null)
                 {
+                    enemyHealth = enemy.enemy.GetComponent<Target>();
                     enemyHealth.health = enemyHealth.originalHealth;    //Reset health
 
-                    enemy.transform.position = posToSpawn;
-                    enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
-                    activeEnemies.Add(enemy);
-                    enemy.SetActive(true);
+                    enemy.enemy.transform.position = posToSpawn;
+                    enemy.enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    activeEnemies.Add(enemy.enemy);
+                    enemy.enemy.SetActive(true);
                 }
                 Debug.Log("Spawn Complete");
                 return;
