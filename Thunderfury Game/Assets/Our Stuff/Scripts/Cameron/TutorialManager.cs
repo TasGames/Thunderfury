@@ -8,17 +8,16 @@ public class TutorialManager : MonoBehaviour
 
     public GameObject tutShopBox;   //Tells player to open shop
     public GameObject shopOpenBox;  //Shows text when shop opens
+    public GameObject endTutBox;
     public GameObject shopScreen;   //The shop screen
 
     bool tutShopBoxCheck;
-    bool shopOpenBoxCheck;
 
     // Use this for initialization
     void Start()
     {
         wManager = GetComponent<WaveManager>();
         tutShopBoxCheck = true;
-        shopOpenBoxCheck = true;
     }
 
     // Update is called once per frame
@@ -28,6 +27,7 @@ public class TutorialManager : MonoBehaviour
         {
             tutShopBox.SetActive(true);
             shopOpenBox.SetActive(true);
+            endTutBox.SetActive(true);
             tutShopBoxCheck = false;
         }
         // if (shopScreen.activeInHierarchy && shopOpenBoxCheck)

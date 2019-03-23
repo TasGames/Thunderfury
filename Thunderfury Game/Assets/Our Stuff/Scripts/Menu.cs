@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class Menu : MonoBehaviour 
+public class Menu : MonoBehaviour
 {
-	 public static bool isPaused = false;
+    public static bool isPaused = false;
     [SerializeField] protected GameObject pauseMenu;
 
     [SerializeField] protected RigidbodyFirstPersonController rbFPC;
 
-	public void Play()
-	{
+    public void Play()
+    {
         HUD.totalScore = 0;
-		SceneManager.LoadScene("Axion");
-		Time.timeScale = 1f;
+        SceneManager.LoadScene("Axion");
+        Time.timeScale = 1f;
         isPaused = false;
         rbFPC.mouseLook.SetCursorLock(true);
-	}
+    }
 
-	public void ReturnToMenu()
-	{
-		SceneManager.LoadScene("Main Menu");
-		Time.timeScale = 1f;
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+        Time.timeScale = 1f;
         isPaused = false;
-	}
+    }
 
-	public void Quit()
-	{
-		Application.Quit();
-	}
+    public void Quit()
+    {
+        Application.Quit();
+    }
 
-	public void PauseIt()
+    public void PauseIt()
     {
         if (isPaused == false)
         {
@@ -47,5 +47,13 @@ public class Menu : MonoBehaviour
             rbFPC.mouseLook.SetCursorLock(true);
             isPaused = false;
         }
+    }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("AxionTutorial");
+        Time.timeScale = 1f;
+        isPaused = false;
+        rbFPC.mouseLook.SetCursorLock(true);
     }
 }
