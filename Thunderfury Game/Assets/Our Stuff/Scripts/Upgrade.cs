@@ -33,14 +33,22 @@ public class Upgrade : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI gunReloadTime;
 	[SerializeField] protected TextMeshProUGUI gunAmmo;
 
-	[Title("Current Gun Details")]
+	[Title("New Gun Details")]
 	[SerializeField] protected TextMeshProUGUI nGunDamage;
 	[SerializeField] protected TextMeshProUGUI nGunImpact;
 	[SerializeField] protected TextMeshProUGUI nGunFireRate;
 	[SerializeField] protected TextMeshProUGUI nGunRange;
 	[SerializeField] protected TextMeshProUGUI nGunRecoil;
 	[SerializeField] protected TextMeshProUGUI nGunReloadTime;
-	[SerializeField] protected TextMeshProUGUI nGunAmmo;	
+	[SerializeField] protected TextMeshProUGUI nGunAmmo;
+
+	[SerializeField] protected TextMeshProUGUI levelDamage;
+	[SerializeField] protected TextMeshProUGUI levelImpact;
+	[SerializeField] protected TextMeshProUGUI levelFireRate;
+	[SerializeField] protected TextMeshProUGUI levelRange;
+	[SerializeField] protected TextMeshProUGUI levelRecoil;
+	[SerializeField] protected TextMeshProUGUI levelReloadTime;
+	[SerializeField] protected TextMeshProUGUI levelAmmo;	
 
 	[Title("Credits")]
 	[SerializeField] protected TextMeshProUGUI currentCredits;

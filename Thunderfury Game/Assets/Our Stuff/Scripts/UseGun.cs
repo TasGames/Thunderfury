@@ -24,6 +24,14 @@ public class UseGun : MonoBehaviour
 	[HideInInspector] public int prefMag;
 	[HideInInspector] public int prefMaxAmmo;
 
+	[HideInInspector] public int damageLevel = 0;
+	[HideInInspector] public int impactLevel = 0;
+	[HideInInspector] public int fireRateLevel = 0;
+	[HideInInspector] public int rangeLevel = 0;
+	[HideInInspector] public int recoilLevel = 0;
+	[HideInInspector] public int reloadLevel = 0;
+	[HideInInspector] public int ammoLevel = 0;
+
 	void Start()
 	{
 		prefDamage = gun.damage;

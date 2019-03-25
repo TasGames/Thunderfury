@@ -43,4 +43,15 @@ public class Gun : ScriptableObject
 	[ShowIf("selectGunType", typeEnum.projectileType)] public GameObject projectilePrefab;
 	[ShowIf("selectGunType", typeEnum.projectileType)] public float projectileForce;
 
+	[Title("Level Increase")]
+	public int maxLevel;
+	public float damageIncrease;
+	public float impactIncrease;
+	public float fireRateIncrease;
+	public float rangeIncrease;
+	public float recoilIncrease;
+	public float reloadDecrease;
+	public int magIncrease;
+	public int ammoIncrease;
+
 }

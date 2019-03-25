@@ -29,12 +29,11 @@ public class Target : MonoBehaviour
     [SerializeField] [ShowIf("dropsPickup", true)] protected Drops[] dropList;
 
     protected float totalWeight;
-    [HideInInspector]
-    public float originalHealth;
+    protected bool hasBroken = false;
+    [HideInInspector] public float originalHealth;
 
     WaveManager waveManager;
     EnemySpawner enemySpawner;
-
     Animator enemyAnim;
 
     void OnValidate()
@@ -86,9 +85,10 @@ public class Target : MonoBehaviour
 
     void Destroy()
     {
-        if (brokenVersion != null)
+        if (brokenVersion != null && hasBroken == false)
         {
             GameObject broke = Instantiate(brokenVersion, transform.position, transform.rotation);
+            hasBroken = true;
             Destroy(broke, 10);
         }
 

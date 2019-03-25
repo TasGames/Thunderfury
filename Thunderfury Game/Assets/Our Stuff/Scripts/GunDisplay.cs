@@ -9,7 +9,6 @@ public class GunDisplay : MonoBehaviour
 {
 	[Title("Gun")]
 	[SerializeField] protected GameObject gunPrefab;
-	protected GameObject parentPrefab;
 	protected Gun gun;
 
 	[Title("Gun Details")]
@@ -33,8 +32,6 @@ public class GunDisplay : MonoBehaviour
 	void Start() 
 	{
 		Shop shop = transform.root.GetComponent<Shop>();
-		parentPrefab = shop.parentPrefab;
-
 		Display();
 	}
 	
