@@ -118,8 +118,6 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, goal.position) < attackDistance)   //If enemy within a certain distance of player
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * attackDistance, Color.red);   //Draw debug in editor
-
                 if (isInTrigger)  //If player is in the box trigger
                 {
                     if (Time.time > nextAttack) //If cooldown is over
