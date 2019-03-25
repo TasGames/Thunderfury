@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: 706db7373f1c5ea469a84c614271b13c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Ammocartridge
+    100002: Armature
+    100004: Assualtrifle_lp
+    100006: Back_handle
+    100008: Chest
+    100010: //RootNode
+    100012: Gun
+    100014: Head
+    100016: Hips
+    100018: IndexFinger1_L
+    100020: IndexFinger1_R
+    100022: IndexFinger2_L
+    100024: IndexFinger2_R
+    100026: IndexFinger3_L
+    100028: IndexFinger3_R
+    100030: Left_ankle
+    100032: Left_arm
+    100034: Left_elbow
+    100036: Left_knee
+    100038: Left_leg
+    100040: Left_shoulder
+    100042: Left_toe
+    100044: Left_wrist
+    100046: LittleFinger1_L
+    100048: LittleFinger1_R
+    100050: LittleFinger2_L
+    100052: LittleFinger2_R
+    100054: LittleFinger3_L
+    100056: LittleFinger3_R
+    100058: MiddleFinger1_L
+    100060: MiddleFinger1_R
+    100062: MiddleFinger2_L
+    100064: MiddleFinger2_R
+    100066: MiddleFinger3_L
+    100068: MiddleFinger3_R
+    100070: Neck
+    100072: Right_ankle
+    100074: Right_arm
+    100076: Right_elbow
+    100078: Right_knee
+    100080: Right_leg
+    100082: Right_shoulder
+    100084: Right_toe
+    100086: Right_wrist
+    100088: RingFinger1_L
+    100090: RingFinger1_R
+    100092: RingFinger2_L
+    100094: RingFinger2_R
+    100096: RingFinger3_L
+    100098: RingFinger3_R
+    100100: Spine
+    100102: Thumb0_L
+    100104: Thumb0_R
+    100106: Thumb1_L
+    100108: Thumb1_R
+    100110: Thumb2_L
+    100112: Thumb2_R
+    100114: Trigger
+    100116: Viewmodel
+    400000: Ammocartridge
+    400002: Armature
+    400004: Assualtrifle_lp
+    400006: Back_handle
+    400008: Chest
+    400010: //RootNode
+    400012: Gun
+    400014: Head
+    400016: Hips
+    400018: IndexFinger1_L
+    400020: IndexFinger1_R
+    400022: IndexFinger2_L
+    400024: IndexFinger2_R
+    400026: IndexFinger3_L
+    400028: IndexFinger3_R
+    400030: Left_ankle
+    400032: Left_arm
+    400034: Left_elbow
+    400036: Left_knee
+    400038: Left_leg
+    400040: Left_shoulder
+    400042: Left_toe
+    400044: Left_wrist
+    400046: LittleFinger1_L
+    400048: LittleFinger1_R
+    400050: LittleFinger2_L
+    400052: LittleFinger2_R
+    400054: LittleFinger3_L
+    400056: LittleFinger3_R
+    400058: MiddleFinger1_L
+    400060: MiddleFinger1_R
+    400062: MiddleFinger2_L
+    400064: MiddleFinger2_R
+    400066: MiddleFinger3_L
+    400068: MiddleFinger3_R
+    400070: Neck
+    400072: Right_ankle
+    400074: Right_arm
+    400076: Right_elbow
+    400078: Right_knee
+    400080: Right_leg
+    400082: Right_shoulder
+    400084: Right_toe
+    400086: Right_wrist
+    400088: RingFinger1_L
+    400090: RingFinger1_R
+    400092: RingFinger2_L
+    400094: RingFinger2_R
+    400096: RingFinger3_L
+    400098: RingFinger3_R
+    400100: Spine
+    400102: Thumb0_L
+    400104: Thumb0_R
+    400106: Thumb1_L
+    400108: Thumb1_R
+    400110: Thumb2_L
+    400112: Thumb2_R
+    400114: Trigger
+    400116: Viewmodel
+    2100000: lambert2
+    2100002: lambert3
+    2100004: _01___Default_001
+    2300000: Ammocartridge
+    2300002: Back_handle
+    2300004: Gun
+    2300006: Trigger
+    3300000: Ammocartridge
+    3300002: Back_handle
+    3300004: Gun
+    3300006: Trigger
+    4300000: Gun
+    4300002: Ammocartridge
+    4300004: Back_handle
+    4300006: Trigger
+    4300008: Viewmodel
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Viewmodel
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

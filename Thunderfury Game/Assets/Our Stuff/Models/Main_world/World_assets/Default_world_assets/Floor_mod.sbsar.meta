@@ -29,7 +29,8 @@ ScriptedImporter:
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://Floor_mod\" label=\"\" >\n  <presetinput identifier=\"Grate_daLevel_In_Low\"
       uid=\"760367357\" type=\"0\" value=\"0.967\" />\n  <presetinput identifier=\"Grate_daLevel_In_High\"
-      uid=\"760367347\" type=\"0\" value=\"0.049\" />\n  <presetinput identifier=\"Floor_damageLevel_In_Low\"
+      uid=\"760367347\" type=\"0\" value=\"0.049\" />\n  <presetinput identifier=\"Grate_daLevel_In_Mid\"
+      uid=\"760367345\" type=\"0\" value=\"0.418\" />\n  <presetinput identifier=\"Floor_damageLevel_In_Low\"
       uid=\"760367444\" type=\"0\" value=\"0.588\" />\n  <presetinput identifier=\"Floor_damageLevel_In_High\"
       uid=\"760367434\" type=\"0\" value=\"0.146\" />\n </sbspreset>\n"
     shaderName: Standard
@@ -82,8 +83,8 @@ ScriptedImporter:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 0
-      textureHeight: 0
+      textureWidth: 32
+      textureHeight: 32
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: 3204e8d915f8946489d6da660c2ca0c1, type: 3}

@@ -92,8 +92,8 @@ ScriptedImporter:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 0
-      textureHeight: 0
+      textureWidth: 2048
+      textureHeight: 2048
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
@@ -158,8 +158,8 @@ ScriptedImporter:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 0
-      textureHeight: 0
+      textureWidth: 2048
+      textureHeight: 2048
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100002, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
@@ -224,13 +224,9 @@ ScriptedImporter:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 0
-      textureHeight: 0
+      textureWidth: 2048
+      textureHeight: 2048
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100004, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
-    generatedTextures:
-    - {fileID: 2800016, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
-    - {fileID: 2800018, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
-    - {fileID: 2800020, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
-    - {fileID: 2800022, guid: 6757b7b0648c21547952aece9c89dcbb, type: 3}
+    generatedTextures: []
