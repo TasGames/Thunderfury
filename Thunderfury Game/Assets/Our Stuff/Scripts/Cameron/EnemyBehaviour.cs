@@ -6,29 +6,23 @@ using Sirenix.OdinInspector;
 public class EnemyBehaviour : MonoBehaviour
 {
 
-    Transform goal;
-
-    //[ShowInInspector, ReadOnly]
+    Transform goal;                         //Player's location
     UnityEngine.AI.NavMeshAgent agent;      //NavMeshAgent component attached to the enemy
-    //[ShowInInspector, ReadOnly]
     Animator anim;                          //Animator component attached to the enemy
-    [ShowInInspector, ReadOnly]
     PlayerHealth player;                    //To call function inside the PlayerHealth script
-
-    LayerMask layMask = 1 << 9;             //Enemy will only detect objects on 9th layer (Player)
 
     [SerializeField] float damageToDeal;    //Amount to damage player by
     [SerializeField] float attackRate;
     [HideInInspector] public float nextAttack;  //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast
-    bool canCheckForAttack;
+    [HideInInspector] public bool canCheckForAttack;
     public bool isInTrigger;
 
     [SerializeField] protected float beginWalkDelay;
     [SerializeField] GameObject handTrigger;
 
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -38,6 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         canCheckForAttack = true;
         StartCoroutine(CheckForAttack());
+        StartCoroutine(CheckMovement());
 
         isInTrigger = false;
 
@@ -48,17 +43,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (goal != null)
         {
-            var offset = (transform.position - goal.position).normalized * 1.5f;    // Destination offset so the enemy doesn't try to enter the player's stomach
+            var offset = (transform.position - goal.position).normalized * 1.0f;    // Destination offset so the enemy doesn't try to enter the player's stomach
             agent.SetDestination(goal.position + offset);    //Update player's location
-        }
-
-        //Check if able to move again based on current animation
-        if (anim.GetAnimatorTransitionInfo(0).IsName("PunchAttack -> Zombie Running") ||
-            anim.GetAnimatorTransitionInfo(0).IsName("DownSwingAttack -> Zombie Running") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsTag("Running"))
-        {
-            //StartCoroutine(BeginMovement());
-            StartMovement();
         }
     }
 
@@ -82,9 +68,9 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 agent.isStopped = false;
                 Debug.Log("Beginning Movement");
+                yield break;
             }
         }
-
         yield break;
     }
 
@@ -191,5 +177,24 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (handTrigger.activeSelf)
             handTrigger.SetActive(false);
+    }
+
+    IEnumerator CheckMovement()
+    {
+
+        while (canCheckForAttack)
+        {
+            //Check if able to move again based on current animation
+            if (anim.GetAnimatorTransitionInfo(0).IsName("PunchAttack -> Zombie Running") || anim.GetAnimatorTransitionInfo(0).IsName("DownSwingAttack -> Zombie Running") || anim.GetCurrentAnimatorStateInfo(0).IsTag("Running"))
+            {
+                if (agent.isStopped)
+                {
+                    //StartCoroutine(BeginMovement());
+                    StartMovement();
+                }
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
+
     }
 }

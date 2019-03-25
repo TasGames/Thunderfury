@@ -34,6 +34,8 @@ public class Target : MonoBehaviour
 
     WaveManager waveManager;
     EnemySpawner enemySpawner;
+    EnemyBehaviour enemyBehaviour;
+
 
     Animator enemyAnim;
 
@@ -100,6 +102,8 @@ public class Target : MonoBehaviour
             enemySpawner = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemySpawner>();
             enemySpawner.activeEnemies.Remove(this.gameObject);                 //Remove dead enemy from list
 
+            enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
+            enemyBehaviour.canCheckForAttack = false;
             gameObject.SetActive(false);
         }
         else

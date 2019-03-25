@@ -55473,10 +55473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - enemy: {fileID: 1688263224673312, guid: 06e7455ad9480f24a8c03c3e90e75bc2, type: 2}
-    spawnWeight: 0.5
-  - enemy: {fileID: 1688263224673312, guid: 08d547239cd71cb42ae1091e9349df7c, type: 2}
-    spawnWeight: 0.5
+  - enemy: {fileID: 1688263224673312, guid: b95de1f965759fb47a77ab004a51d61e, type: 2}
+    spawnWeight: 1
   activeSpawns:
   - {fileID: 2000787626}
   activeEnemies: []
