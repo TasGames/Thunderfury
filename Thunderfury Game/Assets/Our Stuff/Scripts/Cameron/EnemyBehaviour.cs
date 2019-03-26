@@ -11,7 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     Animator anim;                          //Animator component attached to the enemy
     PlayerHealth player;                    //To call function inside the PlayerHealth script
 
-    [SerializeField] float damageToDeal;    //Amount to damage player by
+    [HideInInspector] public float damageToDeal;    //Amount to damage player by
     [SerializeField] float attackRate;
     [HideInInspector] public float nextAttack;  //Time to wait before able to damage again
     [SerializeField] float attackDistance = 2;  //Range for the raycast

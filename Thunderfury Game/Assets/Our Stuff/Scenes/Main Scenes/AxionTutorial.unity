@@ -11085,10 +11085,6 @@ MonoBehaviour:
       type: 2}
     amountToPool: 5
     shouldExpand: 1
-  - objectToPool: {fileID: 1688263224673312, guid: 08d547239cd71cb42ae1091e9349df7c,
-      type: 2}
-    amountToPool: 5
-    shouldExpand: 1
 --- !u!4 &197032717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4187840567619642, guid: 74f005616c8687146a86c725cfe38ea9,

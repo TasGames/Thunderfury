@@ -6,17 +6,47 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
+    //MODULAR PIECES//
+    //Basic
+    Transform legsBasic;
+    bool legsBasicActive;
+    //Speedy
+    Transform legsSpeedy;
+    bool legsSpeedyActive;
+    //Heavy
+    Transform chestHeavy;
+    bool chestHeavyActive;
+    Transform crotchHeavy;
+    bool crotchHeavyActive;
+    Transform leftHipHeavy;
+    bool leftHipHeavyActive;
+    Transform rightHipHeavy;
+    bool rightHipHeavyActive;
+    //MODULAR PIECES//
+
     [System.Serializable]
-    protected struct Enemies
+    protected struct EnemyTypes
     {
-        public GameObject enemy;
+        public string typeName;
+        public float typeHealth;
+        public float typeDamage;
+        public float typeSpeed;
         public float spawnWeight;
     }
     protected float totalWeight;
 
-    Enemies enemy;
+    [System.Serializable]
+    protected enum Type
+    {
+        Basic,
+        Speedy,
+        Heavy
+    }
+    Type currentType;
 
-    [SerializeField] protected Enemies[] enemyList;   //Enemy Object
+    EnemyTypes enemyType;
+
+    [SerializeField] protected EnemyTypes[] enemyList;   //Enemy Object
 
     Target enemyHealth; //To reset enemy health on spawn
 
@@ -47,6 +77,35 @@ public class EnemySpawner : MonoBehaviour
 
     public void PickSpawnLocation()
     {
+        GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
+        enemyHealth = enemy.GetComponent<Target>();
+
+        //Reset modular pieces
+        legsBasicActive = false;
+        legsSpeedyActive = false;
+        crotchHeavyActive = false;
+        leftHipHeavyActive = false;
+        rightHipHeavyActive = false;
+        chestHeavyActive = false;
+
+        legsBasic = enemy.transform.Find("Legs_Basic_Skinned");
+        legsSpeedy = enemy.transform.Find("Legs_speedy_Skinned");
+
+        crotchHeavy = enemy.transform.Find("Armature");
+        crotchHeavy = crotchHeavy.transform.Find("Hips");
+
+        leftHipHeavy = crotchHeavy;
+        rightHipHeavy = crotchHeavy;
+        chestHeavy = crotchHeavy;
+
+        crotchHeavy = crotchHeavy.transform.Find("HeavyCrotch_Hips");
+        leftHipHeavy = leftHipHeavy.transform.Find("HeavySide_Left_Hips");
+        rightHipHeavy = rightHipHeavy.transform.Find("HeavySide_Right_Hips");
+
+        chestHeavy = chestHeavy.transform.Find("Spine");
+        chestHeavy = chestHeavy.transform.Find("Chest");
+        chestHeavy = chestHeavy.transform.Find("HeavyChest");
+
         if (activeSpawns.Count > 0)
         {
             float pick = Random.value * totalWeight;
@@ -58,6 +117,8 @@ public class EnemySpawner : MonoBehaviour
                 chosenIndex++;
                 cumulativeWeight += enemyList[chosenIndex].spawnWeight;
             }
+            currentType = (Type)chosenIndex;
+
 
             int spawnPointIndex = Random.Range(0, activeSpawns.Count);
 
@@ -80,25 +141,52 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                if (enemyList[chosenIndex].enemy.tag == "Enemy1")   //If randomly selected enemy is Enemy1
+
+
+                switch (currentType)
                 {
-                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
-                }
-                else if (enemyList[chosenIndex].enemy.tag == "Enemy2")  //If randomly selected enemy is Enemy2
-                {
-                    enemy.enemy = ObjectPooler.SharedInstance.GetPooledObject("Enemy2");
+                    case Type.Basic:    //If basic enemy
+                        enemyHealth.health = enemyList[0].typeHealth;
+                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[0].typeDamage;
+                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[0].typeSpeed;
+                        legsBasicActive = true;
+                        break;
+
+                    case Type.Speedy:   //If speedy enemy
+                        enemyHealth.health = enemyList[1].typeHealth;
+                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[1].typeDamage;
+                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[1].typeSpeed;
+                        legsSpeedyActive = true;
+                        break;
+
+                    case Type.Heavy:    //If heavy enemy
+                        enemyHealth.health = enemyList[2].typeHealth;
+                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[2].typeDamage;
+                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[2].typeSpeed;
+                        legsBasicActive = true;
+                        crotchHeavyActive = true;
+                        leftHipHeavyActive = true;
+                        rightHipHeavyActive = true;
+                        chestHeavyActive = true;
+                        break;
                 }
 
-                
-                if (enemy.enemy != null)
+                if (enemy != null)
                 {
-                    enemyHealth = enemy.enemy.GetComponent<Target>();
+
                     enemyHealth.health = enemyHealth.originalHealth;    //Reset health
 
-                    enemy.enemy.transform.position = posToSpawn;
-                    enemy.enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
-                    activeEnemies.Add(enemy.enemy);
-                    enemy.enemy.SetActive(true);
+                    enemy.transform.position = posToSpawn;
+                    enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    activeEnemies.Add(enemy);
+                    enemy.SetActive(true);
+                    //Modular pieces
+                    legsBasic.gameObject.SetActive(legsBasicActive);
+                    legsSpeedy.gameObject.SetActive(legsSpeedyActive);
+                    crotchHeavy.gameObject.SetActive(crotchHeavyActive);
+                    leftHipHeavy.gameObject.SetActive(leftHipHeavyActive);
+                    rightHipHeavy.gameObject.SetActive(rightHipHeavyActive);
+                    chestHeavy.gameObject.SetActive(chestHeavyActive);
                 }
                 Debug.Log("Spawn Complete");
                 return;
