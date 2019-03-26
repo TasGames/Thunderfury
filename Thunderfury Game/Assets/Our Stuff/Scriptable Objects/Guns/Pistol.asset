@@ -23,7 +23,7 @@ MonoBehaviour:
   recoil: 5
   magSize: 6
   maxAmmo: 32
-  reloadTime: 2
+  reloadTime: 4
   impact: 100
   range: 20
   numRays: 1
