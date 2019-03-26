@@ -22,12 +22,12 @@ MonoBehaviour:
   fireRate: 5
   recoil: 5
   magSize: 6
-  maxAmmo: 32
+  maxAmmo: 30
   reloadTime: 4
   impact: 100
   range: 20
   numRays: 1
-  spread: 0.05
+  spread: 0.025
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   bulletMark: {fileID: 0}
   takesAmmoType: 0
