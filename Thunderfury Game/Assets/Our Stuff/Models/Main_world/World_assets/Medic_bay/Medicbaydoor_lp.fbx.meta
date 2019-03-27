@@ -1,27 +1,27 @@
 fileFormatVersion: 2
-guid: defdb935d31f0184ab4aa974ebdc4f50
+guid: 5eaba17d4dd804c42af51a5c38e07da2
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Door_l
     100002: Door_r
-    100004: //RootNode
+    100004: Medic_door_barrier
+    100006: //RootNode
     400000: Door_l
     400002: Door_r
-    400004: //RootNode
+    400004: Medic_door_barrier
+    400006: //RootNode
     2100000: lambert3
-    2100002: lambert1
+    2100002: lambert4
     2300000: Door_l
     2300002: Door_r
-    2300004: //RootNode
+    2300004: Medic_door_barrier
     3300000: Door_l
     3300002: Door_r
-    3300004: //RootNode
+    3300004: Medic_door_barrier
     4300000: Medic_door_barrier
-    4300002: Door_l
-    4300004: Door_r
-    7400000: Take 001
-    9500000: //RootNode
+    4300002: Door_r
+    4300004: Door_l
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -73,8 +73,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.0254
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -99,7 +99,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
