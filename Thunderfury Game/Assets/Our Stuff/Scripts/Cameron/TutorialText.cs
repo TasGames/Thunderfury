@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-
 public class TutorialText : MonoBehaviour
 {
 
-    public TMP_Text tutText;
+    public TMP_Text text;
 
+	public float textDisplayTime;
 
     // Use this for initialization
     void Start()
     {
-        Add(tutText, 0.0f);
+        //text.enabled = false;
     }
 
     // Update is called once per frame
@@ -21,8 +22,26 @@ public class TutorialText : MonoBehaviour
 
     }
 
-    public static void Add(TMP_Text tutorialText, float length)
+    void OnTriggerEnter(Collider other)
     {
-        tutorialText.SetText(tutorialText.text);
+        if (other.gameObject.tag == "Player")
+        {
+            StartCoroutine(ChangeText());
+        }
+
     }
+
+    IEnumerator ChangeText()
+    {
+		text.gameObject.SetActive(true);	//Display text
+
+        yield return new WaitForSeconds(textDisplayTime);	//Display for # secs
+		Debug.Log("Works");
+
+		text.gameObject.SetActive(false);	//Hide text
+
+		this.gameObject.SetActive(false);   //Disable trigger
+        yield break;
+    }
+
 }

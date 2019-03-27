@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class DrawBox : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class DrawBox : MonoBehaviour
     [SerializeField] int maxDistance;
     private float distanceToPlayer;
 
+    bool canCheckActive;
+
     void Start()
     {
         if (spawning == null)
@@ -18,36 +22,46 @@ public class DrawBox : MonoBehaviour
 
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
+
+        canCheckActive = true;
+
+        StartCoroutine(CheckActive());
     }
 
-    void Update()
+    IEnumerator CheckActive()
     {
-        if (this.gameObject.tag == "InactiveSpawn" || this.gameObject.tag == "ActiveSpawn")
-            distanceToPlayer = Vector3.Distance(player.transform.position, transform.position); //Check distance between spawn point and player
-
-        if (this.gameObject.tag == "InactiveSpawn") //If not active, check if within range to become active again
+        while (canCheckActive)
         {
-            if (distanceToPlayer <= maxDistance || distanceToPlayer >= minDistance)
+            if (this.gameObject.tag == "InactiveSpawn" || this.gameObject.tag == "ActiveSpawn")
+                distanceToPlayer = Vector3.Distance(player.transform.position, transform.position); //Check distance between spawn point and player
+
+            if (this.gameObject.tag == "InactiveSpawn") //If not active, check if within range to become active again
             {
-                if (!spawning.activeSpawns.Contains(this.gameObject))   //If this spawn is not in the active spawn point list
+                if (distanceToPlayer <= maxDistance || distanceToPlayer >= minDistance)
                 {
-                    this.gameObject.tag = "ActiveSpawn";
-                    spawning.activeSpawns.Add(this.gameObject); //Add to active spawn point list
+                    if (!spawning.activeSpawns.Contains(this.gameObject))   //If this spawn is not in the active spawn point list
+                    {
+                        this.gameObject.tag = "ActiveSpawn";
+                        spawning.activeSpawns.Add(this.gameObject); //Add to active spawn point list
+                    }
                 }
             }
-        }
 
-        if (this.gameObject.tag == "ActiveSpawn")   //If active, check if outside active range
-        {
-            if (distanceToPlayer < minDistance || distanceToPlayer > maxDistance)
+            if (this.gameObject.tag == "ActiveSpawn")   //If active, check if outside active range
             {
-                if (spawning.activeSpawns.Contains(this.gameObject))    //If this spawn is in the active spawn point list
+                if (distanceToPlayer < minDistance || distanceToPlayer > maxDistance)
                 {
-                    this.gameObject.tag = "InactiveSpawn";
-                    spawning.activeSpawns.Remove(this.gameObject);  //Remove from active spawn point list
+                    if (spawning.activeSpawns.Contains(this.gameObject))    //If this spawn is in the active spawn point list
+                    {
+                        this.gameObject.tag = "InactiveSpawn";
+                        spawning.activeSpawns.Remove(this.gameObject);  //Remove from active spawn point list
+                    }
                 }
             }
+            yield return new WaitForSeconds(2.0f);
+
         }
+
     }
 
     void OnDrawGizmos()
