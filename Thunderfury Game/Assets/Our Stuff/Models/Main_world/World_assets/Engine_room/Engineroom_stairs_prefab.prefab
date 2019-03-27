@@ -41,6 +41,8 @@ GameObject:
   - component: {fileID: 23819258668491998}
   - component: {fileID: 65312576702531908}
   - component: {fileID: 65191443987774760}
+  - component: {fileID: 65623375199155232}
+  - component: {fileID: 65305790353105514}
   m_Layer: 0
   m_Name: Engineroom_stairs_prefab
   m_TagString: Untagged
@@ -67,8 +69,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344975972086290}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 23.937786, y: 8.678116, z: 1.1901321}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 31.937786, y: 8.678116, z: 13.190132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4890004331450356}
@@ -171,6 +173,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.135392, y: 5.7999997, z: 0.32}
   m_Center: {x: -1.9340215, y: 2.8999999, z: 4.1}
+--- !u!65 &65305790353105514
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344975972086290}
+  m_Material: {fileID: 13400000, guid: a2514d90ef5931640b89a147dafd01fa, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.32914704, y: 5.7999997, z: 4.620001}
+  m_Center: {x: 0.08635305, y: 2.8999999, z: 2.1900005}
 --- !u!65 &65312576702531908
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -189,9 +203,21 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1314350261392464}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a2514d90ef5931640b89a147dafd01fa, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 0.00000089406973, z: 10.000001}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10.19418, y: 0.00000089406973, z: 10.000001}
+  m_Center: {x: 0.09708705, y: 0.000000003902578, z: -4.0893734e-16}
+--- !u!65 &65623375199155232
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344975972086290}
+  m_Material: {fileID: 13400000, guid: a2514d90ef5931640b89a147dafd01fa, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.30408472, y: 5.7999997, z: 4.620001}
+  m_Center: {x: 3.8907309, y: 2.8999999, z: 2.1900005}
