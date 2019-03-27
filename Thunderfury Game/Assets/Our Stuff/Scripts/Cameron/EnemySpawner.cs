@@ -175,6 +175,7 @@ public class EnemySpawner : MonoBehaviour
                 {
 
                     enemyHealth.health = enemyHealth.originalHealth;    //Reset health
+                    enemyHealth.hasBroken = false;
 
                     enemy.transform.position = posToSpawn;
                     enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;

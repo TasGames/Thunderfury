@@ -29,7 +29,7 @@ public class Target : MonoBehaviour
     [SerializeField] [ShowIf("dropsPickup", true)] protected Drops[] dropList;
 
     protected float totalWeight;
-    protected bool hasBroken = false;
+    [HideInInspector] public bool hasBroken = false;
     [HideInInspector] public float originalHealth;
 
     WaveManager waveManager;
@@ -60,7 +60,7 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (this.gameObject.tag == "Enemy1" || this.gameObject.tag == "Enemy2")    //If enemy is taking damage
+        if (this.gameObject.tag == "Enemy1")    //If enemy is taking damage
         {
             if (enemyAnim == null)
             {
@@ -95,7 +95,7 @@ public class Target : MonoBehaviour
             Destroy(broke, 10);
         }
 
-        if (gameObject.tag == "Enemy1" || gameObject.tag == "Enemy2")
+        if (gameObject.tag == "Enemy1")
         {
             waveManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<WaveManager>();
             waveManager.enemiesRemaining = waveManager.enemiesRemaining - 1;    //Reduce # of remaining enemies in the wave
