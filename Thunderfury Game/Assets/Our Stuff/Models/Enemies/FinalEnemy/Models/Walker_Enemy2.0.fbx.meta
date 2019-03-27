@@ -76,7 +76,17 @@ ModelImporter:
     13700006: Dome_Basic_Skinned
     13700008: Gel_Basic_Skinned
     13700010: Vest_Basic
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: e5778796f75019646a2e419f44147659, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: f63c653cc7a5e1f4db51e785b970ea3e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
