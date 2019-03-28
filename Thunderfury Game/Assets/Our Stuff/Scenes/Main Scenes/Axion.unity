@@ -5714,7 +5714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &97960248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8992,7 +8992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &170109747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17996,7 +17996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &394650624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18973,7 +18973,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Singularity Gun
+  m_text: Coming Soon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19049,11 +19049,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -26095,7 +26095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &567362499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36952,7 +36952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &808444032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37720,7 +37720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &827961359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53572,6 +53572,7 @@ MonoBehaviour:
   teleportSpot: {fileID: 618918755}
   fadeImage: {fileID: 1623068229}
   fadeSpeed: 1.5
+  pH: {fileID: 23673628}
 --- !u!114 &1181655653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62856,7 +62857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1365772078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -80701,7 +80702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1717701265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -81877,6 +81878,40 @@ Prefab:
         type: 2}
       propertyPath: movementSettings.SlopeCurveModifier.m_Curve.Array.data[2].value
       value: 0.9797455
+      objectReference: {fileID: 0}
+    - target: {fileID: 114374080208938828, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: wW
+      value: 
+      objectReference: {fileID: 766384068}
+    - target: {fileID: 1931972721210914, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717182340038688, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250757365601706, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052911148259890, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003508730027260, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437698927962216, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349150227276936, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095dba4161ca349408f2602fd466417a, type: 2}
@@ -89526,7 +89561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1919028473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92510,7 +92545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1994124810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -98000,7 +98035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2112909771
 RectTransform:
   m_ObjectHideFlags: 0

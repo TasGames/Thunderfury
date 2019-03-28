@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
 		pShield = maxShield;
 
 		rbFPC = GetComponent<RigidbodyFirstPersonController>();
+
+		StartCoroutine(RegenHealthRoutine());
 	}
 	
 	void Update()
@@ -31,15 +33,15 @@ public class PlayerHealth : MonoBehaviour
 			PlayerTakeDamage(50);
 		}
 
-		if (pShield < maxShield && takenDamage == false)
+		/*if (pShield < maxShield && takenDamage == false)
 		{
 			StartCoroutine(RegenShieldRoutine());
-		}
+		}*/
 
-		if (Input.GetKeyDown("o"))
+		/*if (Input.GetKeyDown("o"))
 		{
 			HUD.totalScore += 1000;
-		}
+		}*/
 	}
 
 	public void PlayerTakeDamage(float amount)
@@ -75,5 +77,16 @@ public class PlayerHealth : MonoBehaviour
 		yield return new WaitForSeconds(regenWait);
 
 		takenDamage = false;
+	}
+
+	IEnumerator RegenHealthRoutine()
+	{
+		while (true)
+		{
+			if (pHealth < maxHealth)
+				pHealth += 1;
+
+			yield return new WaitForSeconds(1f);
+		}
 	}
 }

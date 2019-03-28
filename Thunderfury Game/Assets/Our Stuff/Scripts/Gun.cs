@@ -20,6 +20,7 @@ public class Gun : ScriptableObject
 	[Title("Gun Type")]
 	[EnumToggleButtons] public typeEnum selectGunType;
 	public bool isAutomatic;
+	public bool isPenetrating;
 	[ShowIf("selectGunType", typeEnum.rayType)] public bool isContinuous;
 
 	[Title("Gun Stats")]

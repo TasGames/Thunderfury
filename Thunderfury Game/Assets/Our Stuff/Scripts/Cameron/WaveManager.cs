@@ -72,6 +72,7 @@ public class WaveManager : MonoBehaviour
     public Image fadeImage;
     public float fadeSpeed;
 
+    [SerializeField] protected PlayerHealth pH;
 
     void Start()
     {
@@ -132,6 +133,8 @@ public class WaveManager : MonoBehaviour
         //Teleport player to shop location
         thePlayer.transform.position = teleportSpot.transform.position;
         thePlayer.transform.rotation = teleportSpot.transform.rotation;
+
+        pH.pShield = pH.maxShield;
 
         //Change Wave Modifiers
         if (waveCounter <= modifier.maxWaveToIncrease)

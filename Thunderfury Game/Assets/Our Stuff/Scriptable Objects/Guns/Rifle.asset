@@ -19,13 +19,13 @@ MonoBehaviour:
   isAutomatic: 1
   isContinuous: 0
   fireSound: {fileID: 0}
-  fireRate: 3
+  fireRate: 4
   recoil: 5
   magSize: 16
   maxAmmo: 160
   reloadTime: 3
   impact: 10
-  range: 10
+  range: 20
   numRays: 1
   spread: 0
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
