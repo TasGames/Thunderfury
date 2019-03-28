@@ -63,10 +63,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogError("No Spawn Points");
         }
-    }
 
-    void OnValidate()
-    {
         totalWeight = 0;
         if (enemyList != null)
         {
