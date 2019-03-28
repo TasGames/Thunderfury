@@ -32,7 +32,7 @@ MonoBehaviour:
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   bulletMark: {fileID: 0}
   takesAmmoType: 1
-  damage: 6
+  damage: 4
   damageRange: 0.5
   projectilePrefab: {fileID: 0}
   projectileForce: 0

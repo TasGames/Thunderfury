@@ -53559,7 +53559,7 @@ MonoBehaviour:
   enemiesRemaining: 0
   waveCounter: 1
   wave:
-    waveEnemyCount: 2
+    waveEnemyCount: 10
     activeAtOnce: 4
     spawnRate: 1
   modifier:
@@ -68133,7 +68133,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1476867558}
   m_LocalRotation: {x: 0.7071068, y: 0.00000019861236, z: 0.7071068, w: 0.00000019861236}
-  m_LocalPosition: {x: -57.20497, y: 5.6901703, z: -66.132706}
+  m_LocalPosition: {x: -55.82, y: 5.69, z: -64.86}
   m_LocalScale: {x: 0.010000008, y: 0.010000022, z: 0.010000008}
   m_Children: []
   m_Father: {fileID: 1909855649}
