@@ -14,7 +14,7 @@ MonoBehaviour:
   name: Grenade Launcher
   icon: {fileID: 0}
   description: Fires explosive projectiles
-  cost: 20000
+  cost: 15000
   selectGunType: 1
   isAutomatic: 0
   isContinuous: 0

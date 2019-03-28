@@ -173,8 +173,6 @@ public class EnemySpawner : MonoBehaviour
 
                 if (enemy != null)
                 {
-
-                    enemyHealth.health = enemyHealth.originalHealth;    //Reset health
                     enemyHealth.hasBroken = false;
 
                     enemy.transform.position = posToSpawn;
