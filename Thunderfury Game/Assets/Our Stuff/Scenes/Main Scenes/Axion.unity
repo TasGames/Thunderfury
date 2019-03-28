@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0
+  m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
@@ -53559,7 +53559,7 @@ MonoBehaviour:
   enemiesRemaining: 0
   waveCounter: 1
   wave:
-    waveEnemyCount: 10
+    waveEnemyCount: 2
     activeAtOnce: 4
     spawnRate: 1
   modifier:
@@ -73727,18 +73727,6 @@ Prefab:
       propertyPath: m_Name
       value: Crate_Prefab (41)
       objectReference: {fileID: 0}
-    - target: {fileID: 4136659648017196, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 106.14001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4136659648017196, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.49999997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4136659648017196, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.49999997
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8661b07c83e0a8b4d9f6e66b4bf20b3e, type: 2}
   m_IsPrefabAsset: 0
@@ -75768,6 +75756,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4237979996461478, guid: d2d14f746347bf340be9321e59d901bc,
     type: 2}
   m_PrefabInternal: {fileID: 1623131961}
+--- !u!114 &1623336008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114144847001879734, guid: 095dba4161ca349408f2602fd466417a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1751652468}
+  m_Script: {fileID: 11500000, guid: a756a6811c7778d4eb4dfb3dde3e2fd1, type: 3}
 --- !u!1001 &1624200350
 Prefab:
   m_ObjectHideFlags: 0
@@ -89192,6 +89186,7 @@ Transform:
   - {fileID: 1818568641}
   - {fileID: 194531448}
   - {fileID: 554820124}
+  - {fileID: 2120208633}
   m_Father: {fileID: 535325763}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91287,7 +91282,7 @@ MonoBehaviour:
   shotgun: {fileID: 2084423320}
   rifle: {fileID: 2100716514}
   grenadeLauncher: {fileID: 1500938485}
-  railgun: {fileID: 0}
+  railgun: {fileID: 1623336008}
   singularity: {fileID: 1481219247}
   pistolAmmo: {fileID: 808444033}
   rifleAmmo: {fileID: 1919028474}
@@ -98392,6 +98387,72 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 726e0d51d5b79104f85fab9e424b0e8b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2120208632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120208633}
+  - component: {fileID: 2120208634}
+  m_Layer: 0
+  m_Name: Point Light (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2120208633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2120208632}
+  m_LocalRotation: {x: 0.7071068, y: 0.00000019861236, z: 0.7071068, w: 0.00000019861236}
+  m_LocalPosition: {x: 22.99, y: 5.6901703, z: -66.13272}
+  m_LocalScale: {x: 0.0100000035, y: 0.010000011, z: 0.0100000035}
+  m_Children: []
+  m_Father: {fileID: 1909855649}
+  m_RootOrder: 50
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &2120208634
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2120208632}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.49519405, g: 0.65430903, b: 0.9811321, a: 1}
+  m_Intensity: 3.07
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &2126418668
 Prefab:
   m_ObjectHideFlags: 0

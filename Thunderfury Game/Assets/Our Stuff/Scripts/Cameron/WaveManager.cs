@@ -100,7 +100,7 @@ public class WaveManager : MonoBehaviour
             }
 
 
-            if (!EnemyIsAlive() && enemiesRemaining == 0)            //If all enemies are dead
+            if (EnemyIsAlive() == false)            //If all enemies are dead
             {
                 ShoppingTime();            //Wave is complete, teleport player to shop
             }
@@ -161,14 +161,13 @@ public class WaveManager : MonoBehaviour
         if (checkCountdown <= 0.0f)
         {
             checkCountdown = 1.0f;
-            if (GameObject.FindGameObjectWithTag("Enemy1") == null && GameObject.FindGameObjectWithTag("Enemy2") == null)
+            if (eSpawner.activeEnemies.Count == 0)
             {
                 if (enemiesRemaining == 0)
                 {
                     return false;
                 }
             }
-
         }
         return true;
     }
