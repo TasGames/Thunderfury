@@ -18,7 +18,7 @@ public class Target : MonoBehaviour
     [SerializeField] protected GameObject brokenVersion;
     [SerializeField] protected GameObject damagePopUp;
     [SerializeField] protected DamageValues dv;
-    [SerializeField] protected GameObject player;
+    protected GameObject player;
 
     [Title("Score")]
     [SerializeField] protected int scoreValue;
@@ -55,6 +55,7 @@ public class Target : MonoBehaviour
     {
         OnValidate();
         player = GameObject.FindGameObjectWithTag("Player");
+        //dv = damagePopUp.GetComponentInChildren<DamageValues>();
     }
 
     public void TakeDamage(float amount)
@@ -133,7 +134,7 @@ public class Target : MonoBehaviour
         int randomNum = Random.Range(0, 100);
 
         if (randomNum <= dropPercentage)
-            Instantiate(dropList[chosenIndex].pickup, transform.position, transform.rotation);
+            Instantiate(dropList[chosenIndex].pickup, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
     }
 
     IEnumerator RotateRoutine(GameObject GO)

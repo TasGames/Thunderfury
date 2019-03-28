@@ -200,33 +200,49 @@ public class UseGun : MonoBehaviour
 			RaycastHit hit;
 			Ray shootRay = new Ray(cam.transform.position, cam.transform.forward + cam.transform.up * Random.Range(-gun.spread, gun.spread) + cam.transform.right * Random.Range(-gun.spread, gun.spread));
 
-			if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
+			if (gun.isPenetrating == false)
 			{
-				Target target = hit.transform.GetComponent<Target>();
+				if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
+					HitEffects(hit);
+			}
+			else
+			{
+				RaycastHit[] hits;
+				hits = Physics.RaycastAll(shootRay.origin, shootRay.direction, gun.range);
 
-				finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
-
-				if (gun.hitEffect != null)
-				{
-					GameObject hitGO = Instantiate(gun.hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					Destroy(hitGO, 2);
+				for (int j = 0; j < hits.Length; j++)
+       			{	
+					hit = hits[j];
+					HitEffects(hit);
 				}
-
-				if (gun.bulletMark != null)
-				{
-					GameObject bulGO = Instantiate(gun.bulletMark, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), hit.transform);
-					Destroy(bulGO, 5);
-				}
-
-				if (target != null)
-					target.TakeDamage(finalDamage);
-
-				if (hit.rigidbody != null)
-					hit.rigidbody.AddForce(hit.normal * prefImpact * -1);
-
-				Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
-				Debug.Log(finalDamage);
 			}
 		}
+	}
+
+	void HitEffects(RaycastHit hit)
+	{
+		Target target = hit.transform.GetComponent<Target>();
+
+		finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
+
+		if (gun.hitEffect != null)
+		{
+			GameObject hitGO = Instantiate(gun.hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+			Destroy(hitGO, 2);
+		}
+
+		if (gun.bulletMark != null)
+		{
+			GameObject bulGO = Instantiate(gun.bulletMark, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), hit.transform);
+			Destroy(bulGO, 5);
+		}
+		if (target != null)
+			target.TakeDamage(finalDamage);
+
+		if (hit.rigidbody != null)
+			hit.rigidbody.AddForce(hit.normal * prefImpact * -1);
+
+		//Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
+		Debug.Log(finalDamage);
 	}
 }
