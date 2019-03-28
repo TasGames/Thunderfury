@@ -21,14 +21,13 @@ GameObject:
   - component: {fileID: 4799927470563818}
   - component: {fileID: 33188418392538912}
   - component: {fileID: 23953334740773138}
-  - component: {fileID: 65640661369834262}
   - component: {fileID: 208296808921059632}
   m_Layer: 0
   m_Name: Divider_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4799927470563818
 Transform:
@@ -36,8 +35,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451201316154650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.14, y: -3.7316, z: -99.95}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -2.8487616, y: 4.018011, z: -68.00198}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +50,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1451201316154650}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -85,18 +84,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451201316154650}
   m_Mesh: {fileID: 4300000, guid: aa1c33d50ee33e3459b7a0dafbf0e1c5, type: 3}
---- !u!65 &65640661369834262
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1451201316154650}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3241299, y: 4.0039854, z: 0.40000007}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &208296808921059632
 NavMeshObstacle:
   m_ObjectHideFlags: 1
