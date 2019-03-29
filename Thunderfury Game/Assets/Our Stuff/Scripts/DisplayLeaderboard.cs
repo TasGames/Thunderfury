@@ -36,7 +36,7 @@ public class DisplayLeaderboard : MonoBehaviour
 		while (true)
 		{
 			highscoreManager.DownloadScores();
-			yield return new WaitForSeconds(30);
+			yield return new WaitForSeconds(10);
 		}
 	}
 }
