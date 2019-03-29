@@ -84,9 +84,9 @@ public class PlayerHealth : MonoBehaviour
 		while (true)
 		{
 			if (pHealth < maxHealth)
-				pHealth += 1;
+				pHealth += 0.5f;
 
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(2f);
 		}
 	}
 }

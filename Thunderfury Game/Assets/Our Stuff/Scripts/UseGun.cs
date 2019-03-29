@@ -87,7 +87,7 @@ public class UseGun : MonoBehaviour
 		if (isReloading)
 			return;
 
-		if (currentMag <= 0)
+		if (currentMag <= 0 && ammoPool > 0)
 		{
 			StartCoroutine(ReloadRoutine());
 			return;
