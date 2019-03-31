@@ -43,8 +43,8 @@ public class UseGun : MonoBehaviour
 		prefMag = gun.magSize;
 		prefMaxAmmo = gun.maxAmmo;
 
-		ammoPool = gun.maxAmmo - gun.magSize;
-		currentMag = gun.magSize;
+		ammoPool = prefMaxAmmo;
+		currentMag = prefMag;
 
 		if (cam == null)
 			cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -113,7 +113,7 @@ public class UseGun : MonoBehaviour
 
 				if (Input.GetButton("Fire1"))
 				{
-					nextToFire = Time.time + 1 /prefFireRate;
+					nextToFire = Time.time + 1 / prefFireRate;
 					Shoot();
 				}
 			}
