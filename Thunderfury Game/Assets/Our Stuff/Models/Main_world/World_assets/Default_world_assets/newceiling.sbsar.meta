@@ -1,0 +1,173 @@
+fileFormatVersion: 2
+guid: 709b150fdb4f4ca49aee1dcae5936c7e
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: newceiling/newceiling
+    400000: newceiling/newceiling/Transform
+    2100000: mat.Ceiling_god
+    2100002: mat.Ceiling_god_1
+    2300000: newceiling/newceiling/MeshRenderer
+    2800000: Ceiling_god_baseColor
+    2800002: Ceiling_god_normal
+    2800004: Ceiling_god_metallic
+    2800006: Ceiling_god_height
+    2800008: Ceiling_god_1_baseColor
+    2800010: Ceiling_god_1_normal
+    2800012: Ceiling_god_1_metallic
+    2800014: Ceiling_god_1_height
+    3300000: newceiling/newceiling/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    11400004: graph1
+    13500000: newceiling/newceiling/SphereCollider
+    100100000: newceiling
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 13
+  mGraphInstanceData:
+  - graphLabel: Ceiling_god
+    prototypeName: Ceiling_god
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Ceiling_god\" label=\"\" >\n  <presetinput
+      identifier=\"Pipe_colourOutput_Color\" uid=\"2702688978\" type=\"3\" value=\"0.247059,0.247059,0.247059,1\"
+      />\n  <presetinput identifier=\"Cieling_outer_colourOutput_Color\" uid=\"2702689000\"
+      type=\"3\" value=\"0.172549,0.172549,0.172549,1\" />\n  <presetinput identifier=\"centre_colour\"
+      uid=\"3198028365\" type=\"3\" value=\"0.367925,0.367925,0.367925,1\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    textureParameters:
+    - textureName: Ceiling_god_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100000, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    generatedTextures:
+    - {fileID: 2800000, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    - {fileID: 2800002, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    - {fileID: 2800004, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    - {fileID: 2800006, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+  - graphLabel: Ceiling_god_1
+    prototypeName: Ceiling_god
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Ceiling_god\" label=\"\" >\n  <presetinput
+      identifier=\"Pipe_colourOutput_Color\" uid=\"2702688978\" type=\"3\" value=\"0.247059,0.247059,0.247059,1\"
+      />\n  <presetinput identifier=\"Cieling_outer_colourOutput_Color\" uid=\"2702689000\"
+      type=\"3\" value=\"0.172549,0.172549,0.172549,1\" />\n  <presetinput identifier=\"Single_change\"
+      uid=\"3202746477\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"opacitycentre\"
+      uid=\"3198037589\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"opacity_bolts\"
+      uid=\"3198028695\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"opacity_colour\"
+      uid=\"3198029273\" type=\"0\" value=\"0\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    textureParameters:
+    - textureName: Ceiling_god_1_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_1_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_1_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_1_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Ceiling_god_1_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100002, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    generatedTextures:
+    - {fileID: 2800008, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    - {fileID: 2800010, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    - {fileID: 2800012, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
+    - {fileID: 2800014, guid: 709b150fdb4f4ca49aee1dcae5936c7e, type: 3}
