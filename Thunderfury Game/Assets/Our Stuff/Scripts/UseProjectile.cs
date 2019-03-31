@@ -7,12 +7,14 @@ using UnityEngine;
 public class UseProjectile : MonoBehaviour 
 {
 	[SerializeField] protected Projectile projectile;
+	protected Rigidbody rb;
 	protected float countdown;
 	protected bool hasExploded = false;
 	protected float timer = 0;
 
 	void Start() 
 	{
+		rb = GetComponent<Rigidbody>();
 		countdown = projectile.projectileTimer;
 
 		if (projectile.isBlackHole == true)
@@ -66,6 +68,10 @@ public class UseProjectile : MonoBehaviour
 	{
 		Vector3 pos = transform.position;
 
+		yield return new WaitForSeconds(projectile.blackHoleStartTimer);
+
+		rb.velocity = new Vector3(0, 0, 0);
+
 		while (true)
 		{
 			Collider[] collidersToDamage = Physics.OverlapSphere(pos, projectile.blastRadius);
@@ -88,7 +94,7 @@ public class UseProjectile : MonoBehaviour
 				}
 			}
 
-			yield return new WaitForSeconds(0.2f);
+			yield return new WaitForSeconds(projectile.blackHoleTimer);
 		}
 	}
 

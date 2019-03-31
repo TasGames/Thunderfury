@@ -23,6 +23,7 @@ public class Highscores : MonoBehaviour
 
 	public void DownloadScores()
 	{
+		Debug.Log("Function called");
 		StartCoroutine(DownloadScoresRoutine());
 	}
 
@@ -39,13 +40,13 @@ public class Highscores : MonoBehaviour
 
 	IEnumerator DownloadScoresRoutine()
 	{
-		//WWW www = new WWW(webURL + publicCode + "/pipe/");
 		WWW www = new WWW(webURL + publicCode + "/pipe/0/10");
 		yield return www;
 
 		if (string.IsNullOrEmpty(www.error))
 		{
 			FormatScores(www.text);
+			Debug.Log("Formated");
 			leaderboardDisplay.OnScoresDownloaded(highscoresList);
 		}
 		else

@@ -8,9 +8,10 @@ public class PlayerHealth : MonoBehaviour
 	[Range(0, 500)] public float maxShield;
 	[HideInInspector] public float pHealth;
 	[HideInInspector] public float pShield;
-	[SerializeField] protected float regenWait;
 	protected bool takenDamage = false;
-
+	[SerializeField] protected float regenAmount;
+	[SerializeField] protected float regenTime;
+	[SerializeField] protected float maxRegen;
 	[SerializeField] protected GameObject gameOver;
 
 	protected RigidbodyFirstPersonController rbFPC;
@@ -28,14 +29,9 @@ public class PlayerHealth : MonoBehaviour
 	void Update()
 	{
 		// Just used for testing
-		if (Input.GetKeyDown("l"))
+		/*if (Input.GetKeyDown("l"))
 		{
 			PlayerTakeDamage(50);
-		}
-
-		/*if (pShield < maxShield && takenDamage == false)
-		{
-			StartCoroutine(RegenShieldRoutine());
 		}*/
 
 		/*if (Input.GetKeyDown("o"))
@@ -60,33 +56,17 @@ public class PlayerHealth : MonoBehaviour
 				rbFPC.mouseLook.SetCursorLock(false);
 			}
 		}
-
 			takenDamage = true;
-			StartCoroutine(DamageWaitRoutine());	
-	}
-
-	IEnumerator RegenShieldRoutine()
-	{
-		pShield += 1;
-
-		yield return new WaitForSeconds(0.2f);
-	}
-
-	IEnumerator DamageWaitRoutine()
-	{
-		yield return new WaitForSeconds(regenWait);
-
-		takenDamage = false;
 	}
 
 	IEnumerator RegenHealthRoutine()
 	{
 		while (true)
 		{
-			if (pHealth < maxHealth)
-				pHealth += 1;
+			if (pHealth < maxRegen)
+				pHealth += regenAmount;
 
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(regenTime);
 		}
 	}
 }

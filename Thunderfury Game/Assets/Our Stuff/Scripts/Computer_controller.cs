@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Computer_controller : MonoBehaviour 
 {
+[SerializeField] protected GameObject interactText;
 protected Animator anim;
 protected bool opened;
 
@@ -18,20 +19,28 @@ protected bool opened;
 	{
 		if (collider.gameObject.tag == "Player")
 		{
-			if(Input.GetKeyDown(KeyCode.E) && opened == false)
-			{
-				opened = true;
-				anim.SetBool("Open", true);
-				anim.SetBool("Close", false);
+			if(Input.GetKeyDown(KeyCode.E))
 				shop.OpenShop();
+		}
+	}
 
-			}
-			else if(Input.GetKeyDown(KeyCode.E) && opened == true)
-			{
-				opened = false;
-				anim.SetBool("Close", true);
-				anim.SetBool("Open", false);
-			}
+	void OnTriggerEnter(Collider collider)
+	{
+		if (collider.gameObject.tag == "Player")
+		{
+			interactText.SetActive(true);
+			anim.SetBool("Open", true);
+			anim.SetBool("Close", false);
+		}
+	}
+
+	void OnTriggerExit(Collider collider)
+	{
+		if (collider.gameObject.tag == "Player")
+		{
+			interactText.SetActive(false);
+			anim.SetBool("Close", true);
+			anim.SetBool("Open", false);
 		}
 	}
 }

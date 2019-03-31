@@ -14,6 +14,7 @@ public class Projectile : ScriptableObject
 	public bool isExplosive;
 	[ShowIf("isExplosive", true)] public bool isBlackHole;
 	[ShowIf("isBlackHole", true)] public float blackHoleTimer;
+	[ShowIf("isBlackHole", true)] public float blackHoleStartTimer;
 	[ShowIf("isExplosive", true)] public bool explodeOnImpact;
 	[ShowIf("isExplosive", true)] public float explosionForce;
 	[ShowIf("isExplosive", true)] public float blastRadius;

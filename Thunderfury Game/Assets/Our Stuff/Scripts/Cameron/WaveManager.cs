@@ -163,7 +163,7 @@ public class WaveManager : MonoBehaviour
             checkCountdown = 1.0f;
             if (eSpawner.activeEnemies.Count == 0)
             {
-                if (enemiesRemaining == 0)
+                if (enemiesRemaining <= 0)
                 {
                     return false;
                 }

@@ -27,13 +27,13 @@ MonoBehaviour:
   reloadTime: 2
   impact: 100
   range: 10
-  numRays: 30
-  spread: 0.3
+  numRays: 20
+  spread: 0.2
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   bulletMark: {fileID: 0}
   takesAmmoType: 2
-  damage: 8
-  damageRange: 4
+  damage: 6
+  damageRange: 2
   projectilePrefab: {fileID: 0}
   projectileForce: 0
   maxLevel: 5

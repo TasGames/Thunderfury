@@ -17,6 +17,7 @@ MonoBehaviour:
   cost: 15000
   selectGunType: 1
   isAutomatic: 0
+  isPenetrating: 0
   isContinuous: 0
   fireSound: {fileID: 0}
   fireRate: 1.5
@@ -35,7 +36,7 @@ MonoBehaviour:
   damageRange: 0
   projectilePrefab: {fileID: 1471341759067424, guid: f9d6ea5378c999c4ead01a473ff5e57b,
     type: 2}
-  projectileForce: 10
+  projectileForce: 20
   maxLevel: 5
   damageIncrease: 0
   impactIncrease: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   isExplosive: 1
   isBlackHole: 0
   blackHoleTimer: 0
-  explodeOnImpact: 0
+  explodeOnImpact: 1
   explosionForce: 1000
   blastRadius: 4
   magnitude: 4

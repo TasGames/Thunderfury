@@ -24,7 +24,6 @@ public class Pickup : MonoBehaviour
 	public static int ammoStorageS;
 	public static int ammoStorageE;
 
-
 	protected PlayerHealth playerHealth;
 
 	void Start()
