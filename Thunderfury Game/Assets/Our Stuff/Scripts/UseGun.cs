@@ -10,6 +10,7 @@ public class UseGun : MonoBehaviour
 	protected float finalDamage;
 	protected bool stillFiring = false;
 	[SerializeField] protected ParticleSystem muzzleFlash;
+	[SerializeField] protected GameObject fireLocation;
 	[SerializeField] protected Animator animator;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
@@ -203,7 +204,7 @@ public class UseGun : MonoBehaviour
 			if (gun.isPenetrating == false)
 			{
 				if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
-					HitEffects(hit);
+					StartCoroutine(HitEffectsRoutine(hit));
 			}
 			else
 			{
@@ -213,17 +214,23 @@ public class UseGun : MonoBehaviour
 				for (int j = 0; j < hits.Length; j++)
        			{	
 					hit = hits[j];
-					HitEffects(hit);
+					StartCoroutine(HitEffectsRoutine(hit));
 				}
 			}
 		}
 	}
 
-	void HitEffects(RaycastHit hit)
+	IEnumerator HitEffectsRoutine(RaycastHit hit)
 	{
 		Target target = hit.transform.GetComponent<Target>();
 
 		finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
+
+		GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
+		Bullet b = bulletObject.GetComponent<Bullet>();
+		b.SetValues(bulletObject.transform.position, hit.point, 0.2f);
+
+		yield return new WaitForSeconds(0.2f);
 
 		if (gun.hitEffect != null)
 		{
@@ -241,10 +248,6 @@ public class UseGun : MonoBehaviour
 
 		if (hit.rigidbody != null)
 			hit.rigidbody.AddForce(hit.normal * prefImpact * -1);
-
-		GameObject bulletObject = Instantiate(gun.bullet, transform.position, transform.rotation);
-		Bullet b = bulletObject.GetComponent<Bullet>();
-		b.SetValues(transform.position, hit.point, 0.1f);
 
 		//Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
 		Debug.Log(finalDamage);
