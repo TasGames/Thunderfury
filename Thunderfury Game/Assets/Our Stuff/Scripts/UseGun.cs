@@ -83,7 +83,7 @@ public class UseGun : MonoBehaviour
 			ammoPool = prefMaxAmmo;
 	}
 
-	void FixedUpdate() 
+	void Update() 
 	{
 		if (isReloading)
 			return;
@@ -199,12 +199,21 @@ public class UseGun : MonoBehaviour
 		for (int i = 0; i < gun.numRays; i++)
 		{
 			RaycastHit hit;
-			Ray shootRay = new Ray(cam.transform.position, cam.transform.forward + cam.transform.up * Random.Range(-gun.spread, gun.spread) + cam.transform.right * Random.Range(-gun.spread, gun.spread));
+			Vector3 rayDirection = cam.transform.forward + cam.transform.up * Random.Range(-gun.spread, gun.spread) + cam.transform.right * Random.Range(-gun.spread, gun.spread);
+			Ray shootRay = new Ray(cam.transform.position, rayDirection);
 
 			if (gun.isPenetrating == false)
 			{
 				if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
 					StartCoroutine(HitEffectsRoutine(hit));
+				else
+				{
+					Vector3 rayEnd = cam.transform.position + rayDirection * gun.range;
+
+					GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
+					Bullet b = bulletObject.GetComponent<Bullet>();
+					b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
+				}
 			}
 			else
 			{
@@ -229,7 +238,7 @@ public class UseGun : MonoBehaviour
 		GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
 		Bullet b = bulletObject.GetComponent<Bullet>();
 		b.SetValues(bulletObject.transform.position, hit.point, 0.2f);
-
+		
 		yield return new WaitForSeconds(0.2f);
 
 		if (gun.hitEffect != null)

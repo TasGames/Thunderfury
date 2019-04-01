@@ -21,7 +21,7 @@ MonoBehaviour:
   isContinuous: 0
   fireSound: {fileID: 0}
   fireRate: 5
-  recoil: 5
+  recoil: 0
   magSize: 6
   maxAmmo: 60
   reloadTime: 4
