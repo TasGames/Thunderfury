@@ -60432,6 +60432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10866516c7b73594392abfb614611430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactText: {fileID: 485623505}
   shop: {fileID: 1926343421}
 --- !u!1001 &1335958112
 Prefab:
@@ -81570,6 +81571,41 @@ Prefab:
     - target: {fileID: 4544443839165946, guid: 095dba4161ca349408f2602fd466417a, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.3251658
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235676951189796, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: maxRegen
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235676951189796, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: regenAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235676951189796, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: regenTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 20520351037000964, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20520351037000964, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20520351037000964, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20520351037000964, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095dba4161ca349408f2602fd466417a, type: 2}
