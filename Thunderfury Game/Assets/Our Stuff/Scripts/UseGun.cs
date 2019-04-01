@@ -201,6 +201,7 @@ public class UseGun : MonoBehaviour
 			RaycastHit hit;
 			Vector3 rayDirection = cam.transform.forward + cam.transform.up * Random.Range(-gun.spread, gun.spread) + cam.transform.right * Random.Range(-gun.spread, gun.spread);
 			Ray shootRay = new Ray(cam.transform.position, rayDirection);
+			Vector3 rayEnd = cam.transform.position + rayDirection * gun.range;
 
 			if (gun.isPenetrating == false)
 			{
@@ -208,8 +209,6 @@ public class UseGun : MonoBehaviour
 					StartCoroutine(HitEffectsRoutine(hit));
 				else
 				{
-					Vector3 rayEnd = cam.transform.position + rayDirection * gun.range;
-
 					GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
 					Bullet b = bulletObject.GetComponent<Bullet>();
 					b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
@@ -225,6 +224,10 @@ public class UseGun : MonoBehaviour
 					hit = hits[j];
 					StartCoroutine(HitEffectsRoutine(hit));
 				}
+				
+				GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
+				Bullet b = bulletObject.GetComponent<Bullet>();
+				b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
 			}
 		}
 	}
@@ -235,11 +238,14 @@ public class UseGun : MonoBehaviour
 
 		finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
 
-		GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
-		Bullet b = bulletObject.GetComponent<Bullet>();
-		b.SetValues(bulletObject.transform.position, hit.point, 0.2f);
-		
-		yield return new WaitForSeconds(0.2f);
+		if (gun.isPenetrating == false)
+		{
+			GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
+			Bullet b = bulletObject.GetComponent<Bullet>();
+			b.SetValues(bulletObject.transform.position, hit.point, 0.2f);
+
+			yield return new WaitForSeconds(0.2f);
+		}
 
 		if (gun.hitEffect != null)
 		{
