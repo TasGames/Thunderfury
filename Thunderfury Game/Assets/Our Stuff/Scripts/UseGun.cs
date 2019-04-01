@@ -10,6 +10,7 @@ public class UseGun : MonoBehaviour
 	protected float finalDamage;
 	protected bool stillFiring = false;
 	[SerializeField] protected ParticleSystem muzzleFlash;
+	[SerializeField] protected GameObject fireLocation;
 	[SerializeField] protected Animator animator;
 	[HideInInspector] public bool isReloading = false;
 	[HideInInspector] public int ammoPool;
@@ -82,7 +83,7 @@ public class UseGun : MonoBehaviour
 			ammoPool = prefMaxAmmo;
 	}
 
-	void FixedUpdate() 
+	void Update() 
 	{
 		if (isReloading)
 			return;
@@ -198,12 +199,20 @@ public class UseGun : MonoBehaviour
 		for (int i = 0; i < gun.numRays; i++)
 		{
 			RaycastHit hit;
-			Ray shootRay = new Ray(cam.transform.position, cam.transform.forward + cam.transform.up * Random.Range(-gun.spread, gun.spread) + cam.transform.right * Random.Range(-gun.spread, gun.spread));
+			Vector3 rayDirection = cam.transform.forward + cam.transform.up * Random.Range(-gun.spread, gun.spread) + cam.transform.right * Random.Range(-gun.spread, gun.spread);
+			Ray shootRay = new Ray(cam.transform.position, rayDirection);
+			Vector3 rayEnd = cam.transform.position + rayDirection * gun.range;
 
 			if (gun.isPenetrating == false)
 			{
 				if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
-					HitEffects(hit);
+					StartCoroutine(HitEffectsRoutine(hit));
+				else
+				{
+					GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
+					Bullet b = bulletObject.GetComponent<Bullet>();
+					b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
+				}
 			}
 			else
 			{
@@ -213,17 +222,30 @@ public class UseGun : MonoBehaviour
 				for (int j = 0; j < hits.Length; j++)
        			{	
 					hit = hits[j];
-					HitEffects(hit);
+					StartCoroutine(HitEffectsRoutine(hit));
 				}
+				
+				GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
+				Bullet b = bulletObject.GetComponent<Bullet>();
+				b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
 			}
 		}
 	}
 
-	void HitEffects(RaycastHit hit)
+	IEnumerator HitEffectsRoutine(RaycastHit hit)
 	{
 		Target target = hit.transform.GetComponent<Target>();
 
 		finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
+
+		if (gun.isPenetrating == false)
+		{
+			GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
+			Bullet b = bulletObject.GetComponent<Bullet>();
+			b.SetValues(bulletObject.transform.position, hit.point, 0.2f);
+
+			yield return new WaitForSeconds(0.2f);
+		}
 
 		if (gun.hitEffect != null)
 		{

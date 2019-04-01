@@ -39,6 +39,7 @@ public class Gun : ScriptableObject
 	
 	[Title("Ammo Stats")]
 	[EnumToggleButtons] public ammoTypeEnum takesAmmoType;
+	[ShowIf("selectGunType", typeEnum.rayType)] public GameObject bullet;
 	[ShowIf("selectGunType", typeEnum.rayType)] public float damage;
 	[ShowIf("selectGunType", typeEnum.rayType)] [Range(0, 20)] public float damageRange;
 	[ShowIf("selectGunType", typeEnum.projectileType)] public GameObject projectilePrefab;
