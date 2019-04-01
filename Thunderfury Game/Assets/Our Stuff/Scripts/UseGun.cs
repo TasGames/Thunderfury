@@ -242,6 +242,10 @@ public class UseGun : MonoBehaviour
 		if (hit.rigidbody != null)
 			hit.rigidbody.AddForce(hit.normal * prefImpact * -1);
 
+		GameObject bulletObject = Instantiate(gun.bullet, transform.position, transform.rotation);
+		Bullet b = bulletObject.GetComponent<Bullet>();
+		b.SetValues(transform.position, hit.point, 0.1f);
+
 		//Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
 		Debug.Log(finalDamage);
 	}
