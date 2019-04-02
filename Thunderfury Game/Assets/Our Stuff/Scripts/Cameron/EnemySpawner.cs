@@ -175,6 +175,7 @@ public class EnemySpawner : MonoBehaviour
                     enemy.transform.position = posToSpawn;
                     enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
                     activeEnemies.Add(enemy);
+                    enemyHealth.SetKinematic(true);
                     enemy.SetActive(true);
                     //Modular pieces
                     legsBasic.gameObject.SetActive(legsBasicActive);

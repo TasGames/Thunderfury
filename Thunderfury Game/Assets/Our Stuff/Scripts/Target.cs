@@ -34,10 +34,12 @@ public class Target : MonoBehaviour
 
     WaveManager waveManager;
     EnemySpawner enemySpawner;
+
+    //Components to disable for ragdoll
     EnemyBehaviour enemyBehaviour;
-
-
     Animator enemyAnim;
+    UnityEngine.AI.NavMeshAgent enemyAgent;
+    
 
     void OnValidate()
     {
@@ -106,7 +108,11 @@ public class Target : MonoBehaviour
 
             enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
             enemyBehaviour.canCheckForAttack = false;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            enemyBehaviour.enabled = false;
+            enemyAnim.enabled = false;
+            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            SetKinematic(false);
         }
         else
         {
@@ -138,12 +144,21 @@ public class Target : MonoBehaviour
     }
 
     IEnumerator RotateRoutine(GameObject GO)
-	{
-		while (true)
-		{
-			GO.transform.LookAt(player.transform);
-			yield return new WaitForSeconds(0.1f);
-		}
-	}
+    {
+        while (true)
+        {
+            GO.transform.LookAt(player.transform);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    public void SetKinematic(bool newValue)
+    {
+        Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in bodies)
+        {
+            rb.isKinematic = newValue;
+        }
+    }
 
 }
