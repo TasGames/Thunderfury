@@ -53,7 +53,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (player != null)
         {
             player.PlayerTakeDamage(damageToDeal);
-            Debug.Log("Dealt Damage");
+            //Debug.Log("Dealt Damage");
 
             DisableHandTrigger();
         }
@@ -67,7 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("PunchAttack") && !anim.GetCurrentAnimatorStateInfo(0).IsTag("DownSwingAttack"))
             {
                 agent.isStopped = false;
-                Debug.Log("Beginning Movement");
+                //Debug.Log("Beginning Movement");
                 yield break;
             }
         }
@@ -81,7 +81,7 @@ public class EnemyBehaviour : MonoBehaviour
             //if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("PunchAttack") && !anim.GetCurrentAnimatorStateInfo(0).IsTag("DownSwingAttack"))
             //{
             agent.isStopped = false;
-            Debug.Log("Beginning Movement");
+            //Debug.Log("Beginning Movement");
             //}
         }
     }
@@ -91,13 +91,13 @@ public class EnemyBehaviour : MonoBehaviour
         if (!agent.isStopped || isInTrigger)
         {
             agent.isStopped = true;
-            Debug.Log("Stopping Movement");
+            //Debug.Log("Stopping Movement");
         }
     }
 
     void AttackAnimation()
     {
-        Debug.Log("Attack Animation");
+        //Debug.Log("Attack Animation");
         StopMovement();
         int randNum = Random.Range(0, 2);
 

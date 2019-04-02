@@ -113,6 +113,7 @@ public class Target : MonoBehaviour
             enemyAnim.enabled = false;
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             SetKinematic(false);
+            gameObject.layer = 11;
             StartCoroutine(ResetEnemy());
         }
         else
@@ -165,13 +166,14 @@ public class Target : MonoBehaviour
     IEnumerator ResetEnemy(){
         yield return new WaitForSeconds(10.0f);
 
+        SetKinematic(true);
         enemyBehaviour.enabled = true;
         enemyAnim.enabled = true;
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
-        SetKinematic(true);
         gameObject.SetActive(false);
+        gameObject.layer = 10;
+        transform.localPosition = Vector3.zero;
 
         yield break;
     }
-
 }
