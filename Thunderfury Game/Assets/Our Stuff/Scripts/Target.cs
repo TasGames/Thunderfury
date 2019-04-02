@@ -113,6 +113,7 @@ public class Target : MonoBehaviour
             enemyAnim.enabled = false;
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             SetKinematic(false);
+            StartCoroutine(ResetEnemy());
         }
         else
         {
@@ -159,6 +160,18 @@ public class Target : MonoBehaviour
         {
             rb.isKinematic = newValue;
         }
+    }
+
+    IEnumerator ResetEnemy(){
+        yield return new WaitForSeconds(10.0f);
+
+        enemyBehaviour.enabled = true;
+        enemyAnim.enabled = true;
+        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        SetKinematic(true);
+        gameObject.SetActive(false);
+
+        yield break;
     }
 
 }
