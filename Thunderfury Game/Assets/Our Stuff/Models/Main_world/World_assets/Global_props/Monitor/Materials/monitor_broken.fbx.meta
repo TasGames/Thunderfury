@@ -1,14 +1,51 @@
 fileFormatVersion: 2
-guid: 732a883dc75df0041b03792425f38677
+guid: ac5dd33a7e93b9340adcbe0cbc5c0aa1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Monitor_healthy
+    100000: Monitor_broken
+    100002: //RootNode
+    100004: Monitor_broken_2
+    100006: Monitor_broken_3
+    100008: Monitor_broken_4
+    100010: Monitor_broken_5
+    100012: Monitor_broken_6
+    100014: Monitor_broken_7
+    100016: Monitor_broken_8
+    400000: Monitor_broken
+    400002: //RootNode
+    400004: Monitor_broken_2
+    400006: Monitor_broken_3
+    400008: Monitor_broken_4
+    400010: Monitor_broken_5
+    400012: Monitor_broken_6
+    400014: Monitor_broken_7
+    400016: Monitor_broken_8
+    2100000: lambert6
+    2300000: Monitor_broken
+    2300002: Monitor_broken_2
+    2300004: Monitor_broken_3
+    2300006: Monitor_broken_4
+    2300008: Monitor_broken_5
+    2300010: Monitor_broken_6
+    2300012: Monitor_broken_7
+    2300014: Monitor_broken_8
+    3300000: Monitor_broken
+    3300002: Monitor_broken_2
+    3300004: Monitor_broken_3
+    3300006: Monitor_broken_4
+    3300008: Monitor_broken_5
+    3300010: Monitor_broken_6
+    3300012: Monitor_broken_7
+    3300014: Monitor_broken_8
+    4300000: Monitor_broken
+    4300002: Monitor_broken_2
+    4300004: Monitor_broken_3
+    4300006: Monitor_broken_4
+    4300008: Monitor_broken_5
+    4300010: Monitor_broken_6
+    4300012: Monitor_broken_7
+    4300014: Monitor_broken_8
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
@@ -62,7 +99,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.0254
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
