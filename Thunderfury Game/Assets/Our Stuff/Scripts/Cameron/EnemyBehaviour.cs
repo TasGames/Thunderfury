@@ -159,12 +159,6 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    // void OnCollisionEnter(Collision col)
-    // {
-    //     if (col.gameObject.tag == "Player")
-    //         player.PlayerTakeDamage(damageToDeal);
-    // }
-
     public void EnableHandTrigger()
     {
         if (!handTrigger.activeSelf)

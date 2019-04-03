@@ -13,6 +13,8 @@ public class Target : MonoBehaviour
         public float weight;
     }
 
+    public Transform enemyPrefab;
+
     [Title("Target Stats")]
     [SerializeField] public float health;
     [SerializeField] protected GameObject brokenVersion;
@@ -166,13 +168,14 @@ public class Target : MonoBehaviour
     IEnumerator ResetEnemy(){
         yield return new WaitForSeconds(10.0f);
 
-        SetKinematic(true);
-        enemyBehaviour.enabled = true;
-        enemyAnim.enabled = true;
-        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
-        gameObject.SetActive(false);
-        gameObject.layer = 10;
-        transform.localPosition = Vector3.zero;
+        //SetKinematic(true);
+        //enemyBehaviour.enabled = true;
+        //enemyAnim.enabled = true;
+        //GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        //gameObject.SetActive(false);
+        //gameObject.layer = 10;
+        ObjectPooler.SharedInstance.pooledObjects.Remove(gameObject);
+        Destroy(gameObject);
 
         yield break;
     }

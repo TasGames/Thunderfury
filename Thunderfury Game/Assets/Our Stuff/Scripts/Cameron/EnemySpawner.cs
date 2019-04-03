@@ -55,6 +55,12 @@ public class EnemySpawner : MonoBehaviour
 
     public List<GameObject> activeEnemies = new List<GameObject>();
 
+    //INITIAL VALUES
+    Vector3 enVelocity;
+    Vector3 enAngVelocity;
+
+
+
     // Use this for initialization
     void Start()
     {
@@ -69,6 +75,11 @@ public class EnemySpawner : MonoBehaviour
             foreach (var Enemy in enemyList)
                 totalWeight += Enemy.spawnWeight;
         }
+
+        //Ragdoll initial values
+        // GameObject enemyRagdoll = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
+        // enemyRagdoll.GetComponent<ResetRagdoll>().GetChildPositions();
+
     }
 
     public void PickSpawnLocation()
@@ -172,12 +183,12 @@ public class EnemySpawner : MonoBehaviour
                     enemyHealth.hasBroken = false;
 
                     //Position & Rotation
-                    enemy.transform.position = posToSpawn;
-                    enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    enemy.transform.localPosition = posToSpawn;
+                    enemy.transform.localRotation = activeSpawns[spawnPointIndex].transform.rotation;
 
                     //Set as Active
                     activeEnemies.Add(enemy);
-                    
+
                     //enemyHealth.SetKinematic(true);
 
                     //Enable enemy
