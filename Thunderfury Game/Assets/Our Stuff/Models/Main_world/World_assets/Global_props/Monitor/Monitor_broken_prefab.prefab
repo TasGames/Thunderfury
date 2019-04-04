@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4491498213434380}
   m_Layer: 0
-  m_Name: monitor_broken_prefab
+  m_Name: Monitor_broken_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
