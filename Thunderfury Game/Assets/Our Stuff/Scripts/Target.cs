@@ -13,6 +13,8 @@ public class Target : MonoBehaviour
         public float weight;
     }
 
+    public Transform enemyPrefab;
+
     [Title("Target Stats")]
     [SerializeField] public float health;
     [SerializeField] protected GameObject brokenVersion;
@@ -34,10 +36,12 @@ public class Target : MonoBehaviour
 
     WaveManager waveManager;
     EnemySpawner enemySpawner;
+
+    //Components to disable for ragdoll
     EnemyBehaviour enemyBehaviour;
-
-
     Animator enemyAnim;
+    UnityEngine.AI.NavMeshAgent enemyAgent;
+    
 
     void OnValidate()
     {
@@ -106,7 +110,13 @@ public class Target : MonoBehaviour
 
             enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
             enemyBehaviour.canCheckForAttack = false;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            enemyBehaviour.enabled = false;
+            enemyAnim.enabled = false;
+            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            SetKinematic(false);
+            gameObject.layer = 11;
+            StartCoroutine(ResetEnemy());
         }
         else
         {
@@ -138,12 +148,35 @@ public class Target : MonoBehaviour
     }
 
     IEnumerator RotateRoutine(GameObject GO)
-	{
-		while (true)
-		{
-			GO.transform.LookAt(player.transform);
-			yield return new WaitForSeconds(0.1f);
-		}
-	}
+    {
+        while (true)
+        {
+            GO.transform.LookAt(player.transform);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
+    public void SetKinematic(bool newValue)
+    {
+        Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in bodies)
+        {
+            rb.isKinematic = newValue;
+        }
+    }
+
+    IEnumerator ResetEnemy(){
+        yield return new WaitForSeconds(10.0f);
+
+        //SetKinematic(true);
+        //enemyBehaviour.enabled = true;
+        //enemyAnim.enabled = true;
+        //GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        //gameObject.SetActive(false);
+        //gameObject.layer = 10;
+        ObjectPooler.SharedInstance.pooledObjects.Remove(gameObject);
+        Destroy(gameObject);
+
+        yield break;
+    }
 }

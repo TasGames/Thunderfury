@@ -55,10 +55,15 @@ public class EnemySpawner : MonoBehaviour
 
     public List<GameObject> activeEnemies = new List<GameObject>();
 
+    //INITIAL VALUES
+    Vector3 enVelocity;
+    Vector3 enAngVelocity;
+
+
+
     // Use this for initialization
     void Start()
     {
-
         if (activeSpawns.Count == 0)
         {
             Debug.LogError("No Spawn Points");
@@ -70,6 +75,11 @@ public class EnemySpawner : MonoBehaviour
             foreach (var Enemy in enemyList)
                 totalWeight += Enemy.spawnWeight;
         }
+
+        //Ragdoll initial values
+        // GameObject enemyRagdoll = ObjectPooler.SharedInstance.GetPooledObject("Enemy1");
+        // enemyRagdoll.GetComponent<ResetRagdoll>().GetChildPositions();
+
     }
 
     public void PickSpawnLocation()
@@ -172,11 +182,19 @@ public class EnemySpawner : MonoBehaviour
                 {
                     enemyHealth.hasBroken = false;
 
-                    enemy.transform.position = posToSpawn;
-                    enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    //Position & Rotation
+                    enemy.transform.localPosition = posToSpawn;
+                    enemy.transform.localRotation = activeSpawns[spawnPointIndex].transform.rotation;
+
+                    //Set as Active
                     activeEnemies.Add(enemy);
+
+                    //enemyHealth.SetKinematic(true);
+
+                    //Enable enemy
                     enemy.SetActive(true);
-                    //Modular pieces
+
+                    //Enable modular pieces
                     legsBasic.gameObject.SetActive(legsBasicActive);
                     legsSpeedy.gameObject.SetActive(legsSpeedyActive);
                     crotchHeavy.gameObject.SetActive(crotchHeavyActive);
@@ -184,7 +202,7 @@ public class EnemySpawner : MonoBehaviour
                     rightHipHeavy.gameObject.SetActive(rightHipHeavyActive);
                     chestHeavy.gameObject.SetActive(chestHeavyActive);
                 }
-                Debug.Log("Spawn Complete");
+                //Debug.Log("Spawn Complete");
                 return;
             }
             // Spawn enemy success, return
