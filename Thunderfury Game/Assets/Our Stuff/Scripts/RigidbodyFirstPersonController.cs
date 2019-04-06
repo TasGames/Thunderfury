@@ -161,6 +161,9 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetKeyDown("p"))
+			isGrounded = false;
+
 		RotateView();
 
 		if (Input.GetButtonDown("Jump") && hasJumped == false)
@@ -275,5 +278,10 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
 		if (previouslyGrounded == false && isGrounded && isJumping)
 			isJumping = false;
+	}
+
+	public bool GetIsGrounded()
+	{
+		return isGrounded;
 	}
 }

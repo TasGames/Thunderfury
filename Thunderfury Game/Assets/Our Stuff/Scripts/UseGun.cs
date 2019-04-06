@@ -6,6 +6,7 @@ public class UseGun : MonoBehaviour
 {
 	public Gun gun;
 	protected Camera cam;
+	protected AudioSource fireSound;
 	protected float nextToFire = 0;
 	protected float finalDamage;
 	protected bool stillFiring = false;
@@ -46,6 +47,8 @@ public class UseGun : MonoBehaviour
 
 		ammoPool = prefMaxAmmo;
 		currentMag = prefMag;
+
+		fireSound = GetComponent<AudioSource>();
 
 		if (cam == null)
 			cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -125,6 +128,9 @@ public class UseGun : MonoBehaviour
 	{
 		if (muzzleFlash != null)
 			muzzleFlash.Play();
+
+		if (fireSound != null)
+			fireSound.Play();
 
 		if (gun.selectGunType == typeEnum.projectileType)
 			ProjectileType();
@@ -206,46 +212,34 @@ public class UseGun : MonoBehaviour
 			if (gun.isPenetrating == false)
 			{
 				if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
-					StartCoroutine(HitEffectsRoutine(hit));
-				else
 				{
-					GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
-					Bullet b = bulletObject.GetComponent<Bullet>();
-					b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
+					HitEffects(hit);
+					DrawLine(hit.point);
 				}
+				else
+					DrawLine(rayEnd);
 			}
 			else
 			{
 				RaycastHit[] hits;
 				hits = Physics.RaycastAll(shootRay.origin, shootRay.direction, gun.range);
 
+				DrawLine(rayEnd);
+
 				for (int j = 0; j < hits.Length; j++)
        			{	
 					hit = hits[j];
-					StartCoroutine(HitEffectsRoutine(hit));
+					HitEffects(hit);
 				}
-				
-				GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
-				Bullet b = bulletObject.GetComponent<Bullet>();
-				b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
 			}
 		}
 	}
 
-	IEnumerator HitEffectsRoutine(RaycastHit hit)
+	void HitEffects(RaycastHit hit)
 	{
 		Target target = hit.transform.GetComponent<Target>();
 
 		finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
-
-		if (gun.isPenetrating == false)
-		{
-			GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
-			Bullet b = bulletObject.GetComponent<Bullet>();
-			b.SetValues(bulletObject.transform.position, hit.point, 0.2f);
-
-			yield return new WaitForSeconds(0.2f);
-		}
 
 		if (gun.hitEffect != null)
 		{
@@ -267,4 +261,18 @@ public class UseGun : MonoBehaviour
 		//Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
 		Debug.Log(finalDamage);
 	}
+
+ 	void DrawLine(Vector3 end)
+    {
+		GameObject myLine = new GameObject();
+		myLine.transform.position = fireLocation.transform.position;
+		myLine.AddComponent<LineRenderer>();
+		LineRenderer lr = myLine.GetComponent<LineRenderer>();
+		lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
+		lr.startColor = gun.ammoColour;
+		lr.startWidth = gun.trailWidth;
+		lr.SetPosition(0, fireLocation.transform.position);
+		lr.SetPosition(1, end);
+		GameObject.Destroy(myLine, gun.trailTimer);
+    }
 }

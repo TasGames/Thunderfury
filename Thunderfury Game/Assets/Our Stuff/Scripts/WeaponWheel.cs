@@ -29,9 +29,7 @@ public class WeaponWheel : MonoBehaviour
 	void OnEnable()
 	{
 		StartCoroutine(AmmoRoutine());
-
-		//highlightColour = new Color32(30, 30, 30, 190);
-		//standardColour = new Color32(0, 0, 0, 190);			
+				
 	}
 	
 	void Update()

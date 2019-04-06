@@ -13,8 +13,11 @@ public class PlayerHealth : MonoBehaviour
 	[SerializeField] protected float regenTime;
 	[SerializeField] protected float maxRegen;
 	[SerializeField] protected GameObject gameOver;
+	protected bool isGameOver = false;
 
 	protected RigidbodyFirstPersonController rbFPC;
+	protected AudioSource[] sounds;
+	protected AudioSource damageSound;
 	
 	void Start()
 	{
@@ -22,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
 		pShield = maxShield;
 
 		rbFPC = GetComponent<RigidbodyFirstPersonController>();
+		sounds = GetComponents<AudioSource>();
+		damageSound = sounds[1];
 
 		StartCoroutine(RegenHealthRoutine());
 	}
@@ -44,6 +49,9 @@ public class PlayerHealth : MonoBehaviour
 	{
 		pShield -= amount;
 
+		if (isGameOver == false)
+			damageSound.Play();
+
 		if (pShield < 0)
 		{
 			pHealth += pShield;
@@ -51,6 +59,7 @@ public class PlayerHealth : MonoBehaviour
 
 			if (pHealth <= 0)
 			{
+				isGameOver = true;
 				gameOver.SetActive(true);
 				Time.timeScale = 0f;
 				rbFPC.mouseLook.SetCursorLock(false);
