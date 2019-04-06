@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
 	protected bool isGameOver = false;
 
 	protected RigidbodyFirstPersonController rbFPC;
+	protected AudioSource[] sounds;
 	protected AudioSource damageSound;
 	
 	void Start()
@@ -24,7 +25,8 @@ public class PlayerHealth : MonoBehaviour
 		pShield = maxShield;
 
 		rbFPC = GetComponent<RigidbodyFirstPersonController>();
-		damageSound = GetComponent<AudioSource>();
+		sounds = GetComponents<AudioSource>();
+		damageSound = sounds[1];
 
 		StartCoroutine(RegenHealthRoutine());
 	}
@@ -47,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		pShield -= amount;
 
-		if (isGameOver == false && damageSound.isPlaying == false)
+		if (isGameOver == false)
 			damageSound.Play();
 
 		if (pShield < 0)
