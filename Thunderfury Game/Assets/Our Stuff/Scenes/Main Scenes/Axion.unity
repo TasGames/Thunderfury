@@ -20811,6 +20811,26 @@ Prefab:
       propertyPath: walkSound
       value: 
       objectReference: {fileID: 2079955432}
+    - target: {fileID: 114185249027948174, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: minVolume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114185249027948174, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: maxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114185249027948174, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: minPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114185249027948174, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: maxPitch
+      value: 1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095dba4161ca349408f2602fd466417a, type: 2}
   m_IsPrefabAsset: 0

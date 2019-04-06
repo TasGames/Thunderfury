@@ -10,6 +10,10 @@ public class HeadBobbing : MonoBehaviour
     [SerializeField] protected float midpoint = 0.2f;
 	[SerializeField] protected RigidbodyFirstPersonController rBFC;
 	[SerializeField] protected AudioSource walkSound;
+	[SerializeField] protected float minVolume;
+	[SerializeField] protected float maxVolume;
+	[SerializeField] protected float minPitch;
+	[SerializeField] protected float maxPitch;
   
  	void Update()
     {
@@ -45,7 +49,11 @@ public class HeadBobbing : MonoBehaviour
 			transform.localPosition = cSharpConversion;
 
 			if (walkSound.isPlaying == false && vertical != 0)
+			{
+				walkSound.volume = Random.Range(minVolume, maxVolume);
+				walkSound.pitch = Random.Range(minPitch, maxPitch);
 				walkSound.Play();
+			}
 		}
 
   	}
