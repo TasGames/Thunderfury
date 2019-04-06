@@ -7,19 +7,18 @@ using TMPro;
 public class Pausing : MonoBehaviour 
 {
 	[SerializeField] protected GameObject pauseMenu;
-    [SerializeField] protected GameObject weaponWheel;
-    [SerializeField] protected GameObject panel;
-    [SerializeField] protected WeaponSwitcher wW;
+    //[SerializeField] protected GameObject weaponWheel;
+    //[SerializeField] protected WeaponSwitcher wW;
   
     protected RigidbodyFirstPersonController rbFPC;
     protected Animator anim;
-    protected bool isOpen = false;
+    //protected bool isOpen = false;
 
     void Start()
     {
         rbFPC = GetComponent<RigidbodyFirstPersonController>();
-        anim = weaponWheel.GetComponent<Animator>();
-        StartCoroutine(OpenWeaponWheelRoutine());
+        /*anim = weaponWheel.GetComponent<Animator>();
+        StartCoroutine(OpenWeaponWheelRoutine());*/
 
     }
 
@@ -28,8 +27,8 @@ public class Pausing : MonoBehaviour
 		if (Input.GetKeyDown("p"))
 			pauseIt();
 
-        if (Input.GetKeyDown("q"))
-			StartCoroutine(OpenWeaponWheelRoutine());
+        /*if (Input.GetKeyDown("q"))
+			StartCoroutine(OpenWeaponWheelRoutine());*/
 	}
 
 	void pauseIt()
@@ -50,7 +49,7 @@ public class Pausing : MonoBehaviour
         }
     }
 
-    IEnumerator OpenWeaponWheelRoutine()
+    /*IEnumerator OpenWeaponWheelRoutine()
     {
         if (isOpen == false)
         {
@@ -68,6 +67,6 @@ public class Pausing : MonoBehaviour
             wW.enabled = false;
         }
         
-    }
+    }*/
 
 }
