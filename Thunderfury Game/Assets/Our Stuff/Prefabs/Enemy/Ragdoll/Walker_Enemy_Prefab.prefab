@@ -366,7 +366,6 @@ GameObject:
   - component: {fileID: 54708518456393402}
   - component: {fileID: 65113910326309376}
   - component: {fileID: 65972303198614310}
-  - component: {fileID: 114104756414657022}
   m_Layer: 10
   m_Name: Walker_Enemy_Prefab
   m_TagString: Enemy1
@@ -554,13 +553,13 @@ GameObject:
   - component: {fileID: 4953470203366770}
   - component: {fileID: 65973107958025058}
   - component: {fileID: 114005048305690692}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: HandTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1963483072316922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,39 +1558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af11460aee06dd4b9d3ceb267693dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114104756414657022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675141557560538}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3778253521499314893e7f722dd2186b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pelvis: {fileID: 4944216560930644}
-  Lthigh: {fileID: 4255748026170472}
-  Lcalf: {fileID: 4680036636658862}
-  Rthigh: {fileID: 4895944745611078}
-  Rcalf: {fileID: 4892702941557500}
-  spine1: {fileID: 4069756850292316}
-  head: {fileID: 4422115293890220}
-  Lupperarm: {fileID: 4251628353950388}
-  Lforearm: {fileID: 4251628353950388}
-  Rupperarm: {fileID: 4134709110773546}
-  Rforearm: {fileID: 4439786135493768}
-  pelvisPosition: {x: 0, y: 0, z: 0}
-  LthighPosition: {x: 0, y: 0, z: 0}
-  LcalfPosition: {x: 0, y: 0, z: 0}
-  RthighPosition: {x: 0, y: 0, z: 0}
-  RcalfPosition: {x: 0, y: 0, z: 0}
-  spine1Position: {x: 0, y: 0, z: 0}
-  headPosition: {x: 0, y: 0, z: 0}
-  LupperarmPosition: {x: 0, y: 0, z: 0}
-  LforearmPosition: {x: 0, y: 0, z: 0}
-  RupperarmPosition: {x: 0, y: 0, z: 0}
-  RforearmPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114350986413185472
 MonoBehaviour:
   m_ObjectHideFlags: 1
