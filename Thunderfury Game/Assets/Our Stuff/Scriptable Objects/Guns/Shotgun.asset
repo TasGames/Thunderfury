@@ -19,7 +19,6 @@ MonoBehaviour:
   isAutomatic: 0
   isPenetrating: 0
   isContinuous: 0
-  fireSound: {fileID: 0}
   fireRate: 4
   recoil: 0
   magSize: 4
@@ -27,12 +26,15 @@ MonoBehaviour:
   reloadTime: 2
   impact: 100
   range: 10
-  numRays: 20
+  numRays: 15
   spread: 0.2
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   bulletMark: {fileID: 0}
   takesAmmoType: 2
-  bullet: {fileID: 1899964052926098, guid: 78f8ff30800714c4884fe565f7dcdc29, type: 2}
+  ammoCost: 25
+  ammoColour: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0.039215688}
+  trailTimer: 0.5
+  trailWidth: 0.002
   damage: 6
   damageRange: 2
   projectilePrefab: {fileID: 0}

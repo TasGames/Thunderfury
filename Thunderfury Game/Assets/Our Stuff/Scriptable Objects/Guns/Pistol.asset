@@ -31,8 +31,8 @@ MonoBehaviour:
   hitEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 2}
   bulletMark: {fileID: 0}
   takesAmmoType: 0
-  ammoCost: 0
-  ammoColour: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0.039215688}
+  ammoCost: 10
+  ammoColour: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0}
   trailTimer: 1
   trailWidth: 0.002
   damage: 10

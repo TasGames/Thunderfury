@@ -20931,6 +20931,16 @@ Prefab:
       propertyPath: maxPitch
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 136861240294936418, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 136240173936729336, guid: 095dba4161ca349408f2602fd466417a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095dba4161ca349408f2602fd466417a, type: 2}
   m_IsPrefabAsset: 0
@@ -76697,7 +76707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1564398289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90205,7 +90215,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1230224652740522, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
