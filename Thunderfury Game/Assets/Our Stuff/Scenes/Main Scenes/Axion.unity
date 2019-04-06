@@ -10401,7 +10401,7 @@ MonoBehaviour:
   itemsToPool:
   - objectToPool: {fileID: 1675141557560538, guid: 5d2536c6a2f416644b5a63f8dfb4b599,
       type: 2}
-    amountToPool: 50
+    amountToPool: 100
     shouldExpand: 1
 --- !u!4 &197032717 stripped
 Transform:
@@ -56488,8 +56488,8 @@ MonoBehaviour:
   enemiesRemaining: 0
   waveCounter: 1
   wave:
-    waveEnemyCount: 5
-    activeAtOnce: 2
+    waveEnemyCount: 100
+    activeAtOnce: 20
     spawnRate: 1
   modifier:
     enemyNumIncrease: 1.5
@@ -56518,17 +56518,17 @@ MonoBehaviour:
     typeHealth: 20
     typeDamage: 50
     typeSpeed: 4
-    spawnWeight: 0.3
+    spawnWeight: 0.225
   - typeName: Speedy
     typeHealth: 10
     typeDamage: 25
     typeSpeed: 6
-    spawnWeight: 0.3
+    spawnWeight: 0.225
   - typeName: Heavy
     typeHealth: 50
     typeDamage: 40
     typeSpeed: 3
-    spawnWeight: 0.3
+    spawnWeight: 0.225
   activeSpawns:
   - {fileID: 2000787626}
   activeEnemies: []

@@ -40,7 +40,9 @@ public class EnemySpawner : MonoBehaviour
     {
         Basic,
         Speedy,
-        Heavy
+        Heavy,
+        QuickHeavy,
+        Explodey
     }
     Type currentType;
 
@@ -176,6 +178,16 @@ public class EnemySpawner : MonoBehaviour
                         rightHipHeavyActive = true;
                         chestHeavyActive = true;
                         break;
+                    case Type.QuickHeavy:
+                        enemyHealth.health = enemyList[3].typeHealth;
+                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[3].typeDamage;
+                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[3].typeSpeed;
+                        break;
+                    case Type.Explodey:
+                        enemyHealth.health = enemyList[4].typeHealth;
+                        enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[4].typeDamage;
+                        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[4].typeSpeed;
+                        break;
                 }
 
                 if (enemy != null)
@@ -183,8 +195,8 @@ public class EnemySpawner : MonoBehaviour
                     enemyHealth.hasBroken = false;
 
                     //Position & Rotation
-                    enemy.transform.localPosition = posToSpawn;
-                    enemy.transform.localRotation = activeSpawns[spawnPointIndex].transform.rotation;
+                    enemy.transform.position = posToSpawn;
+                    enemy.transform.rotation = activeSpawns[spawnPointIndex].transform.rotation;
 
                     //Set as Active
                     activeEnemies.Add(enemy);
