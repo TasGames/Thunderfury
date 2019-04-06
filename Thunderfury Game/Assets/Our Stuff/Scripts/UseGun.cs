@@ -6,6 +6,7 @@ public class UseGun : MonoBehaviour
 {
 	public Gun gun;
 	protected Camera cam;
+	protected LineRenderer lr;
 	protected float nextToFire = 0;
 	protected float finalDamage;
 	protected bool stillFiring = false;
@@ -46,6 +47,8 @@ public class UseGun : MonoBehaviour
 
 		ammoPool = prefMaxAmmo;
 		currentMag = prefMag;
+
+		lr = GetComponent<LineRenderer>();
 
 		if (cam == null)
 			cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -206,12 +209,19 @@ public class UseGun : MonoBehaviour
 			if (gun.isPenetrating == false)
 			{
 				if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
+				{
 					HitEffects(hit);
+					DrawLine(hit.point);
+				}
+				else
+					DrawLine(rayEnd);
 			}
 			else
 			{
 				RaycastHit[] hits;
 				hits = Physics.RaycastAll(shootRay.origin, shootRay.direction, gun.range);
+
+				DrawLine(rayEnd);
 
 				for (int j = 0; j < hits.Length; j++)
        			{	
@@ -248,4 +258,18 @@ public class UseGun : MonoBehaviour
 		//Debug.DrawRay(shootRay.origin, shootRay.direction * 10, Color.red, 10);
 		Debug.Log(finalDamage);
 	}
+
+ 	void DrawLine(Vector3 end)
+    {
+		GameObject myLine = new GameObject();
+		myLine.transform.position = fireLocation.transform.position;
+		myLine.AddComponent<LineRenderer>();
+		LineRenderer lr = myLine.GetComponent<LineRenderer>();
+		lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
+		lr.startColor = gun.ammoColour;
+		lr.startWidth = gun.trailWidth;
+		lr.SetPosition(0, fireLocation.transform.position);
+		lr.SetPosition(1, end);
+		GameObject.Destroy(myLine, gun.trailTimer);
+    }
 }

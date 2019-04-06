@@ -39,7 +39,6 @@ public class WeaponSwitcher : MonoBehaviour
 				weaponWheel.SetActive(false);
 				isOpen = false;
 			}
-            
 		}
 	}
 
