@@ -24,7 +24,6 @@ public class Gun : ScriptableObject
 	[ShowIf("selectGunType", typeEnum.rayType)] public bool isContinuous;
 
 	[Title("Gun Stats")]
-	public AudioClip fireSound;
 	public float fireRate;
 	public float recoil;
 	public int magSize;

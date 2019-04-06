@@ -6,7 +6,7 @@ public class UseGun : MonoBehaviour
 {
 	public Gun gun;
 	protected Camera cam;
-	protected LineRenderer lr;
+	protected AudioSource fireSound;
 	protected float nextToFire = 0;
 	protected float finalDamage;
 	protected bool stillFiring = false;
@@ -48,7 +48,7 @@ public class UseGun : MonoBehaviour
 		ammoPool = prefMaxAmmo;
 		currentMag = prefMag;
 
-		lr = GetComponent<LineRenderer>();
+		fireSound = GetComponent<AudioSource>();
 
 		if (cam == null)
 			cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -128,6 +128,9 @@ public class UseGun : MonoBehaviour
 	{
 		if (muzzleFlash != null)
 			muzzleFlash.Play();
+
+		if (fireSound != null)
+			fireSound.Play();
 
 		if (gun.selectGunType == typeEnum.projectileType)
 			ProjectileType();
