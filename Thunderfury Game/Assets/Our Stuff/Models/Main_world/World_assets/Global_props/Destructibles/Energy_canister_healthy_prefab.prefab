@@ -38,8 +38,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303099349627402}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 69.545235, y: -0.14678955, z: -77.851974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad2e1c61d0de53409f60fb48974c5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 0}
   health: 30
   brokenVersion: {fileID: 1863254693316748, guid: 95d2ec9cd770a7f49980f116d84d145e,
     type: 2}
@@ -144,10 +145,10 @@ NavMeshObstacle:
   m_GameObject: {fileID: 1303099349627402}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.57000005, y: 0.96700007, z: 0.55600005}
+  m_Shape: 0
+  m_Extents: {x: 0.57000005, y: 0.96700007, z: 0.57000005}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: -0.86700004, z: 0}
   m_TimeToStationary: 0.5
