@@ -19,8 +19,7 @@ MonoBehaviour:
   isAutomatic: 0
   isPenetrating: 0
   isContinuous: 0
-  fireSound: {fileID: 0}
-  fireRate: 5
+  fireRate: 4
   recoil: 0
   magSize: 6
   maxAmmo: 60
