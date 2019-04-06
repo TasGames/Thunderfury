@@ -26,14 +26,6 @@ public class Shop : MonoBehaviour
 	{
 		currentIcon = shopIcon;
 	}
-	
-	void Update()
-	{
-		/*if (Input.GetKeyDown("i"))
-		{
-			OpenShop();
-		}*/
-	}
 
 	public void OpenShop()
 	{
@@ -107,6 +99,16 @@ public class Shop : MonoBehaviour
 	{
 		subShopMenu.SetActive(false);
 		baseShop.SetActive(true);
+	}
+
+	public void OpenAmmoStore()
+	{
+
+	}
+
+	public void CloseAmmoStore()
+	{
+		
 	}
 
 	public void CloseShop()
