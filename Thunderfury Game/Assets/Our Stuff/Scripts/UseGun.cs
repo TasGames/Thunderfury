@@ -206,13 +206,7 @@ public class UseGun : MonoBehaviour
 			if (gun.isPenetrating == false)
 			{
 				if (Physics.Raycast(shootRay.origin, shootRay.direction, out hit, gun.range))
-					StartCoroutine(HitEffectsRoutine(hit));
-				else
-				{
-					GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
-					Bullet b = bulletObject.GetComponent<Bullet>();
-					b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
-				}
+					HitEffects(hit);
 			}
 			else
 			{
@@ -222,30 +216,17 @@ public class UseGun : MonoBehaviour
 				for (int j = 0; j < hits.Length; j++)
        			{	
 					hit = hits[j];
-					StartCoroutine(HitEffectsRoutine(hit));
+					HitEffects(hit);
 				}
-				
-				GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
-				Bullet b = bulletObject.GetComponent<Bullet>();
-				b.SetValues(bulletObject.transform.position, rayEnd, 0.2f);
 			}
 		}
 	}
 
-	IEnumerator HitEffectsRoutine(RaycastHit hit)
+	void HitEffects(RaycastHit hit)
 	{
 		Target target = hit.transform.GetComponent<Target>();
 
 		finalDamage = prefDamage + Mathf.Round(Random.Range(-gun.damageRange, gun.damageRange) * 100.0f) / 100.0f;
-
-		if (gun.isPenetrating == false)
-		{
-			GameObject bulletObject = Instantiate(gun.bullet, fireLocation.transform.position, transform.rotation);
-			Bullet b = bulletObject.GetComponent<Bullet>();
-			b.SetValues(bulletObject.transform.position, hit.point, 0.2f);
-
-			yield return new WaitForSeconds(0.2f);
-		}
 
 		if (gun.hitEffect != null)
 		{
