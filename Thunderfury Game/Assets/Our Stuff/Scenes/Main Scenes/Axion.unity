@@ -56529,6 +56529,16 @@ MonoBehaviour:
     typeDamage: 40
     typeSpeed: 3
     spawnWeight: 0.225
+  - typeName: QuickHeavy
+    typeHealth: 50
+    typeDamage: 40
+    typeSpeed: 3
+    spawnWeight: 0.225
+  - typeName: Explodey
+    typeHealth: 15
+    typeDamage: 20
+    typeSpeed: 3.5
+    spawnWeight: 0.1
   activeSpawns:
   - {fileID: 2000787626}
   activeEnemies: []

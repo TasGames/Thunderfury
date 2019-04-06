@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     //Basic
     Transform legsBasic;
     bool legsBasicActive;
+    Transform bellyBasic;
+    bool bellyBasicActive;
     //Speedy
     Transform legsSpeedy;
     bool legsSpeedyActive;
@@ -22,6 +24,9 @@ public class EnemySpawner : MonoBehaviour
     bool leftHipHeavyActive;
     Transform rightHipHeavy;
     bool rightHipHeavyActive;
+    //Explodey
+    Transform bellyExplodey;
+    bool bellyExplodeyActive;
     //MODULAR PIECES//
 
     [System.Serializable]
@@ -96,6 +101,8 @@ public class EnemySpawner : MonoBehaviour
         leftHipHeavyActive = false;
         rightHipHeavyActive = false;
         chestHeavyActive = false;
+        bellyBasicActive = false;
+        bellyExplodeyActive = false;
 
         legsBasic = enemy.transform.Find("Legs_Basic_Skinned");
         legsSpeedy = enemy.transform.Find("Legs_speedy_Skinned");
@@ -114,6 +121,9 @@ public class EnemySpawner : MonoBehaviour
         chestHeavy = chestHeavy.transform.Find("Spine");
         chestHeavy = chestHeavy.transform.Find("Chest");
         chestHeavy = chestHeavy.transform.Find("HeavyChest");
+
+        bellyBasic = enemy.transform.Find("Belly_Basic_Skinned");
+        bellyExplodey = enemy.transform.Find("Belly_Explodey_Skinned");
 
         if (activeSpawns.Count > 0)
         {
@@ -157,36 +167,52 @@ public class EnemySpawner : MonoBehaviour
                     case Type.Basic:    //If basic enemy
                         enemyHealth.health = enemyList[0].typeHealth;
                         enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[0].typeDamage;
+                        enemy.GetComponent<EnemyBehaviour>().canExplode = false;
                         enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[0].typeSpeed;
                         legsBasicActive = true;
+                        bellyBasicActive = true;
                         break;
 
                     case Type.Speedy:   //If speedy enemy
                         enemyHealth.health = enemyList[1].typeHealth;
                         enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[1].typeDamage;
+                        enemy.GetComponent<EnemyBehaviour>().canExplode = false;
                         enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[1].typeSpeed;
                         legsSpeedyActive = true;
+                        bellyBasicActive = true;
                         break;
 
                     case Type.Heavy:    //If heavy enemy
                         enemyHealth.health = enemyList[2].typeHealth;
                         enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[2].typeDamage;
+                        enemy.GetComponent<EnemyBehaviour>().canExplode = false;
                         enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[2].typeSpeed;
                         legsBasicActive = true;
                         crotchHeavyActive = true;
                         leftHipHeavyActive = true;
                         rightHipHeavyActive = true;
                         chestHeavyActive = true;
+                        bellyBasicActive = true;
                         break;
-                    case Type.QuickHeavy:
+                    case Type.QuickHeavy:   //If quick heavy enemy
                         enemyHealth.health = enemyList[3].typeHealth;
                         enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[3].typeDamage;
+                        enemy.GetComponent<EnemyBehaviour>().canExplode = false;
                         enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[3].typeSpeed;
+                        legsSpeedyActive = true;
+                        crotchHeavyActive = true;
+                        leftHipHeavyActive = true;
+                        rightHipHeavyActive = true;
+                        chestHeavyActive = true;
+                        bellyBasicActive = true;
                         break;
-                    case Type.Explodey:
+                    case Type.Explodey:     //If explodey enemy
                         enemyHealth.health = enemyList[4].typeHealth;
                         enemy.GetComponent<EnemyBehaviour>().damageToDeal = enemyList[4].typeDamage;
+                        enemy.GetComponent<EnemyBehaviour>().canExplode = true;
                         enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[4].typeSpeed;
+                        legsBasicActive = true;
+                        bellyExplodeyActive = true;
                         break;
                 }
 
