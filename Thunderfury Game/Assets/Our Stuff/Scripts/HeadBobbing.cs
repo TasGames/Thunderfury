@@ -9,6 +9,7 @@ public class HeadBobbing : MonoBehaviour
     [SerializeField] protected float bobbingAmount = 0.15f;
     [SerializeField] protected float midpoint = 0.2f;
 	[SerializeField] protected RigidbodyFirstPersonController rBFC;
+	[SerializeField] protected AudioSource walkSound;
   
  	void Update()
     {
@@ -42,6 +43,9 @@ public class HeadBobbing : MonoBehaviour
 				cSharpConversion.y = midpoint;
 	
 			transform.localPosition = cSharpConversion;
+
+			if (walkSound.isPlaying == false && vertical != 0)
+				walkSound.Play();
 		}
 
   	}
