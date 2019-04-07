@@ -702,7 +702,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1675141557560538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: -1, z: -35}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_Children:
   - {fileID: 4189108778458356}
@@ -1868,6 +1868,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3aa4262a70ca5a24f9f15ab1921f7fb5, type: 3}
   - {fileID: 8300000, guid: c876b4aaeb2a75b418e08fc09b550075, type: 3}
   source: {fileID: 82885778349573236}
+  beinghit: {fileID: 0}
   timelimit: 60
 --- !u!114 &114104756414657022
 MonoBehaviour:
@@ -1923,12 +1924,16 @@ MonoBehaviour:
   dropsPickup: 1
   dropPercentage: 50
   dropList:
-  - pickup: {fileID: 1122297406186736, guid: 300516f0d85761344bba325cdef8a095, type: 2}
+  - pickup: {fileID: 1101652823018544, guid: 6c4560ba792bddd46be884fa79a34c36, type: 2}
     weight: 0.6
-  - pickup: {fileID: 1422375421506994, guid: 5057b0ae207cea04f9a9da94aa5cdda5, type: 2}
+  - pickup: {fileID: 1093705283857594, guid: 924846f5c3e3b4945bb12efe784f65e0, type: 2}
     weight: 0.1
-  - pickup: {fileID: 1248672729693990, guid: 40e6a43ac370dd04c94b9198885e9ce9, type: 2}
+  - pickup: {fileID: 1808681072591878, guid: 066c2b860fa99fa48bf6a75d814f49ed, type: 2}
     weight: 0.3
+  - pickup: {fileID: 1454915861896182, guid: 9d0063dee1fc2f648b74caa1c0de1701, type: 2}
+    weight: 0.4
+  - pickup: {fileID: 1043460563829074, guid: b3ac7da0cec827b49827dc7d4d849a43, type: 2}
+    weight: 0.1
   hasBroken: 0
   originalHealth: 20
 --- !u!114 &114674086351972268
