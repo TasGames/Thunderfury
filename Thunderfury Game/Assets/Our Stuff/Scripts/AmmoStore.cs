@@ -18,7 +18,6 @@ public class AmmoStore : MonoBehaviour
 		public TextMeshProUGUI fillInfo;
 		public int magCost;
 		public int fillCost;
-		public int neededAmmo;
 	}
 
 	[SerializeField] protected AmmoStuff[] ammoInfo;
@@ -60,7 +59,6 @@ public class AmmoStore : MonoBehaviour
 		}
 
 		UpdatePrices();
-
 	}
 
 	void UpdatePrices()
@@ -72,8 +70,8 @@ public class AmmoStore : MonoBehaviour
 			UseGun thisGun = ammoInfo[i].gun;
 
 			ammoInfo[i].magCost = thisGun.gun.ammoCost * thisGun.prefMag;
-			ammoInfo[i].neededAmmo = thisGun.prefMaxAmmo - thisGun.ammoPool;
-			ammoInfo[i].fillCost = thisGun.gun.ammoCost * ammoInfo[i].neededAmmo;
+			int neededAmmo = thisGun.prefMaxAmmo - thisGun.ammoPool;
+			ammoInfo[i].fillCost = thisGun.gun.ammoCost * neededAmmo;
 
 			ammoInfo[i].currentAmmo.text = thisGun.gun.name + ": " + thisGun.ammoPool + " / " + thisGun.prefMaxAmmo;
 			ammoInfo[i].magInfo.text = "Mag ¥" + ammoInfo[i].magCost;
@@ -98,7 +96,7 @@ public class AmmoStore : MonoBehaviour
 	{
 		if (HUD.totalScore >= ammoInfo[i].fillCost)
 		{
-			ammoInfo[i].gun.ammoPool += ammoInfo[i].neededAmmo;
+			ammoInfo[i].gun.ammoPool = ammoInfo[i].gun.prefMaxAmmo;
 			HUD.totalScore -= ammoInfo[i].fillCost;
 			UpdatePrices();
 		}
@@ -110,6 +108,41 @@ public class AmmoStore : MonoBehaviour
 		{
 			ammoInfo[i].gun.ammoPool += ammoInfo[i].gun.prefMag;
 			HUD.totalScore -= ammoInfo[i].magCost;
+			UpdatePrices();
+		}
+	}
+
+	public void RestorePartShield()
+	{
+		if (HUD.totalScore >= shield10 && pH.pShield + 10 <= pH.maxShield)
+		{
+			pH.pShield += 10;
+			HUD.totalScore -= shield10;
+			UpdatePrices();
+		}
+	}
+
+	public void RestoreAllShield()
+	{
+		if (HUD.totalScore >= shieldFill)
+		{
+			pH.pShield = pH.maxShield;
+			HUD.totalScore -= shieldFill;
+			UpdatePrices();
+		}
+	}
+
+	public void FullRestore()
+	{
+		if (HUD.totalScore >= fillAllCost)
+		{
+			for (int i = 0; i < ammoInfo.Length; i++)
+			{
+				ammoInfo[i].gun.ammoPool = ammoInfo[i].gun.prefMaxAmmo;
+			}
+
+			pH.pShield = pH.maxShield;
+			HUD.totalScore -= fillAllCost;
 			UpdatePrices();
 		}
 	}

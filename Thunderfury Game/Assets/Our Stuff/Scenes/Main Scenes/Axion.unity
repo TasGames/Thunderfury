@@ -90101,6 +90101,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 272296906}
     m_Modifications:
+    - target: {fileID: 114376871661269416, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235038478061488, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224750637706281308, guid: 720637e2833dc3a43abbfc40c05a7691,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -90487,6 +90497,66 @@ Prefab:
         type: 2}
       propertyPath: m_textInfo.characterCount
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114614813950433626, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1928008038}
+    - target: {fileID: 114614813950433626, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FullRestore
+      objectReference: {fileID: 0}
+    - target: {fileID: 114376871661269416, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114376871661269416, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114376871661269416, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1928008038}
+    - target: {fileID: 114376871661269416, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestorePartShield
+      objectReference: {fileID: 0}
+    - target: {fileID: 114376871661269416, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235038478061488, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235038478061488, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235038478061488, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1928008038}
+    - target: {fileID: 114235038478061488, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestoreAllShield
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235038478061488, guid: 720637e2833dc3a43abbfc40c05a7691,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
@@ -95983,7 +96053,6 @@ MonoBehaviour:
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
-    neededAmmo: 0
   - gun: {fileID: 1500938487}
     ammoHolder: {fileID: 845540500}
     currentAmmo: {fileID: 0}
@@ -95993,7 +96062,6 @@ MonoBehaviour:
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
-    neededAmmo: 0
   - gun: {fileID: 2084423322}
     ammoHolder: {fileID: 763017133}
     currentAmmo: {fileID: 0}
@@ -96003,7 +96071,6 @@ MonoBehaviour:
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
-    neededAmmo: 0
   - gun: {fileID: 305241000}
     ammoHolder: {fileID: 1702560109}
     currentAmmo: {fileID: 0}
@@ -96013,7 +96080,6 @@ MonoBehaviour:
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
-    neededAmmo: 0
   - gun: {fileID: 1481219249}
     ammoHolder: {fileID: 1431381367}
     currentAmmo: {fileID: 0}
@@ -96023,7 +96089,6 @@ MonoBehaviour:
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
-    neededAmmo: 0
   - gun: {fileID: 2100716516}
     ammoHolder: {fileID: 117748232}
     currentAmmo: {fileID: 0}
@@ -96033,7 +96098,6 @@ MonoBehaviour:
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
-    neededAmmo: 0
   pH: {fileID: 23673628}
   shieldCost: 2
   currentShield: {fileID: 2075604569}
