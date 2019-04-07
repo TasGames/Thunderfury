@@ -95977,45 +95977,63 @@ MonoBehaviour:
   - gun: {fileID: 1599494107}
     ammoHolder: {fileID: 243187247}
     currentAmmo: {fileID: 0}
+    magButton: {fileID: 0}
+    fillButton: {fileID: 0}
     magInfo: {fileID: 0}
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
+    neededAmmo: 0
   - gun: {fileID: 1500938487}
     ammoHolder: {fileID: 845540500}
     currentAmmo: {fileID: 0}
+    magButton: {fileID: 0}
+    fillButton: {fileID: 0}
     magInfo: {fileID: 0}
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
+    neededAmmo: 0
   - gun: {fileID: 2084423322}
     ammoHolder: {fileID: 763017133}
     currentAmmo: {fileID: 0}
+    magButton: {fileID: 0}
+    fillButton: {fileID: 0}
     magInfo: {fileID: 0}
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
+    neededAmmo: 0
   - gun: {fileID: 305241000}
     ammoHolder: {fileID: 1702560109}
     currentAmmo: {fileID: 0}
+    magButton: {fileID: 0}
+    fillButton: {fileID: 0}
     magInfo: {fileID: 0}
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
+    neededAmmo: 0
   - gun: {fileID: 1481219249}
     ammoHolder: {fileID: 1431381367}
     currentAmmo: {fileID: 0}
+    magButton: {fileID: 0}
+    fillButton: {fileID: 0}
     magInfo: {fileID: 0}
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
+    neededAmmo: 0
   - gun: {fileID: 2100716516}
     ammoHolder: {fileID: 117748232}
     currentAmmo: {fileID: 0}
+    magButton: {fileID: 0}
+    fillButton: {fileID: 0}
     magInfo: {fileID: 0}
     fillInfo: {fileID: 0}
     magCost: 0
     fillCost: 0
+    neededAmmo: 0
   pH: {fileID: 23673628}
   shieldCost: 2
   currentShield: {fileID: 2075604569}
