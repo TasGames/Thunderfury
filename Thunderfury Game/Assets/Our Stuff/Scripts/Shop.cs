@@ -15,6 +15,7 @@ public class Shop : MonoBehaviour
 
 	[SerializeField] protected GameObject upgradeMenu;
 	[SerializeField] protected GameObject subShopMenu;
+	[SerializeField] protected GameObject ammoStore;
 	[SerializeField] protected GameObject baseShop;
 	[SerializeField] protected GameObject hud;
 
@@ -103,12 +104,14 @@ public class Shop : MonoBehaviour
 
 	public void OpenAmmoStore()
 	{
-
+		baseShop.SetActive(false);
+		ammoStore.SetActive(true);
 	}
 
 	public void CloseAmmoStore()
 	{
-		
+		ammoStore.SetActive(false);
+		baseShop.SetActive(true);
 	}
 
 	public void CloseShop()
