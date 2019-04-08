@@ -21,6 +21,7 @@ public class AmmoStore : MonoBehaviour
 	}
 
 	[SerializeField] protected AmmoStuff[] ammoInfo;
+	[SerializeField] protected TextMeshProUGUI currentCredits;
 	[SerializeField] protected PlayerHealth pH;
 	[SerializeField] protected int shieldCost;
 	protected int shieldFill;
@@ -90,6 +91,8 @@ public class AmmoStore : MonoBehaviour
 		fillAllCost += shieldFill;
 
 		FullRefill.text = "Fill All	¥" + fillAllCost;
+
+		currentCredits.text = "Credits: ¥" + HUD.totalScore;
 	}
 
 	void FillAmmo(int i)

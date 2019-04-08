@@ -26,16 +26,17 @@ public class UseGun : MonoBehaviour
 	[HideInInspector] public int prefMag;
 	[HideInInspector] public int prefMaxAmmo;
 
-	[HideInInspector] public int damageLevel = 0;
-	[HideInInspector] public int impactLevel = 0;
-	[HideInInspector] public int fireRateLevel = 0;
-	[HideInInspector] public int rangeLevel = 0;
-	[HideInInspector] public int recoilLevel = 0;
-	[HideInInspector] public int reloadLevel = 0;
+	[HideInInspector] public float[] prefStat;
+	[HideInInspector] public int[] level;
 	[HideInInspector] public int ammoLevel = 0;
+
+	protected bool itStarted = false;
 
 	void Start()
 	{
+		level = new int[6];
+		prefStat = new float[6];
+
 		prefDamage = gun.damage;
 		prefImpact = gun.impact;
 		prefFireRate = gun.fireRate;
@@ -44,6 +45,13 @@ public class UseGun : MonoBehaviour
 		prefReloadTime = gun.reloadTime;
 		prefMag = gun.magSize;
 		prefMaxAmmo = gun.maxAmmo;
+
+		prefStat[0] = prefDamage;
+		prefStat[1] = prefImpact;
+		prefStat[2] = prefFireRate;
+		prefStat[3] = prefRange;
+		prefStat[4] = prefRecoil;
+		prefStat[5] = prefReloadTime;
 
 		ammoPool = prefMaxAmmo;
 		currentMag = prefMag;
@@ -55,11 +63,23 @@ public class UseGun : MonoBehaviour
 
 		if (muzzleFlash == null)
 			muzzleFlash = gameObject.GetComponentInChildren<ParticleSystem>();
+
+		itStarted = true;
 	}
 
 	void OnEnable()
 	{
 		isReloading = false;
+
+		if (itStarted == true)
+		{
+			prefDamage = prefStat[0];
+			prefImpact = prefStat[1];
+			prefFireRate = prefStat[2];
+			prefRange = prefStat[3];
+			prefRecoil = prefStat[4];
+			prefReloadTime = prefStat[5];
+		}
 
 		if (gun.takesAmmoType == ammoTypeEnum.pistol)
 		{

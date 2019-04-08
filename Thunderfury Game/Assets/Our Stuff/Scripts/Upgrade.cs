@@ -7,48 +7,30 @@ using TMPro;
 
 public class Upgrade : MonoBehaviour 
 {
-	[Title("Gun Prefabs")]
-	[SerializeField] protected GameObject pistol;
-	[SerializeField] protected GameObject shotgun;
-	[SerializeField] protected GameObject rifle;
-	[SerializeField] protected GameObject grenadeLauncher;
-	[SerializeField] protected GameObject railGun;
-	[SerializeField] protected GameObject singularity;
+	[System.Serializable]
+	protected struct UpgradeStuff
+	{
+		public string statName;
+		public GameObject levelHolder;
+		public TextMeshProUGUI currentStatText;
+		[HideInInspector] public TextMeshProUGUI newStatText;
+		[HideInInspector] public float newStat;
+		[HideInInspector] public float statIncrease;
+		[HideInInspector] public Button levelUp;
+		[HideInInspector] public Button levelDown;
+		[HideInInspector] public int currentLevel;
+		[HideInInspector] public int level;
+		[HideInInspector] public TextMeshProUGUI levelText;
+	}
 
-	[Title("Toggle Buttons")]
-	[SerializeField] protected GameObject pistolButton;
-	[SerializeField] protected GameObject shotgunButton;
-	[SerializeField] protected GameObject rifleButton;
-	[SerializeField] protected GameObject grenadeButton;
-	[SerializeField] protected GameObject railButton;
-	[SerializeField] protected GameObject singularityButton;
-
-	[Title("Current Gun Details")]
+	[SerializeField] protected UseGun[] gun;
+	[SerializeField] protected Button[] toggleButton;
+	[SerializeField] protected UpgradeStuff[] UpgradeInfo;
+	
 	[SerializeField] protected TextMeshProUGUI gunName;	
-	[SerializeField] protected TextMeshProUGUI gunDamage;
-	[SerializeField] protected TextMeshProUGUI gunImpact;
-	[SerializeField] protected TextMeshProUGUI gunFireRate;
-	[SerializeField] protected TextMeshProUGUI gunRange;
-	[SerializeField] protected TextMeshProUGUI gunRecoil;
-	[SerializeField] protected TextMeshProUGUI gunReloadTime;
 	[SerializeField] protected TextMeshProUGUI gunAmmo;
-
-	[Title("New Gun Details")]
-	[SerializeField] protected TextMeshProUGUI nGunDamage;
-	[SerializeField] protected TextMeshProUGUI nGunImpact;
-	[SerializeField] protected TextMeshProUGUI nGunFireRate;
-	[SerializeField] protected TextMeshProUGUI nGunRange;
-	[SerializeField] protected TextMeshProUGUI nGunRecoil;
-	[SerializeField] protected TextMeshProUGUI nGunReloadTime;
 	[SerializeField] protected TextMeshProUGUI nGunAmmo;
 
-	[SerializeField] protected TextMeshProUGUI levelDamage;
-	[SerializeField] protected TextMeshProUGUI levelImpact;
-	[SerializeField] protected TextMeshProUGUI levelFireRate;
-	[SerializeField] protected TextMeshProUGUI levelRange;
-	[SerializeField] protected TextMeshProUGUI levelRecoil;
-	[SerializeField] protected TextMeshProUGUI levelReloadTime;
-	[SerializeField] protected TextMeshProUGUI levelAmmo;	
 
 	[Title("Credits")]
 	[SerializeField] protected TextMeshProUGUI currentCredits;
@@ -56,94 +38,75 @@ public class Upgrade : MonoBehaviour
 	protected int totalCost = 0;
 	protected int possibleCredits;
 
-	protected UseGun useGun;
+	protected UseGun currentGun;
+	protected bool bootedUpOnce = false;
+	protected bool gotIncrease = false;
 
-	protected float newDamage;
-	protected float newImpact;
-	protected float newFireRate;
-	protected float newRange;
-	protected float newRecoil;
+
 	protected int newMagSize;
 	protected int newMaxAmmo;
-	protected float newReloadTime;
 
 	void OnEnable()
 	{
-								
-	}
-	
-	void Update() 
-	{
-		possibleCredits = HUD.totalScore - totalCost;
-
-		if (requiredCredits != null)
+		if (bootedUpOnce == false)
 		{
-			requiredCredits.text = "Required: ¥" + totalCost;
+			for (int i = 0; i < gun.Length; i++)
+			{
+				int x = i;
+				toggleButton[i].onClick.AddListener(() => Toggle(x));
+			}
 
-			if (currentCredits != null)
-				currentCredits.text = "Credits: ¥" + HUD.totalScore + " > ¥" + possibleCredits;
+			for (int i = 0; i < UpgradeInfo.Length; i++)
+			{
+				UpgradeInfo[i].newStatText = UpgradeInfo[i].levelHolder.GetComponent<TextMeshProUGUI>();
+				UpgradeInfo[i].levelText = UpgradeInfo[i].levelHolder.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
+
+				UpgradeInfo[i].levelUp = UpgradeInfo[i].levelHolder.transform.GetChild(1).gameObject.GetComponent<Button>();
+				UpgradeInfo[i].levelDown = UpgradeInfo[i].levelHolder.transform.GetChild(0).gameObject.GetComponent<Button>();
+
+				int x = i;
+				UpgradeInfo[i].levelUp.onClick.AddListener(() => levelUp(x));
+				UpgradeInfo[i].levelDown.onClick.AddListener(() => levelDown(x));
+			}
+
+			bootedUpOnce = true;
 		}
-		else if (currentCredits != null)
-			currentCredits.text = "Credits: ¥" + HUD.totalScore;
+
+		UpdateCredits();				
 	}
 
-	public void PistolButton()
+	void Toggle(int i)
 	{
-		if (pistol != null)
+		if (gun[i] != null)
 		{
-			useGun = pistol.GetComponent<UseGun>();
-			DisplayCurrentStats();
-			DisplayNewStats();
-		}
-	}
+			currentGun = gun[i];
 
-	public void ShotgunButton()
-	{
-		if (shotgun != null)
-		{
-			useGun = shotgun.GetComponent<UseGun>();
 			DisplayCurrentStats();
+			CreateNewStats();
 			DisplayNewStats();
-		}
-	}
-
-	public void RifleButton()
-	{
-		if (rifle != null)
-		{
-			useGun = rifle.GetComponent<UseGun>();
-			DisplayCurrentStats();
-			DisplayNewStats();
+			DisplayLevel();
 		}
 	}
 
-	public void GrenadeButton()
+	void levelUp(int i)
 	{
-		if (grenadeButton != null)
+		if (currentGun.gun.maxLevel >= UpgradeInfo[i].level + 1)
 		{
-			useGun = grenadeLauncher.GetComponent<UseGun>();
-			DisplayCurrentStats();
+			UpgradeInfo[i].level += 1;
+			UpgradeInfo[i].newStat += UpgradeInfo[i].statIncrease;
 			DisplayNewStats();
+			DisplayLevel();
 		}
 	}
 
-	public void RailButton()
+	void levelDown(int i)
 	{
-		if (railButton != null)
+		if (UpgradeInfo[i].level - 1 >= currentGun.level[i])
 		{
-			useGun = railGun.GetComponent<UseGun>();
-			DisplayCurrentStats();
+			UpgradeInfo[i].level -= 1;
+			UpgradeInfo[i].newStat -= UpgradeInfo[i].statIncrease;
 			DisplayNewStats();
-		}
-	}
-
-	public void SingularityButton()
-	{
-		if (singularityButton != null)
-		{
-			useGun = singularity.GetComponent<UseGun>();
-			DisplayCurrentStats();
-			DisplayNewStats();
+			DisplayLevel();
 		}
 	}
 
@@ -156,47 +119,67 @@ public class Upgrade : MonoBehaviour
 	void DisplayCurrentStats()
 	{
 		if (gunName != null)
-			gunName.text = useGun.gun.name;
-        if (gunDamage != null)
-            gunDamage.text = "Damage: " + useGun.prefDamage;
-		if (gunImpact != null)
-			gunImpact.text = "Impact: " + useGun.prefImpact;
-		if (gunFireRate != null)
-			gunFireRate.text = "Fire Rate: " + useGun.prefFireRate;
-		if (gunRange != null)
-			gunRange.text = "Range: " + useGun.prefRange;
-		if (gunRecoil != null)
-			gunRecoil.text = "Recoil: " + useGun.prefRecoil;
-		if (gunReloadTime != null)
-			gunReloadTime.text = "Reload Time: " + useGun.prefReloadTime;
+			gunName.text = currentGun.gun.name;
+
+		for (int i = 0; i < UpgradeInfo.Length; i++)
+		{
+			if (UpgradeInfo[i].currentStatText != null)
+            	UpgradeInfo[i].currentStatText.text = UpgradeInfo[i].statName + ": " + currentGun.prefStat[i];
+		}
+
 		if (gunAmmo != null)
-			gunAmmo.text = "Ammo: " + useGun.prefMag + " / " + useGun.prefMaxAmmo;
+			gunAmmo.text = "Ammo: " + currentGun.prefMag + " / " + currentGun.prefMaxAmmo;
 	}
 
 	void DisplayNewStats()
 	{
-		newDamage = useGun.prefDamage;
-		newImpact = useGun.prefImpact;
-		newFireRate = useGun.prefFireRate;
-		newRange = useGun.prefRange;
-		newRecoil = useGun.prefRecoil;
-		newMagSize = useGun.prefMag;
-		newMaxAmmo = useGun.prefMaxAmmo;
-		newReloadTime = useGun.prefReloadTime;	
-		
-        if (nGunDamage != null)
-            nGunDamage.text = "Damage: " + newDamage;
-		if (nGunImpact != null)
-			nGunImpact.text = "Impact: " + newImpact;
-		if (nGunFireRate != null)
-			nGunFireRate.text = "Fire Rate: " + newFireRate;
-		if (nGunRange != null)
-			nGunRange.text = "Range: " + newRange;
-		if (nGunRecoil != null)
-			nGunRecoil.text = "Recoil: " + newRecoil;
-		if (nGunReloadTime != null)
-			nGunReloadTime.text = "Reload Time: " + newReloadTime;
+		for (int i = 0; i < UpgradeInfo.Length; i++)
+		{
+       		if (UpgradeInfo[i].newStatText != null)
+            	UpgradeInfo[i].newStatText.text = UpgradeInfo[0].statName + ": " + UpgradeInfo[i].newStat;
+		}
+
 		if (nGunAmmo != null)
 			nGunAmmo.text = "Ammo: " + newMagSize + " / " + newMaxAmmo;
+	}
+
+	void DisplayLevel()
+	{
+		for (int i = 0; i < UpgradeInfo.Length; i++)
+			UpgradeInfo[i].levelText.text = "" + UpgradeInfo[i].level;
+	}
+
+	void CreateNewStats()
+	{
+		for (int i = 0; i < UpgradeInfo.Length; i++)
+		{
+			UpgradeInfo[i].newStat = currentGun.prefStat[i];
+			UpgradeInfo[i].level = currentGun.level[i];
+		}
+
+		newMagSize = currentGun.prefMag;
+		newMaxAmmo = currentGun.prefMaxAmmo;
+
+		UpgradeInfo[0].statIncrease = currentGun.gun.damageIncrease;
+		UpgradeInfo[1].statIncrease = currentGun.gun.impactIncrease;
+		UpgradeInfo[2].statIncrease = currentGun.gun.fireRateIncrease;
+		UpgradeInfo[3].statIncrease = currentGun.gun.range;
+		UpgradeInfo[4].statIncrease = currentGun.gun.recoilIncrease;
+		UpgradeInfo[5].statIncrease = currentGun.gun.reloadDecrease;
+	}
+
+	void UpdateCredits()
+	{
+		possibleCredits = HUD.totalScore - totalCost;
+
+		if (requiredCredits != null)
+		{
+			requiredCredits.text = "Required: ¥" + totalCost;
+
+			if (currentCredits != null)
+				currentCredits.text = "Credits: ¥" + HUD.totalScore + " > ¥" + possibleCredits;
+		}
+		else if (currentCredits != null)
+			currentCredits.text = "Credits: ¥" + HUD.totalScore;
 	}
 }

@@ -49,6 +49,7 @@ public class Gun : ScriptableObject
 
 	[Title("Level Increase")]
 	public int maxLevel;
+	public int upgradeCost;
 	public float damageIncrease;
 	public float impactIncrease;
 	public float fireRateIncrease;

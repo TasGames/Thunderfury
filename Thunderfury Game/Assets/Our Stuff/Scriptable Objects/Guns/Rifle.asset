@@ -40,11 +40,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileForce: 0
   maxLevel: 5
-  damageIncrease: 0
-  impactIncrease: 0
-  fireRateIncrease: 0
-  rangeIncrease: 0
-  recoilIncrease: 0
-  reloadDecrease: 0
+  upgradeCost: 0
+  damageIncrease: 1
+  impactIncrease: 1
+  fireRateIncrease: 1
+  rangeIncrease: 1
+  recoilIncrease: 4
+  reloadDecrease: 3
   magIncrease: 0
   ammoIncrease: 0
