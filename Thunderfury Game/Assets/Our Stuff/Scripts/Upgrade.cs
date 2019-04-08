@@ -18,7 +18,6 @@ public class Upgrade : MonoBehaviour
 		[HideInInspector] public float statIncrease;
 		[HideInInspector] public Button levelUp;
 		[HideInInspector] public Button levelDown;
-		[HideInInspector] public int currentLevel;
 		[HideInInspector] public int level;
 		[HideInInspector] public TextMeshProUGUI levelText;
 	}
@@ -80,22 +79,26 @@ public class Upgrade : MonoBehaviour
 		if (gun[i] != null)
 		{
 			currentGun = gun[i];
+			totalCost = 0;
 
 			DisplayCurrentStats();
 			CreateNewStats();
 			DisplayNewStats();
 			DisplayLevel();
+			UpdateCredits();
 		}
 	}
 
 	void levelUp(int i)
 	{
-		if (currentGun.gun.maxLevel >= UpgradeInfo[i].level + 1)
+		if (currentGun.gun.maxLevel >= UpgradeInfo[i].level + 1 && totalCost + currentGun.gun.upgradeCost <= HUD.totalScore)
 		{
 			UpgradeInfo[i].level += 1;
 			UpgradeInfo[i].newStat += UpgradeInfo[i].statIncrease;
+			totalCost += currentGun.gun.upgradeCost;
 			DisplayNewStats();
 			DisplayLevel();
+			UpdateCredits();
 		}
 	}
 
@@ -105,15 +108,27 @@ public class Upgrade : MonoBehaviour
 		{
 			UpgradeInfo[i].level -= 1;
 			UpgradeInfo[i].newStat -= UpgradeInfo[i].statIncrease;
+			totalCost -= currentGun.gun.upgradeCost;
 			DisplayNewStats();
 			DisplayLevel();
+			UpdateCredits();
 		}
 	}
 
     public void Confirm()
     {
+		for (int i = 0; i < UpgradeInfo.Length; i++)
+		{
+			currentGun.prefStat[i] = UpgradeInfo[i].newStat;
+			currentGun.level[i] = UpgradeInfo[i].level;
+		}
+
+		DisplayCurrentStats();
+
         HUD.totalScore = possibleCredits;
         totalCost = 0;
+
+		UpdateCredits();
     }
 
 	void DisplayCurrentStats()
