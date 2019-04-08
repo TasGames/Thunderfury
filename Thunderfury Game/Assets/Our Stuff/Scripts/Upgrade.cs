@@ -131,6 +131,16 @@ public class Upgrade : MonoBehaviour
 		UpdateCredits();
     }
 
+	public void Back()
+	{
+		totalCost = 0;
+		DisplayCurrentStats();
+		CreateNewStats();
+		DisplayNewStats();
+		DisplayLevel();
+		UpdateCredits();
+	}
+
 	void DisplayCurrentStats()
 	{
 		if (gunName != null)
@@ -151,7 +161,7 @@ public class Upgrade : MonoBehaviour
 		for (int i = 0; i < UpgradeInfo.Length; i++)
 		{
        		if (UpgradeInfo[i].newStatText != null)
-            	UpgradeInfo[i].newStatText.text = UpgradeInfo[0].statName + ": " + UpgradeInfo[i].newStat;
+            	UpgradeInfo[i].newStatText.text = UpgradeInfo[i].statName + ": " + UpgradeInfo[i].newStat;
 		}
 
 		if (nGunAmmo != null)

@@ -20,12 +20,14 @@ public class Shop : MonoBehaviour
 	[SerializeField] protected GameObject hud;
 
 	protected GameObject currentIcon;
+	protected Upgrade upgrade;
 
 	[SerializeField] protected RigidbodyFirstPersonController rbFPC;
 
 	void Start() 
 	{
 		currentIcon = shopIcon;
+		upgrade = upgradeMenu.GetComponent<Upgrade>();
 	}
 
 	public void OpenShop()
@@ -86,6 +88,7 @@ public class Shop : MonoBehaviour
 
 	public void CloseUpgrade()
 	{
+		upgrade.Back();
 		upgradeMenu.SetActive(false);
 		baseShop.SetActive(true);
 	}
