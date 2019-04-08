@@ -212,6 +212,7 @@ public class EnemySpawner : MonoBehaviour
                         enemy.GetComponent<EnemyBehaviour>().canExplode = true;
                         enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyList[4].typeSpeed;
                         legsBasicActive = true;
+                        chestHeavyActive = true;
                         bellyExplodeyActive = true;
                         break;
                 }
@@ -239,6 +240,8 @@ public class EnemySpawner : MonoBehaviour
                     leftHipHeavy.gameObject.SetActive(leftHipHeavyActive);
                     rightHipHeavy.gameObject.SetActive(rightHipHeavyActive);
                     chestHeavy.gameObject.SetActive(chestHeavyActive);
+                    bellyBasic.gameObject.SetActive(bellyBasicActive);
+                    bellyExplodey.gameObject.SetActive(bellyExplodeyActive);
                 }
                 //Debug.Log("Spawn Complete");
                 return;
