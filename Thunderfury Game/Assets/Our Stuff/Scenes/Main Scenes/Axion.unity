@@ -1078,7 +1078,7 @@ RectTransform:
   m_Children:
   - {fileID: 52203138}
   m_Father: {fileID: 613167872}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8929,7 +8929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &170109747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15805,7 +15805,7 @@ Prefab:
     - target: {fileID: 224949509877749770, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224949509877749770, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
         type: 2}
@@ -15881,6 +15881,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 114212315322032056, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
+        type: 2}
+      propertyPath: ammoShop
+      value: 
+      objectReference: {fileID: 1431381367}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78a552a2a097ab4e9ea3314e6eb4fe7, type: 2}
   m_IsPrefabAsset: 0
@@ -18607,7 +18612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &394650624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20077,7 +20082,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Coming Soon
+  m_text: Singularity Gun
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20153,11 +20158,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -21123,6 +21128,22 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675513163259824, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481864047630844, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028646088043278, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050909891035986, guid: 095dba4161ca349408f2602fd466417a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095dba4161ca349408f2602fd466417a, type: 2}
@@ -24321,7 +24342,7 @@ Prefab:
     - target: {fileID: 224949509877749770, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224949509877749770, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
         type: 2}
@@ -24397,6 +24418,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 114212315322032056, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
+        type: 2}
+      propertyPath: ammoShop
+      value: 
+      objectReference: {fileID: 117748232}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78a552a2a097ab4e9ea3314e6eb4fe7, type: 2}
   m_IsPrefabAsset: 0
@@ -28089,7 +28115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &567362499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30467,9 +30493,9 @@ RectTransform:
   - {fileID: 2094105675}
   - {fileID: 1186203821}
   - {fileID: 1377575443}
-  - {fileID: 28624628}
   - {fileID: 339128088}
   - {fileID: 507810684}
+  - {fileID: 28624628}
   m_Father: {fileID: 272296906}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57075,6 +57101,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 114212315322032056, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
+        type: 2}
+      propertyPath: ammoShop
+      value: 
+      objectReference: {fileID: 763017133}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78a552a2a097ab4e9ea3314e6eb4fe7, type: 2}
   m_IsPrefabAsset: 0
@@ -66226,7 +66257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1365772078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67110,7 +67141,7 @@ Prefab:
         type: 2}
       propertyPath: gunPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 305240997}
     - target: {fileID: 114212315322032056, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
         type: 2}
       propertyPath: gunButton
@@ -67126,6 +67157,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 114212315322032056, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
+        type: 2}
+      propertyPath: ammoShop
+      value: 
+      objectReference: {fileID: 1702560109}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78a552a2a097ab4e9ea3314e6eb4fe7, type: 2}
   m_IsPrefabAsset: 0
@@ -85669,7 +85705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1717701265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -90557,6 +90593,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269827627473464, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419583640555500, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691085685429332, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902681099194688, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051337745018260, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 720637e2833dc3a43abbfc40c05a7691, type: 2}
@@ -103310,6 +103366,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 114212315322032056, guid: a78a552a2a097ab4e9ea3314e6eb4fe7,
+        type: 2}
+      propertyPath: ammoShop
+      value: 
+      objectReference: {fileID: 845540500}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78a552a2a097ab4e9ea3314e6eb4fe7, type: 2}
   m_IsPrefabAsset: 0
