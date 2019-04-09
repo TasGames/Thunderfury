@@ -27,6 +27,7 @@ public class GunDisplay : MonoBehaviour
 	[SerializeField] protected GameObject purchasedButton;
 	[SerializeField] protected GameObject gunButton;
 	[SerializeField] protected GameObject weaponSlot;
+	[SerializeField] protected GameObject ammoShop;
 
 
 	void Start() 
@@ -41,16 +42,6 @@ public class GunDisplay : MonoBehaviour
 
 		if (costCompare >= gun.cost)
 		{
-			//GameObject gunObject = Instantiate(gunPrefab, parentPrefab.transform.position, rot, parentPrefab.transform);
-			//gunObject.transform.localPosition = gunPrefab.transform.position;
-			//gunObject.SetActive(false);
-
-			/*Vector3 Pos = gunPrefab.transform.localPosition;
-			Quaternion Rot = gunPrefab.transform.localRotation;
-			gunPrefab.transform.parent = parentPrefab.transform;
-			gunPrefab.transform.localPosition = Pos;
-			gunPrefab.transform.localRotation = Rot;*/
-
 			gunPrefab.SetActive(true);
 
 			HUD.totalScore -= gun.cost;
@@ -59,6 +50,7 @@ public class GunDisplay : MonoBehaviour
 			purchasedButton.SetActive(true);
 			gunButton.SetActive(true);
 			weaponSlot.SetActive(true);
+			ammoShop.SetActive(true);
 			
 		}
 	}

@@ -19,7 +19,6 @@ MonoBehaviour:
   isAutomatic: 0
   isPenetrating: 0
   isContinuous: 0
-  fireSound: {fileID: 0}
   fireRate: 1
   recoil: 2
   magSize: 1
@@ -32,6 +31,10 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   bulletMark: {fileID: 0}
   takesAmmoType: 0
+  ammoCost: 100
+  ammoColour: {r: 0, g: 0, b: 0, a: 0}
+  trailTimer: 0
+  trailWidth: 0
   damage: 120
   damageRange: 0
   projectilePrefab: {fileID: 1679737307231984, guid: b9d51be4d8e4f9145b8ffcd6c76371b1,

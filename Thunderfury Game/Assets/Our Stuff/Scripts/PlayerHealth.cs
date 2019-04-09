@@ -39,10 +39,10 @@ public class PlayerHealth : MonoBehaviour
 			PlayerTakeDamage(50);
 		}*/
 
-		/*if (Input.GetKeyDown("o"))
+		if (Input.GetKeyDown("o"))
 		{
 			HUD.totalScore += 1000;
-		}*/
+		}
 	}
 
 	public void PlayerTakeDamage(float amount)

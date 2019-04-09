@@ -15,24 +15,20 @@ public class Shop : MonoBehaviour
 
 	[SerializeField] protected GameObject upgradeMenu;
 	[SerializeField] protected GameObject subShopMenu;
+	[SerializeField] protected GameObject ammoStore;
 	[SerializeField] protected GameObject baseShop;
 	[SerializeField] protected GameObject hud;
 
 	protected GameObject currentIcon;
+	protected Upgrade upgrade;
 
 	[SerializeField] protected RigidbodyFirstPersonController rbFPC;
+	[SerializeField] protected GameObject weaponHolder;
 
 	void Start() 
 	{
 		currentIcon = shopIcon;
-	}
-	
-	void Update()
-	{
-		/*if (Input.GetKeyDown("i"))
-		{
-			OpenShop();
-		}*/
+		upgrade = upgradeMenu.GetComponent<Upgrade>();
 	}
 
 	public void OpenShop()
@@ -43,6 +39,7 @@ public class Shop : MonoBehaviour
 			hud.SetActive(false);
 			Time.timeScale = 0.0f;
 			rbFPC.mouseLook.SetCursorLock(false);
+			weaponHolder.SetActive(false);
 			shopOpen = true;
 		}
 		else
@@ -51,6 +48,7 @@ public class Shop : MonoBehaviour
 			hud.SetActive(true);
 			Time.timeScale = 1.0f;
 			rbFPC.mouseLook.SetCursorLock(true);
+			weaponHolder.SetActive(true);
 			shopOpen = false;
 		}
 	}
@@ -93,6 +91,7 @@ public class Shop : MonoBehaviour
 
 	public void CloseUpgrade()
 	{
+		upgrade.Back();
 		upgradeMenu.SetActive(false);
 		baseShop.SetActive(true);
 	}
@@ -109,12 +108,25 @@ public class Shop : MonoBehaviour
 		baseShop.SetActive(true);
 	}
 
+	public void OpenAmmoStore()
+	{
+		baseShop.SetActive(false);
+		ammoStore.SetActive(true);
+	}
+
+	public void CloseAmmoStore()
+	{
+		ammoStore.SetActive(false);
+		baseShop.SetActive(true);
+	}
+
 	public void CloseShop()
 	{
 		shopMenu.SetActive(false);
 		hud.SetActive(true);
 		Time.timeScale = 1.0f;
 		Cursor.visible = false;
+		weaponHolder.SetActive(true);
 		shopOpen = false;
 	}
 
