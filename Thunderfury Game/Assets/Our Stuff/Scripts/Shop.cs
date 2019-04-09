@@ -23,6 +23,7 @@ public class Shop : MonoBehaviour
 	protected Upgrade upgrade;
 
 	[SerializeField] protected RigidbodyFirstPersonController rbFPC;
+	[SerializeField] protected GameObject weaponHolder;
 
 	void Start() 
 	{
@@ -38,6 +39,7 @@ public class Shop : MonoBehaviour
 			hud.SetActive(false);
 			Time.timeScale = 0.0f;
 			rbFPC.mouseLook.SetCursorLock(false);
+			weaponHolder.SetActive(false);
 			shopOpen = true;
 		}
 		else
@@ -46,6 +48,7 @@ public class Shop : MonoBehaviour
 			hud.SetActive(true);
 			Time.timeScale = 1.0f;
 			rbFPC.mouseLook.SetCursorLock(true);
+			weaponHolder.SetActive(true);
 			shopOpen = false;
 		}
 	}
@@ -123,6 +126,7 @@ public class Shop : MonoBehaviour
 		hud.SetActive(true);
 		Time.timeScale = 1.0f;
 		Cursor.visible = false;
+		weaponHolder.SetActive(true);
 		shopOpen = false;
 	}
 

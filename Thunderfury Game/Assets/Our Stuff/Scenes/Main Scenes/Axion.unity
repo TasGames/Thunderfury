@@ -255,7 +255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4043327
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18104,7 +18104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &379699040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27689,7 +27689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &564541481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54069,7 +54069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1121474003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67980,7 +67980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1387217626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96235,6 +96235,7 @@ MonoBehaviour:
   baseShop: {fileID: 1564398288}
   hud: {fileID: 485623505}
   rbFPC: {fileID: 23673625}
+  weaponHolder: {fileID: 1947033081}
 --- !u!114 &1926343422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97203,6 +97204,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4237979996461478, guid: d2d14f746347bf340be9321e59d901bc,
     type: 2}
   m_PrefabInternal: {fileID: 1946111682}
+--- !u!1 &1947033081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1931972721210914, guid: 095dba4161ca349408f2602fd466417a,
+    type: 2}
+  m_PrefabInternal: {fileID: 439944053}
 --- !u!4 &1947666301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661441439912526, guid: 726e0d51d5b79104f85fab9e424b0e8b,
