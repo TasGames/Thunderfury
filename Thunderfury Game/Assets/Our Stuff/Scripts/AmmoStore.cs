@@ -48,8 +48,8 @@ public class AmmoStore : MonoBehaviour
 				ammoInfo[i].magInfo = ammoInfo[i].ammoHolder.transform.GetChild(0).gameObject.GetComponentInChildren<TextMeshProUGUI>();
 				ammoInfo[i].fillInfo = ammoInfo[i].ammoHolder.transform.GetChild(1).gameObject.GetComponentInChildren<TextMeshProUGUI>();
 
-				ammoInfo[i].magButton = ammoInfo[i].ammoHolder.transform.GetChild(0).gameObject.GetComponent<Button>();
-				ammoInfo[i].fillButton = ammoInfo[i].ammoHolder.transform.GetChild(1).gameObject.GetComponent<Button>();
+				ammoInfo[i].magButton = ammoInfo[i].ammoHolder.transform.GetChild(2).gameObject.GetComponent<Button>();
+				ammoInfo[i].fillButton = ammoInfo[i].ammoHolder.transform.GetChild(3).gameObject.GetComponent<Button>();
 
 				int x = i;
 				ammoInfo[i].magButton.onClick.AddListener(() => FillMag(x));
