@@ -16,8 +16,8 @@ public class AmmoStore : MonoBehaviour
 		public Button fillButton;
 		public TextMeshProUGUI magInfo;
 		public TextMeshProUGUI fillInfo;
-		public int magCost;
-		public int fillCost;
+		[HideInInspector] public int magCost;
+		[HideInInspector] public int fillCost;
 	}
 
 	[SerializeField] protected AmmoStuff[] ammoInfo;
