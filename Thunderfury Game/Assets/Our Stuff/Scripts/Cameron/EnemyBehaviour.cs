@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -20,6 +20,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] protected float beginWalkDelay;
     [SerializeField] GameObject handTrigger;
+    [HideInInspector] public bool canExplode;
 
     // Use this for initialization
     void OnEnable()

@@ -114,6 +114,7 @@ public class Target : MonoBehaviour
             enemyBehaviour.enabled = false;
             enemyAnim.enabled = false;
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
             SetKinematic(false);
             gameObject.layer = 11;
             StartCoroutine(ResetEnemy());
