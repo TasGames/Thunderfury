@@ -93,7 +93,7 @@ public class Target : MonoBehaviour
 
     void Destroy()
     {
-        if (brokenVersion != null && hasBroken == false)
+        if (brokenVersion != null)
         {
             GameObject broke = Instantiate(brokenVersion, transform.position, transform.rotation);
             hasBroken = true;

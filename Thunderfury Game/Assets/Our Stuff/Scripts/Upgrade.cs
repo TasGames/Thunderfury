@@ -68,6 +68,11 @@ public class Upgrade : MonoBehaviour
 				UpgradeInfo[i].levelDown.onClick.AddListener(() => levelDown(x));
 			}
 
+			currentGun = gun[0];
+			DisplayCurrentStats();
+			CreateNewStats();
+			DisplayNewStats();
+
 			bootedUpOnce = true;
 		}
 
