@@ -32,6 +32,7 @@ public class Target : MonoBehaviour
 
     protected float totalWeight;
     [HideInInspector] public bool hasBroken = false;
+    [HideInInspector] public bool hasGivenScore = false;
     [HideInInspector] public float originalHealth;
 
     WaveManager waveManager;
@@ -93,7 +94,7 @@ public class Target : MonoBehaviour
 
     void Destroy()
     {
-        if (brokenVersion != null)
+        if (brokenVersion != null && hasBroken == false)
         {
             GameObject broke = Instantiate(brokenVersion, transform.position, transform.rotation);
             hasBroken = true;
@@ -124,7 +125,11 @@ public class Target : MonoBehaviour
             Destroy(gameObject);
         }
 
-        HUD.totalScore += scoreValue;
+        if (hasGivenScore == false)
+        {
+            HUD.totalScore += scoreValue;
+            hasGivenScore = true;
+        }
 
         if (dropsPickup == true)
             SpawnDrop();

@@ -423,6 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4536493978833738}
   - component: {fileID: 95034913372677510}
+  - component: {fileID: 114091337768694066}
   - component: {fileID: 195849420281712570}
   - component: {fileID: 114075200475713570}
   - component: {fileID: 114199938750903866}
@@ -828,7 +829,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1656970184622424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.377041, y: -1.709999, z: -34.010265}
+  m_LocalPosition: {x: -10, y: -1, z: -35}
   m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_Children:
   - {fileID: 4244107693279270}
@@ -1345,6 +1346,29 @@ MonoBehaviour:
   isInTrigger: 0
   beginWalkDelay: 0
   handTrigger: {fileID: 1374417847800024}
+  canExplode: 0
+--- !u!114 &114091337768694066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1656970184622424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38b3532d0777c24caad40be40ff6975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemychatter:
+  - {fileID: 8300000, guid: c876b4aaeb2a75b418e08fc09b550075, type: 3}
+  - {fileID: 8300000, guid: 3aa4262a70ca5a24f9f15ab1921f7fb5, type: 3}
+  - {fileID: 8300000, guid: 837b9567103ea5e4b87aa0d74cedf1fe, type: 3}
+  - {fileID: 8300000, guid: ecbaad62edc5d394fb28ac3e7d3f928f, type: 3}
+  - {fileID: 8300000, guid: 96dbb669ce3668947b97210ce452281f, type: 3}
+  - {fileID: 8300000, guid: c8c5acc354af9204d950ead00dc1871f, type: 3}
+  - {fileID: 8300000, guid: 27fcfc45a458af049a53a35b4464bb7b, type: 3}
+  source: {fileID: 0}
+  beinghit: {fileID: 8300000, guid: fb3ded116594fd84598e14a57f190531, type: 3}
+  timelimit: 30
 --- !u!114 &114199938750903866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1356,6 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad2e1c61d0de53409f60fb48974c5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 0}
   health: 20
   brokenVersion: {fileID: 1131939207076656, guid: 1325e590cd226d84196d0a9460220345,
     type: 2}
@@ -1373,6 +1398,7 @@ MonoBehaviour:
   - pickup: {fileID: 1248672729693990, guid: 40e6a43ac370dd04c94b9198885e9ce9, type: 2}
     weight: 0.3
   hasBroken: 0
+  hasGivenScore: 0
   originalHealth: 20
 --- !u!114 &114961742873969244
 MonoBehaviour:
