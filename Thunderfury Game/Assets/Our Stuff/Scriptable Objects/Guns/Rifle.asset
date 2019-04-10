@@ -14,7 +14,7 @@ MonoBehaviour:
   name: Assault Rifle
   icon: {fileID: 21300000, guid: 228319c9fbc20ef48bd08f20aaa40be6, type: 3}
   description: While it deals low damage, it has a high rate of fire.
-  cost: 3000
+  cost: 5000
   selectGunType: 0
   isAutomatic: 1
   isPenetrating: 0
@@ -40,12 +40,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileForce: 0
   maxLevel: 5
-  upgradeCost: 60
+  upgradeCost: 1250
   damageIncrease: 1
-  impactIncrease: 1
-  fireRateIncrease: 1
+  impactIncrease: 2
+  fireRateIncrease: 0.5
   rangeIncrease: 1
-  recoilIncrease: 4
-  reloadDecrease: 3
-  magIncrease: 0
-  ammoIncrease: 0
+  recoilIncrease: 2
+  reloadDecrease: 0.5
+  magIncrease: 4
+  ammoIncrease: 20

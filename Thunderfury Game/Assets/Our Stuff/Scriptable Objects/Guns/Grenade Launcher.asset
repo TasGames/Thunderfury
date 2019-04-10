@@ -31,7 +31,7 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   bulletMark: {fileID: 0}
   takesAmmoType: 3
-  ammoCost: 0
+  ammoCost: 1000
   ammoColour: {r: 0, g: 0, b: 0, a: 0}
   trailTimer: 0
   trailWidth: 0
@@ -41,12 +41,12 @@ MonoBehaviour:
     type: 2}
   projectileForce: 20
   maxLevel: 5
-  upgradeCost: 0
-  damageIncrease: 0
-  impactIncrease: 0
-  fireRateIncrease: 0
+  upgradeCost: 5000
+  damageIncrease: 10
+  impactIncrease: 100
+  fireRateIncrease: 0.5
   rangeIncrease: 0
   recoilIncrease: 0
   reloadDecrease: 0
-  magIncrease: 0
-  ammoIncrease: 0
+  magIncrease: 1
+  ammoIncrease: 2
