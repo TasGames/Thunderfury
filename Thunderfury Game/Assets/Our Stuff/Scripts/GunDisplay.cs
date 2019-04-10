@@ -46,7 +46,7 @@ public class GunDisplay : MonoBehaviour
 
 			HUD.totalScore -= gun.cost;
 			
-			buyButton.SetActive(false);
+			//buyButton.SetActive(false);
 			purchasedButton.SetActive(true);
 			gunButton.SetActive(true);
 			weaponSlot.SetActive(true);
