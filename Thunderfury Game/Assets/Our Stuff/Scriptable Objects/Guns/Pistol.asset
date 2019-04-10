@@ -41,7 +41,7 @@ MonoBehaviour:
   projectileForce: 0
   maxLevel: 5
   upgradeCost: 500
-  damageIncrease: 50
+  damageIncrease: 5
   impactIncrease: 2
   fireRateIncrease: 2
   rangeIncrease: 3
