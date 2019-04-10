@@ -13,6 +13,7 @@ public class Menu : MonoBehaviour
     public void Play()
     {
         HUD.totalScore = 0;
+        LoadLevel.isloaded = false;
         SceneManager.LoadScene("Axion");
         Time.timeScale = 1f;
         isPaused = false;
@@ -51,6 +52,8 @@ public class Menu : MonoBehaviour
 
     public void Tutorial()
     {
+        HUD.totalScore = 0;
+        LoadLevel.isloaded = false;
         SceneManager.LoadScene("AxionTutorial");
         Time.timeScale = 1f;
         isPaused = false;

@@ -124,7 +124,7 @@ public class UseGun : MonoBehaviour
 
 			if (gun.isAutomatic == false)
 			{
-				if (Input.GetButtonDown("Fire1"))
+				if (Input.GetButtonDown("Fire1") && LoadLevel.isloaded == true)
 				{
 					nextToFire = Time.time + 1 / prefFireRate;
 					Shoot();
@@ -135,7 +135,7 @@ public class UseGun : MonoBehaviour
 				if (animator != null)
 					animator.SetBool("isFiring", false);
 
-				if (Input.GetButton("Fire1"))
+				if (Input.GetButton("Fire1") && LoadLevel.isloaded == true)
 				{
 					nextToFire = Time.time + 1 / prefFireRate;
 					Shoot();

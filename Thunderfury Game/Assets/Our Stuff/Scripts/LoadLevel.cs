@@ -11,6 +11,8 @@ public class LoadLevel : MonoBehaviour
 	[SerializeField] protected float waitTime;
 	protected UseGun gun;
 
+	public static bool isloaded = false;
+
 	void Start() 
 	{
 		StartCoroutine(LoadRoutine());
@@ -22,9 +24,6 @@ public class LoadLevel : MonoBehaviour
 
 		for (int i = 0; i < guns.Length; i++)
 		{
-			gun = guns[i].GetComponent<UseGun>();
-			gun.enabled = true;
-
 			if (i > 0)
 				guns[i].SetActive(false);
 		}
@@ -32,6 +31,7 @@ public class LoadLevel : MonoBehaviour
 		weapon.enabled = true;
 		loadingScreen.SetActive(false);
 		playerMovement.enabled = true;
+		isloaded = true;
 
 	}
 	
