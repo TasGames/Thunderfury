@@ -78,14 +78,14 @@ public class UseProjectile : MonoBehaviour
 			foreach (Collider nearbyObject in collidersToDamage)
 			{
 				Target target = nearbyObject.GetComponent<Target>();
-				if (target != null)
+				if (target != null && nearbyObject.transform.tag != "Player")
 					target.TakeDamage(projectile.damage);
 			}
 			Collider[] collidersToForce = Physics.OverlapSphere(pos, projectile.blastRadius);
 			foreach (Collider nearbyObject in collidersToForce)
 			{
 				Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-				if (rb != null)
+				if (rb != null  && nearbyObject.transform.tag != "Player")
 				{
 					if (rb.useGravity == true)
 						rb.useGravity = false;

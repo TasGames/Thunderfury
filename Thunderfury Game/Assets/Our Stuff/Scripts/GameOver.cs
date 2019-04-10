@@ -25,10 +25,10 @@ public class GameOver : MonoBehaviour
 
 	public void Submit()
 	{
-		StartCoroutine(LeaderboardRoutine());
+		LeaderboardRoutine();
 	}
 
-	IEnumerator LeaderboardRoutine()
+	void LeaderboardRoutine()
 	{
 		Time.timeScale = 1f;
 
@@ -38,10 +38,16 @@ public class GameOver : MonoBehaviour
 		gameOver.SetActive(false);
 		leaderboard.SetActive(true);
 
-		yield return new WaitForSeconds(2f);
+		//yield return new WaitForSeconds(2f);
+
+		Debug.Log("First");
 
 		Time.timeScale = 0f;
 
+		Debug.Log("Second");
+
 		highscores.DownloadScores();
+
+		Debug.Log("Third");
 	}
 }
