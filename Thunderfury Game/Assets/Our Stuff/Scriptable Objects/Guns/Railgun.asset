@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Railgun
   m_EditorClassIdentifier: 
   name: Railgun
-  icon: {fileID: 0}
-  description: Something about a railgun
+  icon: {fileID: 21300000, guid: 6157f9857a2f09043b5e786ad5a7f4d9, type: 3}
+  description: Fire a powerful laser that penetrates through anything.
   cost: 10000
   selectGunType: 0
   isAutomatic: 0
@@ -32,14 +32,15 @@ MonoBehaviour:
   bulletMark: {fileID: 0}
   takesAmmoType: 1
   ammoCost: 25
-  ammoColour: {r: 0, g: 0, b: 0, a: 0}
-  trailTimer: 0
-  trailWidth: 0
+  ammoColour: {r: 0, g: 0.75825405, b: 1, a: 1}
+  trailTimer: 0.8
+  trailWidth: 0.01
   damage: 20
   damageRange: 2
   projectilePrefab: {fileID: 0}
   projectileForce: 0
   maxLevel: 5
+  upgradeCost: 0
   damageIncrease: 0
   impactIncrease: 0
   fireRateIncrease: 0

@@ -15,7 +15,7 @@ public class HUD : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI waveCount;
 	[SerializeField] protected Image healthBar;
 	[SerializeField] protected Image shieldBar;
-	[SerializeField] protected Image reloadingImage;
+	[SerializeField] protected Image crossHair;
 	[SerializeField] protected Image sadHeart;
 	[SerializeField] protected Image happyHeart;
 	protected bool isSad = false;
@@ -76,5 +76,8 @@ public class HUD : MonoBehaviour
 
 		if (uG != null && tAmmo != null)
 			tAmmo.text = uG.currentMag + " / " + uG.ammoPool;
+
+		if (uG != null && crossHair != null)
+			crossHair.sprite = uG.gun.icon;
 	}
 }

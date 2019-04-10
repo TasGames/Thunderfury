@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Grenade Launcher
   m_EditorClassIdentifier: 
   name: Grenade Launcher
-  icon: {fileID: 0}
-  description: Fires explosive projectiles
+  icon: {fileID: 21300000, guid: c2885585efe769942bb577f2f1409dcd, type: 3}
+  description: Blast alien vermin with explosive projectiles.
   cost: 15000
   selectGunType: 1
   isAutomatic: 0

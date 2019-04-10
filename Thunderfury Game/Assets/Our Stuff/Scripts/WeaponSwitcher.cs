@@ -19,6 +19,20 @@ public class WeaponSwitcher : MonoBehaviour
 	[SerializeField] protected Color highlightColour;
 	[SerializeField] protected Color standardColour;
 
+	[SerializeField] protected UseGun pistol;
+	[SerializeField] protected UseGun shotgun;
+	[SerializeField] protected UseGun rifle;
+	[SerializeField] protected UseGun grenadeLauncher;
+	[SerializeField] protected UseGun railgun;
+	[SerializeField] protected UseGun singularity;
+
+	[SerializeField] protected TextMeshProUGUI pistolAmmo;
+	[SerializeField] protected TextMeshProUGUI rifleAmmo;
+	[SerializeField] protected TextMeshProUGUI grenadeAmmo;
+	[SerializeField] protected TextMeshProUGUI shotgunAmmo;
+	[SerializeField] protected TextMeshProUGUI singularityAmmo;
+	[SerializeField] protected TextMeshProUGUI railAmmo;
+
 	void Start() 
 	{
 		image = button[0].GetComponent<Image>();
@@ -115,11 +129,22 @@ public class WeaponSwitcher : MonoBehaviour
 		}
 	}
 
+	void DisplayAmmo()
+	{
+		pistolAmmo.text = pistol.currentMag + " / " + pistol.ammoPool;
+		shotgunAmmo.text = shotgun.currentMag + " / " + shotgun.ammoPool;
+		grenadeAmmo.text = grenadeLauncher.currentMag + " / " + grenadeLauncher.ammoPool;
+		singularityAmmo.text = singularity.currentMag + " / " + singularity.ammoPool;
+		railAmmo.text = railgun.currentMag + " / " + railgun.ammoPool;
+		rifleAmmo.text = rifle.currentMag + " / " + rifle.ammoPool;
+	}
+
 	void OpenWeaponWheel()
     {
         if (isOpen == false)
         {
             weaponWheel.SetActive(true);
+			DisplayAmmo();
             isOpen = true;
         }
     }

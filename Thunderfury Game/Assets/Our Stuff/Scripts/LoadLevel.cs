@@ -25,7 +25,7 @@ public class LoadLevel : MonoBehaviour
 			gun = guns[i].GetComponent<UseGun>();
 			gun.enabled = true;
 
-			if (i < 0)
+			if (i > 0)
 				guns[i].SetActive(false);
 		}
 

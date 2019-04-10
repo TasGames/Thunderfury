@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   name: Shotgun
-  icon: {fileID: 0}
-  description: Short range but high damage and spread
+  icon: {fileID: 21300000, guid: cd5aeb9df4b3db947b1a1a1662368f38, type: 3}
+  description: What this weapon lacks in range it makes up for in damage and impact.
   cost: 6000
   selectGunType: 0
   isAutomatic: 0
@@ -33,13 +33,14 @@ MonoBehaviour:
   takesAmmoType: 2
   ammoCost: 25
   ammoColour: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0.039215688}
-  trailTimer: 0.5
+  trailTimer: 0.1
   trailWidth: 0.002
   damage: 6
   damageRange: 2
   projectilePrefab: {fileID: 0}
   projectileForce: 0
   maxLevel: 5
+  upgradeCost: 0
   damageIncrease: 0
   impactIncrease: 0
   fireRateIncrease: 0

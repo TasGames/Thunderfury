@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Singularity Gun
   m_EditorClassIdentifier: 
   name: Singularity Gun
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8f974f2be3c45b347923bba9159ca36e, type: 3}
   description: Create a mini black hole that pulls in enemies and then explodes
   cost: 50000
   selectGunType: 1
@@ -41,6 +41,7 @@ MonoBehaviour:
     type: 2}
   projectileForce: 10
   maxLevel: 5
+  upgradeCost: 0
   damageIncrease: 0
   impactIncrease: 0
   fireRateIncrease: 0

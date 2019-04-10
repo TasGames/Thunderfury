@@ -128,11 +128,13 @@ public class Target : MonoBehaviour
         if (hasGivenScore == false)
         {
             HUD.totalScore += scoreValue;
+
+            if (dropsPickup == true)
+                SpawnDrop();
+
             hasGivenScore = true;
         }
 
-        if (dropsPickup == true)
-            SpawnDrop();
     }
 
     void SpawnDrop()
