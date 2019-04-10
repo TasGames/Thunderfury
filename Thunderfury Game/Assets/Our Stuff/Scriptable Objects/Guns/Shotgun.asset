@@ -33,7 +33,7 @@ MonoBehaviour:
   takesAmmoType: 2
   ammoCost: 25
   ammoColour: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0.039215688}
-  trailTimer: 0.1
+  trailTimer: 0.4
   trailWidth: 0.002
   damage: 6
   damageRange: 2
