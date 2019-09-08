@@ -126,6 +126,7 @@ public class Shop : MonoBehaviour
 		hud.SetActive(true);
 		Time.timeScale = 1.0f;
 		Cursor.visible = false;
+		rbFPC.mouseLook.SetCursorLock(true);
 		weaponHolder.SetActive(true);
 		shopOpen = false;
 	}
