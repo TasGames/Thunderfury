@@ -40,8 +40,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileForce: 0
   maxLevel: 5
-  upgradeCost: 2
-  damageIncrease: 1
+  upgradeCost: 1000
+  damageIncrease: 3
   impactIncrease: 5
   fireRateIncrease: 0.5
   rangeIncrease: 1

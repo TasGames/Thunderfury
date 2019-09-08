@@ -20,7 +20,7 @@ MonoBehaviour:
   isPenetrating: 0
   isContinuous: 0
   fireRate: 1
-  recoil: 2
+  recoil: 0
   magSize: 1
   maxAmmo: 5
   reloadTime: 5
